@@ -92,7 +92,7 @@ export default function FAQ() {
 
       {/* View More Button */}
       <div className="flex justify-center mt-10">
-        <button className="bg-primary text-[16px]  text-white font-semibold py-4 px-12 rounded-full transition duration-300  shadow-xl shadow-blue-500/50">
+        <button className="bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300  shadow-xl shadow-blue-500/50">
           View More
         </button>
       </div>

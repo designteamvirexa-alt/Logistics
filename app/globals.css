@@ -41,8 +41,8 @@ body {
 
 
 h1{
-  font-size: 66px;
-  font-weight: 700;
+  font-size: 55px;
+  font-weight: 600;
   line-height: 1.2em;
 }
 h2{
@@ -72,4 +72,15 @@ p{
 }
 .bg-primary{
   background-color: #013EFE;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;   /* arrow color */
+  stroke: #fff !important;  /* sometimes needed */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #fff !important;   /* arrow icon color */
+  font-size: 18px;
 }

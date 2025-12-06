@@ -280,7 +280,7 @@ function Home() {
             <div className="flex justify-center mt-12 md:mt-16">
               <Link
                 href="#"
-                className="bg-primary text-[16px]  text-white font-semibold py-4 px-12 rounded-full transition duration-300  shadow-xl shadow-blue-500/50"
+                className="bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300  shadow-xl shadow-blue-500/50"
               >
                 View All Services
               </Link>

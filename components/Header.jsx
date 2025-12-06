@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { Menu, PhoneCall, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Logo from "@/asset/frisbi_white.png"; // change path based on your folder
+
 
 const servicesList = [
   "Air Freight",
@@ -40,12 +42,12 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/" className={`${scroll ? "text-black" : "text-white"} font-bold`}>
-          Logo
+          <Image src={Logo} alt="Frisbi" width={140} height={40} />
         </Link>
 
         {/* Desktop Navigation */}
         <nav
-          className={`hidden md:flex space-x-8 text-sm font-medium transition-all duration-300 
+          className={`hidden md:flex space-x-8 text-[15px] font-semibold transition-all duration-300 
             ${scroll ? "text-black" : "text-white"}
           `}
         >
@@ -121,7 +123,7 @@ export default function Header() {
 
         {/* Desktop Button */}
         <div className="hidden md:flex items-center space-x-6">
-          <button className="bg-red-600 hover:bg-red-700 transition text-white px-4 py-2 rounded-full text-sm font-semibold">
+          <button className="bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300">
             Tracking Now
           </button>
         </div>

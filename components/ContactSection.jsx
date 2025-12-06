@@ -138,7 +138,7 @@ export default function ContactSection() {
               {/* BUTTON */}
               <button
                 type="submit"
-                className="w-full bg-primary text-[16px]  text-white font-semibold py-4 px-12 rounded-full transition duration-300"
+                className="w-full bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300"
               >
                 Get a Free Quote
               </button>

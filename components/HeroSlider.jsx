@@ -14,19 +14,14 @@ import Image from "next/image";
 const slides = [
   {
     title: "Seamless Ship Freight for Global Trade",
-    desc: "We partner with leading international shipping lines to move your cargo across major trade routes.",
+    desc: "We partner with leading international shipping lines to move your cargo across major trade routes. From full containers to consolidated loads, we provide dependable schedules and cost-efficient solutions worldwide.",
     img: bannerone,
   },
-//   {
-//     title: "Fast Global Shipping You Can Trust",
-//     desc: "From full containers to consolidated loads, we provide dependable schedules worldwide.",
-//     img: bannerone,
-//   },
-//   {
-//     title: "Reliable Cargo Handling & Cost Savings",
-//     desc: "Optimized freight solutions with end-to-end tracking and transparency.",
-//     img: bannerone,
-//   },
+  {
+    title: "Seamless Ship Freight for Global Trade",
+    desc: "We partner with leading international shipping lines to move your cargo across major trade routes. From full containers to consolidated loads, we provide dependable schedules and cost-efficient solutions worldwide.",
+    img: bannerone,
+  },
 ];
 
 const features = [
@@ -47,7 +42,7 @@ const features = [
 export default function HeroSlider() {
   return (
     <>
-      <section className="relative w-full h-[100vh] md:h-[100vh] -mt-20 overflow-hidden ">
+      <section className="relative w-full h-[100vh] md:h-[100vh] -mt-20 overflow-hidden">
         <Swiper
           navigation
           autoplay={{ delay: 3000 }}
@@ -60,51 +55,51 @@ export default function HeroSlider() {
                 className="h-full w-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${slide.img.src})` }}
               >
-                <div className="bg-black/50 h-full w-full flex items-center px-6 md:px-20">
+                <div className="h-full max-w-7xl mx-auto px-4 flex items-center relative">
                   <motion.div
-                    initial={{ opacity: 0, x: 0 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-white max-w-xl px-4 "
+                    className="text-white max-w-2xl "
                   >
-                    <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4">
+                    <h1 className="font-semibold text-3xl md:text-5xl mb-4">
                       {slide.title}
                     </h1>
                     <p className="text-base md:text-xl mb-6">{slide.desc}</p>
-                    <button className="bg-blue-600 px-6 py-3 rounded-full font-semibold">
+                    <button className="bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full transition duration-300">
                       Book Shipment
                     </button>
                   </motion.div>
+
+                  {/* Booking Form */}
+                  <div className="absolute md:right-6 md:top-1/2 md:-translate-y-1/2 w-[100%] md:w-[440px] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 bottom-10 md:bottom-auto bg-white shadow-xl p-10 rounded-3xl z-30">
+                    <h3 className="text-lg font-semibold mb-5 text-center md:text-left">
+                      Your Booking is a Step Away!
+                    </h3>
+
+                    <div className="space-y-8 mt-2">
+                      <input
+                        type="text"
+                        placeholder="Enter your pickup location"
+                        className="w-full  p-3 rounded-lg bg-[#f5f5f5] focus:outline-none focus:border-[#013EFE]"
+                      />
+
+                      <input
+                        type="text"
+                        placeholder="Enter your dropping location"
+                        className="w-full  p-3 rounded-lg bg-[#f5f5f5] focus:outline-none focus:border-[#013EFE]"
+                      />
+
+                      <button className=" w-full bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Booking Form */}
-        <div
-          className="absolute md:right-6 md:top-1/2 md:-translate-y-1/2 w-[90%] md:w-[330px] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 bottom-10 md:bottom-auto bg-white shadow-xl p-6 rounded-2xl z-30"
-        >
-          <h3 className="text-lg font-semibold mb-4 text-center md:text-left">
-            Your Booking is a Step Away!
-          </h3>
-
-          <input
-            type="text"
-            placeholder="Enter your pickup location"
-            className="w-full border p-3 rounded-lg mb-3"
-          />
-
-          <input
-            type="text"
-            placeholder="Enter your dropping location"
-            className="w-full border p-3 rounded-lg mb-4"
-          />
-
-          <button className="w-full bg-blue-600 text-white py-3 rounded-xl">
-            Book Now
-          </button>
-        </div>
       </section>
 
       {/* Features Section */}
@@ -123,7 +118,6 @@ export default function HeroSlider() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-
               <div className="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg drop-shadow-md">
                 {item.title}
               </div>

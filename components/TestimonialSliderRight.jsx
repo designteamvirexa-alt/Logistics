@@ -43,7 +43,7 @@ export default function TestimonialSliderRight() {
       <div className="grid grid-cols-1 md:grid-cols-2">
 
         {/* LEFT IMAGE */}
-        <div className="relative h-64 md:h-full w-full">
+        <div className="relative h-100  w-full">
           <Image
             src={s2} // your image
             alt="Customer"
