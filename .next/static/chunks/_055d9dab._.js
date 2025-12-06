@@ -156,7 +156,7 @@ function HeroSlider() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                className: "relative w-full h-[100vh] md:h-[90vh] -mt-20",
+                className: "relative w-full h-[100vh] md:h-[100vh] -mt-20 overflow-hidden ",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swiper$2f$swiper$2d$react$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Swiper"], {
                         navigation: true,
@@ -175,11 +175,11 @@ function HeroSlider() {
                                         backgroundImage: "url(".concat(slide.img.src, ")")
                                     },
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "bg-black/50 h-full w-full flex items-center -pt-10 md:pt-0",
+                                        className: "bg-black/50 h-full w-full flex items-center px-6 md:px-20",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                             initial: {
                                                 opacity: 0,
-                                                x: -40
+                                                x: 0
                                             },
                                             animate: {
                                                 opacity: 1,
@@ -188,75 +188,68 @@ function HeroSlider() {
                                             transition: {
                                                 duration: 0.6
                                             },
-                                            className: "text-white max-w-xl md:pl-20 -pt-15",
+                                            className: "text-white max-w-xl px-4 ",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                    className: "text-3xl md:text-6xl font-bold leading-tight mb-4 text-center md:text-left",
+                                                    className: "text-3xl md:text-6xl font-bold leading-tight mb-4",
                                                     children: slide.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HeroSlider.jsx",
-                                                    lineNumber: 76,
-                                                    columnNumber: 41
+                                                    lineNumber: 70,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-base md:text-xl mb-6 text-center md:text-left",
+                                                    className: "text-base md:text-xl mb-6",
                                                     children: slide.desc
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HeroSlider.jsx",
-                                                    lineNumber: 79,
-                                                    columnNumber: 41
+                                                    lineNumber: 73,
+                                                    columnNumber: 21
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-center md:text-left",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        className: "bg-blue-600 px-6 py-3 rounded-full font-semibold",
-                                                        children: "Book Shipment"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/HeroSlider.jsx",
-                                                        lineNumber: 83,
-                                                        columnNumber: 45
-                                                    }, this)
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    className: "bg-blue-600 px-6 py-3 rounded-full font-semibold",
+                                                    children: "Book Shipment"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HeroSlider.jsx",
-                                                    lineNumber: 82,
-                                                    columnNumber: 41
+                                                    lineNumber: 74,
+                                                    columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/HeroSlider.jsx",
-                                            lineNumber: 70,
-                                            columnNumber: 37
+                                            lineNumber: 64,
+                                            columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/HeroSlider.jsx",
-                                        lineNumber: 68,
-                                        columnNumber: 33
+                                        lineNumber: 63,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/HeroSlider.jsx",
-                                    lineNumber: 62,
-                                    columnNumber: 29
+                                    lineNumber: 59,
+                                    columnNumber: 15
                                 }, this)
                             }, index, false, {
                                 fileName: "[project]/components/HeroSlider.jsx",
-                                lineNumber: 61,
-                                columnNumber: 25
+                                lineNumber: 58,
+                                columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSlider.jsx",
-                        lineNumber: 54,
-                        columnNumber: 17
+                        lineNumber: 51,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: " absolute md:right-6 md:top-1/2 md:-translate-y-1/2  md:w-[330px] w-[90%]  left-1/2 md:left-auto  -translate-x-1/2 md:translate-x-0  bottom-10 md:bottom-auto  bg-white shadow-xl p-6 rounded-2xl  z-30 ",
+                        className: "absolute md:right-6 md:top-1/2 md:-translate-y-1/2 w-[90%] md:w-[330px] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 bottom-10 md:bottom-auto bg-white shadow-xl p-6 rounded-2xl z-30",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 className: "text-lg font-semibold mb-4 text-center md:text-left",
                                 children: "Your Booking is a Step Away!"
                             }, void 0, false, {
                                 fileName: "[project]/components/HeroSlider.jsx",
-                                lineNumber: 106,
-                                columnNumber: 21
+                                lineNumber: 88,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "text",
@@ -264,8 +257,8 @@ function HeroSlider() {
                                 className: "w-full border p-3 rounded-lg mb-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/HeroSlider.jsx",
-                                lineNumber: 110,
-                                columnNumber: 21
+                                lineNumber: 92,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "text",
@@ -273,35 +266,35 @@ function HeroSlider() {
                                 className: "w-full border p-3 rounded-lg mb-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/HeroSlider.jsx",
-                                lineNumber: 116,
-                                columnNumber: 21
+                                lineNumber: 98,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 className: "w-full bg-blue-600 text-white py-3 rounded-xl",
                                 children: "Book Now"
                             }, void 0, false, {
                                 fileName: "[project]/components/HeroSlider.jsx",
-                                lineNumber: 122,
-                                columnNumber: 21
+                                lineNumber: 104,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/HeroSlider.jsx",
-                        lineNumber: 95,
-                        columnNumber: 17
+                        lineNumber: 85,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/HeroSlider.jsx",
-                lineNumber: 52,
-                columnNumber: 13
+                lineNumber: 50,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 className: "py-10 px-4 md:px-10",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: " grid  grid-cols-1  sm:grid-cols-2  lg:grid-cols-3  gap-6",
+                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
                     children: features.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: " relative  rounded-2xl  overflow-hidden  group  shadow-md  hover:shadow-xl  transition-all  duration-300 ",
+                            className: "relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "relative h-[260px] md:h-[300px]",
@@ -312,37 +305,37 @@ function HeroSlider() {
                                         className: "object-cover group-hover:scale-105 transition-transform duration-500"
                                     }, void 0, false, {
                                         fileName: "[project]/components/HeroSlider.jsx",
-                                        lineNumber: 153,
-                                        columnNumber: 33
+                                        lineNumber: 119,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/HeroSlider.jsx",
-                                    lineNumber: 152,
-                                    columnNumber: 29
+                                    lineNumber: 118,
+                                    columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: " absolute  bottom-4  left-4  right-4  text-white  font-semibold  text-lg  leading-snug drop-shadow-md ",
+                                    className: "absolute bottom-4 left-4 right-4 text-white font-semibold text-lg drop-shadow-md",
                                     children: item.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/HeroSlider.jsx",
-                                    lineNumber: 162,
-                                    columnNumber: 29
+                                    lineNumber: 127,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/components/HeroSlider.jsx",
-                            lineNumber: 138,
-                            columnNumber: 25
+                            lineNumber: 114,
+                            columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/HeroSlider.jsx",
-                    lineNumber: 130,
-                    columnNumber: 17
+                    lineNumber: 112,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/HeroSlider.jsx",
-                lineNumber: 129,
-                columnNumber: 13
+                lineNumber: 111,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true);

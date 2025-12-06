@@ -2143,8 +2143,8 @@
   }
 
   @media (min-width: 48rem) {
-    .md\:h-\[90vh\] {
-      height: 90vh;
+    .md\:h-\[100vh\] {
+      height: 100vh;
     }
   }
 
@@ -2261,6 +2261,12 @@
   }
 
   @media (min-width: 48rem) {
+    .md\:px-20 {
+      padding-inline: calc(var(--spacing) * 20);
+    }
+  }
+
+  @media (min-width: 48rem) {
     .md\:py-5 {
       padding-block: calc(var(--spacing) * 5);
     }
@@ -2269,18 +2275,6 @@
   @media (min-width: 48rem) {
     .md\:py-24 {
       padding-block: calc(var(--spacing) * 24);
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:pt-0 {
-      padding-top: calc(var(--spacing) * 0);
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:pl-20 {
-      padding-left: calc(var(--spacing) * 20);
     }
   }
 
@@ -2710,6 +2704,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden !important;
+}
+
+.hero-section {
+  padding: 1.5rem;
+  position: relative;
 }
 
 @property --tw-translate-x {
