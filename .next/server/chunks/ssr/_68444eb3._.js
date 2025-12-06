@@ -226,7 +226,7 @@ function HeroSlider() {
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "   absolute md:right-6 md:top-1/2 md:-translate-y-1/2    md:w-[330px] w-[90%]    left-1/2 md:left-auto    -translate-x-1/2 md:translate-x-0    bottom-10 md:bottom-auto    bg-white shadow-xl p-6 rounded-2xl    z-30   ",
+                        className: " absolute md:right-6 md:top-1/2 md:-translate-y-1/2  md:w-[330px] w-[90%]  left-1/2 md:left-auto  -translate-x-1/2 md:translate-x-0  bottom-10 md:bottom-auto  bg-white shadow-xl p-6 rounded-2xl  z-30 ",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 className: "text-lg font-semibold mb-4 text-center md:text-left",
@@ -277,9 +277,9 @@ function HeroSlider() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 className: "py-10 px-4 md:px-10",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: " grid    grid-cols-1    sm:grid-cols-2    lg:grid-cols-3    gap-6",
+                    className: " grid  grid-cols-1  sm:grid-cols-2  lg:grid-cols-3  gap-6",
                     children: features.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "   relative    rounded-2xl    overflow-hidden    group    shadow-md    hover:shadow-xl    transition-all    duration-300   ",
+                            className: " relative  rounded-2xl  overflow-hidden  group  shadow-md  hover:shadow-xl  transition-all  duration-300 ",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "relative h-[260px] md:h-[300px]",
@@ -299,7 +299,7 @@ function HeroSlider() {
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "   absolute    bottom-4    left-4    right-4    text-white    font-semibold    text-lg    leading-snug   drop-shadow-md   ",
+                                    className: " absolute  bottom-4  left-4  right-4  text-white  font-semibold  text-lg  leading-snug drop-shadow-md ",
                                     children: item.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/HeroSlider.jsx",
@@ -409,7 +409,7 @@ function Slider({ title }) {
         className: "w-full max-w-7xl mx-auto px-4 relative",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "   absolute    -top-20   w-full   flex    flex-col    sm:flex-row    sm:items-center    sm:justify-between   gap-3   ",
+                className: " absolute  -top-20 w-full flex  flex-col  sm:flex-row  sm:items-center  sm:justify-between gap-3 ",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         className: "text-white text-lg sm:text-xl font-semibold",
