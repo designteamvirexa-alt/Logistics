@@ -40,6 +40,7 @@ const servicesData = [
     imageAlt: 'Man smiling and giving a thumbs up',
     delay: 0.3,
   },
+  
 ];
 
 // --- Card Component Logic (Internal) ---
@@ -83,7 +84,7 @@ const ServiceCard = ({ service }) => {
       
       {/* Absolute positioned illustration/image */}
       {/* Adjust positioning and size based on your actual image files */}
-      <div className="absolute bottom-[-10%] right-0 left-0 w-full h-[60%] z-0">
+      <div className="absolute bottom-[-10%] right-0 left-0 w-full h-[66%] z-0">
         <Image 
           src={service.imageSrc} 
           alt={service.imageAlt} 

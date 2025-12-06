@@ -33,6 +33,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 import FAQSection from "@/components/Accordion";
 import ContactSection from "@/components/ContactSection";
+import StrengthSlider from "@/components/Slider";
 
 function Home() {
   const tabs = ["Our Mission", "Our Vision", "Why Choose Us"];
@@ -133,12 +134,8 @@ function Home() {
       </section>
 
       <section
-        className="relative pt-20 pb-35 bg-black"
-        style={{
-          backgroundImage: "url('@/asset/bg-linear.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="relative py-36  bg-black"
+       
       >
         <CustomSlider />
       </section>
