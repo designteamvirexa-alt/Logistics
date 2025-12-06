@@ -113,9 +113,9 @@ export default function HeroSlider() {
           {features.map((item, index) => (
             <div
               key={index}
-              className="relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300"
+              className="relative rounded-3xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative h-[260px] md:h-[300px]">
+              <div className="relative h-[460px] md:h-[460px]">
                 <Image
                   src={item.img}
                   alt={item.title}

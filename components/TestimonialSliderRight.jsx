@@ -39,7 +39,7 @@ export default function TestimonialSliderRight() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-lg bg-white">
+    <div className=" max-w-7xl mx-auto rounded-3xl  overflow-hidden shadow-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2">
 
         {/* LEFT IMAGE */}
@@ -63,11 +63,11 @@ export default function TestimonialSliderRight() {
             key={index}
             className="transition-all duration-500 ease-in-out"
           >
-            <p className="text-lg md:text-xl leading-relaxed mb-6">
+            <span className="text-[22px] font-semibold  leading-relaxed ">
               {testimonials[index].text}
-            </p>
+            </span>
 
-            <p className="text-sm opacity-75">
+            <p className="text-sm text-white mt-4">
               {testimonials[index].author}
             </p>
           </div>
