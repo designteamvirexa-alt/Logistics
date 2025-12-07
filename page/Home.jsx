@@ -138,7 +138,7 @@ function Home() {
         <CustomSlider />
       </section>
 
-      <section className="max-w-7xl mx-auto  "></section>
+      
       <section className="bg-[#F1F2F6] ">
         <div className="lg:py-20 max-w-7xl mx-auto">
           <MarqueeLogos />
