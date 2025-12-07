@@ -1,6 +1,9 @@
 {
-  "/Haveanyqueries/page": "app/Haveanyqueries/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/book-shipment/page": "app/book-shipment/page.js",
+  "/faq/page": "app/faq/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/track-your-package/page": "app/track-your-package/page.js"
+  "/page": "app/page.js",
+  "/rate-calculator/page": "app/rate-calculator/page.js",
+  "/services/page": "app/services/page.js"
 }
