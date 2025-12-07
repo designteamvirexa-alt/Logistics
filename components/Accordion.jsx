@@ -36,9 +36,9 @@ export default function FAQ() {
 
   return (
     <div className="w-full max-w-3xl mx-auto  ">
-      <h3 className=" text-center mb-10">
+      <h2 className=" text-center mb-10">
         Frequently asked questions
-      </h3>
+      </h2>
 
       <div className="space-y-6">
         {faqData.map((faq, i) => (

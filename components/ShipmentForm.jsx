@@ -1,40 +1,44 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ShipmentBookingForm() {
   const [values, setValues] = useState({});
   const [active, setActive] = useState("");
 
   const handleChange = (field, value) => {
-    setValues(prev => ({ ...prev, [field]: value }));
+    setValues((prev) => ({ ...prev, [field]: value }));
   };
 
   const labelClass = (field) =>
     `absolute left-3 transition-all duration-200 pointer-events-none
-     ${values[field] || active === field
-       ? "-top-2 text-xs text-blue-600 bg-white px-1"
-       : "top-3 text-gray-500"}
+     ${
+       values[field] || active === field
+         ? "-top-2 text-xs text-blue-600 bg-white px-1"
+         : "top-3 text-gray-500"
+     }
     `;
+const textareaClass =
+  "w-full rounded-xl px-4 py-3 bg-[#f5f5f5] outline-none border-0 resize-none overflow-hidden focus:ring-2 focus:ring-[#013EFE] transition";
 
   const inputClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-3 bg-gray-100 outline-none focus:bg-white focus:border-blue-600 transition-all";
+    "w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition";
 
   const selectClass =
-    "w-full border border-gray-300 rounded-lg px-3 py-3 bg-gray-100 outline-none focus:border-blue-600";
+    "w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition";
 
   return (
     <section className="w-full py-10 px-4">
-      <div className="max-w-5xl mx-auto">
-
-        <h2 className="text-center text-2xl font-semibold">Shipment Booking Form</h2>
-        <p className="text-center text-gray-500 mb-10 text-sm">
-          Book door-to-door luggage delivery. Share your pickup & delivery details.
+      <div className="max-w-4xl mx-auto">
+        <h2 className="mb-4 text-center">Shipment Booking Form</h2>
+        <p className="mb-10 text-[#7b7881] text-center">
+          Book door-to-door luggage delivery. Share your pickup & delivery
+          details.
         </p>
 
         {/* ---------------- Customer Details ---------------- */}
         <h3 className="font-semibold mb-3">Customer Details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-
           <div className="relative">
             <label className={labelClass("fullName")}>Full Name</label>
             <input
@@ -43,7 +47,7 @@ export default function ShipmentBookingForm() {
               onFocus={() => setActive("fullName")}
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("fullName", e.target.value)}
-              className={inputClass}
+              className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition"
             />
           </div>
 
@@ -55,19 +59,19 @@ export default function ShipmentBookingForm() {
               onFocus={() => setActive("email")}
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("email", e.target.value)}
-              className={inputClass}
+              className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition"
             />
           </div>
 
-          <div className="relative md:col-span-2">
+          <div className="relative">
             <label className={labelClass("mobile")}>Mobile Number</label>
             <input
-              type="number"
+              type="tel"
               value={values.mobile || ""}
               onFocus={() => setActive("mobile")}
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("mobile", e.target.value)}
-              className={inputClass}
+              className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition"
             />
           </div>
         </div>
@@ -75,7 +79,6 @@ export default function ShipmentBookingForm() {
         {/* ---------------- Pickup & Delivery ---------------- */}
         <h3 className="font-semibold mb-3">Pickup & Delivery</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-
           <div className="relative">
             <label className={labelClass("pickupCity")}>Pickup City</label>
             <input
@@ -100,52 +103,75 @@ export default function ShipmentBookingForm() {
             />
           </div>
 
+          {/* Pickup Address → textarea auto height */}
           <div className="relative">
-            <label className={labelClass("pickupAddress")}>Pickup Address</label>
-            <input
-              type="text"
+            <label className={labelClass("pickupAddress")}>
+              Pickup Address
+            </label>
+            <textarea
               value={values.pickupAddress || ""}
               onFocus={() => setActive("pickupAddress")}
               onBlur={() => setActive("")}
-              onChange={(e) => handleChange("pickupAddress", e.target.value)}
-              className={inputClass}
+              onChange={(e) => {
+                handleChange("pickupAddress", e.target.value);
+                e.target.style.height = "auto";
+                e.target.style.height = e.target.scrollHeight + "px";
+              }}
+              className={textareaClass}
+              rows={1}
             />
           </div>
 
+          {/* Delivery Address → textarea auto height */}
           <div className="relative">
-            <label className={labelClass("deliveryAddress")}>Delivery Address</label>
-            <input
-              type="text"
+            <label className={labelClass("deliveryAddress")}>
+              Delivery Address
+            </label>
+            <textarea
               value={values.deliveryAddress || ""}
               onFocus={() => setActive("deliveryAddress")}
               onBlur={() => setActive("")}
-              onChange={(e) => handleChange("deliveryAddress", e.target.value)}
-              className={inputClass}
+              onChange={(e) => {
+                handleChange("deliveryAddress", e.target.value);
+                e.target.style.height = "auto";
+                e.target.style.height = e.target.scrollHeight + "px";
+              }}
+              className={textareaClass}
+              rows={1}
             />
           </div>
 
-          {/* Date Inputs */}
+          {/* Date Time Picker */}
           <div className="relative">
-            <label className={labelClass("pickupDate")}>Preferred Pickup Date & Time</label>
+            <label className={labelClass("pickupDate")}>
+              Preferred Pickup Date & Time
+            </label>
+
             <input
               type="datetime-local"
               value={values.pickupDate || ""}
               onFocus={() => setActive("pickupDate")}
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("pickupDate", e.target.value)}
-              className={inputClass}
+              className={
+                inputClass
+              }
             />
           </div>
 
+          {/* Delivery Date */}
           <div className="relative">
-            <label className={labelClass("deliveryDate")}>Expected Delivery Date</label>
+            <label className={labelClass("deliveryDate")}>
+              Expected Delivery Date
+            </label>
+
             <input
               type="date"
               value={values.deliveryDate || ""}
               onFocus={() => setActive("deliveryDate")}
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("deliveryDate", e.target.value)}
-              className={inputClass}
+              className={inputClass }
             />
           </div>
         </div>
@@ -153,9 +179,10 @@ export default function ShipmentBookingForm() {
         {/* ---------------- Luggage Details ---------------- */}
         <h3 className="font-semibold mb-3">Luggage Details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-
           <div className="relative">
-            <label className={labelClass("checkedBags")}>Number of Checked-in Bags</label>
+            <label className={labelClass("checkedBags")}>
+              Number of Checked-in Bags
+            </label>
             <input
               type="number"
               value={values.checkedBags || ""}
@@ -167,7 +194,9 @@ export default function ShipmentBookingForm() {
           </div>
 
           <div className="relative">
-            <label className={labelClass("cabinBags")}>Number of Cabin Bags</label>
+            <label className={labelClass("cabinBags")}>
+              Number of Cabin Bags
+            </label>
             <input
               type="number"
               value={values.cabinBags || ""}
@@ -179,7 +208,9 @@ export default function ShipmentBookingForm() {
           </div>
 
           <div className="relative">
-            <label className={labelClass("weight")}>Approx. Total Weight (Kg)</label>
+            <label className={labelClass("weight")}>
+              Approx. Total Weight (Kg)
+            </label>
             <input
               type="number"
               value={values.weight || ""}
@@ -199,7 +230,7 @@ export default function ShipmentBookingForm() {
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("bagSize", e.target.value)}
             >
-              <option value="">Select</option>
+              <option value=""></option>
               <option>Small</option>
               <option>Medium</option>
               <option>Large</option>
@@ -214,10 +245,7 @@ export default function ShipmentBookingForm() {
           <div className="flex gap-6 flex-wrap">
             {["Suitcase", "Bag", "Box", "Sports Gear"].map((item) => (
               <label key={item} className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4"
-                />
+                <input type="checkbox" className="w-4 h-4" />
                 {item}
               </label>
             ))}
@@ -226,23 +254,26 @@ export default function ShipmentBookingForm() {
 
         {/* Special Instructions */}
         <div className="relative mb-12">
-          <label className={labelClass("instructions")}>Special Instructions</label>
-          <input
-            type="text"
-            value={values.instructions || ""}
-            onFocus={() => setActive("instructions")}
+          <label className={labelClass("instructions")}>
+            Special Instructions
+          </label>
+         <textarea
+            rows={3}
+            value={values.notes || ""}
+            onFocus={() => setActive("notes")}
             onBlur={() => setActive("")}
-            onChange={(e) => handleChange("instructions", e.target.value)}
-            className={inputClass}
-          />
+            onChange={(e) => handleChange("notes", e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-3 py-3 bg-gray-100 outline-none focus:bg-white focus:border-blue-600 transition-all"
+          ></textarea>
         </div>
 
         {/* ---------------- Payment & Extras ---------------- */}
         <h3 className="font-semibold mb-3">Payment & Extras</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-
           <div className="relative">
-            <label className={labelClass("paymentMethod")}>Payment Method</label>
+            <label className={labelClass("paymentMethod")}>
+              Payment Method
+            </label>
             <select
               className={selectClass}
               value={values.paymentMethod || ""}
@@ -250,7 +281,7 @@ export default function ShipmentBookingForm() {
               onBlur={() => setActive("")}
               onChange={(e) => handleChange("paymentMethod", e.target.value)}
             >
-              <option value="">Select</option>
+              <option value=""></option>
               <option>Cash</option>
               <option>UPI</option>
               <option>Card</option>
@@ -258,7 +289,9 @@ export default function ShipmentBookingForm() {
           </div>
 
           <div className="relative">
-            <label className={labelClass("billingAddress")}>Billing Address</label>
+            <label className={labelClass("billingAddress")}>
+              Billing Address
+            </label>
             <input
               type="text"
               value={values.billingAddress || ""}
@@ -289,9 +322,9 @@ export default function ShipmentBookingForm() {
         </div>
 
         {/* Button */}
-        <button className="w-[20%] bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-all">
+        <Link href="#" className="w-[30%] bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300  shadow-xl shadow-blue-500/50">
           Book Shipment
-        </button>
+        </Link>
       </div>
     </section>
   );

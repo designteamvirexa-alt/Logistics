@@ -26,7 +26,7 @@ export default function MarqueeLogos() {
       <Marquee gradient={false} speed={50}>
         {logos.map((logo, index) => (
           <div key={index} className="mx-8">
-            <Image src={logo} alt={`Logo ${index}`} width={100} height={80} className="object-contain"/>
+            <Image src={logo} alt={`Logo ${index}`} width={100} height={100} className="object-cover"/>
           </div>
         ))}
       </Marquee>
