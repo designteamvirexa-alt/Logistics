@@ -10,6 +10,7 @@ import {
   User2,
 } from "lucide-react";
 
+
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 import { AnimatePresence, motion } from "framer-motion";
@@ -133,10 +134,7 @@ function Home() {
         </div>
       </section>
 
-      <section
-        className="relative py-36  bg-black"
-       
-      >
+      <section className="relative py-36  bg-black">
         <CustomSlider />
       </section>
 
@@ -150,17 +148,17 @@ function Home() {
           <ServicesSection />
         </div>
 
-        <section className=" text-white max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        {/* <section className=" text-white max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <div className="container mx-auto">
             <div
               className="bg-black rounded-3xl p-6 md:p-12 lg:p-12  overflow-hidden "
-              // Subtle glow effect
+             
             >
-              {/* Main content grid: Two columns for desktop/tablet, stacked for mobile */}
+              
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 ">
-                {/* 1. Left Content Area (Text & Features) */}
+               
                 <div className="order-2 lg:order-1">
-                  <h2 className="">Frisbi About us</h2>
+                  <h3 className="mb-4">Frisbi About us</h3>
 
                   <p className="text-[#ffffff]">
                     Our global logistics expertise, advanced supply chain
@@ -169,9 +167,9 @@ function Home() {
                     end-to-end.
                   </p>
 
-                  {/* Feature Grid (2 columns on all sizes) */}
+             
                   <div className="grid grid-cols-2 gap-8 mb-12">
-                    {/* Feature 1 */}
+                  
                     <div className="pt-10">
                       <div className="text-xl font-bold text-white mb-4">
                         01
@@ -184,7 +182,7 @@ function Home() {
                       </p>
                     </div>
 
-                    {/* Feature 2 */}
+                  
                     <div className="pt-10">
                       <div className="text-xl font-bold text-white mb-4">
                         02
@@ -198,20 +196,97 @@ function Home() {
                     </div>
                   </div>
 
-                  {/* Call-to-Action Button */}
+                 
                   <button className="bg-primary text-[18px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300 ">
                     Explore more
                   </button>
                 </div>
 
                 <div className="order-1 lg:order-2 flex justify-center lg:justify-end min-h-[300px] md:min-h-[500px] relative">
-                  {/* This placeholder is where your image will go */}
+                  
                   <div className="relative w-full max-w-2xl h-full">
                     <Image
-                      src={about} // **Replace with the actual path to your combined image**
+                      src={about} 
                       alt="Global logistics illustration with a map, airplane, and country-wise order data"
                       layout="fill"
-                      objectFit="contain" // Ensures the image fits within the container responsively
+                      objectFit="contain" 
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> */}
+
+        <section className="relative text-white max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+          {/* 🔹 Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover -z-10"
+          >
+            <source src="https://themenectar.com/demo-media/visual-hooks-bg-3.mp4" type="video/mp4" />
+          </video>
+
+          {/* Optional: Dark Overlay */}
+          <div className="absolute inset-0 bg-black -z-10"></div>
+
+          <div className="container mx-auto relative z-10">
+            <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 md:p-12 lg:p-12 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+                {/* Left Text Section */}
+                <div className="order-2 lg:order-1">
+                  <h3 className="mb-4">Frisbi About us</h3>
+
+                  <p className="text-[#ffffff]">
+                    Our global logistics expertise, advanced supply chain
+                    technology & customized logistics solutions will help you
+                    analyze, develop and implement successful strategies from
+                    end-to-end.
+                  </p>
+
+                  {/* Features */}
+                  <div className="grid grid-cols-2 gap-8 mb-12">
+                    <div className="pt-10">
+                      <div className="text-xl font-bold text-white mb-4">
+                        01
+                      </div>
+                      <h3 className="text-[24px] mb-2">Professional Packing</h3>
+                      <p className="text-sm md:text-base text-white">
+                        Could you clarify if you're looking for a guide.
+                      </p>
+                    </div>
+
+                    <div className="pt-10">
+                      <div className="text-xl font-bold text-white mb-4">
+                        02
+                      </div>
+                      <h3 className="text-xl md:text-xl font-semibold mb-2">
+                        Pre-Move Planning
+                      </h3>
+                      <p className="text-sm md:text-base text-white">
+                        Could you clarify if you're looking for a guide.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <button className="bg-primary text-[18px] text-white font-semibold py-3 px-12 rounded-full transition duration-300">
+                    Explore more
+                  </button>
+                </div>
+
+                {/* Right Image */}
+                <div className="order-1 lg:order-2 flex justify-center lg:justify-end min-h-[300px] md:min-h-[500px] relative">
+                  <div className="relative w-full max-w-2xl h-full">
+                    <Image
+                      src={about}
+                      alt="Global logistics illustration"
+                      layout="fill"
+                      objectFit="contain"
                       priority
                     />
                   </div>
