@@ -36,9 +36,9 @@ export default function FAQ() {
 
   return (
     <div className="w-full max-w-3xl mx-auto  ">
-      <h2 className=" text-center mb-10">
+      <h3 className=" text-center mb-10">
         Frequently asked questions
-      </h2>
+      </h3>
 
       <div className="space-y-6">
         {faqData.map((faq, i) => (
@@ -80,9 +80,9 @@ export default function FAQ() {
                 className="flex justify-between items-center py-5 cursor-pointer border-b"
                 onClick={() => toggle(i)}
               >
-                <h3 className="font-medium text-lg text-gray-900">
+                <h4 className="font-medium text-lg text-gray-900">
                   {faq.question}
-                </h3>
+                </h4>
                 <Plus className="w-6 h-6 text-gray-600" />
               </div>
             )}
