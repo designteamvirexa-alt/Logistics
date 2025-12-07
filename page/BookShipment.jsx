@@ -38,7 +38,7 @@ function BookShipment() {
                             Book Shipment
                         </h2>
 
-                        <p className="text-white/80 mt-3 text-sm md:text-base">
+                        <p className=" mt-3 text-sm md:text-base">
                             Home <span className="text-blue-200">›</span> Book Shipment
                         </p>
                     </div>

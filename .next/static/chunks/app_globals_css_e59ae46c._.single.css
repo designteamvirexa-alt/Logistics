@@ -978,6 +978,10 @@
     height: 550px;
   }
 
+  .h-\[560px\] {
+    height: 560px;
+  }
+
   .h-full {
     height: 100%;
   }
@@ -1792,6 +1796,10 @@
     padding-bottom: calc(var(--spacing) * 20);
   }
 
+  .pb-24 {
+    padding-bottom: calc(var(--spacing) * 24);
+  }
+
   .pb-28 {
     padding-bottom: calc(var(--spacing) * 28);
   }
@@ -2065,6 +2073,12 @@
     .shadow-blue-500\/50 {
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-blue-500) 50%, transparent) var(--tw-shadow-alpha), transparent);
     }
+  }
+
+  .drop-shadow-\[0_4px_100px_rgba\(0\,0\,0\,0\.08\)\] {
+    --tw-drop-shadow-size: drop-shadow(0 4px 100px var(--tw-drop-shadow-color, rgba(0, 0, 0, .08)));
+    --tw-drop-shadow: var(--tw-drop-shadow-size);
+    filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
   }
 
   .drop-shadow-lg {
