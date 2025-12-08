@@ -41,7 +41,7 @@ const features = [
 
 export default function HeroSlider() {
   return (
-    <div className="ml-1 mr-1 rounded-2xl">
+    <div className="ml-2 mr-2 mt-1 rounded-3xl">
       <section className="relative w-full h-[100vh] md:h-[100vh] -mt-20 overflow-hidden rounded-2xl ">
         <Swiper
           navigation

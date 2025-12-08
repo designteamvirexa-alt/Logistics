@@ -17,48 +17,72 @@ import courierimg from "@/asset/courierimg.webp";
 
 const servicesData = [
   {
-    title: "Excess Baggage",
+    title: "Safe & Secure Luggage Handling",
     description:
-      "Skip airline charges—send your extra luggage at a fraction of the cost.",
+      "Your bags are handled by trained professionals with secure sealing and verified partners, ensuring protection throughout the journey.",
     bgColor: "bg-white",
     textColor: "text-black",
-    descColor: "text-black",
+    descColor: "text-[#7b7881]",
     linkColor: "text-black hover:text-[#013EFE]",
     imageSrc: c1,
     imageAlt: "Excess baggage service image",
     delay: 0,
   },
   {
-    title: "Excess Baggage",
+    title: "Reliable Door-to-Door Baggage Pickup & Drop",
     description:
-      "Skip airline charges—send your extra luggage at a fraction of the cost.",
+      "Skip the hassle of heavy luggage—book online, and we’ll pick up from your home and deliver anywhere in India.",
     bgColor: "bg-white",
     textColor: "text-black",
-    descColor: "text-black",
+    descColor: "text-[#7b7881]",
     linkColor: "text-black hover:text-[#013EFE]",
     imageSrc: valuesdiff,
     imageAlt: "Excess baggage service image",
     delay: 0,
   },
   {
-    title: "Excess Baggage",
+    title: "On-Time Delivery Guarantee",
     description:
-      "Skip airline charges—send your extra luggage at a fraction of the cost.",
+      "Avoid baggage delays—our scheduled deliveries and real-time updates keep you informed until your luggage arrives.",
     bgColor: "bg-white",
     textColor: "text-black",
-    descColor: "text-black",
+    descColor: "text-[#7b7881]",
     linkColor: "text-black hover:text-[#013EFE]",
     imageSrc: courierimg,
     imageAlt: "Excess baggage service image",
     delay: 0,
   },
   {
-    title: "Excess Baggage",
+    title: "Live Luggage Tracking Across India",
     description:
-      "Skip airline charges—send your extra luggage at a fraction of the cost.",
+      "Get real-time tracking and SMS/WhatsApp alerts, so you always know exactly where your baggage is in transit.",
     bgColor: "bg-white",
     textColor: "text-black",
-    descColor: "text-black",
+    descColor: "text-[#7b7881]",
+    linkColor: "text-black hover:text-[#013EFE]",
+    imageSrc: courierimg,
+    imageAlt: "Excess baggage service image",
+    delay: 0,
+  },
+  {
+    title: "Corporate & Group Travel Luggage Management",
+    description:
+      "We provide specialised support for corporate travel, events, and group trips, ensuring seamless coordination across multiple bags and destinations.",
+    bgColor: "bg-white",
+    textColor: "text-black",
+    descColor: "text-[#7b7881]",
+    linkColor: "text-black hover:text-[#013EFE]",
+    imageSrc: courierimg,
+    imageAlt: "Excess baggage service image",
+    delay: 0,
+  },
+  {
+    title: "Nationwide Luggage Delivery Network",
+    description:
+      "We deliver luggage across major, tier-2, and tier-3 cities, supporting seamless travel, relocation, and baggage movement nationwide.",
+    bgColor: "bg-white",
+    textColor: "text-black",
+    descColor: "text-[#7b7881]",
     linkColor: "text-black hover:text-[#013EFE]",
     imageSrc: courierimg,
     imageAlt: "Excess baggage service image",
@@ -67,7 +91,7 @@ const servicesData = [
   
 ];
 
-export default function Slider({ title = "Our Core Strengths" }) {
+export default function Slider({ title = "Why Choose Us — India’s Trusted Luggage Delivery" }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -116,12 +140,12 @@ export default function Slider({ title = "Our Core Strengths" }) {
         {servicesData.map((service, index) => (
           <SwiperSlide key={index}>
             <div
-              className={`relative w-full h-[460px] rounded-3xl overflow-hidden ${service.bgColor} p-8`}
+              className={`relative w-full h-[500px] rounded-3xl overflow-hidden ${service.bgColor} p-8`}
             >
               <h3 className={`text-xl font-semibold ${service.textColor}`}>
                 {service.title}
               </h3>
-              <p className={`mt-2 text-sm ${service.descColor}`}>
+              <p className={`mt-2 text-[15px] ${service.descColor}`}>
                 {service.description}
               </p>
 
