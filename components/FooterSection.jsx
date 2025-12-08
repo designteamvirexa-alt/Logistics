@@ -2,103 +2,168 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Instagram, Youtube, Facebook } from "lucide-react";
-import Logo from "@/asset/frisbi_white.png"; // change path based on your folder
+import Link from "next/link";
+import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
+import Logo from "@/asset/frisbi_white.png";
 
 export default function Footer() {
-    return (
-        <footer className="bg-[#101010] text-white pt-16 pb-8 px-6">
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
-            >
-                {/* LOGO + DESCRIPTION */}
-                <div className="space-y-8">
-                    <div className="flex items-center gap-2">
-                        <Image src={Logo} alt="Frisbi" width={140} height={40} />
-                        {/* <span className="text-xl font-semibold">Frisbi</span> */}
-                    </div>
+  return (
+    <footer className="bg-[#101010] text-white pt-16 pb-8 px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+      >
+        {/* LOGO + DESCRIPTION */}
+        <div className="space-y-8">
+          <div className="flex items-center gap-2">
+            <Image src={Logo} alt="Frisbi" width={140} height={40} />
+          </div>
 
-                    <p className="text-white ">
-                        We don’t just build apps, we create brand.  
-                        Choosing us will be your best decision.
-                    </p>
+          <p className="text-white">
+            We don’t just build apps, we create brand. Choosing us will be your
+            best decision.
+          </p>
 
-                    <div>
-                        <h4 className="font-semibold mb-2">Social Media</h4>
-                        <div className="flex items-center gap-4">
-                            <Youtube className="w-5 h-5" />
-                            <Instagram className="w-5 h-5" />
-                            <Facebook className="w-5 h-5" />
-                        </div>
-                    </div>
+          <div>
+            <h4 className="font-semibold mb-2">Social Media</h4>
+            <div className="flex items-center gap-4">
+              <Link href="#">
+                <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
+                  <FaYoutube className="w-5 h-5" />
                 </div>
-
-                {/* SERVICES */}
-                <div>
-                    <h4 className="font-semibold mb-5 text-lg">Services</h4>
-                    <ul className="space-y-4 text-sm font-semibold">
-                        <li>• Excess Baggage</li>
-                        <li>• Package Delivery</li>
-                        <li>• Airport Transfer</li>
-                        <li>• Smart Box</li>
-                        <li>• Become a Partner</li>
-                    </ul>
+              </Link>
+              <Link href="#">
+                <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
+                  <FaInstagram className="w-5 h-5" />
                 </div>
-
-                {/* COMPANY */}
-                <div>
-                    <h4 className="font-semibold mb-5 text-lg">Company</h4>
-                    <ul className="space-y-4 text-sm font-semibold">
-                        <li>• Excess Baggage</li>
-                        <li>• Package Delivery</li>
-                        <li>• Airport Transfer</li>
-                        <li>• Smart Box</li>
-                        <li>• Become a Partner</li>
-                    </ul>
+              </Link>
+              <Link href="#">
+                <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
+                  <FaFacebookF className="w-5 h-5" />
                 </div>
-
-                {/* CONTACT */}
-                <div>
-                    <h4 className="font-semibold mb-5 ">Contact Us</h4>
-
-                    <p className="text-white text-sm leading-relaxed">
-                        Delhi-NCR | Bangalore | Hyderabad | Pune | Indore |  
-                        Chandigarh | Jaipur | Bhubaneswar
-                    </p>
-
-                    <div className="flex items-center gap-4 mt-5">
-                        <button className="px-7 py-2 bg-primary rounded-lg font-semibold text-[16px]">
-                            Contact Us
-                        </button>
-                        <button className="px-7 py-2 border border-gray-500 font-semibold rounded-lg text-[16px]">
-                            Whatsapp
-                        </button>
-                    </div>
-                </div>
-            </motion.div>
-
-            {/* BOTTOM LINE */}
-            <div className="border-t border-gray-700 mt-12 pt-6 ">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-sm text-gray-400 gap-4">
-
-                    <span className="text-[14px] text-white">Copyright © 2025 – All Right Reserved</span>
-
-                    <div className="flex items-center text-white gap-4 flex-wrap">
-                        <span>Terms and Condition</span>
-                        <span>|</span>
-                        <span>Privacy Policy</span>
-                        <span>|</span>
-                        <span>Shipping Policy</span>
-                        <span>|</span>
-                        <span>Sitemap</span>
-                    </div>
-
-                </div>
+              </Link>
             </div>
-        </footer>
-    );
+          </div>
+        </div>
+
+        {/* SERVICES */}
+        <div>
+          <div>
+            <h4 className="font-semibold mb-5 text-lg">Book Pickup</h4>
+            <ul className="space-y-4 text-sm font-semibold">
+              <li>
+                <Link href="/corporate" className="hover:text-gray-300">
+                  • Corporate
+                </Link>
+              </li>
+              <li>
+                <Link href="/individual" className="hover:text-gray-300">
+                  • Individual
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-5">
+            <h4 className="font-semibold mb-5 text-lg">Services</h4>
+            <ul className="space-y-4 text-sm font-semibold">
+              <li>
+                <Link href="/services/standard" className="hover:text-gray-300">
+                  • Standard Delivery
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/express" className="hover:text-gray-300">
+                  • Express Delivery
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/premium" className="hover:text-gray-300">
+                  • Premium Transfer
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* COMPANY */}
+        <div>
+          <h4 className="font-semibold mb-5 text-lg">Company</h4>
+          <ul className="space-y-4 text-sm font-semibold">
+            <li>
+              <Link href="/about" className="hover:text-gray-300">
+                • About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/tracking" className="hover:text-gray-300">
+                • Tracking
+              </Link>
+            </li>
+            <li>
+              <Link href="/rate-calculator" className="hover:text-gray-300">
+                • Rate Calculator
+              </Link>
+            </li>
+            <li>
+              <Link href="/faqs" className="hover:text-gray-300">
+                • Faqs
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-gray-300">
+                • Contact Us
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* CONTACT */}
+        <div>
+          <h4 className="font-semibold mb-5">Contact Us</h4>
+
+          <p className="text-white text-sm leading-relaxed">
+            Delhi-NCR | Bangalore | Hyderabad | Pune | Indore | Chandigarh |
+            Jaipur | Bhubaneswar
+          </p>
+
+          <div className="flex items-center gap-4 mt-5">
+            <Link href="/contact">
+              <button className="px-7 py-2 bg-primary rounded-lg font-semibold text-[16px]">
+                Contact Us
+              </button>
+            </Link>
+
+            <Link href="https://wa.me/91XXXXXXXXXX" target="_blank">
+              <button className="px-7 py-2 border border-gray-500 font-semibold rounded-lg text-[16px]">
+                Whatsapp
+              </button>
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* BOTTOM LINE */}
+      <div className="border-t border-gray-700 mt-12 pt-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-sm text-gray-400 gap-4">
+          <span className="text-[14px] text-white">
+            Copyright © 2025 – All Right Reserved
+          </span>
+
+          <div className="flex items-center text-white gap-4 flex-wrap">
+            <Link href="/terms">Terms and Condition</Link>
+            <span>|</span>
+            <Link href="/privacy">Privacy Policy</Link>
+            <span>|</span>
+            <Link href="/shipping-policy">Shipping Policy</Link>
+            <span>|</span>
+            <Link href="/sitemap">Sitemap</Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

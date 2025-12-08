@@ -8,8 +8,8 @@ import Airport from '@/asset/airport-transfers.webp';
 // --- Service Data ---
 const servicesData = [
   {
-    title: 'Excess Baggage',
-    description: 'Skip airline charges—send your extra luggage at a fraction of the cost.',
+    title: 'Standard Delivery',
+    description: 'Our Standard Luggage Delivery is perfect for travelers looking for a cost-effective way to deliver their bags safely from point A to B.',
     bgColor: 'bg-white',
     textColor: 'text-black',
     descColor: 'text-black',
@@ -19,8 +19,8 @@ const servicesData = [
     delay: 0,
   },
   {
-    title: 'Airport Transfers',
-    description: 'Skip airline charges—send your extra luggage at a fraction of the cost.',
+    title: 'Express Delivery',
+    description: 'When time matters, choose Express Delivery. Your luggage travels ahead of you and reaches your destination the same day.',
     bgColor: 'bg-[#013EFE]',
     textColor: 'text-white',
     descColor: 'text-white',
@@ -30,8 +30,8 @@ const servicesData = [
     delay: 0.15, 
   },
   {
-    title: 'Frisbi Smart Box',
-    description: 'Skip airline charges—send your extra luggage at a fraction of the cost.',
+    title: 'Premium Delivery',
+    description: 'The Premium Delivery Plan comes with a dedicated assistant and 4–8 hour ultra-priority delivery. Your luggage receives white-glove handling from pickup to drop',
     bgColor: 'bg-yellow-500',
     textColor: 'text-black', // Adjusted for contrast on yellow background
     descColor: 'text-black', // Adjusted for contrast on yellow background
@@ -76,7 +76,7 @@ const ServiceCard = ({ service }) => {
         </p>
         <a 
           href="#" 
-          className={`mt-6 inline-block font-semibold ${service.linkColor}`}
+          className={`mt-4 inline-block font-semibold ${service.linkColor}`}
         >
           Learn more
         </a>

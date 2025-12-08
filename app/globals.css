@@ -46,7 +46,7 @@ h1{
   line-height: 1.2em;
 }
 h2{
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 600;
   line-height: 1.2em;
 }
@@ -62,7 +62,7 @@ h4{
   line-height: 1.2em;
 }
 p{
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.6rem;
 }
@@ -83,4 +83,7 @@ p{
 .swiper-button-prev::after {
   color: #fff !important;   /* arrow icon color */
   font-size: 18px;
+}
+.text-second{
+  color: #7b7881;
 }
