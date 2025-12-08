@@ -56,23 +56,23 @@ function Faq() {
 
           {/* CONTENT */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="">
-              Have any queries? We’re all ears!
+            <h2 className="text-white">
+             Frequently Asked Questions
             </h2>
 
-            <p className=" mt-3 text-sm md:text-base">
-              Home <span className="text-blue-200">›</span> <FAQS></FAQS>
+            <p className="text-white/80 mt-3 text-sm md:text-base">
+              Home <span className="text-blue-200">›</span> Faqs
             </p>
           </div>
         </motion.section>
       </div>
 
-      <section className='max-w-7xl mx-auto'>
+      <section className='max-w-7xl mx-auto py-20'>
         <MarqueeLogos />
       </section>
 
 
-      <section className="w-full px-5 md:px-10 py-10">
+      <section className="w-full px-5 md:px-10 py-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
 
           {/* LEFT MENU (Fixed on Desktop) */}
@@ -183,7 +183,7 @@ function Faq() {
         </div>
       </section>
 
-      <section className='mb-9 mt-7'>
+      <section className='py-20'>
         <div className='max-w-7xl mx-auto'>
           <TestimonialSliderRight />
         </div>
