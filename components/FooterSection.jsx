@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Instagram, Youtube, Facebook } from "lucide-react";
-import Logo from "@/asset/frisbi_white.png"; // change path based on your folder
+import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
+import Logo from "@/asset/frisbi_white.png";
 
 export default function Footer() {
     return (
@@ -19,20 +19,28 @@ export default function Footer() {
                 <div className="space-y-8">
                     <div className="flex items-center gap-2">
                         <Image src={Logo} alt="Frisbi" width={140} height={40} />
-                        {/* <span className="text-xl font-semibold">Frisbi</span> */}
                     </div>
 
-                    <p className="text-white ">
-                        We don’t just build apps, we create brand.  
+                    <p className="text-white">
+                        We don’t just build apps, we create brand.
                         Choosing us will be your best decision.
                     </p>
 
                     <div>
                         <h4 className="font-semibold mb-2">Social Media</h4>
                         <div className="flex items-center gap-4">
-                            <Youtube className="w-5 h-5" />
-                            <Instagram className="w-5 h-5" />
-                            <Facebook className="w-5 h-5" />
+
+                            {/* Modern Rounded Icons */}
+                            <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
+                                <FaYoutube className="w-5 h-5" />
+                            </div>
+                            <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
+                                <FaInstagram className="w-5 h-5" />
+                            </div>
+                            <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
+                                <FaFacebookF className="w-5 h-5" />
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -41,11 +49,9 @@ export default function Footer() {
                 <div>
                     <h4 className="font-semibold mb-5 text-lg">Services</h4>
                     <ul className="space-y-4 text-sm font-semibold">
-                        <li>• Excess Baggage</li>
-                        <li>• Package Delivery</li>
-                        <li>• Airport Transfer</li>
-                        <li>• Smart Box</li>
-                        <li>• Become a Partner</li>
+                        <li>• Standand Delivery</li>
+                        <li>• Express Delivery</li>
+                        <li>• Premium Transfer</li>
                     </ul>
                 </div>
 
@@ -53,11 +59,11 @@ export default function Footer() {
                 <div>
                     <h4 className="font-semibold mb-5 text-lg">Company</h4>
                     <ul className="space-y-4 text-sm font-semibold">
-                        <li>• Excess Baggage</li>
-                        <li>• Package Delivery</li>
-                        <li>• Airport Transfer</li>
-                        <li>• Smart Box</li>
-                        <li>• Become a Partner</li>
+                        <li>• About Us</li>
+                        <li>• Tracking</li>
+                        <li>• Rate Calculator</li>
+                        <li>• Faqs</li>
+                        <li>• Contact Us</li>
                     </ul>
                 </div>
 
@@ -66,7 +72,7 @@ export default function Footer() {
                     <h4 className="font-semibold mb-5 ">Contact Us</h4>
 
                     <p className="text-white text-sm leading-relaxed">
-                        Delhi-NCR | Bangalore | Hyderabad | Pune | Indore |  
+                        Delhi-NCR | Bangalore | Hyderabad | Pune | Indore |
                         Chandigarh | Jaipur | Bhubaneswar
                     </p>
 
@@ -82,10 +88,12 @@ export default function Footer() {
             </motion.div>
 
             {/* BOTTOM LINE */}
-            <div className="border-t border-gray-700 mt-12 pt-6 ">
+            <div className="border-t border-gray-700 mt-12 pt-6">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-sm text-gray-400 gap-4">
 
-                    <span className="text-[14px] text-white">Copyright © 2025 – All Right Reserved</span>
+                    <span className="text-[14px] text-white">
+                        Copyright © 2025 – All Right Reserved
+                    </span>
 
                     <div className="flex items-center text-white gap-4 flex-wrap">
                         <span>Terms and Condition</span>
