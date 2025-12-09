@@ -7,4 +7,5 @@
   "/shipping-policy/page": "app/shipping-policy/page.js",
   "/terms-and-conditions/page": "app/terms-and-conditions/page.js",
   "/terms-of-use/page": "app/terms-of-use/page.js"
+  "/thank-you/page": "app/thank-you/page.js"
 }
