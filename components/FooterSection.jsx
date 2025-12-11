@@ -55,12 +55,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-5 text-lg">Book Pickup</h4>
             <ul className="space-y-4 text-sm font-semibold">
               <li>
-                <Link href="/corporate" className="hover:text-gray-300">
+                <Link href="/corporate" className="hover:text-blue-900">
                   • Corporate
                 </Link>
               </li>
               <li>
-                <Link href="/individual" className="hover:text-gray-300">
+                <Link href="/individual" className="hover:text-blue-900">
                   • Individual
                 </Link>
               </li>
@@ -71,17 +71,17 @@ export default function Footer() {
             <h4 className="font-semibold mb-5 text-lg">Services</h4>
             <ul className="space-y-4 text-sm font-semibold">
               <li>
-                <Link href="/services/standard" className="hover:text-gray-300">
+                <Link href="/services/standard" className="hover:text-blue-900">
                   • Standard Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/services/express" className="hover:text-gray-300">
+                <Link href="/services/express" className="hover:text-blue-900">
                   • Express Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/services/premium" className="hover:text-gray-300">
+                <Link href="/services/premium" className="hover:text-blue-900">
                   • Premium Transfer
                 </Link>
               </li>
@@ -94,27 +94,27 @@ export default function Footer() {
           <h4 className="font-semibold mb-5 text-lg">Company</h4>
           <ul className="space-y-4 text-sm font-semibold">
             <li>
-              <Link href="/about" className="hover:text-gray-300">
+              <Link href="/about" className="hover:text-blue-900">
                 • About Us
               </Link>
             </li>
             <li>
-              <Link href="/tracking" className="hover:text-gray-300">
+              <Link href="/tracking" className="hover:text-blue-900">
                 • Tracking
               </Link>
             </li>
             <li>
-              <Link href="/rate-calculator" className="hover:text-gray-300">
+              <Link href="/rate-calculator" className="hover:text-blue-900">
                 • Rate Calculator
               </Link>
             </li>
             <li>
-              <Link href="/faqs" className="hover:text-gray-300">
+              <Link href="/faqs" className="hover:text-blue-900">
                 • Faqs
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-gray-300">
+              <Link href="/contact" className="hover:text-blue-900">
                 • Contact Us
               </Link>
             </li>
@@ -152,7 +152,7 @@ export default function Footer() {
           </span>
 
           <div className="flex items-center text-black gap-4 flex-wrap">
-            <Link href="/terms">Terms and Condition</Link>
+            <Link href="/terms-and-conditions">Terms and Condition</Link>
             <span>|</span>
             <Link href="/privacy">Privacy Policy</Link>
             <span>|</span>

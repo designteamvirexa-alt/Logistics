@@ -33,6 +33,10 @@ import TestimonialCard from "@/components/TestimonialCard";
 import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 import FAQSection from "@/components/Accordion";
 import ContactSection from "@/components/ContactSection";
+import CallToAction from "@/components/CallToAction";
+import Testimonials from "@/components/Testimonials";
+
+
 import StrengthSlider from "@/components/Slider";
 
 function Home() {
@@ -357,21 +361,24 @@ function Home() {
         </section> */}
       </section>
 
-      <section className="py-30 px-4">
+      <section className=" px-4">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <TestimonialSliderRight />
+         <Testimonials />
         </div>
       </section>
 
-      <section className="pb-30">
+    
+
+      <section className=" bg-[#000] mx-auto ">
+        <ContactSection />
+      </section>
+        <section className="py-24">
         <div>
           <FAQSection />
         </div>
       </section>
 
-      <section className=" bg-[#000] mx-auto ">
-        <ContactSection />
-      </section>
+        <CallToAction />
     </div>
   );
 }

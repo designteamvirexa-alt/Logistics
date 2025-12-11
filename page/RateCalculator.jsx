@@ -6,7 +6,8 @@ import MarqueeLogos from '@/components/MarqueeLogos';
 import ShipmentCostCalculator from '@/components/ShipmentCostCalculator';
 import FAQ from '@/components/Accordion';
 import ratecalculator from "@/asset/shippment/ratecalculator.webp";
-
+import CallToAction from "@/components/CallToAction";
+import Testimonials from "@/components/Testimonials";
 
 
 function RateCalculator() {
@@ -60,6 +61,9 @@ function RateCalculator() {
                 <FAQ />
             </section>
 
+ <Testimonials />
+
+  <CallToAction />
 
 
 

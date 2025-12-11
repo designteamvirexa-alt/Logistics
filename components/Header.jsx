@@ -8,11 +8,10 @@ import Link from 'next/link';
 import Logo from "@/asset/frisbi_white.png"; // change path if needed
 
 const servicesList = [
-  "Air Freight",
-  "Road Transportation",
-  "Warehousing",
-  "Custom Clearance",
-  "Packaging Solutions",
+  "Standard Delivery",
+  "Express Delivery",
+  "Premium Delivey",
+ 
 ];
 
 const booklist = [
@@ -78,7 +77,7 @@ export default function Header({ mode = "default" }) {
           >
             <button
               className={`flex items-center gap-1 transition 
-                ${isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"}
+                ${isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"}
               `}
             >
               Book <ChevronDown className="h-4 w-4" />
@@ -95,7 +94,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/bookshipment/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>
@@ -108,7 +107,7 @@ export default function Header({ mode = "default" }) {
           <Link
             href="/about"
             className={`${
-              isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
             } transition`}
           >
             About Us
@@ -122,7 +121,7 @@ export default function Header({ mode = "default" }) {
           >
             <button
               className={`flex items-center gap-1 transition 
-                ${isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"}
+                ${isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"}
               `}
             >
               Services <ChevronDown className="h-4 w-4" />
@@ -139,7 +138,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>
@@ -151,16 +150,16 @@ export default function Header({ mode = "default" }) {
           <Link
             href="/rate-calculator"
             className={`${
-              isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
             } transition`}
           >
             Rate Calculator
           </Link>
 
           <Link
-            href="/faqs"
+            href="/faq"
             className={`${
-              isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
             } transition`}
           >
             FAQs
@@ -169,7 +168,7 @@ export default function Header({ mode = "default" }) {
           <Link
             href="/contact"
             className={`${
-              isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
             } transition`}
           >
             Contact Us
@@ -178,9 +177,9 @@ export default function Header({ mode = "default" }) {
 
         {/* Desktop Button */}
         <div className="hidden md:flex items-center">
-          <button className="bg-primary text-[16px] text-white font-semibold py-3 px-10 rounded-full transition">
+          <Link href='/track-your-package' className="bg-primary text-[16px] text-white font-semibold py-3 px-10 rounded-full transition">
             Track Now
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -204,8 +203,8 @@ export default function Header({ mode = "default" }) {
           className="md:hidden bg-white overflow-hidden shadow-lg"
         >
           <div className="flex flex-col px-6 py-4 space-y-4">
-            <Link href="/" className="hover:text-red-600">Home</Link>
-            <Link href="/about" className="hover:text-red-600">About Us</Link>
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <Link href="/about" className="hover:text-blue-600">About Us</Link>
 
             {/* Mobile Service Dropdown */}
             <button
@@ -226,7 +225,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={i}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="text-gray-700 hover:text-red-600 transition"
+                    className="text-gray-700 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>
@@ -234,13 +233,13 @@ export default function Header({ mode = "default" }) {
               </div>
             )}
 
-            <Link href="/rate-calculator" className="hover:text-red-600">Rate Calculator</Link>
-            <Link href="/faqs" className="hover:text-red-600">FAQs</Link>
-            <Link href="/contact" className="hover:text-red-600">Contact Us</Link>
+            <Link href="/rate-calculator" className="hover:text-blue-600">Rate Calculator</Link>
+            <Link href="/faq" className="hover:text-blue-600">FAQs</Link>
+            <Link href="/contact" className="hover:text-blue-600">Contact Us</Link>
 
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full w-full">
+            <Link href="/track-your-package" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full w-full">
               Track Now
-            </button>
+            </Link>
           </div>
         </motion.div>
       )}
