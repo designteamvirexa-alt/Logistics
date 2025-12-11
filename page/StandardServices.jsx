@@ -10,6 +10,7 @@ import one from "@/asset/service/2.png";
 import location from "@/asset/location.png";
 import ContactSection from "@/components/ContactSection";
 import ServiceFAQSection from "@/components/ServiceAccordion";
+import CallToAction from "@/components/CallToAction";
 
 import PricingStructure from "@/components/PricingStructure";
 import Keyfurture from "@/components/Keyfuture";
@@ -98,10 +99,7 @@ function Services() {
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-white font-black mb-6"
-            style={{
-              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-              lineHeight: 1.1,
-            }}
+           
           >
             Standard Delivery
           </motion.h1>
@@ -267,6 +265,8 @@ function Services() {
       <section className="py-24">
         <ServiceFAQSection />
       </section>
+
+       <CallToAction />
     </div>
   );
 }

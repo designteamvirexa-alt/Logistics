@@ -7,7 +7,7 @@
   "static/chunks/node_modules_react-icons_fa_index_mjs_d2e2d7f5._.js",
   "static/chunks/node_modules_react-icons_lib_74ccc930._.js",
   "static/chunks/node_modules_f49a6b94._.js",
-  "static/chunks/[root-of-the-server]__1883464a._.js",
+  "static/chunks/[root-of-the-server]__1885fa5c._.js",
   "static/chunks/[root-of-the-server]__89300acb._.css"
 ],
     source: "dynamic"
