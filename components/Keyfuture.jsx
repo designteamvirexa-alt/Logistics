@@ -8,20 +8,51 @@ export default function StickyStepsOverlap() {
   const steps = [
     {
       step: "STEP 1",
-      title: "From pickup to delivery",
-      desc: "Moving your freight with clear care and focus.",
+      title: "Door-to-Door Pickup & Delivery",
+      desc: "Our agents collect parcels from your doorstep and deliver them safely.",
       icon: "📦",
     },
     {
       step: "STEP 2",
-      title: "Tracking & monitoring",
-      desc: "We monitor your goods at every stage of the journey.",
+      title: "Live Real-Time Tracking",
+      desc: "Track your shipment with exact location updates.",
       icon: "📡",
     },
     {
       step: "STEP 3",
-      title: "Turning freight needs into action",
-      desc: "We provide custom shipping and storage options for you.",
+      title: "Basic Insurance Included",
+      desc: "Covers loss/damage as per company policy.",
+      icon: "🚢",
+    },
+
+    {
+      step: "STEP 4",
+      title: "SMS + Email Notifications",
+      desc: "From pickup → in-transit → out-for-delivery → delivered.",
+      icon: "🚢",
+    },
+    {
+      step: "STEP 5",
+      title: "GST Billing & Digital Invoices",
+      desc: "Automatically generated after booking.",
+      icon: "🚢",
+    },
+    {
+      step: "STEP 6",
+      title: "Secure Packaging Support",
+      desc: "Add-on service for fragile items.",
+      icon: "🚢",
+    },
+    {
+      step: "STEP 7",
+      title: "Pan-India Network",
+      desc: "Strong logistics network across India.",
+      icon: "🚢",
+    },
+     {
+      step: "STEP 8",
+      title: "Customer Support",
+      desc: "Dedicated helpline (9AM – 9PM).",
       icon: "🚢",
     },
   ];
