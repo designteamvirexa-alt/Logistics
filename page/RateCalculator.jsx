@@ -46,7 +46,7 @@ function RateCalculator() {
                 </motion.section>
             </div>
 
-            <section className='max-w-7xl mx-auto py-20'>
+            <section className='container mx-auto py-20 px-4'>
                 <MarqueeLogos />
             </section>
 

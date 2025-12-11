@@ -82,7 +82,7 @@ function Shippingpolicy() {
             We recommend scheduling pickups{" "}
             <span className="font-bold text-black">
               {" "}
-              at least 4–6 hours before travel{" "}
+              upto 24 hours before travel{" "}
             </span>{" "}
             to avoid delays.
           </p>
@@ -136,7 +136,7 @@ function Shippingpolicy() {
             At the time of delivery, the receiver must:
           </p>
           <ul className="mt-4 list-disc pl-5 space-y-4 font-medium text-[15px]">
-            <li className="text-second">Be available at the scheduled slot</li>
+            <li className="text-second">Be available at the scheduled date</li>
             <li className="text-second">
               Provide booking ID or verification details
             </li>
@@ -184,7 +184,7 @@ function Shippingpolicy() {
             <li className="text-second">
               Liquids, explosives, toxic or flammable items
             </li>
-            <li className="text-second">Alcohol, narcotics, weapons</li>
+            <li className="text-second">illegal items  by accordance by indian law.</li>
             <li className="text-second">Perishable and high-value items</li>
           </ul>
           <p className="text-second mt-4">
@@ -384,9 +384,9 @@ function Shippingpolicy() {
               Email:{" "}
               <span className="font-bold text-black"> support@frisbi.com</span>
             </li>
-            <li className="text-second">
-              Email:{" "}
-              <span className="font-bold text-black"> support@frisbi.com</span>
+           <li className="text-second">
+              Contact Us:{" "}
+              <span className="font-bold text-black"> +91 885-065-2531</span>
             </li>
             <li className="text-second">
               Website:{" "}

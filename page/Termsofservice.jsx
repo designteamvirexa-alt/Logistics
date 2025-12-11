@@ -37,7 +37,7 @@ function Termsofservice() {
         </motion.section>
       </div>
 
-      <section className="max-w-6xl mx-auto py-20 px-4">
+      <section className="container mx-auto py-20 px-4">
         <div className="">
           <h2 className="">
             Terms & Conditions — Frisbi Luggage Delivery Services
@@ -93,7 +93,7 @@ function Termsofservice() {
             <li className="text-second">Pick-up from provided location</li>
             <li className="text-second">Secure handling and transport</li>
             <li className="text-second">
-              Delivery to confirmed drop location within chosen time slot
+              Delivery to confirmed drop location.
             </li>
           </ul>
         </div>
@@ -134,9 +134,9 @@ function Termsofservice() {
             <li className="text-second">Cash, jewelry, gold, or valuables</li>
             <li className="text-second">Electronics without declaration</li>
             <li className="text-second">
-              Liquids, flammable items, chemicals, sharp objects
+              Liquids, inflammable items, chemicals, sharp objects
             </li>
-            <li className="text-second">Drugs, weapons, toxic materials</li>
+            <li className="text-second">Illegal items by accordance by indian law. </li>
             <li className="text-second">
               Items restricted by airport/security regulations
             </li>
@@ -196,7 +196,7 @@ function Termsofservice() {
           <ul className="mt-4 list-disc pl-5 space-y-4 font-medium text-[15px]">
             <li className="text-second">
               Maximum coverage:{" "}
-              <span className="text-black font-bold">₹999</span> per luggage (if
+              <span className="text-black font-bold">₹1,999</span> per luggage (if
               insurance opted)
             </li>
             <li className="text-second">
@@ -213,7 +213,7 @@ function Termsofservice() {
           </p>
           <ul className="mt-4 list-disc pl-5 space-y-4 font-medium text-[15px]">
             <li className="text-second">Improper packing by customer</li>
-            <li className="text-second">Normal wear & tear</li>
+            <li className="text-second">Normal wear & tear , Scartches</li>
             <li className="text-second">
               Delay-related losses (missed flights, shows, meetings, etc.)
             </li>
@@ -240,7 +240,7 @@ function Termsofservice() {
             <li className="text-second">
               {" "}
               <span className="text-black font-bold">50% refund:</span> Order
-              cancelled <span className="text-black font-bold">4 hours </span>{" "}
+              cancelled <span className="text-black font-bold">2 hours </span>{" "}
               before pickup time
             </li>
             <li className="text-second">
@@ -272,13 +272,13 @@ function Termsofservice() {
               Additional attempts may involve rescheduling fees
             </li>
             <li className="text-second">
-              Luggage may be returned to the spickup location if customer is
+              Luggage may be returned to the pickup location if customer is
               unreachable
             </li>
           </ul>
           <p className="text-second mt-4">
             Storage fees may apply after
-            <span className="text-black font-bold">24 hours of holding.</span>
+            <span className="text-black font-bold"> 24 hours of holding.</span>
           </p>
         </div>
 
@@ -287,7 +287,7 @@ function Termsofservice() {
           <h3 className="">10. Payments</h3>
           <p className="text-second mt-4">
             Accepted modes: Online payments (UPI / Wallets / Net Banking /
-            Cards) Cash payments may not be accepted in certain service zones.
+            Cards). 
           </p>
 
           <p className="text-second mt-4">
@@ -304,7 +304,7 @@ function Termsofservice() {
           </p>
           <ul className="mt-4 list-decimal pl-5 space-y-4 font-medium text-[15px]">
             <li className="text-second">Service fulfillment</li>
-            <li className="text-second">Identity verification</li>
+            <li className="text-second"> KYC Identity verification</li>
             <li className="text-second">Safety & compliance</li>
 
             <li className="text-second">Customer support & communication</li>
@@ -334,8 +334,8 @@ function Termsofservice() {
             <span className="font-bold text-black">
               {" "}
               denial of current and future services.{" "}
-            </span>
-            legal requirements.
+            </span> and
+            legal actions.
           </p>
         </div>
 
@@ -361,7 +361,7 @@ function Termsofservice() {
 
           <p className="text-second mt-4">
             Any disputes shall be subject to{" "}
-            <span className="text-black font-bold">Bangalore</span> courts.
+            <span className="text-black font-bold">Bangalore city</span> jurisdiction.
           </p>
         </div>
 
@@ -379,8 +379,8 @@ function Termsofservice() {
               <span className="font-bold text-black"> support@frisbi.com</span>
             </li>
          <li className="text-second">
-              Email:{" "}
-              <span className="font-bold text-black"> support@frisbi.com</span>
+              Contact Us:{" "}
+              <span className="font-bold text-black"> +91 885-065-2531</span>
             </li>
             <li className="text-second">
               Website:{" "}

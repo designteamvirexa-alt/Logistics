@@ -72,7 +72,7 @@ function Privacypolicy() {
             <li className="text-second">Phone number</li>
             <li className="text-second">Email address</li>
             <li className="text-second">
-              Residential / hotel / airport address
+              Residential or delivery locations.
             </li>
             <li className="text-second">
               Identity information (if mandated by airport/security authorities)
@@ -81,7 +81,7 @@ function Privacypolicy() {
           <h4 className="mt-4">B. Booking & Service Information</h4>
           <ul className="mt-4 list-disc pl-5 space-y-4 font-medium text-[15px]">
             <li className="text-second">Pickup and delivery addresses</li>
-            <li className="text-second">Preferred time slots</li>
+            <li className="text-second">Preferred time slots for pickup</li>
             <li className="text-second">Email address</li>
             <li className="text-second">
               Number, type, and description of luggage
@@ -306,7 +306,7 @@ function Privacypolicy() {
             <li className="text-second">Booking updates</li>
             <li className="text-second">Operational alerts</li>
             <li className="text-second">Feedback requests</li>
-            <li>Promotional messages (optional)</li>
+            <li className="text-second">Promotional messages (optional)</li>
           </ul>
           <p className="text-second mt-4">You can opt out anytime.</p>
         </div>
@@ -381,8 +381,8 @@ function Privacypolicy() {
               <span className="font-bold text-black"> support@frisbi.com</span>
             </li>
             <li className="text-second">
-              Email:{" "}
-              <span className="font-bold text-black"> support@frisbi.com</span>
+              Contact Us:{" "}
+              <span className="font-bold text-black"> +91 885-065-2531</span>
             </li>
             <li className="text-second">
               Website:{" "}
