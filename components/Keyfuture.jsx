@@ -63,7 +63,7 @@ export default function StickyStepsOverlap() {
         <motion.div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="lg:sticky lg:top-24 h-[85vh] overflow-y-auto pr-3"
+          className="lg:sticky lg:top-24 overflow-y-auto pr-3"
         >
           <div className="flex flex-col relative">
             {steps.map((item, i) => {
