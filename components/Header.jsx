@@ -15,10 +15,19 @@ const servicesList = [
   "Packaging Solutions",
 ];
 
+const booklist = [
+  "Corporate",
+"Individual"
+];
+
+
 export default function Header({ mode = "default" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [hoverService, setHoverService] = useState(false);
+
+   const [bookopen, setBookeOpen] = useState(false);
+  const [hoverBook, setHoverBook] = useState(false);
   const [scroll, setScroll] = useState(false);
 
   // Detect Scroll
@@ -62,14 +71,39 @@ export default function Header({ mode = "default" }) {
             ${isDarkHeader || scroll ? "text-black" : "text-white"}
           `}
         >
-          <Link
-            href="/"
-            className={`${
-              isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"
-            } transition`}
+            <div
+            className="relative"
+            onMouseEnter={() => setHoverBook(true)}
+            onMouseLeave={() => setHoverBook(false)}
           >
-            Luggage
-          </Link>
+            <button
+              className={`flex items-center gap-1 transition 
+                ${isDarkHeader || scroll ? "hover:text-red-600" : "hover:text-red-300"}
+              `}
+            >
+              Book <ChevronDown className="h-4 w-4" />
+            </button>
+
+            {hoverBook && (
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute left-0 mt-0 w-52 bg-white shadow-lg rounded-lg py-3 z-50"
+              >
+                {booklist.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={`/bookshipment/${item.toLowerCase().replace(/ /g, "-")}`}
+                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </div>
+          
 
           <Link
             href="/about"
@@ -145,7 +179,7 @@ export default function Header({ mode = "default" }) {
         {/* Desktop Button */}
         <div className="hidden md:flex items-center">
           <button className="bg-primary text-[16px] text-white font-semibold py-3 px-10 rounded-full transition">
-            Tracking Now
+            Track Now
           </button>
         </div>
 
@@ -205,7 +239,7 @@ export default function Header({ mode = "default" }) {
             <Link href="/contact" className="hover:text-red-600">Contact Us</Link>
 
             <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full w-full">
-              Tracking Now
+              Track Now
             </button>
           </div>
         </motion.div>
