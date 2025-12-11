@@ -11,6 +11,7 @@ import one from "@/asset/service/2.png";
 import PricingStructure from "@/components/PricingStructure";
 import Keyfurture from "@/components/Keyfuture";
 import PackageGuidelines from "@/components/PackageGuidelines";
+import HowItWorks from "@/components/OurProcess";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
 function Services() {
@@ -163,11 +164,11 @@ function Services() {
 
       {/* LOGOS + PRICING */}
       <section className="bg-[#F1F2F6]">
-       
-
+    
         <PricingStructure />
         <Keyfurture/>
         <PackageGuidelines/>
+        <HowItWorks/>
       </section>
     </div>
   );
