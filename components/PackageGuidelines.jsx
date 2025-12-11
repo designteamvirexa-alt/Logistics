@@ -34,7 +34,7 @@ export default function PackageGuidelines() {
   ];
 
   return (
-    <section className="py-20 bg-[#F4F2F7]">
+    <section className="py-24 bg-white">
       <h2 className="text-3xl font-bold text-center mb-12">Package Guidelines</h2>
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Allowed Items */}

@@ -2,9 +2,5 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
-  "/privacy-policy/page": "app/privacy-policy/page.js",
-  "/rate-calculator/page": "app/rate-calculator/page.js",
-  "/shipping-policy/page": "app/shipping-policy/page.js",
-  "/standard-delivery-services/page": "app/standard-delivery-services/page.js",
-  "/terms-and-conditions/page": "app/terms-and-conditions/page.js"
+  "/standard-delivery-services/page": "app/standard-delivery-services/page.js"
 }

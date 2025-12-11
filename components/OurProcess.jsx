@@ -68,7 +68,7 @@ export function HowItWorks() {
   };
 
   return (
-    <section className=" py-24">
+    <section className=" pb-24">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <motion.div
