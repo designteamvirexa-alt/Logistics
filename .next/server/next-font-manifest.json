@@ -3,19 +3,13 @@
     "[project]/app/_not-found/page": [
       "static/media/06ba6ef833b337bc-s.p.0faac26c.woff2"
     ],
-    "[project]/app/about/page": [
-      "static/media/06ba6ef833b337bc-s.p.0faac26c.woff2"
-    ],
     "[project]/app/page": [
       "static/media/06ba6ef833b337bc-s.p.0faac26c.woff2"
     ],
-    "[project]/app/rate-calculator/page": [
+    "[project]/app/services/express-delivery/page": [
       "static/media/06ba6ef833b337bc-s.p.0faac26c.woff2"
     ],
-    "[project]/app/shipping-policy/page": [
-      "static/media/06ba6ef833b337bc-s.p.0faac26c.woff2"
-    ],
-    "[project]/app/standard-delivery-services/page": [
+    "[project]/app/services/standard-delivery/page": [
       "static/media/06ba6ef833b337bc-s.p.0faac26c.woff2"
     ]
   },

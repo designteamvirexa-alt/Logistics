@@ -9,31 +9,32 @@ import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
 import location from "@/asset/location.png";
 import ContactSection from "@/components/ContactSection";
-import ServiceFAQSection from "@/components/ServiceAccordion";
-import CallToAction from "@/components/CallToAction";
+import ServiceFAQSection from "@/components/ServiceAccordionExpress";
+import CallToAction from "@/components/CallToActionExpress";
+import Comparison from "@/components/Comparison";
 
-import PricingStructure from "@/components/PricingStructure";
-import Keyfurture from "@/components/Keyfuture";
+import PricingStructure from "@/components/PricingStructureExpress";
+import Keyfurture from "@/components/Keyfutureexpress";
 import PackageGuidelines from "@/components/PackageGuidelines";
-import HowItWorks from "@/components/OurProcess";
+import HowItWorks from "@/components/OurProcessexpress";
 import Testimonials from "@/components/Testimonials";
 
 import TransformingCities from "@/components/Locations";
 
 function ExpressServices() {
   const idealFor = [
-    "Small businesses",
-    "E-commerce sellers",
-    "Students & families",
-    "Regular parcel senders",
-    "Document & lightweight package shipping",
+    "Urgent documents",
+    "Business contracts",
+    "Medical & pharmacy shipments",
+    "E-commerce priority orders",
+    "Time-sensitive parcels",
   ];
 
   const ensures = [
-    "Secure handling",
-    "Professional pickup",
-    "Cost-efficient delivery",
-    "Full tracking visibility",
+    "Faster transit times",
+    "Priority pickup & delivery",
+    "Higher handling care",
+    "Minimal transit delays",
   ];
 
   const fadeUp = {
@@ -46,28 +47,28 @@ function ExpressServices() {
   const faqData = [
     {
       id: 1,
-      title: "1. Low-Cost Shipping",
-      content: "Designed for cost-conscious customers and SMEs.",
+      title: "1. Save Time",
+      content: "Perfect for deadlines and emergencies.",
     },
     {
       id: 2,
-      title: "2. Safe & Secure Transport",
-      content: "Barcode tracking, sealed bags, professional handlers.",
+      title: "2. Safe Priority Handling",
+      content: "Less handling points = lower risk.",
     },
     {
       id: 3,
-      title: "3. Wide Delivery Network",
-      content: "Fast-growing logistics chain covering India.",
+      title: "3. Faster Business Operations",
+      content: "Ideal for B2B & enterprise clients.",
     },
     {
       id: 4,
-      title: "4. Shipment Updates",
-      content: "Every movement is recorded & notified.",
+      title: "4. Complete Visibility",
+      content: "Live tracking and proof of delivery.",
     },
     {
       id: 5,
-      title: "5. No Hidden Charges",
-      content: "Upfront pricing before booking.",
+      title: "5. Peace of Mind",
+      content: "Guaranteed delivery timelines.",
     },
   ];
 
@@ -91,7 +92,7 @@ function ExpressServices() {
           >
             <p className="text-white flex items-center gap-3">
               <span className="text-2xl">✨</span>
-              Safe. Affordable. Trustworthy. Delivered on time, every time.
+              When time matters, choose Express.
             </p>
           </motion.div>
 
@@ -101,7 +102,7 @@ function ExpressServices() {
             className="text-white font-black mb-6"
            
           >
-            Standard Delivery
+            Express Delivery
           </motion.h1>
 
           <motion.p
@@ -109,8 +110,8 @@ function ExpressServices() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-blue-100 text-lg max-w-2xl mb-6"
           >
-            India’s most affordable and reliable parcel delivery solution for
-            non-urgent shipments.
+            Fast, priority parcel delivery for urgent shipments across India.
+
           </motion.p>
 
           <motion.p
@@ -118,9 +119,8 @@ function ExpressServices() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-purple-100 max-w-2xl mb-10"
           >
-            <span className="font-semibold text-white">Perfect for:</span>
-            Documents, parcels, business shipments, e-commerce orders, and
-            personal packages.
+            <span className="font-semibold text-white">Best for:</span>
+            Urgent documents, business-critical packages, medical supplies & time-sensitive deliveries.
           </motion.p>
 
           <motion.div
@@ -129,11 +129,11 @@ function ExpressServices() {
             className="flex flex-wrap gap-4"
           >
             <button className="bg-white px-8 py-3 text-sm sm:text-base font-semibold rounded-full hover:scale-105 transition-all">
-              Book Standard Delivery
+              Book Now
             </button>
 
             <button className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full text-sm sm:text-base hover:bg-white/20 transition-all">
-              View Pricing
+              Rate Calculator
             </button>
           </motion.div>
         </div>
@@ -156,13 +156,7 @@ function ExpressServices() {
             </h2>
 
             <p className="text-second text-base leading-relaxed mb-6">
-              Standard Delivery is designed for customers who prefer
-              budget-friendly shipping without compromising safety. Whether
-              you're sending personal packages or business documents, our
-              Standard service delivers consistent performance, transparent
-              pricing, and nationwide coverage.
-            </p>
-
+              Express Delivery is our high-speed logistics service built for customers who need quick, guaranteed, and priority delivery. With faster transit, dedicated handling, and real-time monitoring, Express Delivery ensures your shipment reaches its destination as quickly as possible.</p>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-6 border border-blue-100">
                 <h4 className="text-lg font-semibold mb-4">Ideal for:</h4>
@@ -200,7 +194,8 @@ function ExpressServices() {
         <Keyfurture />
       </section>
 
-      <PackageGuidelines />
+      {/* <PackageGuidelines /> */}
+      <Comparison/>
       <HowItWorks />
 
       <TransformingCities />
@@ -217,9 +212,9 @@ function ExpressServices() {
 
           {/* ACCORDION */}
           <div>
-            <h2 className="mb-7">Why Choose Us ?</h2>
+            <h2 className="mb-7">Why Choose Express Delivery?</h2>
 
-            <p className="mb-6">Benefits of Choosing Standard Delivery</p>
+            <p className="mb-6">Benefits of Choosing Express Delivery</p>
 
             <div>
               {faqData.map((step) => (
