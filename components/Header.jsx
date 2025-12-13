@@ -10,7 +10,7 @@ import Logo from "@/asset/frisbi_white.png"; // change path if needed
 const servicesList = [
   "Standard Delivery",
   "Express Delivery",
-  "Premium Delivey",
+  "Premium Delivery",
  
 ];
 

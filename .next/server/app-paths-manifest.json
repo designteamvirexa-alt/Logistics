@@ -3,5 +3,6 @@
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
   "/services/express-delivery/page": "app/services/express-delivery/page.js",
+  "/services/premium-delivery/page": "app/services/premium-delivery/page.js",
   "/services/standard-delivery/page": "app/services/standard-delivery/page.js"
 }

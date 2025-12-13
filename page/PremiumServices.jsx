@@ -9,11 +9,12 @@ import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
 import location from "@/asset/location.png";
 import ContactSection from "@/components/ContactSection";
-import ServiceFAQSection from "@/components/ServiceAccordion";
-import CallToAction from "@/components/CallToAction";
+import ServiceFAQSection from "@/components/ServiceAccordionPremium";
+import CallToAction from "@/components/CallToActionPremium";
+import Comparison from "@/components/ComparisonPremium";
 
-import PricingStructure from "@/components/PricingStructure";
-import Keyfurture from "@/components/Keyfuture";
+import PricingStructure from "@/components/PricingStructurePremium";
+import Keyfurture from "@/components/KeyfutureexpressPremium";
 import PackageGuidelines from "@/components/PackageGuidelines";
 import HowItWorks from "@/components/OurProcess";
 import Testimonials from "@/components/Testimonials";
@@ -22,11 +23,12 @@ import TransformingCities from "@/components/Locations";
 
 function PremiumServices() {
   const idealFor = [
-    "Small businesses",
-    "E-commerce sellers",
-    "Students & families",
-    "Regular parcel senders",
-    "Document & lightweight package shipping",
+    "High-value electronics",
+    "Confidential documents",
+    "Corporate & enterprise shipments",
+    "Jewelry & luxury items",
+    "Medical & lab equipment",
+    "Fragile & sensitive goods",
   ];
 
   const ensures = [
@@ -46,28 +48,28 @@ function PremiumServices() {
   const faqData = [
     {
       id: 1,
-      title: "1. Low-Cost Shipping",
-      content: "Designed for cost-conscious customers and SMEs.",
+      title: "1. Maximum Security",
+      content: "Tamper-proof seals & minimal handling points.",
     },
     {
       id: 2,
-      title: "2. Safe & Secure Transport",
-      content: "Barcode tracking, sealed bags, professional handlers.",
+      title: "2. Best for High-Value Goods",
+      content: "Perfect for expensive & sensitive shipments.",
     },
     {
       id: 3,
-      title: "3. Wide Delivery Network",
-      content: "Fast-growing logistics chain covering India.",
+      title: "3. Guaranteed Priority",
+      content: "No delays. No compromise.",
     },
     {
       id: 4,
-      title: "4. Shipment Updates",
-      content: "Every movement is recorded & notified.",
+      title: "4. Complete Transparency",
+      content: "Live updates, call support & delivery proof.",
     },
     {
       id: 5,
-      title: "5. No Hidden Charges",
-      content: "Upfront pricing before booking.",
+      title: "5. Peace of Mind",
+      content: "Handled by trained professionals only.",
     },
   ];
 
@@ -91,7 +93,7 @@ function PremiumServices() {
           >
             <p className="text-white flex items-center gap-3">
               <span className="text-2xl">✨</span>
-              Safe. Affordable. Trustworthy. Delivered on time, every time.
+              Because some deliveries deserve more than speed.
             </p>
           </motion.div>
 
@@ -99,9 +101,8 @@ function PremiumServices() {
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-white font-black mb-6"
-           
           >
-            Standard Delivery
+            Premium Delivery
           </motion.h1>
 
           <motion.p
@@ -109,8 +110,7 @@ function PremiumServices() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-blue-100 text-lg max-w-2xl mb-6"
           >
-            India’s most affordable and reliable parcel delivery solution for
-            non-urgent shipments.
+            Elite, white-glove logistics for your most valuable and time-critical shipments.
           </motion.p>
 
           <motion.p
@@ -118,9 +118,8 @@ function PremiumServices() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-purple-100 max-w-2xl mb-10"
           >
-            <span className="font-semibold text-white">Perfect for:</span>
-            Documents, parcels, business shipments, e-commerce orders, and
-            personal packages.
+            <span className="font-semibold text-white">Best for: </span>
+            High-value goods, confidential documents, luxury items, fragile cargo & VIP customers.
           </motion.p>
 
           <motion.div
@@ -129,7 +128,7 @@ function PremiumServices() {
             className="flex flex-wrap gap-4"
           >
             <button className="bg-white px-8 py-3 text-sm sm:text-base font-semibold rounded-full hover:scale-105 transition-all">
-              Book Standard Delivery
+              Book Now
             </button>
 
             <button className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full text-sm sm:text-base hover:bg-white/20 transition-all">
@@ -156,11 +155,10 @@ function PremiumServices() {
             </h2>
 
             <p className="text-second text-base leading-relaxed mb-6">
-              Standard Delivery is designed for customers who prefer
-              budget-friendly shipping without compromising safety. Whether
-              you're sending personal packages or business documents, our
-              Standard service delivers consistent performance, transparent
-              pricing, and nationwide coverage.
+              Premium Delivery is our most advanced and exclusive logistics service, designed for shipments that demand maximum security, priority handling, and personalized care.
+            </p>
+             <p className="text-second text-base leading-relaxed mb-6">
+              Every Premium shipment is handled with dedicated resources, minimal touchpoints, and real-time supervision from pickup to final delivery.
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
@@ -176,7 +174,7 @@ function PremiumServices() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 border border-green-100">
+              {/* <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 border border-green-100">
                 <h4 className="text-lg font-semibold mb-4">
                   This service ensures:
                 </h4>
@@ -188,7 +186,7 @@ function PremiumServices() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -200,7 +198,8 @@ function PremiumServices() {
         <Keyfurture />
       </section>
 
-      <PackageGuidelines />
+      {/* <PackageGuidelines /> */}
+      <Comparison />
       <HowItWorks />
 
       <TransformingCities />
@@ -217,9 +216,9 @@ function PremiumServices() {
 
           {/* ACCORDION */}
           <div>
-            <h2 className="mb-7">Why Choose Us ?</h2>
+            <h2 className="mb-7">Why Choose Premium Delivery?</h2>
 
-            <p className="mb-6">Benefits of Choosing Standard Delivery</p>
+            <p className="mb-6">Benefits of Choosing Premium Delivery</p>
 
             <div>
               {faqData.map((step) => (
@@ -266,7 +265,7 @@ function PremiumServices() {
         <ServiceFAQSection />
       </section>
 
-       <CallToAction />
+      <CallToAction />
     </div>
   );
 }

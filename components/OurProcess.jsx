@@ -15,44 +15,44 @@ export function HowItWorks() {
   const steps = [
     {
       icon: MapPin,
-      title: "Enter Pickup & Delivery Address",
-      description: "Use our smart location picker.",
+      title: "Submit Delivery Request",
+      description: "Choose Premium Delivery from the service list.",
       color: "blue",
     },
     {
       icon: Truck,
-      title: "Choose Standard Delivery",
-      description: "System auto-calculates the best pricing.",
+      title: "Declare Item Value & Handling Needs",
+      description: "For insurance and security setup.",
       color: "purple",
     },
     {
       icon: Package,
-      title: "Add Parcel Details",
-      description: "Weight, dimensions, value, item type.",
+      title: "Schedule Dedicated Pickup",
+      description: "Select exact date & time.",
       color: "green",
     },
     {
       icon: CreditCard,
-      title: "Make Payment",
-      description: "Online / UPI / Wallet / Card / COD (selected cities).",
+      title: "Secure Payment Confirmation",
+      description: "Payment confirms resource allocation.",
       color: "orange",
     },
     {
       icon: Hash,
-      title: "Get Instant Tracking ID",
-      description: "Start tracking immediately.",
+      title: "Dedicated Agent Pickup",
+      description: "Agent verifies, seals & documents parcel.",
       color: "pink",
     },
     {
       icon: Home,
-      title: "Doorstep Pickup",
-      description: "Our delivery agent arrives at your preferred time slot.",
+      title: "Live Supervised Transit",
+      description: "Shipment monitored throughout journey.",
       color: "indigo",
     },
     {
       icon: CheckCircle,
-      title: "Delivery to Destination",
-      description: "Safe, secured, and on time.",
+      title: "Secure Final Delivery",
+      description: "ID-verified delivery with digital proof.",
       color: "teal",
     },
   ];
@@ -80,7 +80,7 @@ export function HowItWorks() {
          
 
           <h2 className="text-3xl md:text-4xl font-bold ">
-            How Standard Delivery Works
+            How Premium Delivery Works
           </h2>
         </motion.div>
 
