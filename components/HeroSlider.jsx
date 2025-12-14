@@ -16,12 +16,12 @@ const slides = [
     title: "Seamless Ship Freight for Global Trade",
     desc: "We partner with leading international shipping lines to move your cargo across major trade routes. From full containers to consolidated loads, we provide dependable schedules and cost-efficient solutions worldwide.",
     img: bannerone,
-  },
-  {
-    title: "Seamless Ship Freight for Global Trade",
-    desc: "We partner with leading international shipping lines to move your cargo across major trade routes. From full containers to consolidated loads, we provide dependable schedules and cost-efficient solutions worldwide.",
-    img: bannerone,
-  },
+  }
+  // {
+  //   title: "Seamless Ship Freight for Global Trade",
+  //   desc: "We partner with leading international shipping lines to move your cargo across major trade routes. From full containers to consolidated loads, we provide dependable schedules and cost-efficient solutions worldwide.",
+  //   img: bannerone,
+  // },
 ];
 
 const features = [
@@ -42,7 +42,7 @@ const features = [
 export default function HeroSlider() {
   return (
     <div className="ml-2 mr-2 mt-1 rounded-3xl">
-      <section className="relative w-full h-[100vh] md:h-[100vh] -mt-20 overflow-hidden rounded-2xl ">
+      <section className="relative w-full h-[150vh] md:h-[100vh] -mt-20 overflow-hidden rounded-2xl ">
         <Swiper
           navigation
           autoplay={{ delay: 3000 }}
@@ -60,37 +60,52 @@ export default function HeroSlider() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-white max-w-2xl "
+                    className="text-white max-w-2xl top-1/3 md:top-1/2 "
                   >
-                    <h1 className="font-semibold text-3xl md:text-5xl mb-4">
+                    <h2 className="font-semibold text-sm sm:text-lg md:text-3xl lg:text-5xl mb-4">
                       {slide.title}
-                    </h1>
-                    <p className="text-base md:text-xl mb-6">{slide.desc}</p>
-                    <button className="bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full transition duration-300">
+                    </h2>
+                    <p className="text-base sm:text-sm md:text-lg lg:text-3xl mb-6">
+                      {slide.desc}
+                    </p>
+                    <button className="bg-primary text-[16px] text-white font-semibold py-3 px-6 sm:px-12 rounded-full transition duration-300">
                       Book Shipment
                     </button>
                   </motion.div>
 
                   {/* Booking Form */}
-                  <div className="absolute md:right-6 md:top-1/2 md:-translate-y-1/2 w-[100%] md:w-[440px] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 bottom-10 md:bottom-auto bg-white shadow-xl p-10 rounded-3xl z-30">
+                  <div className="absolute md:right-6 top-2/3 md:top-1/2 md:-translate-y-1/2 w-[90%] sm:w-[440px] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 bottom-10 md:bottom-auto bg-white shadow-xl p-6 md:p-10 rounded-3xl z-30">
                     <h3 className="text-lg font-semibold mb-5 text-center md:text-left">
                       Your Booking is a Step Away!
                     </h3>
 
-                    <div className="space-y-8 mt-2">
-                      <input
-                        type="text"
-                        placeholder="Enter your pickup location"
-                        className="w-full  p-3 rounded-lg bg-[#f5f5f5] focus:outline-none focus:border-[#013EFE]"
-                      />
+                    <div className="space-y-4 md:space-y-6 mt-2">
+                      {/* Pickup */}
+                      <div className="relative w-full">
+                        <input
+                          type="text"
+                          placeholder=" "
+                          className="peer w-full p-3 rounded-lg bg-[#f5f5f5] outline-none border border-gray-300 focus:ring-2 focus:ring-[#013EFE] placeholder-transparent"
+                        />
+                        <label className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[#013EFE] bg-white px-1">
+                          Pickup Location
+                        </label>
+                      </div>
 
-                      <input
-                        type="text"
-                        placeholder="Enter your dropping location"
-                        className="w-full  p-3 rounded-lg bg-[#f5f5f5] focus:outline-none focus:border-[#013EFE]"
-                      />
+                      {/* Drop */}
+                      <div className="relative w-full">
+                        <input
+                          type="text"
+                          placeholder=" "
+                          className="peer w-full p-3 rounded-lg bg-[#f5f5f5] outline-none border border-gray-300 focus:ring-2 focus:ring-[#013EFE] placeholder-transparent"
+                        />
+                        <label className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[#013EFE] bg-white px-1">
+                          Drop Location
+                        </label>
+                      </div>
 
-                      <button className=" w-full bg-primary text-[16px]  text-white font-semibold py-3 px-12 rounded-full transition duration-300">
+                      {/* Book Now Button */}
+                      <button className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition">
                         Book Now
                       </button>
                     </div>
@@ -103,7 +118,7 @@ export default function HeroSlider() {
       </section>
 
       {/* Features Section */}
-      <section className="py-10 px-4 md:px-10">
+      {/* <section className="py-10 px-4 md:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((item, index) => (
             <div
@@ -124,7 +139,7 @@ export default function HeroSlider() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
