@@ -23,67 +23,96 @@
 } */
 
 body {
-  background: #FFFFFF;
- 
+  background: #ffffff;
+
   font-family: "Inter", sans-serif;
- 
+
   overflow-x: hidden !important;
 }
 
-
-.hero-section
-{
+.hero-section {
   padding: 1.5rem;
   position: relative;
 }
 
-
-
-
-h1{
+h1 {
   font-size: 55px;
   font-weight: 600;
   line-height: 1.2em;
 }
-h2{
+h2 {
   font-size: 36px;
   font-weight: 600;
   line-height: 1.2em;
 }
-h3{
+h3 {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2em;
 }
 
-h4{
+h4 {
   font-size: 20px;
   font-weight: 700;
   line-height: 1.2em;
 }
-p{
+p {
   font-size: 15px;
   font-weight: 500;
   line-height: 1.6rem;
 }
 
-.text-primary{
-  color: #013EFE;
+.text-primary {
+  color: #013efe;
 }
-.bg-primary{
-  background-color: #013EFE;
+.bg-primary {
+  background-color: #013efe;
 }
 .swiper-button-next,
 .swiper-button-prev {
-  color: #fff !important;   /* arrow color */
-  stroke: #fff !important;  /* sometimes needed */
+  color: #fff !important; /* arrow color */
+  stroke: #fff !important; /* sometimes needed */
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  color: #fff !important;   /* arrow icon color */
+  color: #fff !important; /* arrow icon color */
   font-size: 18px;
 }
-.text-second{
+.text-second {
   color: #7b7881;
+}
+.text-primary{
+  
+}
+
+.text-404 {
+  font-size: 7rem !important;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
