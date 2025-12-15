@@ -7,51 +7,51 @@ export default function StickyStepsOverlap() {
   const steps = [
     {
       step: "STEP 1",
-      title: "Dedicated Pickup Agent",
-      desc: "YNo batch pickups. One agent. One shipment.",
+      title: "Priority Pickup",
+      desc: "Your parcel is picked up ahead of standard shipments.",
       icon: "📦",
     },
     {
       step: "STEP 2",
-      title: "White-Glove Handling",
-      desc: "Careful handling, manual loading, and secure packaging.",
+      title: "Faster Transit",
+      desc: "Minimal hub delays with optimized routes.",
       icon: "📡",
     },
     {
       step: "STEP 3",
-      title: "Fastest Transit Priority",
-      desc: "Your shipment moves first—always.",
+      title: "Live Real-Time Tracking",
+      desc: "Track your parcel at every stage.",
       icon: "🚢",
     },
 
     {
       step: "STEP 4",
-      title: "High-Value Insurance",
-      desc: "Comprehensive insurance coverage included.",
+      title: "Enhanced Insurance Coverage",
+      desc: "Higher insurance protection than Standard Delivery.",
       icon: "🚢",
     },
     {
       step: "STEP 5",
-      title: "Live GPS Tracking",
-      desc: "Real-time location with advanced tracking visibility.",
+      title: "Instant Notifications",
+      desc: "SMS & Email alerts for every status update.",
       icon: "🚢",
     },
     {
       step: "STEP 6",
-      title: "Dedicated Relationship Manager",
-      desc: "Single point of contact for updates & support.",
+      title: "GST Invoice & Digital Receipt",
+      desc: "Auto-generated invoices for businesses.",
       icon: "🚢",
     },
     {
       step: "STEP 7",
-      title: "Priority Billing & Documentation",
-      desc: "Instant invoices, GST billing & delivery proof.",
+      title: "Extended Customer Support",
+      desc: "Priority support during delivery hours.",
       icon: "🚢",
     },
     {
       step: "STEP 8",
-      title: "24×7 Priority Support",
-      desc: "Round-the-clock assistance for premium customers.",
+      title: "Pan-India Express Network",
+      desc: "Strong coverage across metro & tier-1 cities.",
       icon: "🚢",
     },
   ];
@@ -66,60 +66,53 @@ export default function StickyStepsOverlap() {
   };
 
   return (
-    <section className="py-20 bg-[#F4F2F7]">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
-        {/* LEFT SECTION */}
-        <div>
-          <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
-            DRIVING SUPPLY CHAIN SUCCESS
-          </p>
+ <section className="py-20 bg-[#F4F2F7]">
+      <div className="container mx-auto px-6">
+        <div className="lg:flex lg:gap-20">
 
-          <h2 className="font-bold leading-tight mb-6">Key Features</h2>
+          {/* LEFT SECTION – STICKY ON DESKTOP */}
+          <div className="lg:w-1/2">
+            <div className="lg:sticky lg:top-24">
+              <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
+                DRIVING SUPPLY CHAIN SUCCESS
+              </p>
 
-          <p className="text-gray-500 text-lg mb-8 max-w-lg">
-            Supply delivers tailored logistics and freight solutions, empowering
-            businesses with fast, safe, and efficient transport across North
-            America.
-          </p>
+              <h2 className="font-bold leading-tight mb-6">Key Features</h2>
 
-          <button className="px-6 py-3 bg-[#613BFF] text-white rounded-full">
-            Our Services
-          </button>
-        </div>
+              <p className="text-gray-500 text-lg mb-8 max-w-lg">
+                Supply delivers tailored logistics and freight solutions, empowering
+                businesses with fast, safe, and efficient transport across North America.
+              </p>
 
-        {/* RIGHT SECTION – STICKY SCROLL */}
-        <motion.div
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="lg:sticky lg:top-24 overflow-y-auto pr-3"
-        >
-          <div className="flex flex-col relative">
-            {steps.map((item, i) => {
-              // dynamically calculate overlap based on scroll
-              const overlap = Math.min(scrollY / 30, i * 40); // adjust for effect
-              return (
-                <div
-                  key={i}
-                  className="bg-white border border-gray-200 shadow-sm p-10 rounded-3xl transition-all duration-300"
-                  style={{
-                    marginTop: i === 0 ? 0 : -overlap,
-                    zIndex: steps.length - i,
-                  }}
-                >
-                  <p className="text-xs tracking-widest text-gray-400 font-semibold mb-6">
-                    {item.step}
-                  </p>
-
-                  <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-gray-500 mb-6">{item.desc}</p>
-
-                  <div className="text-5xl text-purple-500">{item.icon}</div>
-                </div>
-              );
-            })}
+              <button className="px-6 py-3 bg-[#613BFF] text-white rounded-full">
+                Our Services
+              </button>
+            </div>
           </div>
-        </motion.div>
+
+          {/* RIGHT SECTION – SCROLLABLE */}
+          <div className="lg:w-1/2 space-y-6 mt-10 lg:mt-0">
+            {steps.map((item, i) => (
+              <div
+                key={i}
+                className="bg-white border border-gray-200 shadow-sm p-10 rounded-3xl transition-all duration-300"
+              >
+                <p className="text-xs tracking-widest text-gray-400 font-semibold mb-6">
+                  {item.step}
+                </p>
+
+                <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-gray-500 mb-6">{item.desc}</p>
+
+                <div className="text-5xl text-purple-500">{item.icon}</div>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
+
+
   );
 }

@@ -14,10 +14,10 @@ export default function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+        className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left"
       >
         {/* LOGO + DESCRIPTION */}
-        <div className="space-y-8">
+        <div className="space-y-8 flex flex-col items-center md:items-start">
           <div className="flex items-center gap-2">
             <Image src={Logo} alt="Frisbi" width={140} height={40} />
           </div>
@@ -29,7 +29,7 @@ export default function Footer() {
 
           <div>
             <h4 className="font-semibold mb-2">Social Media</h4>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-center md:justify-start">
               <Link href="#">
                 <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
                   <FaYoutube className="w-5 h-5" />
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         {/* SERVICES */}
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <div>
             <h4 className="font-semibold mb-5 text-lg">Book Pickup</h4>
             <ul className="space-y-4 text-sm font-semibold">
@@ -90,7 +90,7 @@ export default function Footer() {
         </div>
 
         {/* COMPANY */}
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <h4 className="font-semibold mb-5 text-lg">Company</h4>
           <ul className="space-y-4 text-sm font-semibold">
             <li>
@@ -122,23 +122,21 @@ export default function Footer() {
         </div>
 
         {/* CONTACT */}
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <h4 className="font-semibold mb-5">Contact Us</h4>
 
-          <p className="text-black text-sm leading-relaxed">
+          <p className="text-black text-sm leading-relaxed text-center md:text-left">
             Delhi-NCR | Bangalore | Hyderabad | Pune | Indore | Chandigarh |
             Jaipur | Bhubaneswar
           </p>
 
           <div className="flex items-center gap-2 mt-5">
-           
-
-            <Link href="https://wa.me/91XXXXXXXXXX" target="_blank" className="px-6 py-3 rounded-full 
-                               font-semibold bg-primary text-white text-sm md:text-base 
-                               hover:scale-105 transition-all">
-              
-                Whatsapp
-              
+            <Link
+              href="https://wa.me/91XXXXXXXXXX"
+              target="_blank"
+              className="px-6 py-3 rounded-full font-semibold bg-primary text-white text-sm md:text-base hover:scale-105 transition-all"
+            >
+              Whatsapp
             </Link>
           </div>
         </div>
@@ -146,12 +144,12 @@ export default function Footer() {
 
       {/* BOTTOM LINE */}
       <div className="border-t border-gray-700 mt-12 pt-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-sm text-gray-400 gap-4">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-between text-sm text-gray-400 gap-4 items-center">
           <span className="text-[14px] text-black">
             Copyright © 2026 – All Right Reserved
           </span>
 
-          <div className="flex items-center text-black gap-4 flex-wrap">
+          <div className="flex items-center text-black gap-4 flex-wrap justify-center md:justify-start">
             <Link href="/terms-and-conditions">Terms and Condition</Link>
             <span>|</span>
             <Link href="/privacy">Privacy Policy</Link>

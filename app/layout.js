@@ -5,6 +5,7 @@ import "./globals.css";
 import HeaderWrapper from "@/components/HeaderWrapper";
 import FooterSection from "@/components/FooterSection";
 import { usePathname } from "next/navigation";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
         {!is404 && <HeaderWrapper />}
         {children}
         <FooterSection />
+          {/* TOASTER COMPONENT */}
+      <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
   );

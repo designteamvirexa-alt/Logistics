@@ -98,8 +98,8 @@ export default function Slider({ title = "Why Choose Us — India’s Trusted Lu
   return (
     <div className="w-full max-w-7xl mx-auto pt-20 px-4 relative">
       {/* Header + Arrows */}
-      <div className="absolute -top-5 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h2 className="text-white">{title}</h2>
+      <div className="absolute -top-28 lg:-top-9 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <h2 className="text-white text-sm lg:text-xl">{title}</h2>
 
         <div className="flex space-x-2 z-20">
           <button
@@ -142,7 +142,7 @@ export default function Slider({ title = "Why Choose Us — India’s Trusted Lu
             <div
               className={`relative w-full h-[500px] rounded-3xl overflow-hidden ${service.bgColor} p-8`}
             >
-              <h3 className={`text-xl font-semibold ${service.textColor}`}>
+              <h3 className={`text-sm lg:text-xl font-semibold ${service.textColor}`}>
                 {service.title}
               </h3>
               <p className={`mt-2 text-[15px] ${service.descColor}`}>
