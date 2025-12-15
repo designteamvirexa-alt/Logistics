@@ -87,7 +87,7 @@ export default function ShipmentCalculator() {
         <h2 className="text-center text-xl font-semibold">
           Calculate your shipment cost
         </h2>
-        <p className="text-center text-[#7b7881] mt-2 text-sm">
+        <p className="text-center text-second mt-2 text-sm">
           Prices are estimates. Final cost may vary.
         </p>
 
