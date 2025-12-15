@@ -2,63 +2,115 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, PhoneCall, ChevronDown } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Logo from "@/asset/frisbi_white.png"; // change path if needed
+import LogoBlack from "@/asset/logo-black.svg"; // change path if needed
 
 const servicesList = [
-  "Air Freight",
-  "Road Transportation",
-  "Warehousing",
-  "Custom Clearance",
-  "Packaging Solutions",
+  "Standard Delivery",
+  "Express Delivery",
+  "Premium Delivery",
+ 
 ];
 
-export default function Header() {
+const booklist = [
+  "Corporate",
+"Individual"
+];
+
+
+export default function Header({ mode = "default" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [hoverService, setHoverService] = useState(false);
 
+   const [bookopen, setBookeOpen] = useState(false);
+  const [hoverBook, setHoverBook] = useState(false);
   const [scroll, setScroll] = useState(false);
 
   // Detect Scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setScroll(window.scrollY > 20);
-    };
+    const handleScroll = () => setScroll(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Force white header for these pages
+  const isDarkHeader = mode === "black";
+  // Mobile Menu Link Click -> Close Menu
+  const handleLinkClick = () => setIsOpen(false);
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 
-        ${scroll ? "bg-white shadow-md" : "bg-transparent"}
+      className={`sticky top-0 z-50 transition-all duration-300
+        ${
+          isDarkHeader
+            ? "bg-white"
+            : scroll
+            ? "bg-white shadow-md"
+            : "bg-transparent"
+        }
       `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
 
         {/* Logo */}
-        <Link href="/" className={`${scroll ? "text-black" : "text-white"} font-bold`}>
-          Logo
+        <Link href="/" className="font-bold">
+          <Image
+            src={isDarkHeader || scroll ? LogoBlack : Logo}
+            alt="Frisbi"
+            width={140}
+            height={40}
+            className="object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation */}
         <nav
-          className={`hidden md:flex space-x-8 text-sm font-medium transition-all duration-300 
-            ${scroll ? "text-black" : "text-white"}
+          className={`hidden md:flex space-x-8 text-[15px] font-semibold transition-all duration-300
+            ${isDarkHeader || scroll ? "text-black" : "text-white"}
           `}
         >
-          <Link
-            href="/"
-            className={`${scroll ? "hover:text-red-600" : "hover:text-red-400"} transition`}
+            <div
+            className="relative"
+            onMouseEnter={() => setHoverBook(true)}
+            onMouseLeave={() => setHoverBook(false)}
           >
-            Luggage
-          </Link>
+            <button
+              className={`flex items-center gap-1 transition 
+                ${isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"}
+              `}
+            >
+              Book <ChevronDown className="h-4 w-4" />
+            </button>
+
+            {hoverBook && (
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute left-0 mt-0 w-52 bg-white shadow-lg rounded-lg py-3 z-50"
+              >
+                {booklist.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={`/bookshipment/${item.toLowerCase().replace(/ /g, "-")}`}
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </div>
+          
 
           <Link
             href="/about"
-            className={`${scroll ? "hover:text-red-600" : "hover:text-red-400"} transition`}
+            className={`${
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
+            } transition`}
           >
             About Us
           </Link>
@@ -71,7 +123,7 @@ export default function Header() {
           >
             <button
               className={`flex items-center gap-1 transition 
-                ${scroll ? "text-black hover:text-red-600" : "text-white hover:text-red-400"}
+                ${isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"}
               `}
             >
               Services <ChevronDown className="h-4 w-4" />
@@ -87,8 +139,8 @@ export default function Header() {
                 {servicesList.map((item, index) => (
                   <Link
                     key={index}
-                    href={`/services/${item.toLowerCase().replace(/ /g, '-')}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
+                    href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>
@@ -98,42 +150,44 @@ export default function Header() {
           </div>
 
           <Link
-            href="/testimonials"
-            className={`${scroll ? "hover:text-red-600" : "hover:text-red-400"} transition`}
+            href="/rate-calculator"
+            className={`${
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
+            } transition`}
           >
             Rate Calculator
           </Link>
 
           <Link
-            href="/blog"
-            className={`${scroll ? "hover:text-red-600" : "hover:text-red-400"} transition`}
+            href="/faq"
+            className={`${
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
+            } transition`}
           >
-            FAQS
+            FAQs
           </Link>
 
           <Link
             href="/contact"
-            className={`${scroll ? "hover:text-red-600" : "hover:text-red-400"} transition`}
+            className={`${
+              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
+            } transition`}
           >
             Contact Us
           </Link>
         </nav>
 
         {/* Desktop Button */}
-        <div className="hidden md:flex items-center space-x-6">
-          <button className="bg-red-600 hover:bg-red-700 transition text-white px-4 py-2 rounded-full text-sm font-semibold">
-            Tracking Now
-          </button>
+        <div className="hidden md:flex items-center">
+          <Link href='/track-your-package' className="bg-primary text-[16px] text-white font-semibold py-3 px-10 rounded-full transition">
+            Track Now
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>
-            <Menu
-              className={`h-6 w-6 transition 
-                ${scroll ? "text-black" : "text-white"}
-              `}
-            />
+            <Menu className={`h-6 w-6 transition ${isDarkHeader || scroll ? "text-black" : "text-white"}`} />
           </button>
         </div>
       </div>
@@ -147,8 +201,8 @@ export default function Header() {
           className="md:hidden bg-white overflow-hidden shadow-lg"
         >
           <div className="flex flex-col px-6 py-4 space-y-4">
-            <Link href="/" className="hover:text-red-600">Home</Link>
-            <Link href="/about" className="hover:text-red-600">About Us</Link>
+            <Link href="/" onClick={handleLinkClick} className="hover:text-blue-600">Home</Link>
+            <Link href="/about" onClick={handleLinkClick} className="hover:text-blue-600">About Us</Link>
 
             {/* Mobile Service Dropdown */}
             <button
@@ -156,9 +210,7 @@ export default function Header() {
               className="flex justify-between items-center text-gray-800 font-medium"
             >
               Services
-              <ChevronDown
-                className={`h-4 w-4 transition-transform ${serviceOpen ? "rotate-180" : ""}`}
-              />
+              <ChevronDown className={`h-4 w-4 transition-transform ${serviceOpen ? "rotate-180" : ""}`} />
             </button>
 
             {serviceOpen && (
@@ -166,8 +218,9 @@ export default function Header() {
                 {servicesList.map((item, i) => (
                   <Link
                     key={i}
-                    href={`/services/${item.toLowerCase().replace(/ /g, '-')}`}
-                    className="text-gray-700 hover:text-red-600 transition"
+                    href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
+                    onClick={handleLinkClick}
+                    className="text-gray-700 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>
@@ -175,13 +228,13 @@ export default function Header() {
               </div>
             )}
 
-            <Link href="/testimonials" className="hover:text-red-600">Testimonials</Link>
-            <Link href="/blog" className="hover:text-red-600">Blog</Link>
-            <Link href="/contact" className="hover:text-red-600">Contact Us</Link>
+            <Link href="/rate-calculator" onClick={handleLinkClick} className="hover:text-blue-600">Rate Calculator</Link>
+            <Link href="/faq" onClick={handleLinkClick} className="hover:text-blue-600">FAQs</Link>
+            <Link href="/contact" onClick={handleLinkClick} className="hover:text-blue-600">Contact Us</Link>
 
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full w-full">
-              Tracking Now
-            </button>
+            <Link href="/track-your-package" onClick={handleLinkClick} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full w-full">
+              Track Now
+            </Link>
           </div>
         </motion.div>
       )}

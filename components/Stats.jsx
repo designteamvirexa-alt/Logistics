@@ -6,11 +6,11 @@ import { useInView } from "framer-motion";
 
 export default function Stats({ data }) {
   return (
-    <section className="w-full py-10">
+    <section className="w-full">
       <div className="
         grid grid-cols-2 md:grid-cols-4 
         gap-y-8 text-center 
-        max-w-5xl mx-auto
+        max-w-7xl mx-auto
       ">
         {data.map((item, index) => (
           <StatItem key={index} {...item} />

@@ -2,20 +2,22 @@
 
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
-
+import Awwards from "@/asset/client-logos/awwwards.webp"
+import cloudways from "@/asset/client-logos/cloudways.webp"
+import envato from "@/asset/client-logos/envato.webp"
+import hongkiat from "@/asset/client-logos/hongkiat.webp"
+import hubspot from "@/asset/client-logos/hubspot.webp"
 const logos = [
-  "/logos/logo1.png",
-  "/logos/logo2.png",
-  "/logos/logo3.png",
-  "/logos/logo4.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
-  "/logos/logo5.png",
+  Awwards,
+  cloudways,
+  envato,
+  hongkiat,
+  hubspot,
+  Awwards,
+  cloudways,
+  envato,
+  hongkiat,
+  hubspot,
 ];
 
 export default function MarqueeLogos() {
@@ -24,7 +26,7 @@ export default function MarqueeLogos() {
       <Marquee gradient={false} speed={50}>
         {logos.map((logo, index) => (
           <div key={index} className="mx-8">
-            <Image src={logo} alt={`Logo ${index}`} width={100} height={50} className="object-contain"/>
+            <Image src={logo} alt={`Logo ${index}`} width={100} height={100} className="object-cover"/>
           </div>
         ))}
       </Marquee>

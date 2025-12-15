@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Quote } from "lucide-react";
-import s2 from "@/asset/s2.png";
+import s2 from "@/asset/testimonials.jpg";
 const testimonials = [
   {
     text: "Rail Freight helped us move heavy shipments long distance in an eco-friendly way, while keeping costs low and schedules predictable.",
@@ -39,11 +39,11 @@ export default function TestimonialSliderRight() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-lg bg-white">
+    <div className=" max-w-7xl mx-auto rounded-3xl  overflow-hidden shadow-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2">
 
         {/* LEFT IMAGE */}
-        <div className="relative h-64 md:h-full w-full">
+        <div className="relative h-100  w-full">
           <Image
             src={s2} // your image
             alt="Customer"
@@ -63,11 +63,11 @@ export default function TestimonialSliderRight() {
             key={index}
             className="transition-all duration-500 ease-in-out"
           >
-            <p className="text-lg md:text-xl leading-relaxed mb-6">
+            <span className="text-[22px] font-semibold  leading-relaxed ">
               {testimonials[index].text}
-            </p>
+            </span>
 
-            <p className="text-sm opacity-75">
+            <p className="text-sm text-white mt-4">
               {testimonials[index].author}
             </p>
           </div>
