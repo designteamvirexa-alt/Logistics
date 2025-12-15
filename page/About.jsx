@@ -7,7 +7,8 @@ import abouttwo from "@/asset/about/abouttwo.png";
 import aboutUs from "@/asset/about/about-bg.webp";
 import vision from "@/asset/about/vision.webp";
 import mission from "@/asset/about/mission.webp";
-
+import CallToAction from "@/components/CallToAction";
+import Testimonials from "@/components/Testimonials";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import CustomSlider from "@/components/LocationSlider";
 import Stats from "@/components/Stats";
@@ -189,14 +190,14 @@ function Aboutus() {
       </section>
 
       <section>
-        <div className="max-w-7xl mx-auto">
-          <TestimonialSliderRight />
-        </div>
+         <Testimonials />
       </section>
 
       <section className="mt-7 bg-[#050A1F] mx-auto">
         <ContactSection />
       </section>
+
+       <CallToAction />
     </div>
   );
 }
