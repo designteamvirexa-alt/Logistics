@@ -170,7 +170,7 @@ function Home() {
             </video>
 
 
-            <div className="relative z-10 p-6 md:p-12 backdrop-blur-sm">
+            <div className="relative z-10 p-6 md:p-12 ">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
                
@@ -242,7 +242,7 @@ function Home() {
       </section>
 
       <section className=" px-4 overflow-x-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <Testimonials />
         </div>
       </section>
