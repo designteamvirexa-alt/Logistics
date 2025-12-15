@@ -6,7 +6,7 @@
   "static/chunks/node_modules_framer-motion_dist_es_c4413217._.js",
   "static/chunks/node_modules_react-icons_fa_index_mjs_d2e2d7f5._.js",
   "static/chunks/node_modules_react-icons_lib_74ccc930._.js",
-  "static/chunks/node_modules_0fe91261._.js",
+  "static/chunks/node_modules_f49a6b94._.js",
   "static/chunks/[root-of-the-server]__6bcf0607._.js",
   "static/chunks/[root-of-the-server]__89300acb._.css"
 ],
