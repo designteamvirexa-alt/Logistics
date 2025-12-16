@@ -7,7 +7,6 @@ import Image from "next/image";
 import ErrorImage from "@/asset/error.png";
 
 export default function NotFound() {
-
   // Hide global header when 404 page loads
   useEffect(() => {
     const header = document.getElementById("main-header-wrapper");
@@ -23,25 +22,29 @@ export default function NotFound() {
       {/* Only black header for this page */}
       {/* <Header mode="black" /> */}
 
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4 text-center">
-        <div className="max-w-md md:max-w-lg">
+      <div className="text-center max-w-2xl mx-auto pb-36">
+        <div className=" text-center">
           <Image
             src={ErrorImage}
             alt="404 Error"
-            width={400}
-            height={300}
+            width={500}
+            height={400}
             className="mx-auto mb-6"
           />
 
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">404</h1>
-          <p className="text-lg text-gray-600 mb-6">This page could not be found.</p>
+          <h2 className="text-404 font-bold mb-4">404</h2>
+          <p className="text-lg text-gray-600 mb-6">
+            This page could not be found.
+          </p>
 
-          <Link
-            href="/"
-            className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700"
-          >
-            Go Home
-          </Link>
+          <div className="mt-7">
+            <Link
+              href="/"
+              className="bg-primary text-lg text-white font-semibold py-3 px-10 text-[16px] rounded-full transition duration-300"
+            >
+              Back to Home
+            </Link>
+          </div>
         </div>
       </div>
     </>
