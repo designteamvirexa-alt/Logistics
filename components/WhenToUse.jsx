@@ -1,4 +1,18 @@
- <section className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden py-24"  style={{ backgroundImage: "url(/asset/background.png)" }} >
+
+import Image from "next/image";
+import { Check } from 'lucide-react';
+import location from "@/asset/location.png";
+
+const useCases = [
+  'Skip carrying heavy bags to airports or stations',
+  'Avoid excess baggage hassles',
+  'Travel comfortably with kids or elders',
+  'Move luggage ahead during long or multi-stop trips',
+];
+
+export function WhenToUse() {
+  return (
+   <section className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden py-24"  style={{ backgroundImage: "url(/asset/background.png)" }} >
         <div className="container mx-auto px-4 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* LEFT IMAGE */}
@@ -14,50 +28,26 @@
             {/* RIGHT CONTENT */}
             <div>
               <h2 className="mb-7">
-                How to Ship with <span className="text-primary">Frisbi</span>
+               When to Use  <span className="text-primary">Frisbi</span>
               </h2>
-
               <p className="mb-6">
-                Sending packages with Frisbi is effortless. Simply pack your
-                items securely, and we’ll take care of everything else
+                 From a single suitcase to multiple bags, Frisbi ensures your belongings move safely while you move freely.
               </p>
-
               {/* FAQ */}
-              <div>
-                {faqData.map((step) => (
-                  <div key={step.id} className="border-b py-4">
-                    <button
-                      onClick={() => setOpen(open === step.id ? null : step.id)}
-                      className="flex w-full justify-between items-center text-left"
-                    >
-                      <span className="font-bold text-[20px]">
-                        {step.title}
-                      </span>
-                      {open === step.id ? (
-                        <Minus size={20} />
-                      ) : (
-                        <Plus size={20} />
-                      )}
-                    </button>
-
-                    <AnimatePresence>
-                      {open === step.id && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                        >
-                          <p className="text-second mt-3 pr-4">
-                            {step.content}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+              <div className="space-y-6">
+              {useCases.map((useCase, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                    <Check className="w-4 h-4 text-white" />
                   </div>
-                ))}
-              </div>
+                  <p className="text-gray-700 flex-1">{useCase}</p>
+                </div>
+              ))}
+            </div>
+              
             </div>
           </div>
         </div>
       </section>
+  );
+}
