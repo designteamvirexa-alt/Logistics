@@ -48,7 +48,7 @@ export default function Header({ mode = "default" }) {
         }
       `}
     >
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
 
         {/* Logo */}
         <Link href="/" className="font-bold">

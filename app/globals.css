@@ -131,7 +131,7 @@ p {
 }
 @media screen and (max-width: 600px) {
  .-mt-16{
-  margin-top: -4rem;
+  margin-top: -5rem;
 }
 
 .content-top{

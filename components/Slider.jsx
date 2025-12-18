@@ -2,166 +2,127 @@
 
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Assets
 import c1 from "@/asset/c1.webp";
 import valuesdiff from "@/asset/values-diff.webp";
-
 import courierimg from "@/asset/courierimg.webp";
 
-
-const servicesData = [
+const data = [
   {
     title: "Safe & Secure Luggage Handling",
-    description:
-      "Your bags are handled by trained professionals with secure sealing and verified partners, ensuring protection throughout the journey.",
-    bgColor: "bg-white",
-    textColor: "text-black",
-    descColor: "text-second",
-    linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: c1,
-    imageAlt: "Excess baggage service image",
-    delay: 0,
+    desc: "Your bags are handled by trained professionals with secure sealing and verified partners, ensuring protection throughout the journey.",
+    img: c1,
   },
   {
     title: "Reliable Door-to-Door Baggage Pickup & Drop",
-    description:
-      "Skip the hassle of heavy luggage—book online, and we’ll pick up from your home and deliver anywhere in India.",
-    bgColor: "bg-white",
-    textColor: "text-black",
-    descColor: "text-second",
-    linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: valuesdiff,
-    imageAlt: "Excess baggage service image",
-    delay: 0,
+    desc: "Skip the hassle of heavy luggage—book online, and we’ll pick up from your home and deliver anywhere in India.",
+    img: valuesdiff,
   },
   {
     title: "On-Time Delivery Guarantee",
-    description:
-      "Avoid baggage delays—our scheduled deliveries and real-time updates keep you informed until your luggage arrives.",
-    bgColor: "bg-white",
-    textColor: "text-black",
-    descColor: "text-second",
-    linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: courierimg,
-    imageAlt: "Excess baggage service image",
-    delay: 0,
+    desc: "Avoid baggage delays—our scheduled deliveries and real-time updates keep you informed until your luggage arrives.",
+    img: courierimg,
   },
-  {
+   {
     title: "Live Luggage Tracking Across India",
-    description:
-      "Get real-time tracking and SMS/WhatsApp alerts, so you always know exactly where your baggage is in transit.",
-    bgColor: "bg-white",
-    textColor: "text-black",
-    descColor: "text-second",
-    linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: courierimg,
-    imageAlt: "Excess baggage service image",
-    delay: 0,
+    desc: "Get real-time tracking and SMS/WhatsApp alerts, so you always know exactly where your baggage is in transit.",
+    img: courierimg,
   },
-  {
+   {
     title: "Corporate & Group Travel Luggage Management",
-    description:
-      "We provide specialised support for corporate travel, events, and group trips, ensuring seamless coordination across multiple bags and destinations.",
-    bgColor: "bg-white",
-    textColor: "text-black",
-    descColor: "text-second",
-    linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: courierimg,
-    imageAlt: "Excess baggage service image",
-    delay: 0,
+    desc: "We provide specialised support for corporate travel, events, and group trips, ensuring seamless coordination across multiple bags and destinations.",
+    img: courierimg,
   },
-  {
+   {
     title: "Nationwide Luggage Delivery Network",
-    description:
-      "We deliver luggage across major, tier-2, and tier-3 cities, supporting seamless travel, relocation, and baggage movement nationwide.",
-    bgColor: "bg-white",
-    textColor: "text-black",
-    descColor: "text-second",
-    linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: courierimg,
-    imageAlt: "Excess baggage service image",
-    delay: 0,
+    desc: "We deliver luggage across major, tier-2, and tier-3 cities, supporting seamless travel, relocation, and baggage movement nationwide.",
+    img: courierimg,
   },
   
 ];
 
-export default function Slider({ title = "Why Choose Us — India’s Trusted Luggage Delivery" }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+export default function Slider() {
+  const swiperRef = useRef(null);
 
   return (
-    <div className="w-full container mx-auto pt-20 px-4 relative">
-      {/* Header + Arrows */}
-      <div className="absolute -top-28 lg:-top-9 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h2 className="text-white text-sm lg:text-xl">{title}</h2>
+    <section className="py-24">
+      <div className="container mx-auto px-4">
 
-        <div className="flex space-x-2 z-20">
+        {/* HEADER */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-white text-xl">
+            Why Choose Us — India’s Trusted Luggage Delivery
+          </h2>
+
+          {/* DESKTOP ARROWS */}
+          <div className="hidden lg:flex gap-2">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="p-2 bg-white rounded"
+            >
+              <ChevronLeft />
+            </button>
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              className="p-2 bg-white rounded"
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        </div>
+
+        {/* SLIDER */}
+        <Swiper
+          modules={[Autoplay]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          spaceBetween={24}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {data.map((item, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white rounded-3xl p-8 h-[500px] relative overflow-hidden">
+                <h4 className=" font-semibold">{item.title}</h4>
+                <p className="text-sm mt-2 text-second">{item.desc}</p>
+
+                <div className="absolute bottom-0 left-0 right-0 h-[60%]">
+                  <Image
+                    src={item.img}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* MOBILE ARROWS — BOTTOM CENTER */}
+        <div className="flex justify-center gap-4 mt-8 lg:hidden">
           <button
-            ref={prevRef}
-            className="p-2 bg-white rounded-sm shadow-md hover:bg-gray-200"
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="p-3 bg-white rounded-full"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft />
           </button>
           <button
-            ref={nextRef}
-            className="p-2 bg-white rounded-sm shadow-md hover:bg-gray-200"
+            onClick={() => swiperRef.current?.slideNext()}
+            className="p-3 bg-white rounded-full"
           >
-            <ChevronRight size={20} />
+            <ChevronRight />
           </button>
         </div>
+
       </div>
-
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        onBeforeInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-        }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop={true}
-        spaceBetween={20}
-        breakpoints={{
-          320: { slidesPerView: 1 },
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3.2 },
-        }}
-      >
-        {servicesData.map((service, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className={`relative w-full h-[500px] rounded-3xl overflow-hidden ${service.bgColor} p-8`}
-            >
-              <h3 className={`text-sm lg:text-xl font-semibold ${service.textColor}`}>
-                {service.title}
-              </h3>
-              <p className={`mt-2 text-[15px] ${service.descColor}`}>
-                {service.description}
-              </p>
-
-              <div className="absolute bottom-[-10%] right-0 left-0 w-full h-[66%] z-0">
-                <Image
-                  src={service.imageSrc}
-                  alt={service.imageAlt}
-                  fill
-                  className="object-contain"
-                  priority={service.delay === 0}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    </section>
   );
 }

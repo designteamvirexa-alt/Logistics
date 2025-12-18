@@ -37,30 +37,30 @@ export default function HeroSlider() {
                 alt={slide.title}
                 fill
                 priority
-                className="object-cover rounded-3xl"
+                className="object-cover rounded-2xl"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-3xl" />
+              <div className="absolute inset-0 bg-black/40 rounded-2xl" />
             </div>
 
             {/* CONTENT */}
             <div className="relative z-30 h-full">
               <div
                 className="
-                  container mx-auto px-4 md:px-10
-                  h-full
-                  flex
-                  items-start md:items-center
-                  pt-24 md:pt-0
-                "
+      container mx-auto px-4 md:px-8
+      h-full
+      flex
+      items-start md:items-center
+      pt-24 md:pt-0
+    "
               >
-                <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                  
+                {/* MAIN WRAPPER */}
+                <div className="w-full flex flex-col lg:flex-row items-center">
                   {/* LEFT CONTENT */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-white max-w-xl"
+                    className="text-white max-w-xl w-full"
                   >
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
                       {slide.title}
@@ -84,20 +84,20 @@ export default function HeroSlider() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="
-                      w-full max-w-md
-                      mx-auto lg:mx-0
-                      bg-white
-                      rounded-3xl
-                      shadow-2xl
-                      p-6 sm:p-8
-                    "
+          w-full max-w-md
+          mt-10 lg:mt-0
+          ml-0 lg:ml-auto
+          bg-white
+          rounded-3xl
+          shadow-2xl
+          p-6 sm:p-8
+        "
                   >
                     <h3 className="text-lg font-semibold mb-6 text-center lg:text-left">
                       Your Booking is a Step Away!
                     </h3>
 
                     <div className="space-y-5">
-                      {/* Pickup */}
                       <div className="relative">
                         <input
                           type="text"
@@ -109,7 +109,6 @@ export default function HeroSlider() {
                         </label>
                       </div>
 
-                      {/* Drop */}
                       <div className="relative">
                         <input
                           type="text"
