@@ -19,9 +19,9 @@ const fadeUp = {
 
 function Individual() {
   return (
-    <div className="-mt-20">
+    <div className="-mt-24 -mt-16">
       {/* HERO SECTION */}
-      <section className="relative h-[650px] md:h-[680px] rounded-3xl overflow-hidden">
+      <section className="relative h-[full] md:h-[680px] rounded-3xl overflow-hidden">
         {/* Background Image */}
         <Image
           src={herobg}
@@ -29,7 +29,7 @@ function Individual() {
           fill
           priority
           sizes="100vw"
-          className="object-cover p-2 rounded-3xl"
+          className="object-cover p-3 rounded-3xl"
         />
 
       

@@ -23,15 +23,15 @@ function Corporate() {
   };
 
   return (
-    <div className="-mt-20">
+    <div className="-mt-24 -mt-16">
       {/* HERO SECTION */}
-      <section className="relative h-[650px] md:h-[660px] rounded-3xl p-2">
+      <section className="relative h-[full] md:h-[660px] rounded-3xl p-2">
         <Image
           src={herobg}
           alt="Corporate Luggage Delivery"
           fill
           priority
-          className="object-cover rounded-3xl p-2"
+          className="object-cover rounded-3xl p-3"
         />
 
         <div className="container relative z-10 mx-auto px-4 py-24 md:py-32">

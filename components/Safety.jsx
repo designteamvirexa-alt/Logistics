@@ -18,10 +18,10 @@ export function Safety() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {features.map((feature, index) => (
             <div key={index} className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <feature.icon className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <feature.icon className="w-8 h-8 text-primary" />
               </div>
-              <p className="text-gray-700">{feature.text}</p>
+              <h5 className="font-bold">{feature.text}</h5>
             </div>
           ))}
         </div>

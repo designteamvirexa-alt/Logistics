@@ -22,7 +22,7 @@ export function Scale() {
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-white" />
               </div>
-              <p className="text-blue-100">{feature.text}</p>
+              <p className="text-white">{feature.text}</p>
             </div>
           ))}
         </div>

@@ -23,15 +23,15 @@ export function Comparison() {
   };
 
   return (
-    <section className="py-24 ">
+    <section className="md:py-24 pb-0">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className=" text-center mb-16">
           What Makes Frisbi Better Than Alternatives
         </h2>
 
         <div className="bg-white rounded-3xl  overflow-hidden">
-          <div className="grid grid-cols-3 bg-blue-600 text-white p-6 font-semibold">
-            <div />
+          <div className="grid grid-cols-3 bg-primary text-white p-4 font-semibold">
+            <div className="text-center">Content</div>
             <div className="text-center">Frisbi</div>
             <div className="text-center">Typical Courier</div>
           </div>
@@ -39,12 +39,12 @@ export function Comparison() {
           {features.map((item, index) => (
             <div
               key={index}
-              className={`grid grid-cols-3 p-6 ${
+              className={`grid grid-cols-3 p-4 ${
                 index % 2 === 0 ? "bg-gray-50" : "bg-white"
               }`}
             >
-              <div>{item.feature}</div>
-              <div className="flex justify-center">
+              <div className="font-semibold">{item.feature}</div>
+              <div className="flex justify-center ">
                 {renderIcon(item.frisbi)}
               </div>
               <div className="flex justify-center">
