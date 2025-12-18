@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+
 // Assets
 import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
@@ -23,11 +24,17 @@ import TransformingCities from "@/components/Locations";
 
 export default function PremiumServices() {
   /* ----------------------------------------
-     ✅ CLIENT-ONLY RENDER FIX
+     ✅ SSR FIX (IMPORTANT)
   ---------------------------------------- */
-const [open, setOpen] = useState(1);
+  const [mounted, setMounted] = useState(false);
+  const [open, setOpen] = useState(1);
 
- 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // ⛔ Prevent server-side crash (HTMLDivElement error)
+  if (!mounted) return null;
 
   const idealFor = [
     "High-value electronics",
@@ -42,7 +49,6 @@ const [open, setOpen] = useState(1);
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
   };
-
 
   const faqData = [
     {
@@ -73,9 +79,9 @@ const [open, setOpen] = useState(1);
   ];
 
   return (
-    <div className="-mt-24 -mt-16">
-      {/* HERO */}
-      <section className="relative h-[full] md:h-[560px] rounded-3xl p-2">
+    <div className="-mt-24 md:-mt-16">
+      {/* ================= HERO ================= */}
+      <section className="relative md:h-[560px] rounded-3xl p-2">
         <Image
           src={herobg}
           alt="Premium Delivery"
@@ -90,13 +96,15 @@ const [open, setOpen] = useState(1);
             transition={{ duration: 0.6 }}
             className="inline-block bg-white/10 backdrop-blur border border-white/20 px-6 py-2 rounded-full mb-6"
           >
-            <p className="text-white">✨ Because some deliveries deserve more</p>
+            <p className="text-white">
+              ✨ Because some deliveries deserve more
+            </p>
           </motion.div>
 
           <motion.h1
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white  mb-6"
+            className="text-white text-4xl md:text-5xl font-bold mb-6"
           >
             Premium Delivery
           </motion.h1>
@@ -114,17 +122,23 @@ const [open, setOpen] = useState(1);
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex gap-4"
           >
-            <Link href="#contact" className="bg-white px-8 py-3 rounded-full font-semibold">
+            <Link
+              href="#contact"
+              className="bg-white px-8 py-3 rounded-full font-semibold"
+            >
               Book Now
             </Link>
-            <Link href="" className="bg-white/10 border border-white/20 px-8 py-3 font-semibold rounded-full text-white">
+            <Link
+              href="#pricing"
+              className="bg-white/10 border border-white/20 px-8 py-3 font-semibold rounded-full text-white"
+            >
               View Pricing
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* OVERVIEW */}
+      {/* ================= OVERVIEW ================= */}
       <section className="py-24 px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10">
           <Image
@@ -139,17 +153,17 @@ const [open, setOpen] = useState(1);
             </h2>
 
             <p className="text-second mb-6">
-              Premium Delivery is designed for shipments that require
-              absolute care, security, and priority handling.
+              Premium Delivery is designed for shipments that require absolute
+              care, security, and priority handling.
             </p>
 
             <div className="bg-blue-50 rounded-3xl p-6 border max-w-lg">
               <h4 className="font-semibold mb-4">Ideal for:</h4>
               <ul className="space-y-3">
                 {idealFor.map((item, i) => (
-                  <li key={i} className="flex gap-3">
+                  <li key={i} className="flex gap-3 items-start">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2" />
-                    {item}
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -158,8 +172,8 @@ const [open, setOpen] = useState(1);
         </div>
       </section>
 
-      {/* PRICING */}
-      <section className="bg-[#F1F2F6]">
+      {/* ================= PRICING ================= */}
+      <section id="pricing" className="bg-[#F1F2F6]">
         <PricingStructure />
         <Keyfuture />
       </section>
@@ -168,13 +182,17 @@ const [open, setOpen] = useState(1);
       <HowItWorks />
       <TransformingCities />
 
-      {/* WHY PREMIUM */}
+      {/* ================= WHY PREMIUM ================= */}
       <section
         className="px-4 py-24 bg-cover bg-center"
         style={{ backgroundImage: "url('/asset/background.png')" }}
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-          <Image src={location} alt="Locations" className="h-[400px] object-contain" />
+          <Image
+            src={location}
+            alt="Locations"
+            className="h-[400px] object-contain"
+          />
 
           <div>
             <h2 className="text-3xl font-bold mb-6">
@@ -184,8 +202,10 @@ const [open, setOpen] = useState(1);
             {faqData.map((item) => (
               <div key={item.id} className="border-b py-4">
                 <button
-                  onClick={() => setOpen(open === item.id ? null : item.id)}
-                  className="flex justify-between w-full font-semibold"
+                  onClick={() =>
+                    setOpen(open === item.id ? null : item.id)
+                  }
+                  className="flex justify-between items-center w-full font-semibold"
                 >
                   {item.title}
                   {open === item.id ? <Minus /> : <Plus />}
@@ -193,14 +213,17 @@ const [open, setOpen] = useState(1);
 
                 <AnimatePresence>
                   {open === item.id && (
-                    <motion.p
+                    <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="mt-3 text-second"
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
                     >
-                      {item.content}
-                    </motion.p>
+                      <p className="mt-3 text-second">
+                        {item.content}
+                      </p>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>
@@ -209,16 +232,13 @@ const [open, setOpen] = useState(1);
         </div>
       </section>
 
-       <section className="">
-        <Testimonials />
-      </section>
+      <Testimonials />
+
       <section id="contact">
         <ContactSection />
       </section>
 
-      <section className="">
-        <ServiceFAQSection />
-      </section>
+      <ServiceFAQSection />
       <CallToAction />
     </div>
   );
