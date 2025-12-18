@@ -16,7 +16,7 @@ export function TrustedBy() {
   ];
 
   return (
-    <section className="py-16">
+    <section className="pt-16 md:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}

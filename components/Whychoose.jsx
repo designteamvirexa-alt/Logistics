@@ -30,7 +30,7 @@ const benefits = [
 
 export function WhyChoose() {
   return (
-    <section className="lg:py-16 sm:py-24 bg-white">
+    <section className="md:py-16 pb-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-4 ">Why Choose Frisbi?</h2>
         <p className="text-center text-second mb-12 max-w-2xl mx-auto">

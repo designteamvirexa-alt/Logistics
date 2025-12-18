@@ -68,6 +68,12 @@ p {
 .bg-primary {
   background-color: #013efe;
 }
+.ring-primary{
+   color: #013efe;
+}
+.border-primary{
+   color: #013efe;
+}
 .swiper-button-next,
 .swiper-button-prev {
   color: #fff !important; /* arrow color */

@@ -12,7 +12,7 @@ const useCases = [
 
 export function WhenToUse() {
   return (
-   <section className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden py-24"  style={{ backgroundImage: "url(/asset/background.png)" }} >
+   <section className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden md:py-16 py-16"  style={{ backgroundImage: "url(/asset/background.png)" }} >
         <div className="container mx-auto px-4 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* LEFT IMAGE */}
