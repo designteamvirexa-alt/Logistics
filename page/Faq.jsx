@@ -84,7 +84,7 @@ function Faq() {
           <div className="md:col-span-1">
             <div
               className="
-            bg-white rounded-3xl  shadow-lg p-4 
+            bg-white rounded-3xl  drop-shadow-[0_4px_100px_rgba(0,0,0,0.08)] p-4 
             md:sticky md:top-24 md:h-fit
           "
             >

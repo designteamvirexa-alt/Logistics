@@ -48,8 +48,7 @@ export default function Header({ mode = "default" }) {
         }
       `}
     >
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="font-bold">
           <Image
@@ -176,7 +175,7 @@ export default function Header({ mode = "default" }) {
           </Link>
 
           <Link
-            href="/contact"
+            href="/contact-us"
             className={`${
               isDarkHeader || scroll
                 ? "hover:text-blue-600"
@@ -276,7 +275,7 @@ export default function Header({ mode = "default" }) {
               FAQs
             </Link>
             <Link
-              href="/contact"
+              href="/contact-us"
               onClick={handleLinkClick}
               className="hover:text-blue-600"
             >
