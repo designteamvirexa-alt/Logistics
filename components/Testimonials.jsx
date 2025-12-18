@@ -21,7 +21,7 @@ export default function Testimonials() {
   const marqueeReviewsReverse = [...marqueeReviews];
 
   return (
-    <div className="py-24">
+    <div className="pb-16">
       <h2 className=" font-bold text-center mb-10">
         100% User Satisfaction
       </h2>
