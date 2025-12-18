@@ -10,7 +10,7 @@ function Shippingpolicy() {
   return (
     <div>
       {/* HERO SECTION */}
-      <div className="-mt-20">
+      <div className="-mt-24 -mt-16">
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ function Shippingpolicy() {
             alt="Track Package Background"
             fill
             priority
-            className="object-cover p-2 rounded-3xl"
+            className="object-cover p-3 rounded-3xl"
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">

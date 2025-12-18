@@ -152,7 +152,7 @@ export default function Footer() {
           <div className="flex items-center text-black gap-4 flex-wrap justify-center md:justify-start">
             <Link href="/terms-and-conditions">Terms and Condition</Link>
             <span>|</span>
-            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
             <span>|</span>
             <Link href="/shipping-policy">Shipping Policy</Link>
             <span>|</span>
