@@ -5,7 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { Check, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Link from "next/link";
 // Assets
 import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
@@ -55,7 +55,7 @@ export default function ExpressServices() {
   };
 
   return (
-    <div className="-mt-20">
+    <div className="-mt-24 -mt-16">
       {/* HERO */}
       <section className="relative h-[550px] md:h-[560px] rounded-3xl p-2">
         <Image
@@ -63,7 +63,7 @@ export default function ExpressServices() {
           alt="Express Delivery"
           fill
           priority
-          className="object-cover rounded-3xl p-2"
+          className="object-cover rounded-3xl p-3"
         />
 
         <div className="container relative z-10 mx-auto px-4 py-28">
@@ -98,12 +98,12 @@ export default function ExpressServices() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex gap-4"
           >
-            <button className="bg-white px-8 py-3 font-semibold rounded-full">
+            <Link href="#contact" className="bg-white px-8 py-3 font-semibold rounded-full">
               Book Now
-            </button>
-            <button className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full">
+            </Link>
+            <Link href="/rate-calculator" className="bg-white/10 border border-white/20  font-semibold text-white px-8 py-3 rounded-full">
               Rate Calculator
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function ExpressServices() {
           <Image
             src={one}
             alt="Overview"
-            className="rounded-3xl h-[450px] object-cover"
+            className="rounded-3xl h-[400px] object-cover"
           />
 
           <div className="md:col-span-2">
@@ -127,7 +127,7 @@ export default function ExpressServices() {
             <div className="grid lg:grid-cols-2 gap-6">
               <div className="bg-blue-50 p-6 rounded-3xl border">
                 <h4 className="font-semibold mb-4">Ideal for:</h4>
-                <ul className="space-y-3">
+                <ul className="space-y-3 font-semibold">
                   {idealFor.map((item, i) => (
                     <li key={i} className="flex gap-3">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2" />
@@ -139,7 +139,7 @@ export default function ExpressServices() {
 
               <div className="bg-green-50 p-6 rounded-3xl border">
                 <h4 className="font-semibold mb-4">This service ensures:</h4>
-                <ul className="space-y-3">
+                <ul className="space-y-3 font-semibold">
                   {ensures.map((item, i) => (
                     <li key={i} className="flex gap-3">
                       <Check className="text-green-600 w-5 h-5" />
@@ -161,9 +161,9 @@ export default function ExpressServices() {
       <TransformingCities />
 
       {/* WHY EXPRESS */}
-      <section className="px-4 py-24 bg-[#F1F2F6]">
+      <section className="px-4 py-24 ">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-          <Image src={location} alt="Locations" />
+          <Image src={location} alt="Locations" className="h-[400px] object-contain" />
 
           <div>
             <h2 className="text-3xl font-bold mb-4">
@@ -200,9 +200,16 @@ export default function ExpressServices() {
         </div>
       </section>
 
-      <Testimonials />
-      <ContactSection />
-      <ServiceFAQSection />
+      <section className="py-24">
+        <Testimonials />
+      </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
+
+      <section className="">
+        <ServiceFAQSection />
+      </section>
       <CallToAction />
     </div>
   );

@@ -46,7 +46,7 @@ function PricingStructure() {
   ];
 
   return (
-    <div className=" py-24">
+    <div className=" md:py-24 py-16">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

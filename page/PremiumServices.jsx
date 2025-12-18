@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Link from "next/link";
 // Assets
 import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
@@ -25,15 +25,9 @@ export default function PremiumServices() {
   /* ----------------------------------------
      ✅ CLIENT-ONLY RENDER FIX
   ---------------------------------------- */
-  const [mounted, setMounted] = useState(false);
+const [open, setOpen] = useState(1);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  /* ---------------------------------------- */
+ 
 
   const idealFor = [
     "High-value electronics",
@@ -49,7 +43,6 @@ export default function PremiumServices() {
     animate: { opacity: 1, y: 0 },
   };
 
-  const [open, setOpen] = useState<number | null>(1);
 
   const faqData = [
     {
@@ -80,15 +73,15 @@ export default function PremiumServices() {
   ];
 
   return (
-    <div className="-mt-20">
+    <div className="-mt-24 -mt-16">
       {/* HERO */}
-      <section className="relative h-[550px] md:h-[560px] rounded-3xl p-2">
+      <section className="relative h-[full] md:h-[560px] rounded-3xl p-2">
         <Image
           src={herobg}
           alt="Premium Delivery"
           fill
           priority
-          className="object-cover rounded-3xl"
+          className="object-cover rounded-3xl p-3"
         />
 
         <div className="container relative z-10 mx-auto px-4 py-28">
@@ -103,7 +96,7 @@ export default function PremiumServices() {
           <motion.h1
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white text-4xl md:text-6xl font-black mb-6"
+            className="text-white  mb-6"
           >
             Premium Delivery
           </motion.h1>
@@ -121,12 +114,12 @@ export default function PremiumServices() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex gap-4"
           >
-            <button className="bg-white px-8 py-3 rounded-full font-semibold">
+            <Link href="#contact" className="bg-white px-8 py-3 rounded-full font-semibold">
               Book Now
-            </button>
-            <button className="bg-white/10 border border-white/20 px-8 py-3 rounded-full text-white">
+            </Link>
+            <Link href="" className="bg-white/10 border border-white/20 px-8 py-3 font-semibold rounded-full text-white">
               View Pricing
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -137,7 +130,7 @@ export default function PremiumServices() {
           <Image
             src={one}
             alt="Overview"
-            className="rounded-3xl object-cover w-full h-[480px]"
+            className="rounded-3xl object-cover w-full h-[400px]"
           />
 
           <div className="md:col-span-2">
@@ -181,7 +174,7 @@ export default function PremiumServices() {
         style={{ backgroundImage: "url('/asset/background.png')" }}
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-          <Image src={location} alt="Locations" />
+          <Image src={location} alt="Locations" className="h-[400px] object-contain" />
 
           <div>
             <h2 className="text-3xl font-bold mb-6">
@@ -216,9 +209,16 @@ export default function PremiumServices() {
         </div>
       </section>
 
-      <Testimonials />
-      <ContactSection />
-      <ServiceFAQSection />
+       <section className="">
+        <Testimonials />
+      </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
+
+      <section className="">
+        <ServiceFAQSection />
+      </section>
       <CallToAction />
     </div>
   );
