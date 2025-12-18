@@ -79,7 +79,7 @@ export default function PremiumServices() {
   ];
 
   return (
-    <div className="-mt-24 md:-mt-16">
+    <div className="-mt-24 -mt-16">
       {/* ================= HERO ================= */}
       <section className="relative md:h-[560px] rounded-3xl p-2">
         <Image
