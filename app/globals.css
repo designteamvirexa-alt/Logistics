@@ -116,3 +116,25 @@ p {
     transform: translateX(0);
   }
 }
+
+.hero-section
+{
+  padding: 1.5rem;
+}
+
+
+@media only screen and (max-width: 1023px) {
+  .hero-section{
+  padding-left: 16px;
+  padding-right: 16px;
+}
+}
+@media screen and (max-width: 600px) {
+ .-mt-16{
+  margin-top: -5rem;
+}
+
+.content-top{
+  top:3rem;
+}
+}

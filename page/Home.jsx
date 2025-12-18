@@ -79,22 +79,26 @@ function Home() {
   return (
     <div>
       <HeroSlider />
-      <section className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden py-24"  style={{ backgroundImage: "url(/asset/background.png)" }} >
+
+      <section
+        className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden py-24"
+        style={{ backgroundImage: "url(/asset/background.png)" }}
+      >
         <div className="container mx-auto px-4 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 items-center">
             {/* LEFT IMAGE */}
             <div className="flex justify-center md:justify-start">
               <Image
                 src={location}
                 alt="location"
-                className="w-[100%] h-auto"
+                className="w-full h-auto"
                 priority
               />
             </div>
 
             {/* RIGHT CONTENT */}
             <div>
-              <h2 className="mb-7">
+              <h2 className="mb-6">
                 How to Ship with <span className="text-primary">Frisbi</span>
               </h2>
 
@@ -143,7 +147,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="relative py-36  bg-black overflow-x-hidden">
+      <section className="relative bg-black overflow-x-hidden">
         <CustomSlider />
       </section>
 
