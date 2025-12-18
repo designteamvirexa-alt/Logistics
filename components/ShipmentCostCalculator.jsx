@@ -87,8 +87,8 @@ export default function ShipmentCalculator() {
   };
 
   return (
-    <div className="w-full flex justify-center py-12 px-4">
-      <div className="w-full max-w-2xl bg-white shadow-xl rounded-3xl p-10">
+    <div className="w-full flex justify-center pb-12 px-4">
+      <div className="w-full max-w-2xl bg-white shadow-xl rounded-3xl p-8">
 
         <h2 className="text-center text-xl font-semibold">
           Calculate your shipment cost
