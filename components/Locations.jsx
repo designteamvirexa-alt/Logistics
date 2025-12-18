@@ -56,7 +56,6 @@ import Ghaziabad from "@/asset/cities/Ghaziabad.webp";
 import Noida from "@/asset/cities/Noida.webp";
 import Gurugram from "@/asset/cities/Gurugram.webp";
 
-
 // ✅ Fallback image
 import DefaultCity from "@/asset/cities/Bangalore.webp";
 
@@ -173,24 +172,23 @@ export default function TransformingCities() {
     Gurugram,
   };
 
+  // ✅ MOBILE: 3 per row × 4 rows = 12
   const visibleCities = showAll ? cities : cities.slice(0, 21);
 
   return (
     <section className="relative w-full bg-[#06030F] py-24">
-      <div className="relative container mx-auto px-4">
+      <div className="container mx-auto px-4">
 
-        <h2 className="text-center text-white font-bold ">
+        <h2 className="text-center text-white font-bold text-3xl">
           We are transforming cities
         </h2>
 
-        <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-y-12 gap-x-6 place-items-center">
-
+        <div className="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-y-12 gap-x-6 place-items-center">
           {visibleCities.map((city) => (
             <div key={city} className="flex flex-col items-center">
-
-              <div className=" rounded-2xl  flex items-center justify-center">
+              <div className="rounded-2xl flex items-center justify-center">
                 <Image
-                  src={cityImages[city] || DefaultCity} // ✅ correct
+                  src={cityImages[city] || DefaultCity}
                   alt={city}
                   width={80}
                   height={80}
