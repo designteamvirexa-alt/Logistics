@@ -26,7 +26,7 @@ export default function Services() {
   return (
     <div className="w-full">
       {/* ================= HERO ================= */}
-      <div className="-mt-20">
+      <div className="-mt-24 -mt-16">
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ export default function Services() {
             alt="Services Hero"
             fill
             priority
-            className="object-cover p-2 rounded-3xl"
+            className="object-cover p-3 rounded-3xl"
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
@@ -54,7 +54,7 @@ export default function Services() {
       </div>
 
       {/* ================= IMAGE GRID ================= */}
-      <section className="container mx-auto px-4 my-24">
+      <section className="container mx-auto px-4 my-24 mb-0">
         <h2 className="text-2xl md:text-3xl font-semibold mb-12">
           Delivering seamless <br /> logistics for your business
         </h2>
@@ -83,7 +83,7 @@ export default function Services() {
 
       {/* ================= LOGOS + SERVICES ================= */}
 
-      <div className="container mx-auto py-20">
+      <div className="container mx-auto py-16 md:py-16">
         <MarqueeLogos />
       </div>
 
@@ -122,7 +122,7 @@ export default function Services() {
       </section>
 
       <section className=" px-4 overflow-x-hidden">
-        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-auto py-24 px-4 sm:px-6 lg:px-8">
           <Testimonials />
         </div>
       </section>
@@ -130,11 +130,7 @@ export default function Services() {
       <section className=" bg-[#000] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-      <section className="py-24 pb-0 overflow-x-hidden ">
-        <div>
-          <FAQSection />
-        </div>
-      </section>
+      <FAQSection />
 
       <CallToAction />
 
