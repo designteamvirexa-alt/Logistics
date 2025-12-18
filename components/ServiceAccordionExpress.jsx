@@ -42,7 +42,7 @@ export default function FAQ() {
   const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-3xl mx-auto pt-24">
       <h2 className="text-center mb-10">Frequently asked questions</h2>
 
       <div className="space-y-6">
@@ -69,7 +69,7 @@ export default function FAQ() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.35 }}
-                    className="mt-4 text-[#7b7881] leading-relaxed overflow-hidden"
+                    className="mt-4 text-second leading-relaxed overflow-hidden"
                   >
                     {faq.answer}
                   </motion.p>

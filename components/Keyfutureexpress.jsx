@@ -95,7 +95,7 @@ export default function StickyStepsOverlap() {
             {steps.map((item, i) => (
               <div
                 key={i}
-                className="bg-white border border-gray-200 shadow-sm p-10 rounded-3xl transition-all duration-300"
+                className="bg-white border border-gray-200 p-10 rounded-3xl transition-all duration-300"
               >
                 <p className="text-xs tracking-widest text-gray-400 font-semibold mb-6">
                   {item.step}
