@@ -6,6 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Assets
@@ -70,7 +71,7 @@ export default function Slider({ title = "Our Core Strengths" }) {
   const nextRef = useRef(null);
 
   return (
-    <div className="w-full max-w-7xl mx-auto pt-20 px-4 relative">
+    <div className="w-full container mx-auto pt-20 px-4 relative">
       {/* Header + Arrows */}
       <div className="absolute -top-5 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <h2 className="text-white">{title}</h2>
@@ -108,7 +109,7 @@ export default function Slider({ title = "Our Core Strengths" }) {
           320: { slidesPerView: 1 },
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3.2 },
+          1024: { slidesPerView: 3 },
         }}
       >
         {servicesData.map((service, index) => (

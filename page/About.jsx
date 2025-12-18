@@ -12,11 +12,12 @@ import Testimonials from "@/components/Testimonials";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import CustomSlider from "@/components/LocationSlider";
 import Stats from "@/components/Stats";
-import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 import ContactSection from "@/components/ContactSection";
+import TransformingCities from "@/components/Locations"
+
 function Aboutus() {
   return (
-    <div className="-mt-20 ">
+    <div className="-mt-24 -mt-16 ">
       <motion.section
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +31,7 @@ function Aboutus() {
           alt="About Background"
           fill
           priority
-          className="object-cover p-2  rounded-3xl"
+          className="object-cover p-3  rounded-3xl"
         />
 
         {/* Gradient Overlay */}
@@ -48,20 +49,20 @@ function Aboutus() {
         </div>
       </motion.section>
 
-      <section className="max-w-7xl mx-auto px-4 pt-30">
+      <section className="container mx-auto px-4 py-16">
         {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* LEFT IMAGE (Always first on mobile) */}
-          <div className="w-full order-1">
+          <div className="w-full order-2">
             <Image
               src={aboutone}
               alt="Logistics"
-              className="rounded-3xl  w-full  h-[160px]  sm:h-[200px]  md:h-[260px]  lg:h-[600px] object-cover"
+              className="rounded-3xl  w-full  h-[500px]  sm:h-[200px]  md:h-[260px]  lg:h-[600px] object-cover"
             />
           </div>
 
           {/* RIGHT CONTENT (2nd on mobile) */}
-          <div className="flex flex-col space-y-3 md:space-y-3 order-2">
+          <div className="flex flex-col space-y-3 md:space-y-3 order-1">
             <p className=" font-medium">
               FAST, SMART & CONNECTED SUPPLY CHAINS
             </p>
@@ -70,7 +71,7 @@ function Aboutus() {
               Optimizing logistics <br /> with purpose
             </h2>
 
-            <p className="font-medium">
+            <p className="font-medium text-second">
               Supply is a leader in logistics, making shipping simple and
               reliable for any business that needs to move goods.
             </p>
@@ -82,7 +83,7 @@ function Aboutus() {
               className="
           rounded-3xl 
           w-full 
-          h-[160px] 
+          h-[500px] 
           sm:h-[200px] 
           md:h-[260px] 
           lg:h-[540px]
@@ -94,14 +95,13 @@ function Aboutus() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto lg:py-20 ">
+      <section className="container mx-auto px-4 pb-16 ">
         <MarqueeLogos />
       </section>
 
-      <section className="bg-[#000] py-30 pb-30">
-        <CustomSlider title="Our Key Locations" />
-      </section>
-      <section className="py-30">
+      <TransformingCities />
+
+      <section className="py-24">
         <Stats
           data={[
             { start: 0, end: 22, label: "Loads delivered" },
@@ -112,10 +112,10 @@ function Aboutus() {
         />
       </section>
 
-      <section className="pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4">
+      <section className="pb-24">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4">
           {/* LEFT GRID IMAGES */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 order-2">
             {/* BLUE BOX */}
             <div className="bg-primary rounded-3xl p-6 leading-[1.4] flex items-end justify-end text-white text-3xl font-semibold min-h-[150px] md:min-h-[200px]">
               Our Corporate Values
@@ -145,13 +145,13 @@ function Aboutus() {
           </div>
 
           {/* RIGHT CONTENT */}
-          <div>
+          <div className="order-1">
             <p className="text-xs tracking-wide  uppercase">
               Business forward with trust
             </p>
 
             <h2 className="text-3xl md:text-4xl font-bold mt-2">
-              Our Corporate Values
+              Our Frisbi Values
             </h2>
 
             <p className="text-second mt-4 leading-relaxed max-w-lg">
@@ -189,7 +189,7 @@ function Aboutus() {
         </div>
       </section>
 
-      <section>
+      <section className="px-4">
          <Testimonials />
       </section>
 
