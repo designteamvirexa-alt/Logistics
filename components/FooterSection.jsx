@@ -19,7 +19,7 @@ export default function Footer() {
         {/* LOGO + DESCRIPTION */}
         <div className="space-y-8 flex flex-col items-center md:items-start">
           <div className="flex items-center gap-2">
-            <Image src={Logo} alt="Frisbi" width={140} height={40} />
+            <Image src={Logo} alt="Frisbi" width={180} height={40} />
           </div>
 
           <p className="text-black">
@@ -71,17 +71,17 @@ export default function Footer() {
             <h4 className="font-semibold mb-5 text-lg">Services</h4>
             <ul className="space-y-4 text-sm font-semibold">
               <li>
-                <Link href="/services/standard" className="hover:text-blue-900">
+                <Link href="/services/standard-delivery" className="hover:text-blue-900">
                   • Standard Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/services/express" className="hover:text-blue-900">
+                <Link href="/services/express-delivery" className="hover:text-blue-900">
                   • Express Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/services/premium" className="hover:text-blue-900">
+                <Link href="/services/premium-delivery" className="hover:text-blue-900">
                   • Premium Transfer
                 </Link>
               </li>
@@ -99,7 +99,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/tracking" className="hover:text-blue-900">
+              <Link href="/track-your-package" className="hover:text-blue-900">
                 • Tracking
               </Link>
             </li>
@@ -114,7 +114,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-blue-900">
+              <Link href="/contact-us" className="hover:text-blue-900">
                 • Contact Us
               </Link>
             </li>

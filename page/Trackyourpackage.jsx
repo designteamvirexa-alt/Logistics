@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Testimonials from "@/components/Testimonials";
 import { motion } from "framer-motion";
 
 import MarqueeLogos from "@/components/MarqueeLogos";
@@ -17,7 +18,7 @@ function Trackyourpackage() {
   return (
     <div>
       {/* HERO SECTION */}
-      <div className="-mt-20">
+      <div className="-mt-24 -mt-16">
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,11 +31,13 @@ function Trackyourpackage() {
             alt="Track Package Background"
             fill
             priority
-            className="object-cover p-2 rounded-3xl"
+            className="object-cover p-3 rounded-3xl"
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-white text-3xl md:text-4xl">Track your package</h2>
+            <h2 className="text-white text-3xl md:text-4xl">
+              Track your package
+            </h2>
 
             <p className="text-white/80 mt-3 text-sm md:text-base">
               Home <span className="text-blue-200">›</span> Track your package
@@ -44,7 +47,7 @@ function Trackyourpackage() {
       </div>
 
       {/* LOGO MARQUEE */}
-      <section className="max-w-7xl mx-auto py-20">
+      <section className="container mx-auto py-16 ">
         <MarqueeLogos />
       </section>
 
@@ -110,15 +113,13 @@ function Trackyourpackage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24">
+      <section className="py-8 md:py-16">
         <FAQ />
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto">
-          <TestimonialSliderRight />
-        </div>
+      <section className="pb-24">
+        <Testimonials />
       </section>
     </div>
   );
