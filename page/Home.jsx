@@ -152,7 +152,7 @@ function Home() {
       </section>
 
       <section className="bg-[#F1F2F6]  overflow-x-hidden">
-        <div className=" lg:py-20 container  mx-auto">
+        <div className="py-20 container  mx-auto px-4">
           <MarqueeLogos />
         </div>
 
@@ -189,7 +189,7 @@ function Home() {
                     and hassle-free.
                   </p>
 
-                  <div className="grid grid-cols-2 gap-8 mb-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <div>
                       <div className="text-2xl font-bold mb-4">01</div>
                       <h4 className="text-xl font-semibold mb-2">
@@ -239,7 +239,7 @@ function Home() {
       </section>
 
       <section className=" px-4 overflow-x-hidden">
-        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-auto  ">
           <Testimonials />
         </div>
       </section>
@@ -247,7 +247,7 @@ function Home() {
       <section className=" bg-[#000] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-      <section className="py-24 overflow-x-hidden ">
+      <section className=" overflow-x-hidden ">
         <div>
           <FAQSection />
         </div>

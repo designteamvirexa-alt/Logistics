@@ -53,7 +53,7 @@ export default function Slider() {
       <div className="container mx-auto px-4">
 
         {/* HEADER */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-14">
           <h2 className="text-white text-xl">
             Why Choose Us — India’s Trusted Luggage Delivery
           </h2>
