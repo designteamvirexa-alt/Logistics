@@ -15,8 +15,6 @@ import Stats from "@/components/Stats";
 import ContactSection from "@/components/ContactSection";
 import TransformingCities from "@/components/Locations"
 
-
-
 function Aboutus() {
   return (
     <div className="-mt-24 -mt-16 ">
