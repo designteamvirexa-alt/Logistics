@@ -61,7 +61,7 @@ function ExpressServices() {
           alt="Express Delivery"
           fill
           priority
-          className="object-cover rounded-3xl"
+          className="object-cover rounded-3xl p-2"
         />
 
         <div className="container relative z-10 mx-auto px-4 py-28">

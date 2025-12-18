@@ -197,7 +197,7 @@ export default function ContactSection() {
       className="relative bg-cover bg-center overflow-x-hidden"
       style={{ backgroundImage: "url('/images/contact-bg.jpg')" }}
     >
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto py-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
