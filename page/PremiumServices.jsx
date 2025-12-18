@@ -69,7 +69,7 @@ function PremiumServices() {
   return (
     <div className="-mt-20">
       {/* HERO */}
-      <section className="relative h-[650px] md:h-[660px] rounded-3xl p-2">
+      <section className="relative h-[550px] md:h-[560px] rounded-3xl p-2">
         <div className="absolute inset-0 rounded-3xl overflow-hidden">
           <Image
             src={herobg}
