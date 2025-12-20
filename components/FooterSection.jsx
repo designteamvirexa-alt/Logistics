@@ -22,26 +22,29 @@ export default function Footer() {
             <Image src={Logo} alt="Frisbi" width={180} height={40} />
           </div>
 
-          <p className="text-black">
-           India’s Smart Luggage Delivery Solution
-          </p>
+          <p className="text-black">India’s Smart Luggage Delivery Solution</p>
 
           <div>
             <h4 className="font-semibold mb-2">Social Media</h4>
             <div className="flex items-center gap-4 justify-center md:justify-start">
+              {/* YouTube */}
               <Link href="#">
-                <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
-                  <FaYoutube className="w-5 h-5" />
+                <div className="p-3 bg-red-600 rounded-full hover:bg-red-700 transition">
+                  <FaYoutube className="w-5 h-5 text-white" />
                 </div>
               </Link>
+
+              {/* Instagram */}
               <Link href="#">
-                <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
-                  <FaInstagram className="w-5 h-5" />
+                <div className="p-3 bg-gradient-to-tr from-pink-500 via-purple-500 to-yellow-500 rounded-full hover:opacity-90 transition">
+                  <FaInstagram className="w-5 h-5 text-white" />
                 </div>
               </Link>
+
+              {/* Facebook */}
               <Link href="#">
-                <div className="p-2 bg-white/10 rounded-full backdrop-blur-lg hover:bg-white/20 transition">
-                  <FaFacebookF className="w-5 h-5" />
+                <div className="p-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">
+                  <FaFacebookF className="w-5 h-5 text-white" />
                 </div>
               </Link>
             </div>
@@ -70,17 +73,26 @@ export default function Footer() {
             <h4 className="font-semibold mb-5 text-lg">Services</h4>
             <ul className="space-y-4 text-sm font-semibold">
               <li>
-                <Link href="/services/standard-delivery" className="hover:text-blue-900">
+                <Link
+                  href="/services/standard-delivery"
+                  className="hover:text-blue-900"
+                >
                   • Standard Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/services/express-delivery" className="hover:text-blue-900">
+                <Link
+                  href="/services/express-delivery"
+                  className="hover:text-blue-900"
+                >
                   • Express Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/services/premium-delivery" className="hover:text-blue-900">
+                <Link
+                  href="/services/premium-delivery"
+                  className="hover:text-blue-900"
+                >
                   • Premium Transfer
                 </Link>
               </li>
@@ -122,20 +134,30 @@ export default function Footer() {
 
         {/* CONTACT */}
         <div className="flex flex-col items-center md:items-start">
-          <h4 className="font-semibold mb-5">Contact Us</h4>
-
-          <p className="text-black text-sm leading-relaxed text-center md:text-left">
-            Delhi-NCR | Bangalore | Hyderabad | Pune | Indore | Chandigarh |
-            Jaipur | Bhubaneswar
-          </p>
+          <h4 className="font-semibold mb-5">Support</h4>
+          <ul className="space-y-4 text-sm font-semibold">
+            <li>
+              <Link href="tel:9878798298" className="hover:text-blue-900">
+                • +91 987-879-8298
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="mailto:info@frisbi.in"
+                className="hover:text-blue-900"
+              >
+                • info@frisbi.in
+              </Link>
+            </li>
+          </ul>
 
           <div className="flex items-center gap-2 mt-5">
             <Link
-              href="https://wa.me/91XXXXXXXXXX"
+              href="https://wa.me/919878798298"
               target="_blank"
-              className="px-6 py-3 rounded-full font-semibold bg-primary text-white text-sm md:text-base hover:scale-105 transition-all"
+              className="px-6 py-3 rounded-full font-semibold bg-primary text-white text-[15px] hover:scale-105 transition-all"
             >
-              Whatsapp
+              Contact Support Team
             </Link>
           </div>
         </div>
