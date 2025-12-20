@@ -162,10 +162,7 @@ export default function Services() {
             <p className="text-white">✨ Safe. Affordable. Reliable.</p>
           </motion.div>
 
-          <motion.h1
-            {...fadeUp}
-            className="text-white  mb-6"
-          >
+          <motion.h1 {...fadeUp} className="text-white  mb-6">
             Standard Delivery
           </motion.h1>
 
@@ -215,7 +212,7 @@ export default function Services() {
                 <ul className="space-y-3 font-semibold">
                   {idealFor.map((item, i) => (
                     <li key={i} className="flex gap-3">
-                        <Check className="w-5 h-5 text-primary" />
+                      <Check className="w-5 h-5 text-primary" />
                       {item}
                     </li>
                   ))}
@@ -248,9 +245,7 @@ export default function Services() {
       <section className=" ">
         <div className="py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center mb-4">
-              Why Choose Us?
-            </h2>
+            <h2 className="text-center mb-4">Why Choose Us?</h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               {steps.map((step, index) => (
@@ -281,9 +276,12 @@ export default function Services() {
       <section className="pb-16">
         <Testimonials />
       </section>
-      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden " id="contact">
-             <ContactSection />
-           </section>
+      <section
+        className=" bg-[#F1F2F6] mx-auto overflow-x-hidden "
+        id="contact"
+      >
+        <ContactSection />
+      </section>
 
       <section className="pt-24">
         <ServiceFAQSection />
