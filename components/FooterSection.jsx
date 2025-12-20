@@ -57,12 +57,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-5 text-lg">Book Pickup</h4>
             <ul className="space-y-4 text-sm font-semibold">
               <li>
-                <Link href="/corporate" className="hover:text-blue-900">
+                <Link href="/book/corporate" className="hover:text-blue-900">
                   • Corporate
                 </Link>
               </li>
               <li>
-                <Link href="/individual" className="hover:text-blue-900">
+                <Link href="/book/individual" className="hover:text-blue-900">
                   • Individual
                 </Link>
               </li>
@@ -166,18 +166,18 @@ export default function Footer() {
       {/* BOTTOM LINE */}
       <div className="border-t border-gray-700 mt-12 pt-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-between text-sm text-gray-400 gap-4 items-center">
-          <span className="text-[14px] text-black">
+          <span className="text-[14px] text-black text-sm font-medium">
             Copyright © 2026 – All Right Reserved
           </span>
 
-          <div className="flex items-center text-black gap-4 flex-wrap justify-center md:justify-start">
-            <Link href="/terms-and-conditions">Terms and Condition</Link>
+          <div className="flex items-center text-black text-sm font-medium gap-4 flex-wrap justify-center md:justify-start">
+            <Link href="/terms-and-conditions" className="hover:text-blue-900">Terms and Condition</Link>
             <span>|</span>
-            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-blue-900">Privacy Policy</Link>
             <span>|</span>
-            <Link href="/shipping-policy">Shipping Policy</Link>
+            <Link href="/shipping-policy" className="hover:text-blue-900">Shipping Policy</Link>
             <span>|</span>
-            <Link href="/sitemap">Sitemap</Link>
+            <Link href="/sitemap" className="hover:text-primary-900">Sitemap</Link>
           </div>
         </div>
       </div>

@@ -5,6 +5,15 @@ import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { Check } from "lucide-react";
+import {
+  MessageSquare,
+  FileText,
+  Calendar,
+  Radar,
+  CheckCircle,
+} from "lucide-react";
+import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
 import herobg from "@/asset/service/standard-services.png";
@@ -50,33 +59,39 @@ export default function PremiumServices() {
     animate: { opacity: 1, y: 0 },
   };
 
-  const faqData = [
+  const steps = [
     {
-      id: 1,
-      title: "1. Maximum Security",
-      content: "Tamper-proof seals & minimal handling points.",
+      number: "1",
+      icon: MessageSquare,
+      title: "Maximum Security",
+      description: "Tamper-proof seals & minimal handling points.",
     },
     {
-      id: 2,
-      title: "2. Best for High-Value Goods",
-      content: "Perfect for expensive & sensitive shipments.",
+      number: "2",
+      icon: FileText,
+      title: "Best for High-Value Goods",
+      description: "Perfect for expensive & sensitive shipments.",
     },
     {
-      id: 3,
-      title: "3. Guaranteed Priority",
-      content: "No delays. No compromise.",
+      number: "3",
+      icon: Calendar,
+      title: "Guaranteed Priority",
+      description: "No delays. No compromise.",
     },
     {
-      id: 4,
-      title: "4. Complete Transparency",
-      content: "Live updates, call support & delivery proof.",
+      number: "4",
+      icon: Radar,
+      title: "Complete Transparency",
+      description: "Live updates, call support & delivery proof.",
     },
     {
-      id: 5,
-      title: "5. Peace of Mind",
-      content: "Handled by trained professionals only.",
+      number: "5",
+      icon: CheckCircle,
+      title: "Peace of Mind",
+      description: "Handled by trained professionals only.",
     },
   ];
+
 
   return (
     <div className="-mt-24 -mt-16">
@@ -138,6 +153,8 @@ export default function PremiumServices() {
         </div>
       </section>
 
+      <MarqueeLogos />
+
       {/* ================= OVERVIEW ================= */}
       <section className="py-24 px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10">
@@ -148,9 +165,7 @@ export default function PremiumServices() {
           />
 
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-4">
-              Frisbi Premium Overview
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Frisbi Premium Overview</h2>
 
             <p className="text-second mb-6">
               Premium Delivery is designed for shipments that require absolute
@@ -162,7 +177,7 @@ export default function PremiumServices() {
               <ul className="space-y-3">
                 {idealFor.map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2" />
+                    <Check className="w-5 h-5 text-primary" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -183,58 +198,45 @@ export default function PremiumServices() {
       <TransformingCities />
 
       {/* ================= WHY PREMIUM ================= */}
-      <section
-        className="px-4 py-24 bg-cover bg-center"
-        style={{ backgroundImage: "url('/asset/background.png')" }}
-      >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-          <Image
-            src={location}
-            alt="Locations"
-            className="h-[400px] object-contain"
-          />
+     <section className=" ">
+        <div className="py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center mb-4">Why Choose Premium Delivery?</h2>
 
-          <div>
-            <h2 className="text-3xl font-bold mb-6">
-              Why Choose Premium Delivery?
-            </h2>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {steps.map((step, index) => (
+                <div key={index} className="relative">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="relative mb-4">
+                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                        <step.icon className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
+                        {step.number}
+                      </div>
+                    </div>
+                    <h4 className="mb-2">{step.title}</h4>
+                    <p className="text-second">{step.description}</p>
+                  </div>
 
-            {faqData.map((item) => (
-              <div key={item.id} className="border-b py-4">
-                <button
-                  onClick={() =>
-                    setOpen(open === item.id ? null : item.id)
-                  }
-                  className="flex justify-between items-center w-full font-semibold"
-                >
-                  {item.title}
-                  {open === item.id ? <Minus /> : <Plus />}
-                </button>
-
-                <AnimatePresence>
-                  {open === item.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="mt-3 text-second">
-                        {item.content}
-                      </p>
-                    </motion.div>
+                  {index < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-gradient-to-r from-blue-500 to-transparent" />
                   )}
-                </AnimatePresence>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <Testimonials />
+      <section className="pb-16">
+        <Testimonials />
+      </section>
 
-      <section id="contact">
+      <section
+        className=" bg-[#F1F2F6] mx-auto overflow-x-hidden "
+        id="contact"
+      >
         <ContactSection />
       </section>
 

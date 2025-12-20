@@ -6,10 +6,21 @@ import dynamic from "next/dynamic";
 import { Check, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import MarqueeLogos from "@/components/MarqueeLogos";
+
 // Assets
+
+import {
+  MessageSquare,
+  FileText,
+  Calendar,
+  Radar,
+  CheckCircle,
+} from "lucide-react";
 import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
 import location from "@/asset/location.png";
+import { WhyChoose } from "@/components/Whychoose";
 
 // 🔥 SSR-SAFE DYNAMIC IMPORTS
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {
@@ -44,9 +55,47 @@ const TransformingCities = dynamic(() => import("@/components/Locations"), {
   ssr: false,
 });
 
+const WhyChooseProcess = dynamic(
+  () => import("@/components/WhychooseProcess"),
+  {
+    ssr: false,
+  }
+);
+
 export default function Services() {
   const [open, setOpen] = useState(1);
-
+  const steps = [
+    {
+      number: "1",
+      icon: MessageSquare,
+      title: "Low-Cost Shipping",
+      description: "Designed for cost-conscious customers and SMEs.",
+    },
+    {
+      number: "2",
+      icon: FileText,
+      title: "Safe & Secure Transport",
+      description: "Barcode tracking, sealed bags, professional handlers.",
+    },
+    {
+      number: "3",
+      icon: Calendar,
+      title: "Wide Delivery Network",
+      description: "Fast-growing logistics chain covering India.",
+    },
+    {
+      number: "4",
+      icon: Radar,
+      title: "Shipment Updates",
+      description: "Every movement is recorded & notified.",
+    },
+    {
+      number: "5",
+      icon: CheckCircle,
+      title: "No Hidden Charges",
+      description: "Upfront pricing before booking.",
+    },
+  ];
   const idealFor = [
     "Small businesses",
     "E-commerce sellers",
@@ -62,33 +111,7 @@ export default function Services() {
     "Full tracking visibility",
   ];
 
-  const faqData = [
-    {
-      id: 1,
-      title: "1. Low-Cost Shipping",
-      content: "Designed for cost-conscious customers and SMEs.",
-    },
-    {
-      id: 2,
-      title: "2. Safe & Secure Transport",
-      content: "Barcode tracking, sealed bags, professional handlers.",
-    },
-    {
-      id: 3,
-      title: "3. Wide Delivery Network",
-      content: "Fast-growing logistics chain covering India.",
-    },
-    {
-      id: 4,
-      title: "4. Shipment Updates",
-      content: "Every movement is recorded & notified.",
-    },
-    {
-      id: 5,
-      title: "5. No Hidden Charges",
-      content: "Upfront pricing before booking.",
-    },
-  ];
+
 
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -115,10 +138,7 @@ export default function Services() {
             <p className="text-white">✨ Safe. Affordable. Reliable.</p>
           </motion.div>
 
-          <motion.h1
-            {...fadeUp}
-            className="text-white text-4xl md:text-6xl font-black mb-6"
-          >
+          <motion.h1 {...fadeUp} className="text-white  mb-6">
             Standard Delivery
           </motion.h1>
 
@@ -133,7 +153,7 @@ export default function Services() {
           <motion.div {...fadeUp} className="flex gap-4">
             <Link
               href="#contact"
-              className="bg-white px-8 py-3 font-semibold rounded-full"
+              className="bg-white px-8 py-3 font-semibold text-[15px] rounded-full"
             >
               Book Now
             </Link>
@@ -147,8 +167,9 @@ export default function Services() {
         </div>
       </section>
 
+      <MarqueeLogos />
       {/* OVERVIEW */}
-      <section className="py-16 px-4">
+      <section className="py-24 pb-0 px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10 order-2">
           <Image
             src={one}
@@ -156,9 +177,11 @@ export default function Services() {
             className="rounded-3xl h-[400px] object-cover "
           />
 
-          <div className="md:col-span-2 order-1">
-            <h2 className="text-4xl font-bold mb-4">Frisbi Overview</h2>
-            <p className="text-second mb-8">
+          <div className="md:col-span-2  order-1">
+            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">
+              Frisbi Standard Overview
+            </h2>
+            <p className="text-second mb-8 text-center md:text-start">
               Budget-friendly shipping without compromising safety.
             </p>
 
@@ -168,7 +191,7 @@ export default function Services() {
                 <ul className="space-y-3 font-semibold">
                   {idealFor.map((item, i) => (
                     <li key={i} className="flex gap-3">
-                      <span className="w-2 h-2 bg-primary rounded-full mt-2" />
+                      <Check className="w-5 h-5 text-primary" />
                       {item}
                     </li>
                   ))}
@@ -198,45 +221,44 @@ export default function Services() {
       <TransformingCities />
 
       {/* FAQ */}
-      <section className="bg-[#F1F2F6] py-24 px-4">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-          <Image src={location} alt="Location" />
+      <section className=" ">
+        <div className="py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center mb-4">Why Choose Standard Delivery?</h2>
 
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {steps.map((step, index) => (
+                <div key={index} className="relative">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="relative mb-4">
+                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                        <step.icon className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
+                        {step.number}
+                      </div>
+                    </div>
+                    <h4 className="mb-2">{step.title}</h4>
+                    <p className="text-second">{step.description}</p>
+                  </div>
 
-            {faqData.map((item) => (
-              <div key={item.id} className="border-b py-4">
-                <button
-                  onClick={() => setOpen(open === item.id ? null : item.id)}
-                  className="flex w-full justify-between font-semibold"
-                >
-                  {item.title}
-                  {open === item.id ? <Minus /> : <Plus />}
-                </button>
-
-                <AnimatePresence>
-                  {open === item.id && (
-                    <motion.p
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="mt-3 text-second"
-                    >
-                      {item.content}
-                    </motion.p>
+                  {index < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-gradient-to-r from-blue-500 to-transparent" />
                   )}
-                </AnimatePresence>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="pb-16">
         <Testimonials />
       </section>
-      <section id="contact">
+      <section
+        className=" bg-[#F1F2F6] mx-auto overflow-x-hidden "
+        id="contact"
+      >
         <ContactSection />
       </section>
 

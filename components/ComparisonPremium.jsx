@@ -62,19 +62,19 @@ export default function ServiceComparison() {
                       key={index}
                       className="hover:bg-blue-50 transition-colors"
                     >
-                      <td className="px-6 py-4 text-slate-700">
+                      <td className="px-6 py-4 text-black font-semibold">
                         {row.feature}
                       </td>
 
-                      <td className="px-6 py-4 text-center text-slate-600">
+                      <td className="px-6 py-4 text-center text-black font-medium">
                         {row.standard}
                       </td>
 
-                      <td className="px-6 py-4 text-center text-slate-600">
+                      <td className="px-6 py-4 text-center text-black font-medium">
                         {row.express}
                       </td>
 
-                      <td className="px-6 py-4 text-center text-purple-900 bg-purple-50">
+                      <td className="px-6 py-4 text-center font-semibold text-primary bg-blue-50">
                         {row.premium}
                       </td>
                     </tr>
