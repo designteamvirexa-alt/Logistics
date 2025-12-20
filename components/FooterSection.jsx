@@ -23,8 +23,7 @@ export default function Footer() {
           </div>
 
           <p className="text-black">
-            We don’t just build apps, we create brand. Choosing us will be your
-            best decision.
+           India’s Smart Luggage Delivery Solution
           </p>
 
           <div>

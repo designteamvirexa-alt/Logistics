@@ -6,131 +6,6 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-/* ---------------- FLOATING INPUT ---------------- */
-
-function FloatingInput({ label, type = "text", name, value, onChange }) {
-  return (
-    <div className="relative w-full">
-      <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder=" "
-        required
-        className="peer w-full bg-white/5 border border-white/10 text-white px-4 py-4 rounded-xl outline-none focus:border-primary transition placeholder-transparent"
-      />
-      <label
-        className="
-        absolute left-4 top-4 text-white/70 text-sm transition-all
-
-        peer-placeholder-shown:top-4
-        peer-placeholder-shown:text-sm
-        peer-placeholder-shown:bg-transparent
-        peer-placeholder-shown:px-0
-
-        peer-focus:-top-2
-        peer-focus:text-xs
-        peer-focus:text-primary
-        peer-focus:bg-black
-        peer-focus:px-1
-
-        peer-valid:-top-2
-        peer-valid:text-xs
-        peer-valid:bg-black
-        peer-valid:px-1
-        "
-      >
-        {label}
-      </label>
-    </div>
-  );
-}
-
-/* ---------------- FLOATING SELECT ---------------- */
-
-function FloatingSelect({ label, name, value, onChange, options = [] }) {
-  return (
-    <div className="relative w-full">
-      <select
-        name={name}
-        value={value}
-        onChange={onChange}
-        required
-        className="peer w-full bg-white/5 border border-white/10 text-white px-4 py-4 rounded-xl outline-none focus:border-primary appearance-none transition"
-      >
-        <option value="" disabled hidden></option>
-        {options.map((opt, i) => (
-          <option key={i} value={opt} className="bg-gray-900 text-white">
-            {opt}
-          </option>
-        ))}
-      </select>
-
-      <label
-        className="
-        absolute left-4 top-4 text-white/70 text-sm transition-all
-
-        peer-focus:-top-2
-        peer-focus:text-xs
-        peer-focus:bg-black
-        peer-focus:px-1
-
-        peer-valid:-top-2
-        peer-valid:text-xs
-        peer-valid:bg-black
-        peer-valid:px-1
-        "
-      >
-        {label}
-      </label>
-    </div>
-  );
-}
-
-/* ---------------- FLOATING TEXTAREA ---------------- */
-
-function FloatingTextarea({ label, name, value, onChange }) {
-  return (
-    <div className="relative w-full">
-      <textarea
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder=" "
-        rows={5}
-        required
-        className="peer w-full bg-white/5 border border-white/10 text-white px-4 py-4 rounded-xl outline-none focus:border-primary transition placeholder-transparent"
-      />
-
-      <label
-        className="
-        absolute left-4 top-4 text-white/70 text-sm transition-all
-
-        peer-placeholder-shown:top-4
-        peer-placeholder-shown:text-sm
-        peer-placeholder-shown:bg-transparent
-        peer-placeholder-shown:px-0
-
-        peer-focus:-top-2
-        peer-focus:text-xs
-        peer-focus:bg-black
-        peer-focus:px-1
-
-        peer-valid:-top-2
-        peer-valid:text-xs
-        peer-valid:bg-black
-        peer-valid:px-1
-        "
-      >
-        {label}
-      </label>
-    </div>
-  );
-}
-
-/* ---------------- MAIN CONTACT SECTION ---------------- */
-
 export default function ContactSection() {
   const router = useRouter();
 
@@ -143,11 +18,11 @@ export default function ContactSection() {
   });
 
   const services = [
-    "Web Development",
-    "App Development",
-    "SEO Optimization",
-    "UI/UX Design",
-    "Digital Marketing",
+    "Standard Delivery",
+    "Express Delivery",
+    "Premium Delivery",
+    "Corporate",
+    "Individual",
   ];
 
   const handleChange = (e) => {
@@ -186,23 +61,22 @@ export default function ContactSection() {
       } else {
         toast.error("Error submitting form");
       }
-    } catch (error) {
+    } catch (err) {
       toast.error("Something went wrong");
-      console.error(error);
+      console.error(err);
     }
   };
 
   return (
     <section
-      className="relative bg-cover bg-center overflow-x-hidden"
-      style={{ backgroundImage: "url('/images/contact-bg.jpg')" }}
+      className="relative bg-cover bg-center"
+      style={{ backgroundImage: "url('/asset/contact-bg.jpg')" }}
     >
-      <div className="absolute inset-0 bg-black"></div>
+      <div className="absolute inset-0 bg-primary"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto py-20 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
-          {/* LEFT CONTENT */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -215,13 +89,21 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-white/90 max-w-md">
-              Have a question, suggestion, or just want to say hi? We’re here and happy to hear from you!
+              Have a question or need help? Feel free to reach out.
             </p>
 
             <div className="space-y-8 mt-8">
-              <Info icon={MapPin} title="Office Location" value="100 S Main St, New York, NY" />
-              <Info icon={Mail} title="Send a Message" value="contact@frisbi.in" />
-              <Info icon={Phone} title="Call Us Directly" value="+91 987-879-8298" />
+              <Info
+                icon={MapPin}
+                title="Office Location"
+                value="100 S Main St, New York, NY"
+              />
+              <Info icon={Mail} title="Send a Message" value="info@frisbi.in" />
+              <Info
+                icon={Phone}
+                title="Call Us Directly"
+                value="+91 987-879-8298"
+              />
             </div>
           </motion.div>
 
@@ -231,39 +113,89 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl"
+            className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 rounded-2xl"
           >
             <h3 className="text-xl font-semibold text-white mb-6">
               Get In Touch
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FloatingInput label="Name" name="name" value={form.name} onChange={handleChange} />
-                <FloatingInput label="Email Address" name="email" value={form.email} onChange={handleChange} />
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none placeholder:text-white
+             placeholder:text-sm placeholder:font-medium"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none placeholder:text-white
+             placeholder:text-sm placeholder:font-medium"
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FloatingSelect
-                  label="Select Service"
+                <select
                   name="service"
                   value={form.service}
                   onChange={handleChange}
-                  options={services}
+                  required
+                  className={`w-full px-4 py-3 rounded-xl 
+    bg-white/5 border border-white/10 
+    outline-none 
+    ${form.service ? "text-white" : "text-white"}
+    text-sm`}
+                >
+                  {/* Placeholder option */}
+                  <option value="" disabled hidden className="text-white ">
+                    Select Service
+                  </option>
+
+                  {services.map((s, i) => (
+                    <option
+                      key={i}
+                      value={s}
+                      className="bg-black text-white text-sm font-medium"
+                    >
+                      {s}
+                    </option>
+                  ))}
+                </select>
+
+                <input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none placeholder:text-white
+             placeholder:text-sm placeholder:font-medium"
                 />
-                <FloatingInput label="Phone Number" name="phone" value={form.phone} onChange={handleChange} />
               </div>
 
-              <FloatingTextarea
-                label="Write your message"
+              <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
+                rows={5}
+                placeholder="Write your message"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-non placeholder:text-white
+             placeholder:text-sm placeholder:font-medium"
               />
 
               <button
                 type="submit"
-                className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition"
+                className="w-full bg-white text-primary font-semibold py-3 rounded-full"
               >
                 Get a Free Quote
               </button>
@@ -274,8 +206,6 @@ export default function ContactSection() {
     </section>
   );
 }
-
-/* ---------------- INFO ITEM ---------------- */
 
 function Info({ icon: Icon, title, value }) {
   return (

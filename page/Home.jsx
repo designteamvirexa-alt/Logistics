@@ -147,7 +147,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="relative bg-black overflow-x-hidden">
+      <section className="relative bg-primary overflow-x-hidden" >
         <CustomSlider />
       </section>
 
@@ -160,9 +160,9 @@ function Home() {
           <ServicesSection />
         </div>
 
-        <section className="  container mx-auto relative text-white px-4 pt-10 pb-20 sm:px-6 lg:px-8 ">
-          <div className="relative  mx-auto overflow-hidden rounded-3xl">
-            <video
+        <section className="   container mx-auto relative text-white px-4 pt-10 pb-20 sm:px-6 lg:px-8 ">
+          <div className="relative  mx-auto overflow-hidden bg-primary rounded-3xl">
+           {/* <video
               autoPlay
               muted
               loop
@@ -171,7 +171,7 @@ function Home() {
               className="absolute inset-0 w-full h-full object-cover z-0"
             >
               <source src="/videos/bg.mp4" type="video/mp4" />
-            </video>
+            </video>  */}
 
             <div className="relative z-10 p-6 md:p-12 ">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -215,7 +215,7 @@ function Home() {
 
                   <Link
                     href="/about"
-                    className="bg-primary text-lg text-white font-semibold py-3 px-10 rounded-full transition hover:opacity-90 w-fit"
+                    className="bg-white text-[16px] text-primary font-semibold py-3 px-10 rounded-full transition hover:opacity-90 w-fit"
                   >
                     Explore more
                   </Link>
@@ -239,20 +239,20 @@ function Home() {
       </section>
 
       <section className=" px-4 overflow-x-hidden">
-        <div className=" mx-auto  ">
+        <div className=" mx-auto  pt-24">
           <Testimonials />
         </div>
       </section>
 
-      <section className=" bg-[#000] mx-auto overflow-x-hidden ">
-        <ContactSection />
-      </section>
+    
       <section className=" overflow-x-hidden ">
         <div>
           <FAQSection />
         </div>
       </section>
-
+  <section className=" bg-primary mx-auto overflow-x-hidden ">
+        <ContactSection />
+      </section>
       <CallToAction />
     </div>
   );
