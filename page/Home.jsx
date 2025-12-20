@@ -9,12 +9,14 @@ import {
   Plane,
   User2,
 } from "lucide-react";
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
 
 import About from "@/asset/about-us.png";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
+
 import Image from "next/image";
 import background from "@/asset/background.png";
 import location from "@/asset/location.png";
@@ -35,6 +37,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 import FAQSection from "@/components/Accordion";
 import ContactSection from "@/components/ContactSection";
+import HowToShip from "@/components/HowToShip";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
 
@@ -167,13 +170,15 @@ function Home() {
         </div>
       </section>
 
-      <section
+      <HowToShip />
+
+      {/* <section
         className="w-full bg-cover bg-center bg-no-repeat overflow-x-hidden py-24"
         style={{ backgroundImage: "url(/asset/background.png)" }}
       >
         <div className="container mx-auto px-4 md:px-10">
           <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 items-center">
-            {/* LEFT IMAGE */}
+            
             <div className="flex justify-center md:justify-start">
               <Image
                 src={location}
@@ -183,7 +188,7 @@ function Home() {
               />
             </div>
 
-            {/* RIGHT CONTENT */}
+            
             <div>
               <h2 className="mb-6">
                 How to Ship with <span className="text-primary">Frisbi</span>
@@ -194,7 +199,7 @@ function Home() {
                 items securely, and we’ll take care of everything else
               </p>
 
-              {/* FAQ */}
+              
               <div>
                 {faqData.map((step) => (
                   <div key={step.id} className="border-b py-4">
@@ -230,14 +235,14 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="relative bg-primary overflow-x-hidden">
         <CustomSlider />
       </section>
 
       <section className=" px-4 overflow-x-hidden">
-        <div className=" mx-auto  pt-24">
+        <div className=" mx-auto  pt-16">
           <Testimonials />
         </div>
       </section>
@@ -247,10 +252,54 @@ function Home() {
           <FAQSection />
         </div>
       </section>
-      <section className=" bg-primary mx-auto overflow-x-hidden ">
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-      <CallToAction />
+     <section className="w-full px-4 md:px-10 my-24 ">
+           <div className="relative container mx-auto rounded-3xl overflow-hidden">
+     
+             {/* Background Image */}
+             <Image
+               src={bg}
+               alt="CTA background"
+               fill
+               className="object-cover"
+               priority
+             />
+     
+             {/* Gradient overlay */}
+             {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+     
+           
+     
+             {/* CONTENT */}
+             <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.5 }}
+               className="relative z-10 text-center py-16 md:py-20 px-6"
+             >
+               <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
+                 From Your Door to Their Door.
+
+               </h2>
+     
+               <p className="text-white mb-8 text-sm md:text-base">
+                 Fast, safe, and affordable – trusted by thousands across India.
+               </p>
+     
+               <div className="flex flex-wrap justify-center gap-4">
+                 <Link href="/contact-us" className="bg-white text-black px-6 py-3 rounded-full 
+                                    font-semibold text-sm md:text-base 
+                                    hover:scale-105 transition-all">
+                   Contact Us 
+                 </Link>
+     
+                 
+               </div>
+             </motion.div>
+           </div>
+         </section>
     </div>
   );
 }
