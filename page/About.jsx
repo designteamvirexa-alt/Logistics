@@ -13,7 +13,7 @@ import MarqueeLogos from "@/components/MarqueeLogos";
 import CustomSlider from "@/components/LocationSlider";
 import Stats from "@/components/Stats";
 import ContactSection from "@/components/ContactSection";
-import TransformingCities from "@/components/Locations"
+import TransformingCities from "@/components/Locations";
 
 function Aboutus() {
   return (
@@ -98,8 +98,6 @@ function Aboutus() {
       <section className="container mx-auto px-4 pb-16 ">
         <MarqueeLogos />
       </section>
-
-      <TransformingCities />
 
       <section className="py-24">
         <Stats
@@ -189,15 +187,16 @@ function Aboutus() {
         </div>
       </section>
 
-      <section className="px-4">
-         <Testimonials />
-      </section>
+      <TransformingCities />
 
-      <section className="mt-7 bg-[#050A1F] mx-auto">
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
+      <section className="px-4 pt-24">
+        <Testimonials />
+      </section>
 
-       <CallToAction />
+      <CallToAction />
     </div>
   );
 }

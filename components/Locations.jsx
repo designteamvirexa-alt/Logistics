@@ -176,11 +176,11 @@ export default function TransformingCities() {
   const visibleCities = showAll ? cities : cities.slice(0, 21);
 
   return (
-    <section className="relative w-full bg-[#06030F] py-24">
+    <section className="relative w-full bg-primary py-24">
       <div className="container mx-auto px-4">
 
         <h2 className="text-center text-white font-bold text-3xl">
-          We are transforming cities
+          We Are Transforming Cities
         </h2>
 
         <div className="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-y-12 gap-x-6 place-items-center">
