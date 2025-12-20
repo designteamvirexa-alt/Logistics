@@ -164,7 +164,7 @@ export default function Services() {
 
           <motion.h1
             {...fadeUp}
-            className="text-white text-4xl md:text-6xl font-black mb-6"
+            className="text-white  mb-6"
           >
             Standard Delivery
           </motion.h1>
@@ -180,7 +180,7 @@ export default function Services() {
           <motion.div {...fadeUp} className="flex gap-4">
             <Link
               href="#contact"
-              className="bg-white px-8 py-3 font-semibold rounded-full"
+              className="bg-white px-8 py-3 font-semibold text-[15px] rounded-full"
             >
               Book Now
             </Link>
@@ -195,7 +195,7 @@ export default function Services() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="py-16 px-4">
+      <section className="py-16 pb-0 px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10 order-2">
           <Image
             src={one}
@@ -215,7 +215,7 @@ export default function Services() {
                 <ul className="space-y-3 font-semibold">
                   {idealFor.map((item, i) => (
                     <li key={i} className="flex gap-3">
-                      <span className="w-2 h-2 bg-primary rounded-full mt-2" />
+                        <Check className="w-5 h-5 text-primary" />
                       {item}
                     </li>
                   ))}
@@ -278,12 +278,12 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="pb-16">
         <Testimonials />
       </section>
-      <section id="contact">
-        <ContactSection />
-      </section>
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden " id="contact">
+             <ContactSection />
+           </section>
 
       <section className="pt-24">
         <ServiceFAQSection />
