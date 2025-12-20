@@ -43,11 +43,11 @@ function RateCalculator() {
         </motion.section>
       </div>
 
-      <section className="container mx-auto py-16 px-4">
+      
         <MarqueeLogos />
-      </section>
+     
 
-      <section>
+      <section className="py-24 pb-0">
         <ShipmentCostCalculator />
       </section>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqData = [
   {
@@ -85,7 +85,7 @@ export default function FAQ() {
                   onClick={() => toggle(i)}
                 >
                   <h4 className="font-semibold text-lg">{faq.question}</h4>
-                  <Minus className="w-6 h-6 text-gray-600" />
+                  <ChevronUp className="w-6 h-6 text-black" />
                 </div>
 
                 <AnimatePresence>
@@ -109,26 +109,25 @@ export default function FAQ() {
                 <h4 className="font-medium text-lg text-gray-900">
                   {faq.question}
                 </h4>
-                <Plus className="w-6 h-6 text-gray-600" />
+                <ChevronDown className="w-6 h-6 text-black" />
               </div>
             )}
           </div>
         ))}
       </div>
 
-      {/* View More / View Less */}
       <div className="flex justify-center mt-10">
         {!showAll ? (
           <button
             onClick={() => setShowAll(true)}
-            className="bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full  transition"
+            className="bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full"
           >
             View More
           </button>
         ) : (
           <button
             onClick={() => setShowAll(false)}
-            className="bg-gray-200 text-[16px] text-gray-900 font-semibold py-3 px-12 rounded-full transition"
+            className="bg-gray-200 text-[16px] text-gray-900 font-semibold py-3 px-12 rounded-full"
           >
             View Less
           </button>
