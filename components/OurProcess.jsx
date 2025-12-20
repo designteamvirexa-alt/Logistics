@@ -80,7 +80,7 @@ export function HowItWorks() {
          
 
           <h2 className="text-3xl md:text-4xl font-bold ">
-            How Premium Delivery Works
+            How Standard Delivery Works
           </h2>
         </motion.div>
 

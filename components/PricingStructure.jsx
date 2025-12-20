@@ -54,9 +54,7 @@ function PricingStructure() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 ">
-            Pricing Structure
-          </h2>
+          <h2 className="mb-4 ">Pricing Structure</h2>
           <p className="text-second max-w-2xl mx-auto">
             Pricing is calculated using a transparent automated system
           </p>
@@ -124,8 +122,8 @@ function PricingStructure() {
             <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-center">
               <span className=" text-2xl font-semibold  leading-[1.6]">
                 💰 <br />
-                Standard Delivery is always 
-                the <strong>Lowest Cost shipping</strong> 
+                Standard Delivery is always the{" "}
+                <strong>Lowest Cost shipping</strong>
                 option
               </span>
             </div>
