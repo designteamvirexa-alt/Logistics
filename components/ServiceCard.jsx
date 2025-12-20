@@ -1,121 +1,173 @@
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Smartbox from '@/asset/delightful-experice.webp';
-import Excess from '@/asset/excessbaggage.webp';
-import Airport from '@/asset/airport-transfers.webp';
+"use client";
 
-// --- Service Data ---
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+// --- Import Assets ---
+import Smartbox from "@/asset/delightful-experice.webp";
+import Excess from "@/asset/excessbaggage.webp";
+import Airport from "@/asset/airport-transfers.webp";
+import Corporate from "@/asset/helpcenter-salient.webp";
+import Packing from "@/asset/packing.webp";
+
+// --- Services Data ---
 const servicesData = [
   {
-    title: 'Standard Delivery',
-    description: 'Our Standard Luggage Delivery is perfect for travelers looking for a cost-effective way to deliver their bags safely from point A to B.',
-    bgColor: 'bg-white',
-    textColor: 'text-black',
-    descColor: 'text-black',
-    linkColor: 'text-black hover:text-[#013EFE]',
-    imageSrc: Excess, // Replace with your actual path
-    imageAlt: 'Woman using phone for shipping',
+    title: "Standard Delivery",
+    description:
+      "Our Standard Luggage Delivery is perfect for travelers looking for a cost-effective way to deliver their bags safely from point A to B.",
+    bgColor: "bg-white",
+    textColor: "text-black",
+    descColor: "text-black",
+    linkColor: "text-black hover:text-[#013EFE]",
+    imageSrc: Excess,
+    imageAlt: "Woman using phone for shipping",
     delay: 0,
   },
   {
-    title: 'Express Delivery',
-    description: 'When time matters, choose Express Delivery. Your luggage travels ahead of you and reaches your destination the same day.',
-    bgColor: 'bg-[#013EFE]',
-    textColor: 'text-white',
-    descColor: 'text-white',
-    linkColor: 'text-white hover:text-[#ffffff]',
-    imageSrc: Airport , // Replace with your actual path
-    imageAlt: 'Mobile app UI for booking transfers',
-    delay: 0.15, 
+    title: "Express Delivery",
+    description:
+      "When time matters, choose Express Delivery. Your luggage travels ahead of you and reaches your destination the same day.",
+    bgColor: "bg-[#013EFE]",
+    textColor: "text-white",
+    descColor: "text-white",
+    linkColor: "text-white hover:text-[#ffffff]",
+    imageSrc: Airport,
+    imageAlt: "Mobile app UI for booking transfers",
+    delay: 0.15,
   },
   {
-    title: 'Premium Delivery',
-    description: 'The Premium Delivery Plan comes with a dedicated assistant and 4–8 hour ultra-priority delivery. Your luggage receives white-glove handling from pickup to drop',
-    bgColor: 'bg-yellow-500',
-    textColor: 'text-black', // Adjusted for contrast on yellow background
-    descColor: 'text-black', // Adjusted for contrast on yellow background
-    linkColor: 'text-black hover:text-[#013EFE]',
-    imageSrc: Smartbox, // Replace with your actual path
-    imageAlt: 'Man smiling and giving a thumbs up',
+    title: "Premium Delivery",
+    description:
+      "The Premium Delivery Plan comes with a dedicated assistant and 4–8 hour ultra-priority delivery. Your luggage receives white-glove handling from pickup to drop",
+    bgColor: "bg-yellow-500",
+    textColor: "text-black",
+    descColor: "text-black",
+    linkColor: "text-black hover:text-[#013EFE]",
+    imageSrc: Smartbox,
+    imageAlt: "Man smiling and giving a thumbs up",
     delay: 0.3,
   },
-  
 ];
 
-// --- Card Component Logic (Internal) ---
+// --- Service Card Component ---
 const ServiceCard = ({ service }) => {
-  // Framer Motion variants for fade-in/slide-up with staggered delay
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.6, 
-        delay: service.delay,
-        ease: "easeOut",
-      } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: service.delay, ease: "easeOut" },
     },
   };
 
   return (
     <motion.div
-      className={`relative p-6 md:p-8 lg:p-10 rounded-3xl  flex flex-col justify-between ${service.bgColor} h-[450px] overflow-hidden transition-shadow duration-300 `}
+      className={`relative p-6 md:p-8 lg:p-10 rounded-3xl flex flex-col justify-between ${service.bgColor} h-[550px] overflow-hidden`}
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% of the card is visible
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="z-10"> {/* Ensure text is above the image */}
-        <h3 className={` ${service.textColor}`}>
+      <div className="z-10">
+        <h3 className={`text-2xl font-semibold ${service.textColor}`}>
           {service.title}
         </h3>
-        <p className={`mt-4  ${service.descColor}`}>
+        <p className={`mt-4 text-base ${service.descColor}`}>
           {service.description}
         </p>
-        <a 
-          href="#" 
+        <a
+          href="#"
           className={`mt-4 inline-block font-semibold ${service.linkColor}`}
         >
           Learn more
         </a>
       </div>
-      
-      {/* Absolute positioned illustration/image */}
-      {/* Adjust positioning and size based on your actual image files */}
-      <div className="absolute bottom-[-10%] right-0 left-0 w-full h-[66%] z-0">
-        <Image 
-          src={service.imageSrc} 
-          alt={service.imageAlt} 
-          layout="fill" 
-          objectFit="contain"
-          priority={service.delay === 0 ? true : false} // Priority for the first image
+
+      {/* Background Image */}
+      <div className="absolute bottom-[-10%] inset-x-0 w-full h-[66%] z-0">
+        <Image
+          src={service.imageSrc}
+          alt={service.imageAlt}
+          fill
+          className="object-contain"
+          priority={service.delay === 0}
         />
       </div>
     </motion.div>
   );
 };
 
+// --- Feature Card Component ---
+const FeatureCard = ({ title, description, image, fit = "cover" }) => {
+  return (
+    <div className="relative bg-white rounded-3xl p-8 h-[550px] overflow-hidden">
+      <div className="relative z-10">
+        <h3 className="text-2xl font-semibold">{title}</h3>
+        <p className="mt-3 text-base">{description}</p>
+        <Link
+          href="#"
+          className="mt-4 inline-block font-semibold hover:text-[#013EFE]"
+        >
+          Learn more
+        </Link>
+      </div>
 
-// --- Main Component ---
+      <div className="absolute bottom-[-10%] inset-x-0 h-[60%]">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={fit === "contain" ? "object-contain" : "object-cover"}
+        />
+      </div>
+    </div>
+  );
+};
+
+// --- Main Services Section ---
 const ServicesSection = () => {
   return (
-    <section className=" ">
+    <section className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className=" text-center mb-12 md:mb-16">
-          Our Services
+        {/* Section Title */}
+        <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 md:mb-16">
+          Services We Offer
         </h2>
-        
-        {/* RESPONSIVE GRID LAYOUT */}
-        {/* Mobile: 1 column, Tablet: 2 columns, Desktop: 3 columns */}
-        <div className="grid gap-4 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+        {/* Services Grid */}
+        <div className="grid gap-6 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
           {servicesData.map((service, index) => (
-            <ServiceCard 
-              key={index}
-              service={service}
-            />
+            <ServiceCard key={index} service={service} />
           ))}
+        </div>
+
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6 mb-16">
+          <FeatureCard
+            title="Corporate"
+            description="Seamless Package Delivery, Right at Your Doorstep!"
+            image={Corporate}
+            fit="cover"
+          />
+          <FeatureCard
+            title="Individual"
+            description="Fast, reliable delivery for every shipment"
+            image={Packing}
+            fit="contain"
+          />
+        </div>
+
+        {/* Call-to-Action */}
+        <div className="flex justify-center">
+          <Link
+            href="/book-shipment"
+            className="bg-primary text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/50 hover:shadow-blue-600/60 transition"
+          >
+            Book Now
+          </Link>
         </div>
       </div>
     </section>

@@ -49,8 +49,8 @@ export default function Slider() {
   const swiperRef = useRef(null);
 
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-4">
+    <section className="py-24   ">
+      <div className="container  mx-auto  px-4">
 
         {/* HEADER */}
         <div className="flex items-center justify-between mb-14">
