@@ -9,12 +9,24 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-import bannerone from "@/asset/banner.png";
+import bannerone from "@/asset/banner.webp";
 
 const slides = [
   {
-    title: "Seamless Ship Freight for Global Trade",
-    desc: "We partner with leading international shipping lines to move your cargo across major trade routes. From full containers to consolidated loads, we provide dependable schedules and cost-efficient solutions worldwide.",
+    title: "Door-to-Door Luggage Delivery for Stress-Free Travel",
+    desc: "Skip the heavy bags and travel hands-free. Frisbi picks up your luggage from your doorstep and delivers it safely to your destination. Book in minutes, track in real time, and enjoy a smoother, lighter journey.",
+    img: bannerone,
+  },
+
+  {
+    title: "Safe, Fast & Reliable Luggage Delivery Across Cities",
+    desc: "Frisbi provides safe, fast, and reliable intercity luggage delivery across India. Enjoy secure handling, transparent pricing, and real-time tracking for a hassle-free travel experience.",
+    img: bannerone,
+  },
+
+  {
+    title: "India’s Smart Luggage Delivery Solution",
+    desc: "Smart logistics meets seamless travel. Book online, track in real time, and get your luggage delivered safely to your destination.",
     img: bannerone,
   },
 ];
@@ -94,7 +106,7 @@ export default function HeroSlider() {
         "
                   >
                     <h3 className="text-lg font-semibold mb-6 text-center lg:text-left">
-                      Your Booking is a Step Away!
+                      Send your luggage now!
                     </h3>
 
                     <div className="space-y-5">
@@ -121,7 +133,7 @@ export default function HeroSlider() {
                       </div>
 
                       <button className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition">
-                        Book Now
+                        Get Quote
                       </button>
                     </div>
                   </motion.div>

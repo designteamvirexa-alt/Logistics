@@ -244,15 +244,15 @@ function Home() {
         </div>
       </section>
 
-      <section className=" bg-[#000] mx-auto overflow-x-hidden ">
-        <ContactSection />
-      </section>
+    
       <section className=" overflow-x-hidden ">
         <div>
           <FAQSection />
         </div>
       </section>
-
+  <section className=" bg-[#000] mx-auto overflow-x-hidden ">
+        <ContactSection />
+      </section>
       <CallToAction />
     </div>
   );

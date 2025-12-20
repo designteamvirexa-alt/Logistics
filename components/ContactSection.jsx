@@ -220,7 +220,7 @@ export default function ContactSection() {
 
             <div className="space-y-8 mt-8">
               <Info icon={MapPin} title="Office Location" value="100 S Main St, New York, NY" />
-              <Info icon={Mail} title="Send a Message" value="contact@frisbi.in" />
+              <Info icon={Mail} title="Send a Message" value="info@frisbi.in" />
               <Info icon={Phone} title="Call Us Directly" value="+91 987-879-8298" />
             </div>
           </motion.div>
