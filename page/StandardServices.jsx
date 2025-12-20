@@ -68,7 +68,7 @@ export default function Services() {
     {
       number: "1",
       icon: MessageSquare,
-      title: "Low-Cost Shippingw",
+      title: "Low-Cost Shipping",
       description: "Designed for cost-conscious customers and SMEs.",
     },
     {
@@ -111,33 +111,7 @@ export default function Services() {
     "Full tracking visibility",
   ];
 
-  const faqData = [
-    {
-      id: 1,
-      title: "1. ",
-      content: "",
-    },
-    {
-      id: 2,
-      title: "2. ",
-      content: "",
-    },
-    {
-      id: 3,
-      title: "3. ",
-      content: "",
-    },
-    {
-      id: 4,
-      title: "4. ",
-      content: "",
-    },
-    {
-      id: 5,
-      title: "5. ",
-      content: "",
-    },
-  ];
+
 
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -193,8 +167,7 @@ export default function Services() {
         </div>
       </section>
 
-
-  <MarqueeLogos />
+      <MarqueeLogos />
       {/* OVERVIEW */}
       <section className="py-24 pb-0 px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10 order-2">
@@ -205,7 +178,9 @@ export default function Services() {
           />
 
           <div className="md:col-span-2  order-1">
-            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">Frisbi Overview</h2>
+            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">
+              Frisbi Standard Overview
+            </h2>
             <p className="text-second mb-8 text-center md:text-start">
               Budget-friendly shipping without compromising safety.
             </p>
@@ -249,7 +224,7 @@ export default function Services() {
       <section className=" ">
         <div className="py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center mb-4">Why Choose Us?</h2>
+            <h2 className="text-center mb-4">Why Choose Standard Delivery?</h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               {steps.map((step, index) => (

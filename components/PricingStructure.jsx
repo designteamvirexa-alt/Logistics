@@ -95,8 +95,7 @@ function PricingStructure() {
               <span className=" text-2xl font-semibold  leading-[1.6]">
                 💰 <br />
                 Standard Delivery is always the{" "}
-                <strong>Lowest Cost shipping</strong>
-                option
+                <strong>Lowest Cost shipping</strong>  option
               </span>
             </div>
             <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row  lg:items-start gap-8">
@@ -104,7 +103,7 @@ function PricingStructure() {
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-6">Optional add-ons:</h3>
 
-                <ul className="space-y-4 text-[16px]">
+                <ul className="space-y-4 text-[16px] font-semibold">
                   {[
                     "Special handling",
                     "Fragile care",

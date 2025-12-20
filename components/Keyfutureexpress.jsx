@@ -3,6 +3,9 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import keyfeatures from "@/asset/delivery-luggage.jpg";
+
 export default function StickyStepsOverlap() {
   const steps = [
     {
@@ -87,6 +90,14 @@ export default function StickyStepsOverlap() {
               <Link href="/services" className="px-6 py-3 bg-primary font-semibold text-white rounded-full">
                 Our Services
               </Link>
+
+              <Image
+                            src={keyfeatures}
+                            alt="Overview"
+                            width={400}
+                            height={400}
+                            className="rounded-3xl object-cover w-full mt-8"
+                          />
             </div>
           </div>
 
