@@ -6,6 +6,8 @@ import dynamic from "next/dynamic";
 import { Check, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import MarqueeLogos from "@/components/MarqueeLogos";
+
 // Assets
 
 import {
@@ -191,8 +193,10 @@ export default function Services() {
         </div>
       </section>
 
+
+  <MarqueeLogos />
       {/* OVERVIEW */}
-      <section className="py-16 pb-0 px-4">
+      <section className="py-24 pb-0 px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10 order-2">
           <Image
             src={one}
@@ -200,9 +204,9 @@ export default function Services() {
             className="rounded-3xl h-[400px] object-cover "
           />
 
-          <div className="md:col-span-2 order-1">
-            <h2 className="text-4xl font-bold mb-4">Frisbi Overview</h2>
-            <p className="text-second mb-8">
+          <div className="md:col-span-2  order-1">
+            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">Frisbi Overview</h2>
+            <p className="text-second mb-8 text-center md:text-start">
               Budget-friendly shipping without compromising safety.
             </p>
 
@@ -255,7 +259,7 @@ export default function Services() {
                       <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
                         <step.icon className="w-8 h-8 text-white" />
                       </div>
-                      <div className="absolute -top-1 -right-1 w-7 h-7 bg-white text-black rounded-full flex items-center justify-center text-xs font-semibold">
+                      <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
                         {step.number}
                       </div>
                     </div>

@@ -3,6 +3,9 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import illsutration from "@/asset/luggage-person.jpg";
+
 export default function StickyStepsOverlap() {
   const steps = [
     {
@@ -66,10 +69,9 @@ export default function StickyStepsOverlap() {
   };
 
   return (
- <section className="py-20 bg-[#F4F2F7]">
+    <section className="py-20 bg-[#F4F2F7]">
       <div className="container mx-auto px-6">
         <div className="lg:flex lg:gap-20">
-
           {/* LEFT SECTION – STICKY ON DESKTOP */}
           <div className="lg:w-1/2">
             <div className="lg:sticky lg:top-24">
@@ -80,14 +82,26 @@ export default function StickyStepsOverlap() {
               <h2 className="font-bold leading-tight mb-6">Key Features</h2>
 
               <p className="text-gray-500 text-lg mb-8 max-w-lg">
-                Supply delivers tailored logistics and freight solutions, empowering
-                businesses with fast, safe, and efficient transport across North America.
+                Supply delivers tailored logistics and freight solutions,
+                empowering businesses with fast, safe, and efficient transport
+                across North America.
               </p>
 
-              <Link href="/services" className="px-6 py-3 bg-primary font-semibold text-white rounded-full">
+              <Link
+                href="/services"
+                className="px-6 py-3 bg-primary font-semibold text-white rounded-full"
+              >
                 Our Services
               </Link>
+              <Image
+              src={illsutration}
+              alt="Overview"
+              width={400}
+              height={400}
+              className="rounded-3xl object-cover w-full mt-8"
+            />
             </div>
+            
           </div>
 
           {/* RIGHT SECTION – SCROLLABLE */}
@@ -108,11 +122,8 @@ export default function StickyStepsOverlap() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
-
-
   );
 }
