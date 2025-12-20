@@ -17,13 +17,11 @@ const slides = [
     desc: "Skip the heavy bags and travel hands-free. Frisbi picks up your luggage from your doorstep and delivers it safely to your destination. Book in minutes, track in real time, and enjoy a smoother, lighter journey.",
     img: bannerone,
   },
-
   {
     title: "Safe, Fast & Reliable Luggage Delivery Across Cities",
     desc: "Frisbi provides safe, fast, and reliable intercity luggage delivery across India. Enjoy secure handling, transparent pricing, and real-time tracking for a hassle-free travel experience.",
     img: bannerone,
   },
-
   {
     title: "India’s Smart Luggage Delivery Solution",
     desc: "Smart logistics meets seamless travel. Book online, track in real time, and get your luggage delivered safely to your destination.",
@@ -33,16 +31,16 @@ const slides = [
 
 export default function HeroSlider() {
   return (
-    <section className="relative w-full h-screen p-3 -mt-16 overflow-hidden -mt-24">
+    <section className="relative w-full h-screen p-3 -mt-24 overflow-hidden">
       <Swiper
         navigation
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         modules={[Navigation, Autoplay]}
-        className="w-full h-full"
+        className="w-full h-full hero-swiper"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            {/* Background */}
+            {/* BACKGROUND */}
             <div className="absolute inset-0">
               <Image
                 src={slide.img}
@@ -56,23 +54,15 @@ export default function HeroSlider() {
 
             {/* CONTENT */}
             <div className="relative z-30 h-full">
-              <div
-                className="
-      container mx-auto px-4 md:px-8
-      h-full
-      flex
-      items-start md:items-center
-      pt-24 md:pt-0
-    "
-              >
-                {/* MAIN WRAPPER */}
+              <div className="container mx-auto px-4 md:px-8 h-full flex items-start md:items-center pt-24 md:pt-0">
                 <div className="w-full flex flex-col lg:flex-row items-center">
+                  
                   {/* LEFT CONTENT */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-white max-w-xl w-full"
+                    className="text-white max-w-xl w-full text-center lg:text-left"
                   >
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
                       {slide.title}
@@ -82,55 +72,30 @@ export default function HeroSlider() {
                       {slide.desc}
                     </p>
 
-                    <Link
-                      href="#"
-                      className="inline-block px-6 py-3 rounded-full bg-primary text-white font-semibold hover:scale-105 transition"
-                    >
-                      Book Shipment
-                    </Link>
+                    <div className="flex justify-center lg:justify-start">
+                      <Link
+                        href="#"
+                        className="inline-block px-6 py-3 rounded-full bg-primary text-white font-semibold hover:scale-105 transition"
+                      >
+                        Book Shipment
+                      </Link>
+                    </div>
                   </motion.div>
 
-                  {/* RIGHT BOOKING FORM */}
+                  {/* RIGHT FORM */}
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="
-          w-full max-w-md
-          mt-10 lg:mt-0
-          ml-0 lg:ml-auto
-          bg-white
-          rounded-3xl
-          shadow-2xl
-          p-6 sm:p-8
-        "
+                    className="w-full max-w-md mt-10 lg:mt-0 lg:ml-auto bg-white rounded-3xl  p-8 sm:p-8"
                   >
                     <h3 className="text-lg font-semibold mb-6 text-center lg:text-left">
                       Send your luggage now!
                     </h3>
 
                     <div className="space-y-5">
-                      <div className="relative">
-                        <input
-                          type="text"
-                          placeholder=" "
-                          className="peer w-full p-3 rounded-lg bg-gray-100 border border-gray-300 outline-none focus:ring-2 focus:ring-primary placeholder-transparent"
-                        />
-                        <label className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-focus:-top-2 peer-focus:text-xs peer-focus:bg-white peer-focus:px-1">
-                          Pickup Location
-                        </label>
-                      </div>
-
-                      <div className="relative">
-                        <input
-                          type="text"
-                          placeholder=" "
-                          className="peer w-full p-3 rounded-lg bg-gray-100 border border-gray-300 outline-none focus:ring-2 focus:ring-primary placeholder-transparent"
-                        />
-                        <label className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-focus:-top-2 peer-focus:text-xs peer-focus:bg-white peer-focus:px-1">
-                          Drop Location
-                        </label>
-                      </div>
+                      <FloatingInput label="Pickup Location" />
+                      <FloatingInput label="Drop Location" />
 
                       <button className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition">
                         Get Quote
@@ -143,6 +108,45 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* MOBILE ARROW POSITION FIX */}
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .hero-swiper .swiper-button-prev,
+          .hero-swiper .swiper-button-next {
+            top: auto;
+            bottom: 20px;
+            transform: none;
+          }
+
+          .hero-swiper .swiper-button-prev {
+            left: 35%;
+          }
+
+          .hero-swiper .swiper-button-next {
+            right: 35%;
+          }
+        }
+      `}</style>
     </section>
+  );
+}
+
+/* FLOATING INPUT */
+function FloatingInput({ label }) {
+  return (
+    <div className="relative">
+      <input
+        type="text"
+        placeholder=" "
+        className="peer w-full p-3 rounded-lg bg-gray-100 border border-gray-300 outline-none focus:ring-2 focus:ring-primary placeholder-transparent"
+      />
+      <label className="absolute left-3 top-3 text-gray-500 text-sm transition-all 
+        peer-placeholder-shown:top-3 
+        peer-focus:-top-2 peer-focus:text-xs 
+        peer-focus:bg-white peer-focus:px-1">
+        {label}
+      </label>
+    </div>
   );
 }

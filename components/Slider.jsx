@@ -54,7 +54,7 @@ export default function Slider() {
 
         {/* HEADER */}
         <div className="flex items-center justify-between mb-14">
-          <h2 className="text-white text-xl">
+          <h2 className="text-white text-xl text-center md:text-left">
             Why Choose Us — India’s Trusted Luggage Delivery
           </h2>
 

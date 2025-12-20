@@ -100,14 +100,15 @@ function Home() {
               <source src="/videos/bg.mp4" type="video/mp4" />
             </video>  */}
 
-          <div className="relative z-10  ">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              <div className="flex flex-col justify-center order-2 lg:order-1">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4 leading-[1.6]">
+          <div className="relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              {/* Content */}
+              <div className="flex flex-col justify-center order-1 lg:order-1">
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4 leading-relaxed text-center md:text-left max-w-xl">
                   About Us – Frisbi Luggage Delivery Service
                 </h2>
 
-                <p className="text-second mb-4">
+                <p className="text-second mb-6 text-center md:text-left max-w-xl">
                   At Frisbi, we are on a mission to make travel lighter,
                   stress-free, and smarter. As India’s most reliable luggage
                   delivery service, we pick up your bags from your doorstep and
@@ -116,9 +117,11 @@ function Home() {
                   and hassle-free.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8 text-center md:text-left">
                   <div>
-                    <div className="text-2xl font-bold mb-4">01</div>
+                    <div className="text-2xl font-bold text-primary mb-3">
+                      01
+                    </div>
                     <h4 className="text-xl font-semibold mb-2">
                       Professional Packing
                     </h4>
@@ -129,7 +132,9 @@ function Home() {
                   </div>
 
                   <div>
-                    <div className="text-2xl font-bold mb-4">02</div>
+                    <div className="text-2xl font-bold text-primary mb-3">
+                      02
+                    </div>
                     <h4 className="text-xl font-semibold mb-2">
                       Pre-Move Planning
                     </h4>
@@ -140,16 +145,19 @@ function Home() {
                   </div>
                 </div>
 
-                <Link
-                  href="/about"
-                  className="bg-primary text-[15px] text-white font-semibold py-3 px-10 rounded-full transition hover:opacity-90 w-fit"
-                >
-                  Explore more
-                </Link>
+                <div className="flex justify-center md:justify-start">
+                  <Link
+                    href="/about"
+                    className="bg-primary text-[15px] text-white font-semibold py-3 px-10 rounded-full transition hover:opacity-90"
+                  >
+                    Explore more
+                  </Link>
+                </div>
               </div>
 
-              <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-xl h-[300px] md:h-[500px]">
+              {/* Image */}
+              <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-xl h-[280px] md:h-[500px] rounded-2xl overflow-hidden">
                   <Image
                     src={About}
                     alt="Frisbi luggage delivery illustration"
@@ -255,51 +263,50 @@ function Home() {
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-     <section className="w-full px-4 md:px-10 my-24 ">
-           <div className="relative container mx-auto rounded-3xl overflow-hidden">
-     
-             {/* Background Image */}
-             <Image
-               src={bg}
-               alt="CTA background"
-               fill
-               className="object-cover"
-               priority
-             />
-     
-             {/* Gradient overlay */}
-             {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
-     
-           
-     
-             {/* CONTENT */}
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.5 }}
-               className="relative z-10 text-center py-16 md:py-20 px-6"
-             >
-               <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
-                 From Your Door to Their Door.
 
-               </h2>
-     
-               <p className="text-white mb-8 text-sm md:text-base">
-                 Fast, safe, and affordable – trusted by thousands across India.
-               </p>
-     
-               <div className="flex flex-wrap justify-center gap-4">
-                 <Link href="/contact-us" className="bg-white text-black px-6 py-3 rounded-full 
+      
+      <section className="w-full px-4 md:px-10 my-24 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
+              From Your Door to Their Door.
+            </h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+              Fast, safe, and affordable – trusted by thousands across India.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="bg-white text-black px-6 py-3 rounded-full 
                                     font-semibold text-sm md:text-base 
-                                    hover:scale-105 transition-all">
-                   Contact Us 
-                 </Link>
-     
-                 
-               </div>
-             </motion.div>
-           </div>
-         </section>
+                                    hover:scale-105 transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
