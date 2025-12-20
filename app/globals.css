@@ -139,6 +139,11 @@ p {
  .-mt-16{
   margin-top: -5rem;
 }
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
 
 .content-top{
   top:3rem;
