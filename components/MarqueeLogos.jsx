@@ -25,7 +25,7 @@ export default function MarqueeLogos() {
     <div className="container mx-auto px-4 pt-24">
       <div className="text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-16 leading-[1.4]">
-          Companies that trust our services
+          Companies That Trust Our Services
         </h2>
       </div>
 
