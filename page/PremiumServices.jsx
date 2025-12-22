@@ -14,11 +14,11 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-import Maximum from "@/asset/icons/security-lock.svg";
-import goods from "@/asset/icons/goods.svg";
-import Transparency from "@/asset/icons/transparency.svg";
-import Priority from "@/asset/icons/safe.svg";
-import Peace from "@/asset/icons/delivery.svg";
+import Maximum from "@/asset/icon/security-lock.svg";
+import goods from "@/asset/icon/goods.svg";
+import Transparency from "@/asset/icon/transparency.svg";
+import Priority from "@/asset/icon/safe.svg";
+import Peace from "@/asset/icon/delivery.svg";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets

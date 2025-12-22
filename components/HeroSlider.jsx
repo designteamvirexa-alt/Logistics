@@ -9,7 +9,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-import bannerone from "@/asset/banner.webp";
+import bannerone from "@/asset/delivery-luggage.jpg";
+import bannertwo from "@/asset/premium-luggage.jpg";
+import bannerthree from "@/asset/luggage-person.jpg";
 
 const slides = [
   {
@@ -20,12 +22,12 @@ const slides = [
   {
     title: "Safe, Fast & Reliable Luggage Delivery Across Cities",
     desc: "Frisbi provides safe, fast, and reliable intercity luggage delivery across India. Enjoy secure handling, transparent pricing, and real-time tracking for a hassle-free travel experience.",
-    img: bannerone,
+    img: bannertwo,
   },
   {
     title: "India’s Smart Luggage Delivery Solution",
     desc: "Smart logistics meets seamless travel. Book online, track in real time, and get your luggage delivered safely to your destination.",
-    img: bannerone,
+    img: bannerthree,
   },
 ];
 

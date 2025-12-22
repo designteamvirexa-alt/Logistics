@@ -10,6 +10,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import c1 from "@/asset/c1.webp";
 import valuesdiff from "@/asset/values-diff.webp";
 import courierimg from "@/asset/courierimg.webp";
+import LiveTracking from "@/asset/why-choose/live-tracking.png";
+import OnTime from "@/asset/why-choose/on-time-delivery.png";
 
 const data = [
   {
@@ -25,12 +27,12 @@ const data = [
   {
     title: "On-Time Delivery Guarantee",
     desc: "Avoid baggage delays—our scheduled deliveries and real-time updates keep you informed until your luggage arrives.",
-    img: courierimg,
+    img: OnTime,
   },
    {
     title: "Live Luggage Tracking Across India",
     desc: "Get real-time tracking and SMS/WhatsApp alerts, so you always know exactly where your baggage is in transit.",
-    img: courierimg,
+    img: LiveTracking,
   },
    {
     title: "Corporate & Group Travel Luggage Management",

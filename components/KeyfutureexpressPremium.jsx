@@ -6,15 +6,15 @@ import Image from "next/image";
 // --- Images ---
 import illustration from "@/asset/premium-luggage.jpg";
 
-// --- Icons ---
-import icon1 from "@/asset/icons/priority-pickup.svg";
-import icon2 from "@/asset/icons/faster-transit.svg";
-import icon3 from "@/asset/icons/tracking.svg";
-import icon4 from "@/asset/icons/insurance.svg";
-import icon5 from "@/asset/icons/notification.svg";
-import icon6 from "@/asset/icons/invoice.svg";
-import icon7 from "@/asset/icons/support.svg";
-import icon8 from "@/asset/icons/express.svg";
+// --- icon ---
+import icon1 from "@/asset/icon/priority-pickup.svg";
+import icon2 from "@/asset/icon/faster-transit.svg";
+import icon3 from "@/asset/icon/tracking.svg";
+import icon4 from "@/asset/icon/insurance.svg";
+import icon5 from "@/asset/icon/notification.svg";
+import icon6 from "@/asset/icon/invoice.svg";
+import icon7 from "@/asset/icon/support.svg";
+import icon8 from "@/asset/icon/express.svg";
 
 export default function StickyStepsOverlap() {
   const steps = [

@@ -14,11 +14,11 @@ import {
   Radar,
   CheckCircle,
 } from "lucide-react";
-import SaveTime from "@/asset/icons/save-time.svg";
-import Safe from "@/asset/icons/safe.svg";
-import Business from "@/asset/icons/faster.svg";
-import Visibility from "@/asset/icons/live-tracking.svg";
-import Peace from "@/asset/icons/delivery.svg";
+import SaveTime from "@/asset/icon/save-time.svg";
+import Safe from "@/asset/icon/safe.svg";
+import Business from "@/asset/icon/faster.svg";
+import Visibility from "@/asset/icon/live-tracking.svg";
+import Peace from "@/asset/icon/delivery.svg";
 // Assets
 import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
