@@ -23,8 +23,9 @@ const servicesData = [
     descColor: "text-black",
     linkColor: "text-black hover:text-[#013EFE]",
     imageSrc: Standard,
-    imageAlt: "Woman using phone for shipping",
+    imageAlt: "Standard luggage delivery",
     delay: 0,
+    link: "/standard-delivery",
   },
   {
     title: "Express Delivery",
@@ -33,22 +34,24 @@ const servicesData = [
     bgColor: "bg-[#013EFE]",
     textColor: "text-white",
     descColor: "text-white",
-    linkColor: "text-white hover:text-[#ffffff]",
+    linkColor: "text-white hover:text-white",
     imageSrc: Airport,
-    imageAlt: "Mobile app UI for booking transfers",
+    imageAlt: "Express delivery service",
     delay: 0.15,
+    link: "/express-delivery",
   },
   {
     title: "Premium Delivery",
     description:
-      "The Premium Delivery Plan comes with a dedicated assistant and 4–8 hour ultra-priority delivery. Your luggage receives white-glove handling from pickup to drop",
+      "The Premium Delivery Plan comes with a dedicated assistant and 4–8 hour ultra-priority delivery. Your luggage receives white-glove handling from pickup to drop.",
     bgColor: "bg-yellow-500",
     textColor: "text-black",
     descColor: "text-black",
     linkColor: "text-black hover:text-[#013EFE]",
     imageSrc: Smartbox,
-    imageAlt: "Man smiling and giving a thumbs up",
+    imageAlt: "Premium delivery service",
     delay: 0.3,
+    link: "/premium-delivery",
   },
 ];
 
@@ -59,7 +62,11 @@ const ServiceCard = ({ service }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay: service.delay, ease: "easeOut" },
+      transition: {
+        duration: 0.6,
+        delay: service.delay,
+        ease: "easeOut",
+      },
     },
   };
 
@@ -71,22 +78,24 @@ const ServiceCard = ({ service }) => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="z-10">
+      <div className="relative z-10">
         <h3 className={`text-2xl font-semibold ${service.textColor}`}>
           {service.title}
         </h3>
+
         <p className={`mt-4 text-base ${service.descColor}`}>
           {service.description}
         </p>
-        <a
-          href="#"
+
+        <Link
+          href={service.link}
           className={`mt-4 inline-block font-semibold ${service.linkColor}`}
         >
           Learn more
-        </a>
+        </Link>
       </div>
 
-      {/* Background Image */}
+      {/* Image */}
       <div className="absolute bottom-[-3%] inset-x-0 w-full h-[66%] z-0">
         <Image
           src={service.imageSrc}
@@ -101,14 +110,22 @@ const ServiceCard = ({ service }) => {
 };
 
 // --- Feature Card Component ---
-const FeatureCard = ({ title, description, image, fit = "cover" }) => {
+const FeatureCard = ({
+  title,
+  description,
+  image,
+  link = "#",
+  fit = "cover",
+}) => {
   return (
-    <div className="relative bg-white rounded-3xl p-8 h-[500px] overflow-hidden">
+    <div className="relative bg-white rounded-3xl p-8 h-[500px] overflow-hidden transition-transform hover:-translate-y-2">
       <div className="relative z-10">
         <h3 className="text-2xl font-semibold">{title}</h3>
-        <p className="mt-3 text-second">{description}</p>
+
+        <p className="mt-3 text-gray-500">{description}</p>
+
         <Link
-          href="#"
+          href={link}
           className="mt-4 inline-block font-semibold hover:text-[#013EFE]"
         >
           Learn more
@@ -120,7 +137,8 @@ const FeatureCard = ({ title, description, image, fit = "cover" }) => {
           src={image}
           alt={title}
           fill
-          className="object-contain"
+          className={`object-${fit}`}
+          priority
         />
       </div>
     </div>
@@ -132,39 +150,42 @@ const ServicesSection = () => {
   return (
     <section className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
+        {/* Heading */}
         <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 md:mb-16">
           Services We Offer
         </h2>
 
-        {/* Services Grid */}
-        <div className="grid gap-6 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+        {/* Services Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {servicesData.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}
         </div>
 
-        {/* Feature Grid */}
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6 mb-16">
           <FeatureCard
             title="Corporate"
             description="Seamless Package Delivery, Right at Your Doorstep!"
             image={Corporate}
+            link="/corporate"
             fit="cover"
           />
+
           <FeatureCard
             title="Individual"
             description="Fast, reliable delivery for every shipment"
             image={Packing}
+            link="/individual"
             fit="contain"
           />
         </div>
 
-        {/* Call-to-Action */}
+        {/* CTA */}
         <div className="flex justify-center">
           <Link
             href="/book-shipment"
-            className="bg-primary text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/50 hover:shadow-blue-600/60 transition"
+            className="bg-[#013EFE] text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/40 hover:shadow-blue-600/60 transition"
           >
             Book Now
           </Link>
