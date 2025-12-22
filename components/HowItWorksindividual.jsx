@@ -1,5 +1,5 @@
 import { MousePointer, Calendar, Radar, PackageCheck } from 'lucide-react';
-
+import Link from 'next/link';
 const steps = [
   {
     icon: MousePointer,
@@ -46,9 +46,9 @@ export function HowItWorks() {
                     <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center">
                       <Icon className="w-10 h-10 text-white" />
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-white  rounded-full flex items-center justify-center">
+                    {/* <div className="absolute -top-2 -right-2 w-8 h-8 bg-white  rounded-full flex items-center justify-center">
                       <span className="text-black font-semibold">{step.number}</span>
-                    </div>
+                    </div> */}
                   </div>
                   
                   <h4 className="mb-2">{step.title}</h4>
@@ -64,9 +64,9 @@ export function HowItWorks() {
         </div>
         
         <div className="mt-16 text-center">
-          <button className="bg-primary text-white px-10 py-3  font-semibold rounded-3xl  transition-colors">
+          <Link href="/book-shipment" className="bg-primary text-white px-10 py-3  font-semibold rounded-3xl  transition-colors">
             Book Your Luggage Delivery Now
-          </button>
+          </Link>
           <p className="mt-4 text-second">Fast, reliable, and stress-free travel starts here</p>
         </div>
       </div>

@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import MarqueeLogos from "@/components/MarqueeLogos";
 
 import herobg from "@/asset/service/standard-services.png";
 
@@ -97,6 +98,9 @@ function Corporate() {
             </button>
           </motion.div>
         </div>
+      </section>
+      <section className="pb-24">
+        <MarqueeLogos />
       </section>
 
       <TrustedBy />

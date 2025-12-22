@@ -37,7 +37,7 @@ export function Features() {
             Why Corporate Teams Choose Frisbi
           </h2>
           <p className="text-second">
-            🎯 Built for Corporate Use (Not Generic Courier)
+          Built for Corporate Use (Not Generic Courier)
           </p>
         </div>
         
