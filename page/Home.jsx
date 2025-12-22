@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
 
-import About from "@/asset/about-us.png";
+import About from "@/asset/home/about-frisbi.png";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 import { AnimatePresence, motion } from "framer-motion";
@@ -162,7 +162,7 @@ function Home() {
                     src={About}
                     alt="Frisbi luggage delivery illustration"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     priority
                   />
                 </div>

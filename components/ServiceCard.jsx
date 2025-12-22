@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 // --- Import Assets ---
-import Smartbox from "@/asset/delightful-experice.webp";
-import Excess from "@/asset/excessbaggage.webp";
-import Airport from "@/asset/airport-transfers.webp";
-import Corporate from "@/asset/helpcenter-salient.webp";
-import Packing from "@/asset/packing.webp";
+import Smartbox from "@/asset/home/premium.png";
+import Standard from "@/asset/home/standard.png";
+import Airport from "@/asset/home/express.png";
+import Corporate from "@/asset/home/corporate.png";
+import Packing from "@/asset/home/individual.png";
 
 // --- Services Data ---
 const servicesData = [
@@ -22,7 +22,7 @@ const servicesData = [
     textColor: "text-black",
     descColor: "text-black",
     linkColor: "text-black hover:text-[#013EFE]",
-    imageSrc: Excess,
+    imageSrc: Standard,
     imageAlt: "Woman using phone for shipping",
     delay: 0,
   },
@@ -87,7 +87,7 @@ const ServiceCard = ({ service }) => {
       </div>
 
       {/* Background Image */}
-      <div className="absolute bottom-[-10%] inset-x-0 w-full h-[66%] z-0">
+      <div className="absolute bottom-[-3%] inset-x-0 w-full h-[66%] z-0">
         <Image
           src={service.imageSrc}
           alt={service.imageAlt}
@@ -103,10 +103,10 @@ const ServiceCard = ({ service }) => {
 // --- Feature Card Component ---
 const FeatureCard = ({ title, description, image, fit = "cover" }) => {
   return (
-    <div className="relative bg-white rounded-3xl p-8 h-[550px] overflow-hidden">
+    <div className="relative bg-white rounded-3xl p-8 h-[500px] overflow-hidden">
       <div className="relative z-10">
         <h3 className="text-2xl font-semibold">{title}</h3>
-        <p className="mt-3 text-base">{description}</p>
+        <p className="mt-3 text-second">{description}</p>
         <Link
           href="#"
           className="mt-4 inline-block font-semibold hover:text-[#013EFE]"
@@ -115,12 +115,12 @@ const FeatureCard = ({ title, description, image, fit = "cover" }) => {
         </Link>
       </div>
 
-      <div className="absolute bottom-[-10%] inset-x-0 h-[60%]">
+      <div className="absolute bottom-0 inset-x-0 h-[70%]">
         <Image
           src={image}
           alt={title}
           fill
-          className={fit === "contain" ? "object-contain" : "object-cover"}
+          className="object-contain"
         />
       </div>
     </div>
