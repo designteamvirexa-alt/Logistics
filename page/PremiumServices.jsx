@@ -13,6 +13,12 @@ import {
   Radar,
   CheckCircle,
 } from "lucide-react";
+
+import Maximum from "@/asset/icons/security-lock.svg";
+import goods from "@/asset/icons/goods.svg";
+import Transparency from "@/asset/icons/transparency.svg";
+import Priority from "@/asset/icons/safe.svg";
+import Peace from "@/asset/icons/delivery.svg";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
@@ -62,36 +68,35 @@ export default function PremiumServices() {
   const steps = [
     {
       number: "1",
-      icon: MessageSquare,
+      icon: Maximum,
       title: "Maximum Security",
       description: "Tamper-proof seals & minimal handling points.",
     },
     {
       number: "2",
-      icon: FileText,
+      icon: goods,
       title: "Best for High-Value Goods",
       description: "Perfect for expensive & sensitive shipments.",
     },
     {
       number: "3",
-      icon: Calendar,
+      icon: Priority,
       title: "Guaranteed Priority",
       description: "No delays. No compromise.",
     },
     {
       number: "4",
-      icon: Radar,
+      icon: Transparency,
       title: "Complete Transparency",
       description: "Live updates, call support & delivery proof.",
     },
     {
       number: "5",
-      icon: CheckCircle,
+      icon: Peace,
       title: "Peace of Mind",
       description: "Handled by trained professionals only.",
     },
   ];
-
 
   return (
     <div className="-mt-24 -mt-16">
@@ -198,7 +203,7 @@ export default function PremiumServices() {
       <TransformingCities />
 
       {/* ================= WHY PREMIUM ================= */}
-     <section className=" ">
+      <section className=" ">
         <div className="py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-center mb-4">Why Choose Premium Delivery?</h2>
@@ -209,11 +214,11 @@ export default function PremiumServices() {
                   <div className="flex flex-col items-center text-center">
                     <div className="relative mb-4">
                       <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                        <step.icon className="w-8 h-8 text-white" />
+                        <Image src={step.icon} alt="" width={28} height={28} />
                       </div>
-                      <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
+                      {/* <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
                         {step.number}
-                      </div>
+                      </div> */}
                     </div>
                     <h4 className="mb-2">{step.title}</h4>
                     <p className="text-second">{step.description}</p>

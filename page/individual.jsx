@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import MarqueeLogos from "@/components/MarqueeLogos";
 
 import herobg from "@/asset/service/standard-services.png";
 
@@ -32,7 +33,6 @@ function Individual() {
           className="object-cover p-3 rounded-3xl"
         />
 
-      
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 py-24 md:py-32">
           {/* Badge */}
@@ -81,10 +81,10 @@ function Individual() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-purple-100 max-w-2xl mb-8"
           >
-            Whether you're moving between cities, heading to a hotel, or planning
-            a long stay, we pick up your luggage from your doorstep and deliver
-            it safely to your destination—so you can travel hands-free and
-            stress-free.
+            Whether you're moving between cities, heading to a hotel, or
+            planning a long stay, we pick up your luggage from your doorstep and
+            deliver it safely to your destination—so you can travel hands-free
+            and stress-free.
           </motion.p>
 
           {/* CTA */}
@@ -101,12 +101,15 @@ function Individual() {
           </motion.div>
         </div>
       </section>
+      <section className="pb-16">
+        <MarqueeLogos />
+      </section>
 
       {/* SECTIONS */}
       <PerfectFor />
       <WhyChoose />
       <WhenToUse />
-        <HowItWorks />
+      <HowItWorks />
       <CallToAction />
     </div>
   );

@@ -77,8 +77,6 @@ export function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-         
-
           <h2 className="text-3xl md:text-4xl font-bold ">
             How Premium Delivery Works
           </h2>
@@ -86,8 +84,10 @@ export function HowItWorks() {
 
         {/* Steps Grid */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center 
-      mx-auto">
+          <div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center 
+      mx-auto"
+          >
             {steps.map((step, index) => {
               const colors = colorClasses[step.color];
               const [textColor, bgColor, borderColor] = colors.split(" ");
@@ -110,7 +110,9 @@ export function HowItWorks() {
                   </div>
 
                   {/* Icon */}
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mt-2 ${bgColor}`}>
+                  <div
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mt-2 ${bgColor}`}
+                  >
                     <step.icon className={`w-7 h-7 ${textColor}`} />
                   </div>
 

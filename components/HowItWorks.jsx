@@ -43,7 +43,7 @@ export function HowItWorks() {
   return (
     <div className="py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center mb-4">How It Works (Simple & Scalable)</h2>
+        <h2 className="text-center mb-4">How It Works</h2>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {steps.map((step, index) => (
@@ -53,9 +53,9 @@ export function HowItWorks() {
                   <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="absolute -top-1 -right-1 w-7 h-7 bg-white text-black rounded-full flex items-center justify-center text-xs font-semibold">
+                  {/* <div className="absolute -top-1 -right-1 w-7 h-7 bg-white text-black rounded-full flex items-center justify-center text-xs font-semibold">
                     {step.number}
-                  </div>
+                  </div> */}
                 </div>
                 <h4 className="mb-2">{step.title}</h4>
                 <p className="text-second">{step.description}</p>
