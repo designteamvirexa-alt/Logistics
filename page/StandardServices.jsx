@@ -3,12 +3,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { Check, Minus, Plus } from "lucide-react";
+import { Check, Minus, NetworkIcon, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
+import LowCost from "@/asset/icons/low-cost.svg";
+import Secure from "@/asset/icons/secure.svg";
+import Network from "@/asset/icons/network.svg";
+import Updates from "@/asset/icons/update.svg";
+import Hidden from "@/asset/icons/hidden-charges.svg";
 
 import {
   MessageSquare,
@@ -67,31 +72,31 @@ export default function Services() {
   const steps = [
     {
       number: "1",
-      icon: MessageSquare,
+      icon: LowCost,
       title: "Low-Cost Shipping",
       description: "Designed for cost-conscious customers and SMEs.",
     },
     {
       number: "2",
-      icon: FileText,
+      icon: Secure,
       title: "Safe & Secure Transport",
       description: "Barcode tracking, sealed bags, professional handlers.",
     },
     {
       number: "3",
-      icon: Calendar,
+      icon: Network,
       title: "Wide Delivery Network",
       description: "Fast-growing logistics chain covering India.",
     },
     {
       number: "4",
-      icon: Radar,
+      icon: Updates,
       title: "Shipment Updates",
       description: "Every movement is recorded & notified.",
     },
     {
       number: "5",
-      icon: CheckCircle,
+      icon: Hidden,
       title: "No Hidden Charges",
       description: "Upfront pricing before booking.",
     },
@@ -110,8 +115,6 @@ export default function Services() {
     "Cost-efficient delivery",
     "Full tracking visibility",
   ];
-
-
 
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -232,11 +235,16 @@ export default function Services() {
                   <div className="flex flex-col items-center text-center">
                     <div className="relative mb-4">
                       <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                        <step.icon className="w-8 h-8 text-white" />
+                        <Image
+                          src={step.icon}
+                          alt=""
+                          width={28}
+                          height={28}
+                        />
                       </div>
-                      <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
+                      {/* <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
                         {step.number}
-                      </div>
+                      </div> */}
                     </div>
                     <h4 className="mb-2">{step.title}</h4>
                     <p className="text-second">{step.description}</p>

@@ -14,6 +14,11 @@ import {
   Radar,
   CheckCircle,
 } from "lucide-react";
+import SaveTime from "@/asset/icons/save-time.svg";
+import Safe from "@/asset/icons/safe.svg";
+import Business from "@/asset/icons/faster.svg";
+import Visibility from "@/asset/icons/live-tracking.svg";
+import Peace from "@/asset/icons/delivery.svg";
 // Assets
 import herobg from "@/asset/service/standard-services.png";
 import one from "@/asset/service/2.png";
@@ -37,31 +42,31 @@ export default function ExpressServices() {
   const steps = [
     {
       number: "1",
-      icon: MessageSquare,
+      icon: SaveTime,
       title: "Save Time",
       description: "Designed for cost-conscious customers and SMEs.",
     },
     {
       number: "2",
-      icon: FileText,
+      icon: Safe,
       title: "Safe Priority Handling",
       description: "Barcode tracking, sealed bags, professional handlers.",
     },
     {
       number: "3",
-      icon: Calendar,
+      icon: Business,
       title: "Faster Business Operations",
       description: "Ideal for B2B & enterprise clients.",
     },
     {
       number: "4",
-      icon: Radar,
+      icon: Visibility,
       title: "Complete Visibility",
       description: "Live tracking and proof of delivery.",
     },
     {
       number: "5",
-      icon: CheckCircle,
+      icon: Peace,
       title: "Peace of Mind",
       description: "Guaranteed delivery timelines.",
     },
@@ -199,7 +204,7 @@ export default function ExpressServices() {
      <section className=" ">
         <div className="py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center mb-4">Why Choose Standard Delivery?</h2>
+            <h2 className="text-center mb-4">Why Choose Express Delivery?</h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               {steps.map((step, index) => (
@@ -207,11 +212,11 @@ export default function ExpressServices() {
                   <div className="flex flex-col items-center text-center">
                     <div className="relative mb-4">
                       <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                        <step.icon className="w-8 h-8 text-white" />
+                        <Image src={step.icon} alt="" width={28} height={28} />
                       </div>
-                      <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
+                      {/* <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
                         {step.number}
-                      </div>
+                      </div> */}
                     </div>
                     <h4 className="mb-2">{step.title}</h4>
                     <p className="text-second">{step.description}</p>
