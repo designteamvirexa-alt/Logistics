@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-// ✅ Icons
-import allowedCheck from "@/asset/icons/check.svg";
-import arrowIcon from "@/asset/icons/arrow.svg";
-import closed from "@/asset/icons/close.svg";
+// ✅ icon
+import allowedCheck from "@/asset/icon/check.svg";
+import arrowIcon from "@/asset/icon/arrow.svg";
+import closed from "@/asset/icon/close.svg";
 
 export default function PackageGuidelines() {
   const allowedItems = [

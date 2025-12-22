@@ -9,11 +9,11 @@ import Link from "next/link";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
-import LowCost from "@/asset/icons/low-cost.svg";
-import Secure from "@/asset/icons/secure.svg";
-import Network from "@/asset/icons/network.svg";
-import Updates from "@/asset/icons/update.svg";
-import Hidden from "@/asset/icons/hidden-charges.svg";
+import LowCost from "@/asset/icon/low-cost.svg";
+import Secure from "@/asset/icon/secure.svg";
+import Network from "@/asset/icon/network.svg";
+import Updates from "@/asset/icon/update.svg";
+import Hidden from "@/asset/icon/hidden-charges.svg";
 
 import {
   MessageSquare,
