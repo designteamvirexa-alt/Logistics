@@ -109,6 +109,11 @@ export default function Footer() {
                 • About Us
               </Link>
             </li>
+             <li>
+              <Link href="/services" className="hover:text-blue-900">
+                • Services
+              </Link>
+            </li>
             <li>
               <Link href="/track-your-package" className="hover:text-blue-900">
                 • Tracking
