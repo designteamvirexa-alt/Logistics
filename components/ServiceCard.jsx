@@ -185,7 +185,7 @@ const ServicesSection = () => {
         <div className="flex justify-center">
           <Link
             href="/book-shipment"
-            className="bg-[#013EFE] text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/40 hover:shadow-blue-600/60 transition"
+            className="btn-primary hover:scale-105 transition-all"
           >
             Book Now
           </Link>

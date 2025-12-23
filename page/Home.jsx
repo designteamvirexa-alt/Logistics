@@ -148,7 +148,7 @@ function Home() {
                 <div className="flex justify-center md:justify-start">
                   <Link
                     href="/about"
-                    className="bg-primary text-[15px] text-white font-semibold py-3 px-10 rounded-full transition hover:opacity-90"
+                    className="btn-primary hover:scale-105 transition-all"
                   >
                     Explore more
                   </Link>
@@ -297,9 +297,7 @@ function Home() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact-us"
-                className="bg-white text-black px-6 py-3 rounded-full 
-                                    font-semibold text-sm md:text-base 
-                                    hover:scale-105 transition-all"
+                className="btn-white hover:scale-105 transition-all"
               >
                 Contact Us
               </Link>

@@ -95,7 +95,7 @@ function Individual() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-wrap gap-4"
           >
-            <button className="bg-white text-black px-8 py-3 rounded-full font-semibold text-sm md:text-base hover:scale-105 transition-transform">
+            <button className="btn-white hover:scale-105 transition-all">
               Book Your Delivery Now
             </button>
           </motion.div>

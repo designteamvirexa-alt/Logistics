@@ -64,10 +64,10 @@ export function HowItWorks() {
         </div>
         
         <div className="mt-16 text-center">
-          <Link href="/book-shipment" className="bg-primary text-white px-10 py-3  font-semibold rounded-3xl  transition-colors">
+          <Link href="/book-shipment" className="btn-primary hover:scale-105 transition-all">
             Book Your Luggage Delivery Now
           </Link>
-          <p className="mt-4 text-second">Fast, reliable, and stress-free travel starts here</p>
+          
         </div>
       </div>
     </section>

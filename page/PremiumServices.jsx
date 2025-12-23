@@ -144,13 +144,13 @@ export default function PremiumServices() {
           >
             <Link
               href="#contact"
-              className="bg-white px-8 py-3 rounded-full font-semibold"
+              className="btn-white hover:scale-105 transition-all"
             >
               Book Now
             </Link>
             <Link
               href="#pricing"
-              className="bg-white/10 border border-white/20 px-8 py-3 font-semibold rounded-full text-white"
+              className="btn-white-outline hover:scale-105 transition-all"
             >
               View Pricing
             </Link>

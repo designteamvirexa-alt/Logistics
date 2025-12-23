@@ -93,7 +93,7 @@ function Corporate() {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap gap-4"
           >
-            <button className="bg-white px-8 py-3 text-sm sm:text-base font-semibold rounded-full hover:scale-105 transition-all">
+            <button className="btn-white hover:scale-105 transition-all">
               Get a Custom Corporate Quote
             </button>
           </motion.div>

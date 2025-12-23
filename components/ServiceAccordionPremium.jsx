@@ -91,14 +91,14 @@ export default function FAQ() {
         {!showAll ? (
           <button
             onClick={() => setShowAll(true)}
-            className="bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/50 transition"
+            className="btn-primary hover:scale-105 transition-all"
           >
             View More
           </button>
         ) : (
           <button
             onClick={() => setShowAll(false)}
-            className="bg-gray-200 text-[16px] text-gray-900 font-semibold py-3 px-12 rounded-full transition"
+            className="btn-primary hover:scale-105 transition-all"
           >
             View Less
           </button>

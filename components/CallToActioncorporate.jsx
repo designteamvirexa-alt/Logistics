@@ -39,15 +39,11 @@ export default function CallToAction() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-black px-6 py-3 rounded-full 
-                               font-semibold text-sm md:text-base 
-                               hover:scale-105 transition-all">
+            <button className="btn-white hover:scale-105 transition-all">
               Request Corporate Quote
             </button>
 
-            <button className="border border-white/40 text-white px-6 py-3 rounded-full
-                               font-semibold text-sm md:text-base
-                               hover:bg-white/10 transition-all">
+            <button className="btn-white-outline hover:scale-105 transition-all">
               Contact Support
             </button>
           </div>
