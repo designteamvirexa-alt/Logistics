@@ -94,7 +94,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/book/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>
@@ -143,7 +143,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-blue-600 transition"
                   >
                     {item}
                   </Link>

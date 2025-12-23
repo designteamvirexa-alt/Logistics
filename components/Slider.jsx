@@ -7,44 +7,44 @@ import "swiper/css";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import c1 from "@/asset/c1.webp";
-import valuesdiff from "@/asset/values-diff.webp";
-import courierimg from "@/asset/courierimg.webp";
+import Safe from "@/asset/why-choose/safe-secure.png";
+import Door from "@/asset/why-choose/door-to-door.png";
+import Tier from "@/asset/why-choose/tier.png";
 import LiveTracking from "@/asset/why-choose/live-tracking.png";
 import OnTime from "@/asset/why-choose/on-time-delivery.png";
+import Corporate from "@/asset/why-choose/corporate.png";
 
 const data = [
   {
     title: "Safe & Secure Luggage Handling",
     desc: "Your bags are handled by trained professionals with secure sealing and verified partners, ensuring protection throughout the journey.",
-    img: c1,
+    img: Safe,
   },
   {
     title: "Reliable Door-to-Door Baggage Pickup & Drop",
     desc: "Skip the hassle of heavy luggage—book online, and we’ll pick up from your home and deliver anywhere in India.",
-    img: valuesdiff,
+    img: Door,
   },
   {
     title: "On-Time Delivery Guarantee",
     desc: "Avoid baggage delays—our scheduled deliveries and real-time updates keep you informed until your luggage arrives.",
     img: OnTime,
   },
-   {
+  {
     title: "Live Luggage Tracking Across India",
     desc: "Get real-time tracking and SMS/WhatsApp alerts, so you always know exactly where your baggage is in transit.",
     img: LiveTracking,
   },
-   {
+  {
     title: "Corporate & Group Travel Luggage Management",
     desc: "We provide specialised support for corporate travel, events, and group trips, ensuring seamless coordination across multiple bags and destinations.",
-    img: courierimg,
+    img: Corporate,
   },
-   {
+  {
     title: "Nationwide Luggage Delivery Network",
     desc: "We deliver luggage across major, tier-2, and tier-3 cities, supporting seamless travel, relocation, and baggage movement nationwide.",
-    img: courierimg,
+    img: Tier,
   },
-  
 ];
 
 export default function Slider() {
@@ -52,8 +52,7 @@ export default function Slider() {
 
   return (
     <section className="py-24   ">
-      <div className="container  mx-auto  px-4">
-
+      <div className="container mx-auto px-4">
         {/* HEADER */}
         <div className="flex items-center justify-between mb-14">
           <h2 className="text-white text-xl text-center md:text-left">
@@ -123,7 +122,6 @@ export default function Slider() {
             <ChevronRight />
           </button>
         </div>
-
       </div>
     </section>
   );
