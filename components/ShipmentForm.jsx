@@ -402,7 +402,7 @@ const router = useRouter();
           {/* Button */}
           <button
             type="submit"
-            className=" bg-primary text-[16px] text-white font-semibold py-3 px-6 rounded-full transition duration-300 shadow-xl shadow-blue-500/50"
+            className="btn-primary hover:scale-105 transition-all"
           >
             Book Shipment
           </button>

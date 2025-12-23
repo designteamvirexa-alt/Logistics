@@ -155,7 +155,7 @@ export default function Footer() {
             <Link
               href="https://wa.me/919878798298"
               target="_blank"
-              className="px-6 py-3 rounded-full font-semibold bg-primary text-white text-[15px] hover:scale-105 transition-all"
+              className="btn-primary hover:scale-105 transition-all"
             >
               Contact Support Team
             </Link>

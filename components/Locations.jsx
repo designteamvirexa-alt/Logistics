@@ -206,7 +206,7 @@ export default function TransformingCities() {
         <div className="text-center mt-24">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-6 py-3 text-base font-semibold text-white border border-white rounded-full hover:bg-white hover:text-black transition"
+            className="btn-white hover:scale-105 transition-all"
           >
             {showAll ? "View Less" : "View More"}
           </button>

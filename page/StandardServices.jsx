@@ -156,13 +156,13 @@ export default function Services() {
           <motion.div {...fadeUp} className="flex gap-4">
             <Link
               href="#contact"
-              className="bg-white px-8 py-3 font-semibold text-[15px] rounded-full"
+              className="btn-white hover:scale-105 transition-all"
             >
               Book Now
             </Link>
             <Link
               href="/rate-calculator"
-              className="bg-white/10 border text-white px-8 py-3 font-semibold rounded-full"
+              className="btn-white-outline hover:scale-105 transition-all"
             >
               Rate Calculator
             </Link>

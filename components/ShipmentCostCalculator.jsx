@@ -186,7 +186,7 @@ export default function ShipmentCalculator() {
           {/* Button */}
           <button
             onClick={calculatePrice}
-            className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold hover:bg-blue-700"
+            className="w-full btn-primary hover:scale-105 transition-all"
           >
             Calculate Price
           </button>

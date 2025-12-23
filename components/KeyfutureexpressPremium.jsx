@@ -91,7 +91,7 @@ export default function StickyStepsOverlap() {
 
               <Link
                 href="/services"
-                className="inline-block px-6 py-3 bg-primary font-semibold text-white rounded-full"
+                className="btn-primary hover:scale-105 transition-all"
               >
                 Our Services
               </Link>

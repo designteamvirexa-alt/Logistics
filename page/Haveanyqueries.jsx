@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import CustomSlider from "@/components/LocationSlider";
 import ContactSection from "@/components/Contactmain";
 import Testimonials from "@/components/Testimonials";
-import TransformingCities from "@/components/Locations"
+import TransformingCities from "@/components/Locations";
 
 import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 import ContactUs from "@/asset/shippment/contactus.webp";
@@ -53,10 +53,9 @@ function Haveanyqueries() {
       <section className="">
         <ContactSection />
       </section>
-<section className="">
-  <TransformingCities />
-</section>
-      
+      <section className="">
+        <TransformingCities />
+      </section>
 
       <section className="pt-24 px-4 overflow-x-hidden">
         <div className=" mx-auto  ">

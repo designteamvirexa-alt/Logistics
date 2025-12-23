@@ -138,10 +138,10 @@ export default function ExpressServices() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex gap-4"
           >
-            <Link href="#contact" className="bg-white px-8 py-3 font-semibold rounded-full">
+            <Link href="#contact" className="btn-white hover:scale-105 transition-all">
               Book Now
             </Link>
-            <Link href="/rate-calculator" className="bg-white/10 border border-white/20  font-semibold text-white px-8 py-3 rounded-full">
+            <Link href="/rate-calculator" className="btn-white-outline hover:scale-105 transition-all">
               Rate Calculator
             </Link>
           </motion.div>

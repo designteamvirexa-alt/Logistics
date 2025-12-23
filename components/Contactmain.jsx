@@ -316,7 +316,7 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition"
+                className="w-full btn-primary hover:scale-105 transition-all"
               >
                 Get a Free Quote
               </button>

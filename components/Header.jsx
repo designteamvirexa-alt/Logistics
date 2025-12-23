@@ -190,7 +190,7 @@ export default function Header({ mode = "default" }) {
         <div className="hidden md:flex items-center">
           <Link
             href="/track-your-package"
-            className="bg-primary text-[16px] text-white font-semibold py-3 px-10 rounded-full transition"
+            className="btn-primary hover:scale-105 transition-all"
           >
             Track Now
           </Link>
@@ -285,7 +285,7 @@ export default function Header({ mode = "default" }) {
             <Link
               href="/track-your-package"
               onClick={handleLinkClick}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full w-full"
+              className="btn-primary hover:scale-105 transition-all"
             >
               Track Now
             </Link>

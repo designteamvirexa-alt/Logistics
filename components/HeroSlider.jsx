@@ -77,7 +77,7 @@ export default function HeroSlider() {
                     <div className="flex justify-center lg:justify-start">
                       <Link
                         href="#"
-                        className="inline-block px-6 py-3 text-[15px] rounded-full bg-primary text-white font-semibold hover:scale-105 transition"
+                        className="btn-primary hover:scale-105 transition-all"
                       >
                         Book Shipment
                       </Link>
@@ -99,7 +99,7 @@ export default function HeroSlider() {
                       <FloatingInput label="Pickup Location" />
                       <FloatingInput label="Drop Location" />
 
-                      <button className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition">
+                      <button className="w-full btn-primary hover:scale-105 transition-all">
                         Get Quote
                       </button>
                     </div>
