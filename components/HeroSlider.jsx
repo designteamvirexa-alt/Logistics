@@ -10,7 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import bannerone from "@/asset/banner-1-1.jpg";
-import bannertwo from "@/asset/premium-luggage.jpg";
+import bannertwo from "@/asset/luggage-bag.jpg";
 import bannerthree from "@/asset/luggage-person.jpg";
 
 const slides = [
