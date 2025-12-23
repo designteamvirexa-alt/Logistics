@@ -1,47 +1,24 @@
 "use client";
 import React, { useState } from "react";
-import {
-  BadgeCheck,
-  BookOpen,
-  BrainCircuit,
-  CheckCircle,
-  Globe2,
-  Plane,
-  User2,
-} from "lucide-react";
 import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
-
 import About from "@/asset/home/about-frisbi.png";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
-import { AnimatePresence, motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
-
 import Image from "next/image";
-import background from "@/asset/background.png";
-import location from "@/asset/location.png";
 import CustomSlider from "@/components/Slider";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import ServicesSection from "@/components/ServiceCard";
-import { MapPin, Mail, Phone } from "lucide-react";
-import about from "@/asset/about-us.webp";
-import AboutUs from "@/components/homeabout";
-import corporate from "@/asset/helpcenter-salient.webp";
-import packing from "@/asset/packing.webp";
-
+import { motion, AnimatePresence } from "framer-motion";
+import Packing from "@/asset/icon/express.svg";
 // Swiper styles are mandatory to import!
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import TestimonialCard from "@/components/TestimonialCard";
-import TestimonialSliderRight from "@/components/TestimonialSliderRight";
+
 import FAQSection from "@/components/Accordion";
 import ContactSection from "@/components/ContactSection";
 import HowToShip from "@/components/HowToShip";
-import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
-
-import StrengthSlider from "@/components/Slider";
 
 function Home() {
   const tabs = ["Our Mission", "Our Vision", "Why Choose Us"];
@@ -87,28 +64,22 @@ function Home() {
 
       <MarqueeLogos />
 
-      <section className="   container mx-auto relative text-black px-4 py-24 sm:px-6 lg:px-8 ">
-        <div className="relative  mx-auto overflow-hidden  rounded-3xl">
-          {/* <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover z-0"
-            >
-              <source src="/videos/bg.mp4" type="video/mp4" />
-            </video>  */}
-
+      <section className="container mx-auto relative px-4 py-24 sm:px-6 lg:px-8">
+         
+        <div className="">
+         
           <div className="relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <h2 className="text-center text-3xl md:text-4xl font-bold mb-4">
+          About Us
+        </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Content */}
-              <div className="flex flex-col justify-center order-1 lg:order-1">
+              <div className="flex flex-col justify-center">
                 <h2 className="text-2xl md:text-3xl font-semibold mb-4 leading-relaxed text-center md:text-left max-w-xl">
-                  About Us – Frisbi Luggage Delivery Service
+                 Frisbi Luggage Delivery Service
                 </h2>
 
-                <p className="text-second mb-6 text-center md:text-left max-w-xl">
+                <p className="text-gray-600 mb-8 text-center md:text-left max-w-xl leading-relaxed">
                   At Frisbi, we are on a mission to make travel lighter,
                   stress-free, and smarter. As India’s most reliable luggage
                   delivery service, we pick up your bags from your doorstep and
@@ -117,38 +88,58 @@ function Home() {
                   and hassle-free.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8 text-center md:text-left">
-                  <div>
-                    <div className="text-2xl font-bold text-primary mb-3">
-                      01
+                {/* Features */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
+                  {/* Feature 1 */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-blue-100 shrink-0">
+                      <Image
+                        src={Packing}
+                        alt="Professional Packing"
+                        width={28}
+                        height={28}
+                      />
                     </div>
-                    <h4 className="text-xl font-semibold mb-2">
-                      Professional Packing
-                    </h4>
-                    <p className="text-second text-sm md:text-base">
-                      Expert packing to protect your luggage throughout the
-                      journey.
-                    </p>
+
+                    <div>
+                      <h4 className="text-lg font-semibold mb-1">
+                        Professional Packing
+                      </h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Expert packing to protect your luggage throughout the
+                        journey.
+                      </p>
+                    </div>
                   </div>
 
-                  <div>
-                    <div className="text-2xl font-bold text-primary mb-3">
-                      02
+                  {/* Feature 2 */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-blue-100 shrink-0">
+                      <Image
+                        src={Packing}
+                        alt="Pre-Move Planning"
+                        width={28}
+                        height={28}
+                      />
                     </div>
-                    <h4 className="text-xl font-semibold mb-2">
-                      Pre-Move Planning
-                    </h4>
-                    <p className="text-second text-sm md:text-base">
-                      Easy scheduling and planning for pickups & on-time
-                      delivery.
-                    </p>
+
+                    <div>
+                      <h4 className="text-lg font-semibold mb-1">
+                        Pre-Move Planning
+                      </h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Easy scheduling and planning for pickups & on-time
+                        delivery.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
+                {/* CTA */}
                 <div className="flex justify-center md:justify-start">
                   <Link
                     href="/about"
-                    className="btn-primary hover:scale-105 transition-all"
+                    className="btn-primary transition-transform hover:scale-105"
                   >
                     Explore more
                   </Link>
@@ -156,7 +147,7 @@ function Home() {
               </div>
 
               {/* Image */}
-              <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
+              <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-xl h-[280px] md:h-[500px] rounded-2xl overflow-hidden">
                   <Image
                     src={About}
@@ -264,7 +255,6 @@ function Home() {
         <ContactSection />
       </section>
 
-      
       <section className="w-full px-4 md:px-10 my-24 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}

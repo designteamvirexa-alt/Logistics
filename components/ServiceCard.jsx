@@ -169,7 +169,7 @@ const ServicesSection = () => {
             description="Seamless Package Delivery, Right at Your Doorstep!"
             image={Corporate}
             link="/corporate"
-            fit="cover"
+            fit="contain"
           />
 
           <FeatureCard
