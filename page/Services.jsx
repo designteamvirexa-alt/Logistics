@@ -43,9 +43,9 @@ export default function Services() {
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h1 className="text-white text-3xl md:text-4xl font-semibold ">
+            <h2 className="text-white text-3xl md:text-4xl font-semibold ">
               Services
-            </h1>
+            </h2>
             <p className="text-white/80 mt-3 text-sm md:text-base">
               Home <span className="text-blue-200">›</span> Services
             </p>
@@ -54,7 +54,7 @@ export default function Services() {
       </div>
 
       {/* ================= IMAGE GRID ================= */}
-      <section className="container mx-auto px-4 my-24 mb-0">
+      <section className="container mx-auto px-4 my-24 ">
         <h2 className="text-2xl md:text-3xl font-semibold mb-12">
           Delivering seamless <br /> logistics for your business
         </h2>
@@ -87,38 +87,8 @@ export default function Services() {
         <MarqueeLogos />
       </div>
 
-      <section className="bg-[#F1F2F6] pt-24 pb-8">
-        <ServicesSection />
-      </section>
       <section className="bg-[#F1F2F6]">
-        <div className="container mx-auto px-4 pb-24 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6">
-            {/* Corporate */}
-            <FeatureCard
-              title="Corporate "
-              description="Seamless Package Delivery, Right at Your Doorstep!"
-              image={corporate}
-              imageFit="cover"
-            />
-
-            {/* Package Delivery */}
-            <FeatureCard
-              title="Individual"
-              description="Fast, reliable delivery for every shipment"
-              image={packing}
-              imageFit="contain"
-            />
-          </div>
-
-          <div className="flex justify-center mt-16">
-            <Link
-              href="/"
-              className="bg-primary text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/50"
-            >
-              Book Now
-            </Link>
-          </div>
-        </div>
+        <ServicesSection />
       </section>
 
       <section className=" px-4 overflow-x-hidden">
@@ -127,14 +97,15 @@ export default function Services() {
         </div>
       </section>
 
-      <section className=" bg-[#000] mx-auto overflow-x-hidden ">
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-      <FAQSection />
+       <section className="py-16 pb-0">
+<FAQSection />
+       </section>
+      
 
       <CallToAction />
-
-      
     </div>
   );
 }
