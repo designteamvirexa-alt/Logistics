@@ -7,7 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import illsutration from "@/asset/standard.png";
+import illsutration from "@/asset/common-illustrator.png";
 import Image from "next/image";
 
 function PricingStructure() {
