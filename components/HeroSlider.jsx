@@ -51,7 +51,7 @@ export default function HeroSlider() {
                 priority
                 className="object-cover rounded-2xl"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-2xl" />
+              <div className="absolute inset-0 bg-black/50 rounded-2xl" />
             </div>
 
             {/* CONTENT */}
@@ -77,7 +77,7 @@ export default function HeroSlider() {
                     <div className="flex justify-center lg:justify-start">
                       <Link
                         href="#"
-                        className="inline-block px-6 py-3 rounded-full bg-primary text-white font-semibold hover:scale-105 transition"
+                        className="inline-block px-6 py-3 text-[15px] rounded-full bg-primary text-white font-semibold hover:scale-105 transition"
                       >
                         Book Shipment
                       </Link>

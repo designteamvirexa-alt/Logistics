@@ -163,7 +163,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <FeatureCard
             title="Corporate"
             description="Seamless Package Delivery, Right at Your Doorstep!"
