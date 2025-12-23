@@ -7,7 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import illsutration from "@/asset/illustration.svg";
+import illsutration from "@/asset/common-illustrator.png";
 import Image from "next/image";
 
 function PricingStructure() {
@@ -88,8 +88,15 @@ function PricingStructure() {
         </div>
 
         <section className="w-full ">
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-10 items-center">
+          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-10 items-center">
             {/* LEFT CARD with image on right */}
+            <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-center">
+              <span className=" text-2xl font-semibold  leading-[1.6]">
+                💰 <br />
+               Premium Delivery offers maximum value, not minimum price.
+              
+              </span>
+            </div>
             <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-center lg:items-start gap-8">
               {/* TEXT LEFT */}
               <div className="flex-1">
@@ -121,13 +128,7 @@ function PricingStructure() {
             </div>
 
             {/* RIGHT CARD */}
-            <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-center">
-              <span className=" text-2xl font-semibold  leading-[1.6]">
-                💰 <br />
-               Premium Delivery offers maximum value, not minimum price.
-              
-              </span>
-            </div>
+            
           </div>
         </section>
       </div>

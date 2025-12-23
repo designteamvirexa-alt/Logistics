@@ -9,7 +9,7 @@ import {
 import { motion } from "framer-motion";
 // import illsutration from "@/asset/illustration.svg";
 import Image from "next/image";
-import illsutration from "@/asset/standard.png";
+import illsutration from "@/asset/common-illustrator.png";
 
 
 function PricingStructure() {

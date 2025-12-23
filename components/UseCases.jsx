@@ -11,7 +11,7 @@ export function UseCases() {
   ];
 
   return (
-    <div className="py-20 bg-black">
+    <div className="py-20 bg-primary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-white mb-12">
           Common Corporate Use Cases
