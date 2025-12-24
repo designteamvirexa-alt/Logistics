@@ -80,7 +80,7 @@ export default function Slider() {
         <Swiper
           modules={[Autoplay]}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 8000, disableOnInteraction: false }}
           spaceBetween={24}
           breakpoints={{
             320: { slidesPerView: 1 },
