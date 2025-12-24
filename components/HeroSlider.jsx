@@ -36,7 +36,7 @@ export default function HeroSlider() {
     <section className="relative w-full h-screen p-3 -mt-24 overflow-hidden">
       <Swiper
         navigation
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        autoplay={{ delay: 8000, disableOnInteraction: false }}
         modules={[Navigation, Autoplay]}
         className="w-full h-full hero-swiper"
       >
