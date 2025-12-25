@@ -14,8 +14,9 @@ import CustomSlider from "@/components/LocationSlider";
 import Stats from "@/components/Stats";
 import ContactSection from "@/components/ContactSection";
 import TransformingCities from "@/components/Locations";
-import { Link } from "lucide-react";
+// import { Link } from "lucide-react";
 
+import Link from "next/link";
 function Aboutus() {
   return (
     <div className="-mt-24">
@@ -24,11 +25,11 @@ function Aboutus() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[500px] md:h-[460px]  overflow-hidden 
-             bg-primary "
+        className="relative w-full h-[500px] md:h-[460px] overflow-hidden bg-primary"
       >
-       <Image
-          src={aboutUs} // your hero image path
+        {/* Background Image */}
+        <Image
+          src={aboutUs}
           alt="About Background"
           fill
           priority
@@ -36,59 +37,71 @@ function Aboutus() {
         />
 
         {/* CONTENT */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h1 className="text-white text-3xl md:text-4xl font-semibold mb-6">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+          <h1 className="text-white text-3xl md:text-4xl font-semibold mb-4">
             Hi! 👋 We are Frisbi
           </h1>
-          <p className="text-white mb-8">
+
+          <p className="text-white/90 mb-8 text-sm md:text-base">
             India’s trusted luggage delivery service, built to make travel
             lighter, smarter, and stress-free.
           </p>
 
-         <button
-                href="/contact-us"
-                className="btn-white hover:scale-105 transition-all"
-              >
-                Contact Us
-              </button>
-          {/* Breadcrumb if needed */}
-          {/* 
-    <p className="text-white/80 mt-3 text-sm md:text-base">
-      Home <span className="text-blue-200">›</span> About Us
-    </p> 
-    */}
+          {/* CTA */}
+          <Link
+            href="/contact-us"
+            className="btn-white hover:scale-105 transition-all"
+          >
+            Contact Us
+          </Link>
         </div>
       </motion.section>
 
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-24 pb-0">
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+
           {/* LEFT IMAGE (Always first on mobile) */}
           <div className="w-full order-2">
             <Image
               src={aboutone}
               alt="Logistics"
-              className="rounded-3xl  w-full  h-[500px]  sm:h-[200px]  md:h-[260px]  lg:h-[600px] object-cover"
+              className="rounded-3xl  w-full  object-cover"
             />
           </div>
 
           {/* RIGHT CONTENT (2nd on mobile) */}
           <div className="flex flex-col space-y-3 md:space-y-3 order-1">
             <p className=" font-medium">
-              FAST, SMART & CONNECTED SUPPLY CHAINS
+              Smart Luggage Delivery Services in India
             </p>
 
-            <h2 className=" ">
-              Optimizing logistics <br /> with purpose
-            </h2>
+            <h2 className=" ">About Frisbi</h2>
 
             <p className="font-medium text-second">
-              Supply is a leader in logistics, making shipping simple and
-              reliable for any business that needs to move goods.
+              Frisbi is a modern door-to-door luggage delivery service in India,
+              created to make travel lighter, easier, and stress-free. We help
+              individuals, families, and businesses move their luggage safely
+              across cities, so they can focus on their journey instead of
+              carrying heavy bags.
             </p>
 
+            <p className="font-medium text-second mb-6">
+              Built with a customer-first mindset and powered by smart
+              logistics, Frisbi is redefining how India travels.
+            </p>
+
+            <div className="flex justify-center md:justify-start">
+              <Link
+                href="/about"
+                className="btn-primary transition-transform hover:scale-105"
+              >
+                Explore more
+              </Link>
+            </div>
+
             {/* SECOND IMAGE – stays inside right column but stacks on mobile */}
-            <Image
+            {/* <Image
               src={abouttwo}
               alt="Logistics Team"
               className="
@@ -101,7 +114,7 @@ function Aboutus() {
           object-cover 
           mt-5
         "
-            />
+            /> */}
           </div>
         </div>
       </section>
