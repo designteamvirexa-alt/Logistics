@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import aboutone from "@/asset/about/aboutone.png";
 import abouttwo from "@/asset/about/abouttwo.png";
-import aboutUs from "@/asset/about/about-bg.webp";
+import aboutUs from "@/asset/about-us/about-bg.png";
 import vision from "@/asset/about/vision.webp";
 import mission from "@/asset/about/mission.webp";
 import CallToAction from "@/components/CallToAction";
@@ -14,38 +14,49 @@ import CustomSlider from "@/components/LocationSlider";
 import Stats from "@/components/Stats";
 import ContactSection from "@/components/ContactSection";
 import TransformingCities from "@/components/Locations";
+import { Link } from "lucide-react";
 
 function Aboutus() {
   return (
-    <div className="-mt-24 -mt-16 ">
+    <div className="-mt-24">
       <motion.section
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[460px] md:h-[460px] rounded-3xl overflow-hidden "
+        className="relative w-full h-[500px] md:h-[460px]  overflow-hidden 
+             bg-primary "
       >
-        {/* Background Image */}
-        <Image
+       <Image
           src={aboutUs} // your hero image path
           alt="About Background"
           fill
           priority
-          className="object-cover p-3  rounded-3xl"
+          className="object-cover"
         />
 
-        {/* Gradient Overlay */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-blue-700/90"></div> */}
-
         {/* CONTENT */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h2 className="text-white text-3xl md:text-4xl font-semibold ">
-            About us
-          </h2>
-
-          <p className="text-white/80 mt-3 text-sm md:text-base">
-            Home <span className="text-blue-200">›</span> about-us
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <h1 className="text-white text-3xl md:text-4xl font-semibold mb-6">
+            Hi! 👋 We are Frisbi
+          </h1>
+          <p className="text-white mb-8">
+            India’s trusted luggage delivery service, built to make travel
+            lighter, smarter, and stress-free.
           </p>
+
+         <button
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Contact Us
+              </button>
+          {/* Breadcrumb if needed */}
+          {/* 
+    <p className="text-white/80 mt-3 text-sm md:text-base">
+      Home <span className="text-blue-200">›</span> About Us
+    </p> 
+    */}
         </div>
       </motion.section>
 
