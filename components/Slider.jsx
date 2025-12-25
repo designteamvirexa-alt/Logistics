@@ -13,6 +13,7 @@ import Tier from "@/asset/why-choose/tier.png";
 import LiveTracking from "@/asset/why-choose/live-tracking.png";
 import OnTime from "@/asset/why-choose/on-time-delivery.png";
 import Corporate from "@/asset/why-choose/corporate.png";
+import Support from "@/asset/why-choose/support.png";
 
 const data = [
   {
@@ -44,6 +45,11 @@ const data = [
     title: "Nationwide Luggage Delivery Network",
     desc: "We deliver luggage across major, tier-2, and tier-3 cities, supporting seamless travel, relocation, and baggage movement nationwide.",
     img: Tier,
+  },
+   {
+    title: "Dedicated SPOC Support",
+    desc: "One single point of contact for bookings, tracking, and support — ensuring faster coordination and hassle-free luggage delivery.",
+    img: Support,
   },
 ];
 
