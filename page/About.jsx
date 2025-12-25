@@ -213,11 +213,12 @@ function Aboutus() {
 
       <TransformingCities />
 
+      
+      <section className="px-4 py-24">
+        <Testimonials />
+      </section>
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
-      </section>
-      <section className="px-4 pt-24">
-        <Testimonials />
       </section>
 
       <CallToAction />
