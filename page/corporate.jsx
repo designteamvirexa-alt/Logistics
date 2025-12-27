@@ -26,7 +26,7 @@ function Corporate() {
   return (
     <div className="-mt-24 -mt-16">
       {/* HERO SECTION */}
-      <section className="relative h-[full] md:h-[660px] rounded-3xl p-2">
+      <section className="relative h-[full] md:h-[660px] ">
         <Image
           src={herobg}
           alt="Corporate Luggage Delivery"
@@ -34,10 +34,11 @@ function Corporate() {
           priority
           className="object-cover rounded-3xl p-3"
         />
+        
 
         <div className="container relative z-10 mx-auto px-4 py-24 md:py-32">
           {/* Badge */}
-          <motion.div
+          {/* <motion.div
             {...fadeUp}
             className="inline-block bg-white/10 backdrop-blur-xl border border-white/20 px-8 py-2 rounded-full mb-6"
           >
@@ -45,15 +46,15 @@ function Corporate() {
               <span className="text-2xl">✨</span>
               Frisbi
             </p>
-          </motion.div>
+          </motion.div> */}
 
           {/* Title */}
           <motion.h1
             {...fadeUp}
             transition={{ delay: 0.1 }}
-            className="text-white font-black mb-6"
+            className="text-white font-black mb-6 max-w-3xl"
           >
-            Corporate Luggage Delivery Solutions
+            Corporate Luggage Delivery  Solutions
           </motion.h1>
 
           {/* Subtitle */}
