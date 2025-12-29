@@ -172,7 +172,7 @@ p {
 }
 
 .btn-white:hover {
-  background-color: transparent;
+  background-color: #013efe;
   position: relative;
   border: 1px solid #fff;
   line-height: 1.25;
@@ -270,4 +270,15 @@ p {
   100% {
     box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
   }
+}
+
+
+.bg-light {
+  background: linear-gradient(
+  to top,
+  #ffffff 0%,
+  /* #f2f5ff 50%, */
+  #013efe 100%
+);
+
 }
