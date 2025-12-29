@@ -271,3 +271,14 @@ p {
     box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
   }
 }
+
+
+.bg-light {
+  background: linear-gradient(
+  to top,
+  #ffffff 0%,
+  /* #f2f5ff 50%, */
+  #013efe 100%
+);
+
+}

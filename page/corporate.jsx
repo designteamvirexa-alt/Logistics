@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
-import herobg from "@/asset/service/standard-services.png";
+import herobg from "@/asset/service/corporate.svg";
 
 import { TrustedBy } from "@/components/TrustedBy";
 import { Features } from "@/components/Features";
@@ -24,90 +24,82 @@ function Corporate() {
   };
 
   return (
-    <div className="-mt-24 -mt-16">
+    <div className="-mt-24 ">
       {/* HERO SECTION */}
-      <section className="relative h-[full] md:h-[660px] ">
-        <Image
-          src={herobg}
-          alt="Corporate Luggage Delivery"
-          fill
-          priority
-          className="object-cover rounded-3xl p-3"
-        />
-        
+      <section className="relative bg-light overflow-hidden">
+        <div className="container mx-auto px-4 py-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT */}
+            <div className="relative z-10 text-center md:text-left">
+              <motion.h1
+                {...fadeUp}
+                transition={{ delay: 0.1 }}
+                className="text-white font-black mb-6 max-w-xl"
+              >
+                Corporate Luggage Delivery Solutions
+              </motion.h1>
 
-        <div className="container relative z-10 mx-auto px-4 py-24 md:py-32">
-          {/* Badge */}
-          {/* <motion.div
-            {...fadeUp}
-            className="inline-block bg-white/10 backdrop-blur-xl border border-white/20 px-8 py-2 rounded-full mb-6"
-          >
-            <p className="text-white flex items-center gap-3">
-              <span className="text-2xl">✨</span>
-              Frisbi
-            </p>
-          </motion.div> */}
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.2 }}
+                className="text-white text-lg max-w-xl mb-6"
+              >
+                Hassle-Free Luggage Logistics for Businesses, Events & Travel
+                Partners
+              </motion.p>
 
-          {/* Title */}
-          <motion.h1
-            {...fadeUp}
-            transition={{ delay: 0.1 }}
-            className="text-white font-black mb-6 max-w-3xl"
-          >
-            Corporate Luggage Delivery  Solutions
-          </motion.h1>
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.3 }}
+                className="text-white max-w-xl mb-4"
+              >
+                Frisbi helps organizations move luggage securely, on time, and
+                at scale—so employees, guests, and clients can travel light.
+              </motion.p>
 
-          {/* Subtitle */}
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.2 }}
-            className="text-blue-100 text-lg max-w-2xl mb-6"
-          >
-            Hassle-Free Luggage Logistics for Businesses, Events & Travel
-            Partners
-          </motion.p>
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.4 }}
+                className="text-white max-w-xl mb-8"
+              >
+                From corporate travel to events and hotels, we manage luggage
+                end-to-end with real-time visibility.
+              </motion.p>
 
-          {/* Description */}
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.3 }}
-            className="text-purple-100 max-w-2xl mb-4"
-          >
-            Frisbi helps organizations move luggage securely, on time, and at
-            scale—so employees, guests, and clients can travel light and
-            stress-free.
-          </motion.p>
+              <motion.div {...fadeUp} transition={{ delay: 0.5 }}>
+                <button className="btn-primary hover:scale-105 transition-all">
+                  Get a Custom Corporate Quote
+                </button>
+              </motion.div>
+            </div>
 
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.4 }}
-            className="text-purple-100 max-w-2xl mb-10"
-          >
-            From corporate travel to events, hotels, and group movements, we
-            manage luggage end-to-end with professional coordination and
-            real-time visibility.
-          </motion.p>
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[320px] md:h-[520px]">
+              <Image
+                src={herobg}
+                alt="Corporate Luggage Delivery"
+                fill
+                priority
+                className="object-contain"
+              />
 
-          {/* CTA */}
-          <motion.div
-            {...fadeUp}
-            transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-4"
-          >
-            <button className="btn-white hover:scale-105 transition-all">
-              Get a Custom Corporate Quote
-            </button>
-          </motion.div>
+              {/* Optional gradient on image */}
+              {/* <div className="absolute inset-0 bg-gradient-to-l from-white/70 to-transparent"></div> */}
+            </div>
+          </div>
         </div>
       </section>
+
       <section className="pb-24">
         <MarqueeLogos />
       </section>
 
       <TrustedBy />
-      <Features />
+
       <UseCases />
+      <Features />
       <HowItWorks />
+
       <Comparison />
       <Scale />
       <Safety />
