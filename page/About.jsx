@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import aboutone from "@/asset/about/aboutone.png";
 import abouttwo from "@/asset/about/abouttwo.png";
 import aboutUs from "@/asset/about-us/about-bg.png";
-import vision from "@/asset/about/vision.webp";
-import mission from "@/asset/about/mission.webp";
+import vision from "@/asset/about/vision.png";
+import mission from "@/asset/about/mission.jpeg";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
 import MarqueeLogos from "@/components/MarqueeLogos";
@@ -25,7 +25,7 @@ function Aboutus() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[500px] md:h-[460px] overflow-hidden bg-primary"
+        className="relative w-full h-[460px] md:h-[460px] overflow-hidden bg-primary"
       >
         {/* Background Image */}
         <Image
@@ -33,9 +33,9 @@ function Aboutus() {
           alt="About Background"
           fill
           priority
-          className="object-cover"
+          className="md:object-contain object-cover bg-center"
         />
-
+  <div className="absolute inset-0 bg-black/30 " />
         {/* CONTENT */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
           <h1 className="text-white text-3xl md:text-4xl font-semibold mb-4">
@@ -71,7 +71,7 @@ function Aboutus() {
           </div>
 
           {/* RIGHT CONTENT (2nd on mobile) */}
-          <div className="flex flex-col space-y-3 md:space-y-3 order-1">
+          <div className="flex flex-col space-y-3 md:space-y-3 order-1 md:text-start text-center">
             <p className=" font-medium">
               Smart Luggage Delivery Services in India
             </p>

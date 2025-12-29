@@ -58,6 +58,7 @@ import Gurugram from "@/asset/cities/Gurugram.webp";
 
 // ✅ Fallback image
 import DefaultCity from "@/asset/cities/Bangalore.webp";
+import BgCity from "@/asset/about-us/bg.png";
 
 export default function TransformingCities() {
   const [showAll, setShowAll] = useState(false);
@@ -177,8 +178,9 @@ export default function TransformingCities() {
 
   return (
     <section className="relative w-full bg-primary py-24">
+      
       <div className="container mx-auto px-4">
-
+        
         <h2 className="text-center text-white font-bold text-3xl">
           We Are Transforming Cities
         </h2>
@@ -211,7 +213,6 @@ export default function TransformingCities() {
             {showAll ? "View Less" : "View More"}
           </button>
         </div>
-
       </div>
     </section>
   );
