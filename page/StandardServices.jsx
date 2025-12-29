@@ -22,7 +22,7 @@ import {
   Radar,
   CheckCircle,
 } from "lucide-react";
-import herobg from "@/asset/service/standard-services.png";
+import herobg from "@/asset/service/standard-banner-img.svg";
 import one from "@/asset/service/2.png";
 import location from "@/asset/location.png";
 import { WhyChoose } from "@/components/Whychoose";
@@ -124,49 +124,59 @@ export default function Services() {
   return (
     <div className="-mt-24 -mt-16">
       {/* HERO */}
-      <section className="relative md:h-[550px] h-[700px] p-3">
-        <Image
-          src={herobg}
-          alt="Hero"
-          fill
-          priority
-          className="object-cover rounded-3xl p-3"
-        />
+      <section className="relative bg-light overflow-hidden">
+        <div className="container mx-auto px-4 py-28">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT (UNCHANGED) */}
+            <div className="relative z-10">
+              <motion.div
+                {...fadeUp}
+                className="bg-white/10 px-6 py-2 rounded-full mb-6 inline-block"
+              >
+                <p className="text-white">✨ Safe. Affordable. Reliable.</p>
+              </motion.div>
 
-        <div className="container relative z-10 mx-auto px-4 py-28">
-          <motion.div
-            {...fadeUp}
-            className="bg-white/10 px-6 py-2 rounded-full mb-6 inline-block"
-          >
-            <p className="text-white">✨ Safe. Affordable. Reliable.</p>
-          </motion.div>
+              <motion.h1 {...fadeUp} className="text-white mb-6">
+                Standard Delivery
+              </motion.h1>
 
-          <motion.h1 {...fadeUp} className="text-white  mb-6">
-            Standard Delivery
-          </motion.h1>
+              <motion.p {...fadeUp} className="text-white max-w-2xl mb-6">
+                India’s most affordable and reliable parcel delivery solution.
+              </motion.p>
 
-          <motion.p {...fadeUp} className="text-white max-w-2xl mb-8">
-            India’s most affordable and reliable parcel delivery solution.
-          </motion.p>
-          <motion.p {...fadeUp} className="text-white max-w-2xl mb-8">
-            Perfect for: Documents, parcels, business shipments, e-commerce
-            orders, and personal packages.
-          </motion.p>
+              <motion.p {...fadeUp} className="text-white max-w-2xl mb-8">
+                Perfect for: Documents, parcels, business shipments, e-commerce
+                orders, and personal packages.
+              </motion.p>
 
-          <motion.div {...fadeUp} className="flex gap-4">
-            <Link
-              href="#contact"
-              className="btn-white hover:scale-105 transition-all"
-            >
-              Book Now
-            </Link>
-            <Link
-              href="/rate-calculator"
-              className="btn-white-outline hover:scale-105 transition-all"
-            >
-              Rate Calculator
-            </Link>
-          </motion.div>
+              <motion.div {...fadeUp} className="flex gap-4">
+                <Link
+                  href="#contact"
+                  className="btn-white hover:scale-105 transition-all"
+                >
+                  Book Now
+                </Link>
+
+                <Link
+                  href="/rate-calculator"
+                  className="btn-white-outline hover:scale-105 transition-all"
+                >
+                  Rate Calculator
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[300px] md:h-[420px]">
+              <Image
+                src={herobg}
+                alt="Hero"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -235,12 +245,7 @@ export default function Services() {
                   <div className="flex flex-col items-center text-center">
                     <div className="relative mb-4">
                       <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                        <Image
-                          src={step.icon}
-                          alt=""
-                          width={28}
-                          height={28}
-                        />
+                        <Image src={step.icon} alt="" width={28} height={28} />
                       </div>
                       {/* <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
                         {step.number}

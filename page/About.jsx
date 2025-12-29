@@ -25,7 +25,7 @@ function Aboutus() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[460px] md:h-[460px] overflow-hidden bg-primary"
+        className="relative w-full h-[460px] md:h-[460px] overflow-hidden bg-light"
       >
         {/* Background Image */}
         <Image
@@ -35,7 +35,7 @@ function Aboutus() {
           priority
           className="md:object-contain object-cover bg-center"
         />
-  <div className="absolute inset-0 bg-black/30 " />
+  {/* <div className="absolute inset-0 bg-black/30 " /> */}
         {/* CONTENT */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
           <h1 className="text-white text-3xl md:text-4xl font-semibold mb-4">

@@ -22,7 +22,7 @@ import Peace from "@/asset/icon/delivery.svg";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
-import herobg from "@/asset/service/standard-services.png";
+import herobg from "@/asset/service/premium-banner-img.svg";
 import one from "@/asset/service/2.png";
 import location from "@/asset/location.png";
 
@@ -101,60 +101,69 @@ export default function PremiumServices() {
   return (
     <div className="-mt-24 -mt-16">
       {/* ================= HERO ================= */}
-      <section className="relative md:h-[560px] rounded-3xl p-2">
-        <Image
-          src={herobg}
-          alt="Premium Delivery"
-          fill
-          priority
-          className="object-cover rounded-3xl p-3"
-        />
+      <section className="relative bg-light overflow-hidden">
+        <div className="container mx-auto px-4 py-28">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT (UNCHANGED) */}
+            <div className="relative z-10">
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.6 }}
+                className="inline-block bg-white/10 backdrop-blur border border-white/20 px-6 py-2 rounded-full mb-6"
+              >
+                <p className="text-white">
+                  ✨ Because some deliveries deserve more
+                </p>
+              </motion.div>
 
-        <div className="container relative z-10 mx-auto px-4 py-28">
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.6 }}
-            className="inline-block bg-white/10 backdrop-blur border border-white/20 px-6 py-2 rounded-full mb-6"
-          >
-            <p className="text-white">
-              ✨ Because some deliveries deserve more
-            </p>
-          </motion.div>
+              <motion.h1
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-white text-4xl md:text-5xl font-bold mb-6"
+              >
+                Premium Delivery
+              </motion.h1>
 
-          <motion.h1
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white text-4xl md:text-5xl font-bold mb-6"
-          >
-            Premium Delivery
-          </motion.h1>
+              <motion.p
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-white max-w-2xl mb-6"
+              >
+                White-glove logistics for your most valuable shipments.
+              </motion.p>
 
-          <motion.p
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-blue-100 max-w-2xl mb-6"
-          >
-            White-glove logistics for your most valuable shipments.
-          </motion.p>
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex gap-4"
+              >
+                <Link
+                  href="#contact"
+                  className="btn-white hover:scale-105 transition-all"
+                >
+                  Book Now
+                </Link>
 
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex gap-4"
-          >
-            <Link
-              href="#contact"
-              className="btn-white hover:scale-105 transition-all"
-            >
-              Book Now
-            </Link>
-            <Link
-              href="#pricing"
-              className="btn-white-outline hover:scale-105 transition-all"
-            >
-              View Pricing
-            </Link>
-          </motion.div>
+                <Link
+                  href="#pricing"
+                  className="btn-white-outline hover:scale-105 transition-all"
+                >
+                  View Pricing
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[300px] md:h-[420px]">
+              <Image
+                src={herobg}
+                alt="Premium Delivery"
+                fill
+                priority
+                className="object-cover rounded-3xl"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
