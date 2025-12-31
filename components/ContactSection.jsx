@@ -10,6 +10,7 @@ export default function ContactSection() {
   const router = useRouter();
 
   const [form, setForm] = useState({
+    userType: "Corporate", // ✅ default
     name: "",
     email: "",
     service: "",
@@ -21,8 +22,6 @@ export default function ContactSection() {
     "Standard Delivery",
     "Express Delivery",
     "Premium Delivery",
-    "Corporate",
-    "Individual",
   ];
 
   const handleChange = (e) => {
@@ -51,6 +50,7 @@ export default function ContactSection() {
       if (data.result === "success") {
         toast.success("Form submitted successfully!");
         setForm({
+          userType: "Corporate",
           name: "",
           email: "",
           service: "",
@@ -71,39 +71,27 @@ export default function ContactSection() {
     <section className="relative text-black">
       <div className="relative z-10 max-w-7xl mx-auto py-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          
+
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-black space-y-6 flex flex-col items-center md:items-start"
+            className="space-y-6"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-semibold">
               We're here to answer <br /> your questions.
             </h2>
 
-            <p className="text-second max-w-md text-center md:text-left">
+            <p className="text-second max-w-md">
               Have a question or need help? Feel free to reach out.
             </p>
 
-            <div className="space-y-8 mt-8 w-full">
-              <Info
-                icon={MapPin}
-                title="Office Location"
-                value="100 S Main St, New York, NY"
-              />
-              <Info
-                icon={Mail}
-                title="Send a Message"
-                value="info@frisbi.in"
-              />
-              <Info
-                icon={Phone}
-                title="Call Us Directly"
-                value="+91 987-879-8298"
-              />
+            <div className="space-y-8 mt-8">
+              <Info icon={MapPin} title="Office Location" value="100 S Main St, New York, NY" />
+              <Info icon={Mail} title="Send a Message" value="info@frisbi.in" />
+              <Info icon={Phone} title="Call Us Directly" value="+91 987-879-8298" />
             </div>
           </motion.div>
 
@@ -115,9 +103,40 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="bg-white p-8 rounded-2xl"
           >
-            <h3 className="text-xl font-semibold text-black mb-6">
-              Get In Touch
-            </h3>
+            {/* Heading + Radio */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+              <h3 className="text-xl font-semibold">Get In Touch</h3>
+
+              <div className="flex gap-4">
+                {["Corporate", "Individual"].map((type) => (
+                  <label
+                    key={type}
+                    className={`flex items-center gap-2 cursor-pointer px-4 py-2 rounded-xl border text-sm font-medium transition
+                      ${
+                        form.userType === type
+                          ? "border-primary bg-primary/10 text-primary"
+                          : "border-gray-300 text-gray-600"
+                      }
+                    `}
+                  >
+                    <input
+                      type="radio"
+                      name="userType"
+                      value={type}
+                      checked={form.userType === type}
+                      onChange={handleChange}
+                      className="hidden"
+                    />
+                    <span className="w-3 h-3 rounded-full border flex items-center justify-center">
+                      {form.userType === type && (
+                        <span className="w-2 h-2 bg-primary rounded-full"></span>
+                      )}
+                    </span>
+                    {type}
+                  </label>
+                ))}
+              </div>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -127,7 +146,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium text-black outline-none placeholder:text-second"
+                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium outline-none"
                 />
 
                 <input
@@ -137,7 +156,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   placeholder="Email Address"
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium text-black outline-none placeholder:text-second"
+                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium outline-none"
                 />
               </div>
 
@@ -153,9 +172,7 @@ export default function ContactSection() {
                     Select Service
                   </option>
                   {services.map((s, i) => (
-                    <option key={i} value={s} className="bg-black text-white">
-                      {s}
-                    </option>
+                    <option key={i} value={s}>{s}</option>
                   ))}
                 </select>
 
@@ -165,7 +182,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   placeholder="Phone Number"
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium text-black outline-none placeholder:text-second"
+                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium outline-none"
                 />
               </div>
 
@@ -176,7 +193,7 @@ export default function ContactSection() {
                 rows={5}
                 placeholder="Write your message"
                 required
-                className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium text-black outline-none placeholder:text-second"
+                className="w-full px-4 py-3 rounded-xl bg-[#f5f5f5] text-sm font-medium outline-none"
               />
 
               <button
@@ -196,7 +213,7 @@ export default function ContactSection() {
 /* INFO COMPONENT */
 function Info({ icon: Icon, title, value }) {
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 text-center md:text-left">
+    <div className="flex items-start gap-4">
       <div className="p-3 bg-white rounded-xl">
         <Icon className="w-6 h-6 text-primary" />
       </div>
