@@ -23,7 +23,7 @@ import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
 import herobg from "@/asset/service/premium-banner-img.svg";
-import one from "@/asset/service/2.png";
+import one from "@/asset/service/luggageee.jpg";
 import location from "@/asset/location.png";
 
 // Components
@@ -101,25 +101,26 @@ export default function PremiumServices() {
   return (
     <div className="-mt-24 -mt-16">
       {/* ================= HERO ================= */}
-      <section className="relative bg-light overflow-hidden">
+      <section className="relative bg-white overflow-hidden">
         <div className="container mx-auto px-4 py-28">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT (UNCHANGED) */}
             <div className="relative z-10">
-              <motion.div
+              {/* <motion.div
                 {...fadeUp}
                 transition={{ duration: 0.6 }}
                 className="inline-block bg-white/10 backdrop-blur border border-white/20 px-6 py-2 rounded-full mb-6"
               >
-                <p className="text-white">
+               
+              </motion.div> */}
+               <p className="text-primary mb-5">
                   ✨ Because some deliveries deserve more
                 </p>
-              </motion.div>
 
               <motion.h1
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-white text-4xl md:text-5xl font-bold mb-6"
+                className="text-black text-4xl md:text-5xl font-bold mb-6"
               >
                 Premium Delivery
               </motion.h1>
@@ -127,7 +128,7 @@ export default function PremiumServices() {
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-white max-w-2xl mb-6"
+                className="text-black max-w-2xl mb-6"
               >
                 White-glove logistics for your most valuable shipments.
               </motion.p>
@@ -139,14 +140,14 @@ export default function PremiumServices() {
               >
                 <Link
                   href="#contact"
-                  className="btn-white hover:scale-105 transition-all"
+                  className="btn-primary hover:scale-105 transition-all"
                 >
                   Book Now
                 </Link>
 
                 <Link
                   href="#pricing"
-                  className="btn-white-outline hover:scale-105 transition-all"
+                  className="btn-primary-outline hover:scale-105 transition-all"
                 >
                   View Pricing
                 </Link>

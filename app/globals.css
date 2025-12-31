@@ -246,6 +246,30 @@ p {
 }
 
 
+.btn-primary-outline{
+  background-color: transparent;
+  border: 1px solid #013efe;
+  border-radius: 25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #013efe;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  padding: calc(0.875rem - 1px) calc(2rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+
+
+
 
 .pulse-effect {
   -webkit-animation: pulse 1.6s infinite;
@@ -280,5 +304,11 @@ p {
   /* #f2f5ff 50%, */
   #013efe 100%
 );
+
+}
+
+.bg-light-blue {
+  background-color: #A7B6E6;
+
 
 }

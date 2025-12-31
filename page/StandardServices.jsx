@@ -23,7 +23,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import herobg from "@/asset/service/standard-banner-img.svg";
-import one from "@/asset/service/2.png";
+import one from "@/asset/service/standard-overview.png";
 import location from "@/asset/location.png";
 import { WhyChoose } from "@/components/Whychoose";
 
@@ -125,16 +125,13 @@ export default function Services() {
     <div className="-mt-24 -mt-16">
       {/* HERO */}
       <section className="relative bg-white overflow-hidden">
-        <div className="container mx-auto px-4 py-28">
+        <div className="container mx-auto px-4 py-20 md:py-28">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* LEFT — CONTENT (UNCHANGED) */}
-            <div className="relative z-10">
-              <motion.div
-                {...fadeUp}
-                className="bg-white/10 px-6 py-2 rounded-full mb-6 inline-block"
-              >
-                <p className="text-black">✨ Safe. Affordable. Reliable.</p>
-              </motion.div>
+            {/* LEFT — CONTENT */}
+            <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
+              <p className="text-primary mb-5">
+                ✨ Safe. Affordable. Reliable.
+              </p>
 
               <motion.h1 {...fadeUp} className="text-black mb-6">
                 Standard Delivery
@@ -149,7 +146,10 @@ export default function Services() {
                 orders, and personal packages.
               </motion.p>
 
-              <motion.div {...fadeUp} className="flex gap-4">
+              <motion.div
+                {...fadeUp}
+                className="flex  flex-row gap-4 justify-center md:justify-start"
+              >
                 <Link
                   href="#contact"
                   className="btn-primary hover:scale-105 transition-all"
@@ -167,7 +167,7 @@ export default function Services() {
             </div>
 
             {/* RIGHT — IMAGE */}
-            <div className="relative w-full h-[300px] md:h-[420px]">
+            <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
               <Image
                 src={herobg}
                 alt="Hero"
