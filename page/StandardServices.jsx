@@ -15,17 +15,10 @@ import Network from "@/asset/icon/network.svg";
 import Updates from "@/asset/icon/update.svg";
 import Hidden from "@/asset/icon/hidden-charges.svg";
 
-import {
-  MessageSquare,
-  FileText,
-  Calendar,
-  Radar,
-  CheckCircle,
-} from "lucide-react";
+
 import herobg from "@/asset/service/standard-banner-img.svg";
 import one from "@/asset/service/standard-overview.png";
-import location from "@/asset/location.png";
-import { WhyChoose } from "@/components/Whychoose";
+
 
 // 🔥 SSR-SAFE DYNAMIC IMPORTS
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {

@@ -10,8 +10,7 @@ import heroBg from "@/asset/services.png";
 import one from "@/asset/service/1.png";
 import two from "@/asset/service/2.png";
 import three from "@/asset/service/3.png";
-import corporate from "@/asset/helpcenter-salient.webp";
-import packing from "@/asset/packing.webp";
+
 
 // Components
 import ServicesSection from "@/components/ServiceCard";

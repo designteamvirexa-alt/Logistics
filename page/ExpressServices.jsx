@@ -7,13 +7,7 @@ import { Check, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import MarqueeLogos from "@/components/MarqueeLogos";
-import {
-  MessageSquare,
-  FileText,
-  Calendar,
-  Radar,
-  CheckCircle,
-} from "lucide-react";
+
 import SaveTime from "@/asset/icon/save-time.svg";
 import Safe from "@/asset/icon/safe.svg";
 import Business from "@/asset/icon/faster.svg";
@@ -22,7 +16,7 @@ import Peace from "@/asset/icon/delivery.svg";
 // Assets
 import herobg from "@/asset/service/express.svg";
 import one from "@/asset/service/express-cover.png";
-import location from "@/asset/location.png";
+
 
 // 🔥 CLIENT-ONLY COMPONENTS (SSR SAFE)
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {

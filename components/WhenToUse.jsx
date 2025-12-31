@@ -1,7 +1,6 @@
 
 import Image from "next/image";
 import { Check } from 'lucide-react';
-import location from "@/asset/location.png";
 
 const useCases = [
   'Skip carrying heavy bags to airports or stations',

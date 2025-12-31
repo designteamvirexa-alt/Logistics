@@ -6,13 +6,7 @@ import { Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import {
-  MessageSquare,
-  FileText,
-  Calendar,
-  Radar,
-  CheckCircle,
-} from "lucide-react";
+
 
 import Maximum from "@/asset/icon/security-lock.svg";
 import goods from "@/asset/icon/goods.svg";
@@ -24,7 +18,7 @@ import MarqueeLogos from "@/components/MarqueeLogos";
 // Assets
 import herobg from "@/asset/service/premium-banner-img.svg";
 import one from "@/asset/service/luggageee.jpg";
-import location from "@/asset/location.png";
+
 
 // Components
 import ContactSection from "@/components/ContactSection";

@@ -16,22 +16,20 @@ function Shippingpolicy() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] rounded-3xl overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
         >
           <Image
             src={trackbg}
             alt="Track Package Background"
             fill
             priority
-            className="object-cover p-3 rounded-3xl"
+            className="md:object-contain object-cover bg-center"
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-white text-3xl md:text-4xl">Shipping Policy</h2>
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+            <h1 className="text-white text-3xl md:text-4xl">Shipping Policy</h1>
 
-            <p className="text-white/80 mt-3 text-sm md:text-base">
-              Home <span className="text-blue-200">›</span> Shipping Policy
-            </p>
+         
           </div>
         </motion.section>
       </div>
