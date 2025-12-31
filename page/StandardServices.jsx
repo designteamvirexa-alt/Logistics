@@ -124,7 +124,7 @@ export default function Services() {
   return (
     <div className="-mt-24 -mt-16">
       {/* HERO */}
-      <section className="relative bg-light overflow-hidden">
+      <section className="relative bg-white overflow-hidden">
         <div className="container mx-auto px-4 py-28">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT (UNCHANGED) */}
@@ -133,18 +133,18 @@ export default function Services() {
                 {...fadeUp}
                 className="bg-white/10 px-6 py-2 rounded-full mb-6 inline-block"
               >
-                <p className="text-white">✨ Safe. Affordable. Reliable.</p>
+                <p className="text-black">✨ Safe. Affordable. Reliable.</p>
               </motion.div>
 
-              <motion.h1 {...fadeUp} className="text-white mb-6">
+              <motion.h1 {...fadeUp} className="text-black mb-6">
                 Standard Delivery
               </motion.h1>
 
-              <motion.p {...fadeUp} className="text-white max-w-2xl mb-6">
+              <motion.p {...fadeUp} className="text-black max-w-2xl mb-6">
                 India’s most affordable and reliable parcel delivery solution.
               </motion.p>
 
-              <motion.p {...fadeUp} className="text-white max-w-2xl mb-8">
+              <motion.p {...fadeUp} className="text-black max-w-2xl mb-8">
                 Perfect for: Documents, parcels, business shipments, e-commerce
                 orders, and personal packages.
               </motion.p>
@@ -152,14 +152,14 @@ export default function Services() {
               <motion.div {...fadeUp} className="flex gap-4">
                 <Link
                   href="#contact"
-                  className="btn-white hover:scale-105 transition-all"
+                  className="btn-primary hover:scale-105 transition-all"
                 >
                   Book Now
                 </Link>
 
                 <Link
                   href="/rate-calculator"
-                  className="btn-white-outline hover:scale-105 transition-all"
+                  className="btn-primary-outline hover:scale-105 transition-all"
                 >
                   Rate Calculator
                 </Link>

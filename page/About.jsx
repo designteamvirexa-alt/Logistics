@@ -25,7 +25,7 @@ function Aboutus() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[460px] md:h-[460px] overflow-hidden bg-light"
+        className="relative w-full h-[460px] md:h-[460px] overflow-hidden "
       >
         {/* Background Image */}
         <Image
@@ -38,11 +38,11 @@ function Aboutus() {
   {/* <div className="absolute inset-0 bg-black/30 " /> */}
         {/* CONTENT */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
-          <h1 className="text-white text-3xl md:text-4xl font-semibold mb-4">
+          <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
             Hi! 👋 We are Frisbi
           </h1>
 
-          <p className="text-white/90 mb-8 text-sm md:text-base">
+          <p className="text-black mb-8 text-sm md:text-base">
             India’s trusted luggage delivery service, built to make travel
             lighter, smarter, and stress-free.
           </p>
@@ -50,12 +50,16 @@ function Aboutus() {
           {/* CTA */}
           <Link
             href="/contact-us"
-            className="btn-white hover:scale-105 transition-all"
+            className="btn-primary hover:scale-105 transition-all"
           >
             Contact Us
           </Link>
         </div>
       </motion.section>
+
+      <section className="container mx-auto px-4 py-16 ">
+        <MarqueeLogos />
+      </section>
 
       <section className="container mx-auto px-4 py-24 pb-0">
         {/* GRID */}
@@ -119,9 +123,7 @@ function Aboutus() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 pb-16 ">
-        <MarqueeLogos />
-      </section>
+      
 
       <section className="py-24">
         <Stats
