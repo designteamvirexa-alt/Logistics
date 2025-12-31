@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import aboutUs from "@/asset/about/about-bg.png";
+import aboutone from "@/asset/about/aboutone1.png";
 import vision from "@/asset/about/vision.png";
 import mission from "@/asset/about/mission.jpeg";
 import CallToAction from "@/components/CallToAction";

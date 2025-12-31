@@ -46,36 +46,7 @@ export default function ThankYouSection() {
 
       <section className=" bg-[#f1f1f5] pt-16 pb-8">
         <ServicesSection />
-         <section className="">
-        <div className="container mx-auto px-4 pb-24 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6">
-            {/* Corporate */}
-            <FeatureCard
-              title="Corporate "
-              description="Seamless Package Delivery, Right at Your Doorstep!"
-              image={corporate}
-              imageFit="cover"
-            />
-
-            {/* Package Delivery */}
-            <FeatureCard
-              title="Individual"
-              description="Fast, reliable delivery for every shipment"
-              image={packing}
-              imageFit="contain"
-            />
-          </div>
-
-          <div className="flex justify-center mt-16">
-            <Link
-              href="/"
-              className="bg-primary text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/50"
-            >
-              Book Now
-            </Link>
-          </div>
-        </div>
-      </section>
+      
       </section>
        <section className="pt-24">
       <Testimonials />
