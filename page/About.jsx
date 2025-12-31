@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import aboutone from "@/asset/about/aboutone.png";
+
 
 import aboutUs from "@/asset/about/about-bg.png";
-import aboutone from "@/asset/about/aboutone1.png";
+
 import vision from "@/asset/about/vision.png";
 import mission from "@/asset/about/mission.jpeg";
 import CallToAction from "@/components/CallToAction";
@@ -57,7 +59,7 @@ function Aboutus() {
         </div>
       </motion.section>
 
-      <section className="container mx-auto px-4 py-16 ">
+      <section className="container mx-auto px-4 pt-24 ">
         <MarqueeLogos />
       </section>
 
