@@ -5,8 +5,7 @@ import Image from "next/image";
 import thankyou from "@/asset/thankyou.svg";
 import Link from "next/link";
 import ServicesSection from "@/components/ServiceCard";
-import corporate from "@/asset/helpcenter-salient.webp";
-import packing from "@/asset/packing.webp";
+
 import Testimonials from "@/components/Testimonials";
 
 export default function ThankYouSection() {
