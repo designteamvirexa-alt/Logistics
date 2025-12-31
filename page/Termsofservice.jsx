@@ -35,7 +35,7 @@ function Termsofservice() {
         </motion.section>
       </div>
 
-      <section className="container mx-auto py-20 px-4">
+      <section className="container mx-auto py-24 px-4">
         <div className="">
           <h2 className="">
             Terms & Conditions — Frisbi Luggage Delivery Services

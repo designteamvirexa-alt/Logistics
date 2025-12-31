@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import trackbg from "@/asset/shippment/trackyourpackage.webp";
+import trackbg from "@/asset/terms-conditions.png";
 
 function Privacypolicy() {
   return (
@@ -34,7 +34,7 @@ function Privacypolicy() {
         </motion.section>
       </div>
 
-      <section className="max-w-6xl mx-auto py-20 px-4">
+      <section className="container mx-auto py-24 px-4">
         <div className="">
           <h2 className="">
             Privacy Policy — Frisbi Luggage Delivery Services

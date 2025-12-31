@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import trackbg from "@/asset/shippment/trackyourpackage.webp";
+import trackbg from "@/asset/terms-conditions.png";
 
 function Shippingpolicy() {
   return (
@@ -27,14 +27,14 @@ function Shippingpolicy() {
           />
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
-            <h1 className="text-white text-3xl md:text-4xl">Shipping Policy</h1>
+            <h1 className="text-black text-3xl md:text-4xl">Shipping Policy</h1>
 
          
           </div>
         </motion.section>
       </div>
 
-      <section className="max-w-6xl mx-auto py-20 px-4">
+      <section className="container mx-auto py-24 px-4">
         <div className="">
           <h2 className="">
             Shipping & Delivery Policy — Frisbi Luggage Delivery Services
