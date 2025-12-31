@@ -18,41 +18,14 @@ function FloatingInput({ label, type = "text", name, value, onChange }) {
         onChange={onChange}
         placeholder=" "
         required
-        className="
-          peer w-full
-          bg-[#f5f5f5]
-          
-          text-black
-          px-4 py-3
-          rounded-xl
-          outline-none
-          focus:border-primary
-          focus:ring-1 focus:ring-primary
-          transition
-          placeholder-transparent
-        "
+        className="peer w-full bg-[#f5f5f5] text-black px-4 py-3 rounded-xl outline-none
+        focus:ring-1 focus:ring-primary transition placeholder-transparent"
       />
-
       <label
-        className="
-          absolute left-4 
-          text-gray-600 text-sm
-          transition-all
-
-          peer-placeholder-shown:top-3
-          peer-placeholder-shown:text-sm
-
-          peer-focus:-top-2
-          peer-focus:text-xs
-          peer-focus:text-primary
-          peer-focus:bg-white
-          peer-focus:px-1
-
-          peer-valid:-top-2
-          peer-valid:text-xs
-          peer-valid:bg-white
-          peer-valid:px-1
-        "
+        className="absolute left-4 text-gray-600 text-sm transition-all
+        peer-placeholder-shown:top-3
+        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-primary peer-focus:bg-white peer-focus:px-1
+        peer-valid:-top-2 peer-valid:text-xs peer-valid:bg-white peer-valid:px-1"
       >
         {label}
       </label>
@@ -70,45 +43,19 @@ function FloatingSelect({ label, name, value, onChange, options = [] }) {
         value={value}
         onChange={onChange}
         required
-        className="
-          peer w-full
-          bg-[#f5f5f5]
-         
-          text-black
-          px-4 py-3
-          rounded-xl
-          outline-none
-          focus:border-primary
-          focus:ring-1 focus:ring-primary
-          appearance-none
-          transition
-        "
+        className="peer w-full bg-[#f5f5f5] text-black px-4 py-3 rounded-xl outline-none
+        focus:ring-1 focus:ring-primary transition appearance-none"
       >
         <option value="" disabled hidden></option>
         {options.map((opt, i) => (
-          <option key={i} value={opt}>
-            {opt}
-          </option>
+          <option key={i} value={opt}>{opt}</option>
         ))}
       </select>
 
       <label
-        className="
-          absolute left-4 top-4
-          text-gray-500 text-sm
-          transition-all
-
-          peer-focus:-top-2
-          peer-focus:text-xs
-          peer-focus:text-primary
-          peer-focus:bg-white
-          peer-focus:px-1
-
-          peer-valid:-top-2
-          peer-valid:text-xs
-          peer-valid:bg-white
-          peer-valid:px-1
-        "
+        className="absolute left-4 top-4 text-gray-500 text-sm transition-all
+        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-primary peer-focus:bg-white peer-focus:px-1
+        peer-valid:-top-2 peer-valid:text-xs peer-valid:bg-white peer-valid:px-1"
       >
         {label}
       </label>
@@ -128,44 +75,52 @@ function FloatingTextarea({ label, name, value, onChange }) {
         placeholder=" "
         rows={5}
         required
-        className="
-          peer w-full
-          bg-[#f5f5f5]
-        
-          text-black
-          px-4 py-4
-          rounded-xl
-          outline-none
-          focus:border-primary
-          focus:ring-1 focus:ring-primary
-          transition
-          placeholder-transparent
-        "
+        className="peer w-full bg-[#f5f5f5] text-black px-4 py-4 rounded-xl outline-none
+        focus:ring-1 focus:ring-primary transition placeholder-transparent"
       />
-
       <label
-        className="
-          absolute left-4 top-4
-          text-gray-500 text-sm
-          transition-all
-
-          peer-placeholder-shown:top-4
-          peer-placeholder-shown:text-sm
-
-          peer-focus:-top-2
-          peer-focus:text-xs
-          peer-focus:text-primary
-          peer-focus:bg-white
-          peer-focus:px-1
-
-          peer-valid:-top-2
-          peer-valid:text-xs
-          peer-valid:bg-white
-          peer-valid:px-1
-        "
+        className="absolute left-4 top-4 text-gray-500 text-sm transition-all
+        peer-placeholder-shown:top-4
+        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-primary peer-focus:bg-white peer-focus:px-1
+        peer-valid:-top-2 peer-valid:text-xs peer-valid:bg-white peer-valid:px-1"
       >
         {label}
       </label>
+    </div>
+  );
+}
+
+/* ---------------- RADIO GROUP ---------------- */
+
+function RadioGroup({ value, onChange }) {
+  return (
+    <div className="flex gap-4">
+      {["Corporate", "Individual"].map((type) => (
+        <label
+          key={type}
+          className={`flex items-center gap-2 cursor-pointer px-4 py-2 rounded-xl border transition
+          ${
+            value === type
+              ? "border-primary bg-primary/10 text-primary font-medium"
+              : "border-gray-300 text-second font-medium"
+          }`}
+        >
+          <input
+            type="radio"
+            name="userType"
+            value={type}
+            checked={value === type}
+            onChange={onChange}
+            className="hidden"
+          />
+          <span className="w-3 h-3 rounded-full border flex items-center justify-center">
+            {value === type && (
+              <span className="w-2 h-2 bg-primary font-semibold rounded-full"></span>
+            )}
+          </span>
+          {type}
+        </label>
+      ))}
     </div>
   );
 }
@@ -192,6 +147,7 @@ export default function ContactSection() {
   const router = useRouter();
 
   const [form, setForm] = useState({
+    userType: "Corporate", // ✅ default
     name: "",
     email: "",
     service: "",
@@ -200,11 +156,9 @@ export default function ContactSection() {
   });
 
   const services = [
-    "Web Development",
-    "App Development",
-    "SEO Optimization",
-    "UI/UX Design",
-    "Digital Marketing",
+    "Standard Delivery",
+    "Express Delivery",
+    "Premium Delivery",
   ];
 
   const handleChange = (e) => {
@@ -221,9 +175,7 @@ export default function ContactSection() {
         "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: formData,
         }
       );
@@ -233,6 +185,7 @@ export default function ContactSection() {
       if (data.result === "success") {
         toast.success("Form submitted successfully!");
         setForm({
+          userType: "Corporate",
           name: "",
           email: "",
           service: "",
@@ -243,16 +196,15 @@ export default function ContactSection() {
       } else {
         toast.error("Error submitting form");
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong");
-      console.error(error);
     }
   };
 
   return (
-    <section className="relative bg-cover bg-center py-20">
+    <section className="py-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
           {/* LEFT */}
           <motion.div
@@ -267,14 +219,13 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-gray-600 max-w-md">
-              Have a question, suggestion, or just want to say hi?
-              We’re here and happy to hear from you!
+              Have a question or need help? We’re happy to hear from you.
             </p>
 
             <div className="space-y-8 mt-8">
-              <Info icon={MapPin} title="Office Location" value="100 S Main St, New York, NY" />
-              <Info icon={Mail} title="Send a Message" value="contact@frisbi.in" />
-              <Info icon={Phone} title="Call Us Directly" value="+91 987-879-8298" />
+              <Info icon={MapPin} title="Office Location" value="India" />
+              <Info icon={Mail} title="Email" value="contact@frisbi.in" />
+              <Info icon={Phone} title="Phone" value="+91 98787 98298" />
             </div>
           </motion.div>
 
@@ -286,14 +237,16 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="bg-white p-8 rounded-2xl shadow-xl"
           >
-            <h3 className="text-xl font-semibold mb-6">
-              Get In Touch
-            </h3>
+            {/* Heading + Radio */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+              <h3 className="text-xl font-semibold">Get In Touch</h3>
+              <RadioGroup value={form.userType} onChange={handleChange} />
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FloatingInput label="Name" name="name" value={form.name} onChange={handleChange} />
-                <FloatingInput label="Email Address" name="email" value={form.email} onChange={handleChange} />
+                <FloatingInput label="Email" name="email" value={form.email} onChange={handleChange} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
