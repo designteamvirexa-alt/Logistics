@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Quote } from "lucide-react";
-import s2 from "@/asset/testimonials.jpg";
+
 const testimonials = [
   {
     text: "Rail Freight helped us move heavy shipments long distance in an eco-friendly way, while keeping costs low and schedules predictable.",

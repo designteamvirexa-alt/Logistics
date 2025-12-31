@@ -2,15 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import aboutone from "@/asset/about/aboutone.png";
-import abouttwo from "@/asset/about/abouttwo.png";
-import aboutUs from "@/asset/about-us/about-bg.png";
+
+import aboutUs from "@/asset/about/about-bg.png";
 import vision from "@/asset/about/vision.png";
 import mission from "@/asset/about/mission.jpeg";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
 import MarqueeLogos from "@/components/MarqueeLogos";
-import CustomSlider from "@/components/LocationSlider";
+
 import Stats from "@/components/Stats";
 import ContactSection from "@/components/ContactSection";
 import TransformingCities from "@/components/Locations";
