@@ -10,10 +10,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Assets
-import c1 from "@/asset/c1.webp";
-import valuesdiff from "@/asset/values-diff.webp";
 
-import courierimg from "@/asset/courierimg.webp";
 
 const servicesData = [
   {

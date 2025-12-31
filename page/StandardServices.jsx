@@ -15,17 +15,10 @@ import Network from "@/asset/icon/network.svg";
 import Updates from "@/asset/icon/update.svg";
 import Hidden from "@/asset/icon/hidden-charges.svg";
 
-import {
-  MessageSquare,
-  FileText,
-  Calendar,
-  Radar,
-  CheckCircle,
-} from "lucide-react";
+
 import herobg from "@/asset/service/standard-banner-img.svg";
-import one from "@/asset/service/2.png";
-import location from "@/asset/location.png";
-import { WhyChoose } from "@/components/Whychoose";
+import one from "@/asset/service/standard-overview.png";
+
 
 // 🔥 SSR-SAFE DYNAMIC IMPORTS
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {
@@ -124,42 +117,42 @@ export default function Services() {
   return (
     <div className="-mt-24 -mt-16">
       {/* HERO */}
-      <section className="relative bg-light overflow-hidden">
-        <div className="container mx-auto px-4 py-28">
+      <section className="relative bg-white overflow-hidden">
+        <div className="container mx-auto px-4 py-20 md:py-28">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* LEFT — CONTENT (UNCHANGED) */}
-            <div className="relative z-10">
-              <motion.div
-                {...fadeUp}
-                className="bg-white/10 px-6 py-2 rounded-full mb-6 inline-block"
-              >
-                <p className="text-white">✨ Safe. Affordable. Reliable.</p>
-              </motion.div>
+            {/* LEFT — CONTENT */}
+            <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
+              <p className="text-primary mb-5">
+                ✨ Safe. Affordable. Reliable.
+              </p>
 
-              <motion.h1 {...fadeUp} className="text-white mb-6">
+              <motion.h1 {...fadeUp} className="text-black mb-6">
                 Standard Delivery
               </motion.h1>
 
-              <motion.p {...fadeUp} className="text-white max-w-2xl mb-6">
+              <motion.p {...fadeUp} className="text-black max-w-2xl mb-6">
                 India’s most affordable and reliable parcel delivery solution.
               </motion.p>
 
-              <motion.p {...fadeUp} className="text-white max-w-2xl mb-8">
+              <motion.p {...fadeUp} className="text-black max-w-2xl mb-8">
                 Perfect for: Documents, parcels, business shipments, e-commerce
                 orders, and personal packages.
               </motion.p>
 
-              <motion.div {...fadeUp} className="flex gap-4">
+              <motion.div
+                {...fadeUp}
+                className="flex  flex-row gap-4 justify-center md:justify-start"
+              >
                 <Link
                   href="#contact"
-                  className="btn-white hover:scale-105 transition-all"
+                  className="btn-primary hover:scale-105 transition-all"
                 >
                   Book Now
                 </Link>
 
                 <Link
                   href="/rate-calculator"
-                  className="btn-white-outline hover:scale-105 transition-all"
+                  className="btn-primary-outline hover:scale-105 transition-all"
                 >
                   Rate Calculator
                 </Link>
@@ -167,7 +160,7 @@ export default function Services() {
             </div>
 
             {/* RIGHT — IMAGE */}
-            <div className="relative w-full h-[300px] md:h-[420px]">
+            <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
               <Image
                 src={herobg}
                 alt="Hero"

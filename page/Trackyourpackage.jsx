@@ -11,7 +11,7 @@ import FAQ from "@/components/Accordion";
 import ContactSection from "@/components/ContactSection";
 import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 
-import trackbg from "@/asset/shippment/trackyourpackage.webp";
+import trackbg from "@/asset/track-your-package.png";
 import tracking from "@/asset/shippment/tracking-point.webp";
 
 function Trackyourpackage() {
@@ -24,30 +24,26 @@ function Trackyourpackage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] rounded-3xl overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
         >
           <Image
             src={trackbg}
             alt="Track Package Background"
             fill
             priority
-            className="object-cover p-3 rounded-3xl"
+            className="md:object-contain object-cover bg-center"
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-white text-3xl md:text-4xl">
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+            <h1 className="text-black text-3xl md:text-4xl">
               Track your package
-            </h2>
-
-            <p className="text-white/80 mt-3 text-sm md:text-base">
-              Home <span className="text-blue-200">›</span> Track your package
-            </p>
+            </h1>
           </div>
         </motion.section>
       </div>
 
       {/* LOGO MARQUEE */}
-      <section className="container mx-auto py-16 ">
+      <section className="container mx-auto px-4 py-24 ">
         <MarqueeLogos />
       </section>
 

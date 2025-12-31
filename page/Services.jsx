@@ -6,12 +6,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 // Assets
-import heroBg from "@/asset/shippment/ratecalculator.webp";
+import heroBg from "@/asset/services.png";
 import one from "@/asset/service/1.png";
 import two from "@/asset/service/2.png";
 import three from "@/asset/service/3.png";
-import corporate from "@/asset/helpcenter-salient.webp";
-import packing from "@/asset/packing.webp";
+
 
 // Components
 import ServicesSection from "@/components/ServiceCard";
@@ -32,23 +31,21 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative h-[460px] rounded-3xl overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
         >
           <Image
             src={heroBg}
             alt="Services Hero"
             fill
             priority
-            className="object-cover p-3 rounded-3xl"
+            className="md:object-contain object-cover bg-center"
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-white text-3xl md:text-4xl font-semibold ">
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+            <h1 className="text-black text-3xl md:text-4xl font-semibold ">
               Services
-            </h2>
-            <p className="text-white/80 mt-3 text-sm md:text-base">
-              Home <span className="text-blue-200">›</span> Services
-            </p>
+            </h1>
+            
           </div>
         </motion.section>
       </div>
@@ -83,9 +80,9 @@ export default function Services() {
 
       {/* ================= LOGOS + SERVICES ================= */}
 
-      <div className="container mx-auto py-16 md:py-16">
+      <section className="container mx-auto px-4 py-24 ">
         <MarqueeLogos />
-      </div>
+      </section>
 
       <section className="bg-[#F1F2F6]">
         <ServicesSection />
@@ -100,10 +97,9 @@ export default function Services() {
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-       <section className="py-16 pb-0">
-<FAQSection />
-       </section>
-      
+      <section className="py-16 pb-0">
+        <FAQSection />
+      </section>
 
       <CallToAction />
     </div>

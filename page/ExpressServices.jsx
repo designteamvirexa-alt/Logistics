@@ -7,13 +7,7 @@ import { Check, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import MarqueeLogos from "@/components/MarqueeLogos";
-import {
-  MessageSquare,
-  FileText,
-  Calendar,
-  Radar,
-  CheckCircle,
-} from "lucide-react";
+
 import SaveTime from "@/asset/icon/save-time.svg";
 import Safe from "@/asset/icon/safe.svg";
 import Business from "@/asset/icon/faster.svg";
@@ -21,8 +15,8 @@ import Visibility from "@/asset/icon/live-tracking.svg";
 import Peace from "@/asset/icon/delivery.svg";
 // Assets
 import herobg from "@/asset/service/express.svg";
-import one from "@/asset/service/2.png";
-import location from "@/asset/location.png";
+import one from "@/asset/service/express-cover.png";
+
 
 // 🔥 CLIENT-ONLY COMPONENTS (SSR SAFE)
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {
@@ -115,25 +109,26 @@ export default function ExpressServices() {
   return (
     <div className="-mt-24 -mt-16">
       {/* HERO */}
-      <section className="relative bg-light overflow-hidden">
+      <section className="relative bg-white overflow-hidden">
         <div className="container mx-auto px-4 py-28">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT (UNCHANGED) */}
             <div className="relative z-10">
-              <motion.div
+              {/* <motion.div
                 {...fadeUp}
                 transition={{ duration: 0.6 }}
                 className="inline-block bg-white/10 backdrop-blur-xl border border-white/20 px-8 py-2 rounded-full mb-6"
               >
-                <p className="text-white">
-                  ✨ When time matters, choose Express
-                </p>
-              </motion.div>
+               
+              </motion.div> */}
 
+              <p className="text-primary mb-5">
+                ✨ When time matters, choose Express
+              </p>
               <motion.h1
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-white text-4xl md:text-6xl font-black mb-6"
+                className="text-black text-4xl md:text-6xl font-black mb-6"
               >
                 Express Delivery
               </motion.h1>
@@ -141,13 +136,13 @@ export default function ExpressServices() {
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-blue-100 text-lg max-w-2xl mb-6"
+                className="text-black text-lg max-w-2xl mb-6"
               >
                 Fast, priority parcel delivery for urgent shipments across
                 India.
               </motion.p>
 
-              <motion.p className="text-blue-100 text-lg max-w-2xl mb-8">
+              <motion.p className="text-black text-lg max-w-2xl mb-8">
                 Best for: Urgent documents, business-critical packages, medical
                 supplies & time-sensitive deliveries.
               </motion.p>
@@ -159,14 +154,14 @@ export default function ExpressServices() {
               >
                 <Link
                   href="#contact"
-                  className="btn-white hover:scale-105 transition-all"
+                  className="btn-primary hover:scale-105 transition-all"
                 >
                   Book Now
                 </Link>
 
                 <Link
                   href="/rate-calculator"
-                  className="btn-white-outline hover:scale-105 transition-all"
+                  className="btn-primary-outline hover:scale-105 transition-all"
                 >
                   Rate Calculator
                 </Link>

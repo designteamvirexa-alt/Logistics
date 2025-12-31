@@ -26,7 +26,7 @@ function Corporate() {
   return (
     <div className="-mt-24 ">
       {/* HERO SECTION */}
-      <section className="relative bg-light overflow-hidden">
+      <section className="relative bg-white overflow-hidden">
         <div className="container mx-auto px-4 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT */}
@@ -34,7 +34,7 @@ function Corporate() {
               <motion.h1
                 {...fadeUp}
                 transition={{ delay: 0.1 }}
-                className="text-white font-black mb-6 max-w-xl"
+                className="text-black font-black mb-6 max-w-xl"
               >
                 Corporate Luggage Delivery Solutions
               </motion.h1>
@@ -42,7 +42,7 @@ function Corporate() {
               <motion.p
                 {...fadeUp}
                 transition={{ delay: 0.2 }}
-                className="text-white text-lg max-w-xl mb-6"
+                className="text-black text-lg max-w-xl mb-6"
               >
                 Hassle-Free Luggage Logistics for Businesses, Events & Travel
                 Partners
@@ -51,7 +51,7 @@ function Corporate() {
               <motion.p
                 {...fadeUp}
                 transition={{ delay: 0.3 }}
-                className="text-white max-w-xl mb-4"
+                className="text-black max-w-xl mb-4"
               >
                 Frisbi helps organizations move luggage securely, on time, and
                 at scale—so employees, guests, and clients can travel light.
@@ -60,7 +60,7 @@ function Corporate() {
               <motion.p
                 {...fadeUp}
                 transition={{ delay: 0.4 }}
-                className="text-white max-w-xl mb-8"
+                className="text-black max-w-xl mb-8"
               >
                 From corporate travel to events and hotels, we manage luggage
                 end-to-end with real-time visibility.

@@ -58,7 +58,7 @@ import Gurugram from "@/asset/cities/Gurugram.webp";
 
 // ✅ Fallback image
 import DefaultCity from "@/asset/cities/Bangalore.webp";
-import BgCity from "@/asset/about-us/bg.png";
+
 
 export default function TransformingCities() {
   const [showAll, setShowAll] = useState(false);

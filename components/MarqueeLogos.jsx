@@ -22,7 +22,7 @@ const logos = [
 
 export default function MarqueeLogos() {
   return (
-    <div className="container mx-auto px-4 pt-24">
+    <div className="container mx-auto px-4 py-16 pt-0">
       <div className="text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-16 leading-[1.4]">
           Companies That Trust Our Services

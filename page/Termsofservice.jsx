@@ -4,40 +4,38 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import trackbg from "@/asset/shippment/trackyourpackage.webp";
+import trackbg from "@/asset/terms-conditions.png";
 
 
 function Termsofservice() {
   return (
     <div>
       {/* HERO SECTION */}
-      <div className="-mt-20">
+      <div className="-mt-24 -mt-16">
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] rounded-3xl overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
         >
           <Image
             src={trackbg}
             alt="Track Package Background"
             fill
             priority
-            className="object-cover p-2 rounded-3xl"
+            className="md:object-contain object-cover bg-center"
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-white text-3xl md:text-4xl">Terms of Use</h2>
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+            <h1 className="text-black text-3xl md:text-4xl">Terms of Use</h1>
 
-            <p className="text-white/80 mt-3 text-sm md:text-base">
-              Home <span className="text-blue-200">›</span> Terms of Use
-            </p>
+           
           </div>
         </motion.section>
       </div>
 
-      <section className="container mx-auto py-20 px-4">
+      <section className="container mx-auto py-24 px-4">
         <div className="">
           <h2 className="">
             Terms & Conditions — Frisbi Luggage Delivery Services

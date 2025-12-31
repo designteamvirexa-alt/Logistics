@@ -24,7 +24,7 @@ function Individual() {
   return (
     <div className="-mt-24 -mt-16">
       {/* HERO SECTION */}
-      <section className="relative bg-light overflow-hidden">
+      <section className="relative bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-10 py-24 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT (UNCHANGED) */}
@@ -34,7 +34,7 @@ function Individual() {
                 initial="hidden"
                 animate="visible"
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-white font-extrabold text-4xl md:text-6xl max-w-xl mb-6"
+                className="text-black font-extrabold text-4xl md:text-6xl max-w-xl mb-6"
               >
                 Travel Light. 
                 We Deliver Your Luggage.
@@ -45,7 +45,7 @@ function Individual() {
                 initial="hidden"
                 animate="visible"
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-white text-lg md:text-xl max-w-xl mb-6"
+                className="text-black text-lg md:text-xl max-w-xl mb-6"
               >
                 Frisbi makes personal travel easier by taking the weight off
                 your shoulders—literally.
@@ -56,7 +56,7 @@ function Individual() {
                 initial="hidden"
                 animate="visible"
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-white max-w-xl mb-8"
+                className="text-black max-w-xl mb-8"
               >
                 Whether you're moving between cities, heading to a hotel, or
                 planning a long stay, we pick up your luggage from your doorstep

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Menu, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/asset/frisbi_white.png"; // change path if needed
+import Logo from "@/asset/logo-black.svg"; // change path if needed
 import LogoBlack from "@/asset/logo-black.svg"; // change path if needed
 
 const servicesList = [
@@ -63,7 +63,7 @@ export default function Header({ mode = "default" }) {
         {/* Desktop Navigation */}
         <nav
           className={`hidden md:flex space-x-8 text-[15px] font-semibold transition-all duration-300
-            ${isDarkHeader || scroll ? "text-black" : "text-white"}
+            ${isDarkHeader || scroll ? "text-black" : "text-black"}
           `}
         >
           <div
@@ -75,8 +75,8 @@ export default function Header({ mode = "default" }) {
               className={`flex items-center gap-1 transition 
                 ${
                   isDarkHeader || scroll
-                    ? "hover:text-blue-600"
-                    : "hover:text-blue-300"
+                    ? "hover:text-[#013efe]"
+                    : "hover:text-[#013efe]"
                 }
               `}
             >
@@ -94,7 +94,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/book/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-[#013efe] transition"
                   >
                     {item}
                   </Link>
@@ -107,8 +107,8 @@ export default function Header({ mode = "default" }) {
             href="/about"
             className={`${
               isDarkHeader || scroll
-                ? "hover:text-blue-600"
-                : "hover:text-blue-300"
+                ? "hover:text-[#013efe]"
+                : "hover:text-[#013efe]"
             } transition`}
           >
             About Us
@@ -124,8 +124,8 @@ export default function Header({ mode = "default" }) {
               className={`flex items-center gap-1 transition 
                 ${
                   isDarkHeader || scroll
-                    ? "hover:text-blue-600"
-                    : "hover:text-blue-300"
+                    ? "hover:text-[#013efe]"
+                    : "hover:text-[#013efe]"
                 }
               `}
             >
@@ -143,7 +143,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-[#013efe] transition"
                   >
                     {item}
                   </Link>
@@ -156,8 +156,8 @@ export default function Header({ mode = "default" }) {
             href="/rate-calculator"
             className={`${
               isDarkHeader || scroll
-                ? "hover:text-blue-600"
-                : "hover:text-blue-300"
+                ? "hover:text-[#013efe]"
+                : "hover:text-[#013efe]"
             } transition`}
           >
             Rate Calculator
@@ -167,8 +167,8 @@ export default function Header({ mode = "default" }) {
             href="/faq"
             className={`${
               isDarkHeader || scroll
-                ? "hover:text-blue-600"
-                : "hover:text-blue-300"
+                ? "hover:text-[#013efe]"
+                : "hover:text-[#013efe]"
             } transition`}
           >
             FAQs
@@ -178,8 +178,8 @@ export default function Header({ mode = "default" }) {
             href="/contact-us"
             className={`${
               isDarkHeader || scroll
-                ? "hover:text-blue-600"
-                : "hover:text-blue-300"
+                ? "hover:text-[#013efe]"
+                : "hover:text-[#013efe]"
             } transition`}
           >
             Contact Us
@@ -220,14 +220,14 @@ export default function Header({ mode = "default" }) {
             <Link
               href="/"
               onClick={handleLinkClick}
-              className="hover:text-blue-600"
+              className="hover:text-[#013efe]"
             >
               Home
             </Link>
             <Link
               href="/about"
               onClick={handleLinkClick}
-              className="hover:text-blue-600"
+              className="hover:text-[#013efe]"
             >
               About Us
             </Link>
@@ -252,7 +252,7 @@ export default function Header({ mode = "default" }) {
                     key={i}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
                     onClick={handleLinkClick}
-                    className="text-gray-700 hover:text-blue-600 transition"
+                    className="text-gray-700 hover:text-[#013efe] transition"
                   >
                     {item}
                   </Link>
@@ -263,21 +263,21 @@ export default function Header({ mode = "default" }) {
             <Link
               href="/rate-calculator"
               onClick={handleLinkClick}
-              className="hover:text-blue-600"
+              className="hover:text-[#013efe]"
             >
               Rate Calculator
             </Link>
             <Link
               href="/faq"
               onClick={handleLinkClick}
-              className="hover:text-blue-600"
+              className="hover:text-[#013efe]"
             >
               FAQs
             </Link>
             <Link
               href="/contact-us"
               onClick={handleLinkClick}
-              className="hover:text-blue-600"
+              className="hover:text-[#013efe]"
             >
               Contact Us
             </Link>

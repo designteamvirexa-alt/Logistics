@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import Image from "next/image";
 import { ChevronRight, ChevronDown } from "lucide-react";
-import faqbg from "@/asset/shippment/faqs.webp";
+import faqbg from "@/asset/faqs.png";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
 
@@ -49,7 +49,7 @@ function Faq() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] rounded-3xl overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
         >
           {/* Background Image */}
           <Image
@@ -57,28 +57,24 @@ function Faq() {
             alt="About Background"
             fill
             priority
-            className="object-cover p-3 rounded-3xl"
+            className="md:object-contain object-cover bg-center"
           />
 
           {/* Gradient Overlay */}
           {/* <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-blue-700/90"></div> */}
 
           {/* CONTENT */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-white">Frequently Asked Questions</h2>
-
-            <p className="text-white/80 mt-3 text-sm md:text-base">
-              Home <span className="text-blue-200">›</span> Faqs
-            </p>
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+            <h1 className="text-black">Frequently Asked Questions</h1>
           </div>
         </motion.section>
       </div>
 
-      <section className="max-w-7xl mx-auto py-14">
+      <section className="container mx-auto px-4 py-24 ">
         <MarqueeLogos />
       </section>
 
-      <section className="w-full px-5 md:px-10 py-24">
+      <section className="w-full px-5 md:px-10 pt-0 py-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* LEFT MENU (Fixed on Desktop) */}
           <div className="md:col-span-1">
@@ -139,7 +135,7 @@ function Faq() {
                     }
                     className="flex w-full justify-between text-left"
                   >
-                    <span className="font-semibold  text-black">
+                    <span className="font-semibold  text-[18px] text-black">
                       {faq.q}
                     </span>
                     <ChevronDown
@@ -176,9 +172,7 @@ function Faq() {
                     }
                     className="flex w-full justify-between text-left"
                   >
-                    <span className="font-semibold  text-black">
-                      {faq.q}
-                    </span>
+                    <span className="font-semibold  text-black">{faq.q}</span>
                     <ChevronDown
                       className={`w-5 h-5 transition-transform duration-300 ${
                         openIndex === index ? "rotate-180" : ""
