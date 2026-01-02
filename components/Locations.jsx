@@ -177,11 +177,11 @@ export default function TransformingCities() {
   const visibleCities = showAll ? cities : cities.slice(0, 21);
 
   return (
-    <section className="relative w-full bg-primary py-24">
+    <section className="relative w-full bg-primary py-12 md:py-16 lg:py-24">
       
       <div className="container mx-auto px-4">
         
-        <h2 className="text-center text-white font-bold text-3xl">
+        <h2 className="text-center text-white">
           We Are Transforming Cities
         </h2>
 
@@ -192,13 +192,13 @@ export default function TransformingCities() {
                 <Image
                   src={cityImages[city] || DefaultCity}
                   alt={city}
-                  width={80}
-                  height={80}
+                  width={100}
+                  height={100}
                   className="object-contain"
                 />
               </div>
 
-              <p className="mt-2 text-white text-xs font-bold text-center">
+              <p className="mt-2 text-white text-xs font-medium text-center">
                 {city}
               </p>
             </div>

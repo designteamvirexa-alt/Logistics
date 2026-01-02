@@ -3,13 +3,15 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import aboutone from "@/asset/about/aboutone.png";
-
+import About from "@/asset/home/about-frisbi.png";
 
 import aboutUs from "@/asset/about/about-bg.png";
+import aboutmobile from "@/asset/about/about-banner-img.svg";
+import { Check, Minus, NetworkIcon, Plus } from "lucide-react";
 
 import vision from "@/asset/about/vision.png";
 import mission from "@/asset/about/mission.jpeg";
-import CallToAction from "@/components/CallToAction";
+import CallToAction from "@/components/CallToActionabout";
 import Testimonials from "@/components/Testimonials";
 import MarqueeLogos from "@/components/MarqueeLogos";
 
@@ -27,7 +29,7 @@ function Aboutus() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[460px] md:h-[460px] overflow-hidden "
+        className="relative w-full h-[460px] md:h-[460px] overflow-hidden md:block hidden"
       >
         {/* Background Image */}
         <Image
@@ -37,7 +39,7 @@ function Aboutus() {
           priority
           className="md:object-contain object-cover bg-center"
         />
-  {/* <div className="absolute inset-0 bg-black/30 " /> */}
+        {/* <div className="absolute inset-0 bg-black/30 " /> */}
         {/* CONTENT */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
           <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
@@ -59,75 +61,121 @@ function Aboutus() {
         </div>
       </motion.section>
 
-      <section className="container mx-auto px-4 pt-24 ">
-        <MarqueeLogos />
-      </section>
+      {/* mobile section */}
+      <section className="relative bg-white overflow-hidden md:hidden">
+        <div className="container mx-auto px-4 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT */}
+            <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
+              <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
+                Hi! 👋 We are Frisbi
+              </h1>
 
-      <section className="container mx-auto px-4 py-24 pb-0">
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+              <p className="text-black mb-4 text-sm md:text-base">
+                India’s trusted luggage delivery service, built to make travel
+                lighter, smarter, and stress-free.
+              </p>
 
-          {/* LEFT IMAGE (Always first on mobile) */}
-          <div className="w-full order-2">
-            <Image
-              src={aboutone}
-              alt="Logistics"
-              className="rounded-3xl  w-full  object-cover"
-            />
-          </div>
-
-          {/* RIGHT CONTENT (2nd on mobile) */}
-          <div className="flex flex-col space-y-3 md:space-y-3 order-1 md:text-start text-center">
-            <p className=" font-medium">
-              Smart Luggage Delivery Services in India
-            </p>
-
-            <h2 className=" ">About Frisbi</h2>
-
-            <p className="font-medium text-second">
-              Frisbi is a modern door-to-door luggage delivery service in India,
-              created to make travel lighter, easier, and stress-free. We help
-              individuals, families, and businesses move their luggage safely
-              across cities, so they can focus on their journey instead of
-              carrying heavy bags.
-            </p>
-
-            <p className="font-medium text-second mb-6">
-              Built with a customer-first mindset and powered by smart
-              logistics, Frisbi is redefining how India travels.
-            </p>
-
-            <div className="flex justify-center md:justify-start">
+              {/* CTA */}
               <Link
-                href="/about"
-                className="btn-primary transition-transform hover:scale-105"
+                href="/contact-us"
+                className="btn-primary hover:scale-105 transition-all"
               >
-                Explore more
+                Contact Us
               </Link>
             </div>
 
-            {/* SECOND IMAGE – stays inside right column but stacks on mobile */}
-            {/* <Image
-              src={abouttwo}
-              alt="Logistics Team"
-              className="
-          rounded-3xl 
-          w-full 
-          h-[500px] 
-          sm:h-[200px] 
-          md:h-[260px] 
-          lg:h-[540px]
-          object-cover 
-          mt-5
-        "
-            /> */}
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
+              <Image
+                src={aboutmobile}
+                alt="Hero"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      
+      <MarqueeLogos />
 
-      <section className="py-24">
+      <section className="container mx-auto relative px-4 py-12  sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="relative z-10">
+          <h2 className="text-center mb-10 md:mb-12 lg:mb-16">
+            Built for worry-free luggage delivery across cities
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div className="flex flex-col justify-center">
+              <h3 className=" mb-4 text-center md:text-left">About Frisbi</h3>
+
+              <p className="text-second mb-8 text-center md:text-left max-w-xl leading-relaxed">
+                We started because dragging 20kg through airports didn’t make
+                sense. Neither did paying ₹2,000 in excess baggage fees or
+                leaving behind things you actually need. So we built a reliable
+                luggage delivery service made for real travel. Your luggage now
+                travels just as safely as you do.
+              </p>
+
+              <ul className="space-y-3 font-medium text-[15px] mb-8">
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5" />
+                  Professional packing using sturdy boxes
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5" />
+                  Live tracking from pickup to delivery
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5" />
+                  Service available across 25,000+ pincodes in India
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5" />
+                  24/7 support on phone, email, and WhatsApp
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5" />
+                  Dedicated point of contact for every shipment
+                </li>
+              </ul>
+
+              {/* CTA */}
+              <div className="flex justify-center md:justify-start">
+                <Link
+                  href="/about"
+                  className="btn-primary transition-transform hover:scale-105"
+                >
+                  Get in touch
+                </Link>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-xl h-[280px] md:h-[500px] rounded-2xl overflow-hidden">
+                <Image
+                  src={About}
+                  alt="Frisbi luggage delivery illustration"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 md:py-16 lg:py-24 ">
         <Stats
           data={[
             { start: 0, end: 22, label: "Loads delivered" },
@@ -138,7 +186,7 @@ function Aboutus() {
         />
       </section>
 
-      <section className="pb-24">
+      <section className="py-12 md:pt-16 md:pb-24 ">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4">
           {/* LEFT GRID IMAGES */}
           <div className="grid grid-cols-2 gap-4 order-2">
@@ -172,24 +220,18 @@ function Aboutus() {
 
           {/* RIGHT CONTENT */}
           <div className="order-1">
-            <p className="text-xs tracking-wide  uppercase">
-              Business forward with trust
-            </p>
+            <h2 className="md:text-left text-center">Our Frisbi Values</h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">
-              Our Frisbi Values
-            </h2>
-
-            <p className="text-second mt-4 leading-relaxed max-w-lg">
+            <p className="text-second mt-4 leading-relaxed max-w-lg md:text-left text-center">
               Our values align to our mission, support our culture, and serve as
               a declaration of how we treat each other, our customers, and our
               partners.
             </p>
 
             {/* VALUES LIST */}
-            <div className="mt-6 space-y-6">
+            <div className="mt-6 space-y-8 md:text-left text-center">
               <div>
-                <h3 className="text-lg font-semibold">Respect</h3>
+                <h4 className="text-lg font-semibold">Respect</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
                   We recognize that the thoughts, feelings, and backgrounds of
                   others are as important as our own.
@@ -197,14 +239,14 @@ function Aboutus() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold">Integrity</h3>
+                <h4 className="text-lg font-semibold">Integrity</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
                   We are honest, ethical, and trustworthy.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold">Accountability</h3>
+                <h4 className="text-lg font-semibold">Accountability</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
                   We accept full responsibility for our decisions, actions, and
                   results.
@@ -217,7 +259,6 @@ function Aboutus() {
 
       <TransformingCities />
 
-      
       <section className="px-4 py-24">
         <Testimonials />
       </section>
