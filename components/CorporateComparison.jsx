@@ -26,7 +26,7 @@ export function Comparison() {
     <section className="md:py-24 pb-0">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className=" text-center mb-16">
-          What Makes Frisbi Better Than Alternatives
+          What makes frisbi better than alternatives
         </h2>
 
         <div className="bg-white rounded-3xl  overflow-hidden">

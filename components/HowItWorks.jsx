@@ -42,7 +42,7 @@ export function HowItWorks() {
 
   return (
     <div className="pt-16 pb-0 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 ">
         <h2 className="text-center mb-4">How It Works</h2>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -57,7 +57,7 @@ export function HowItWorks() {
                     {step.number}
                   </div> */}
                 </div>
-                <h4 className="mb-2">{step.title}</h4>
+                <h5 className="mb-2">{step.title}</h5>
                 <p className="text-second">{step.description}</p>
               </div>
 

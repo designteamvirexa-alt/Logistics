@@ -27,7 +27,7 @@ function Corporate() {
     <div className="-mt-24 ">
       {/* HERO SECTION */}
       <section className="relative bg-white overflow-hidden">
-        <div className="container mx-auto px-4 py-24">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT */}
             <div className="relative z-10 text-center md:text-left">
@@ -90,9 +90,7 @@ function Corporate() {
         </div>
       </section>
 
-      <section className="pb-24">
-        <MarqueeLogos />
-      </section>
+      <MarqueeLogos />
 
       <TrustedBy />
 
