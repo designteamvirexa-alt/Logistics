@@ -71,10 +71,10 @@ export default function StickyStepsOverlap() {
   return (
     <section className="py-20 bg-[#F4F2F7]">
       <div className="container mx-auto px-6">
-        <div className="lg:flex lg:gap-20">
+        <div className="lg:flex lg:gap-20 ">
           {/* LEFT – STICKY */}
           <div className="lg:w-1/2">
-            <div className="lg:sticky lg:top-24">
+            <div className="lg:sticky lg:top-24 text-center md:text-left">
               <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
                 DRIVING SUPPLY CHAIN SUCCESS
               </p>
@@ -118,7 +118,7 @@ export default function StickyStepsOverlap() {
                   {item.step}
                 </p>
 
-                <div className="flex items-start gap-5">
+                <div className="flex md:items-start items-center gap-5">
                   <div>
                     <h3 className="text-2xl font-semibold mb-3">
                       {item.title}
