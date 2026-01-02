@@ -64,7 +64,7 @@ function Home() {
 
       <MarqueeLogos />
 
-      <section className="container mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
+      <section className="container mx-auto relative px-4 py-12  sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
           <h2 className="text-center mb-10 md:mb-12 lg:mb-16">
