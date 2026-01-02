@@ -75,7 +75,7 @@ export default function FAQ() {
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggle(i)}
                 >
-                  <h5 className="font-semibold text-lg">{faq.question}</h5>
+                  <h4 className="font-semibold text-lg">{faq.question}</h4>
                   <ChevronUp className="w-6 h-6 text-black" />
                 </div>
 
@@ -97,9 +97,9 @@ export default function FAQ() {
                 className="flex justify-between items-center py-5 cursor-pointer border-b"
                 onClick={() => toggle(i)}
               >
-                <h5 className="">
+                <h4 className="">
                   {faq.question}
-                </h5>
+                </h4>
                 <ChevronDown className="w-6 h-6 text-black" />
               </div>
             )}
