@@ -16,14 +16,14 @@ function Shippingpolicy() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
+          className="relative w-full h-[260px] md:h-[460px] overflow-hidden"
         >
           <Image
             src={trackbg}
             alt="Track Package Background"
             fill
             priority
-            className="md:object-contain object-cover bg-center"
+            className="md:object-contain object-contain bg-center"
           />
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
@@ -34,7 +34,7 @@ function Shippingpolicy() {
         </motion.section>
       </div>
 
-      <section className="container mx-auto py-24 px-4">
+      <section className="container mx-auto py-12 md:py-16 px-4">
         <div className="">
           <h2 className="">
             Shipping & Delivery Policy — Frisbi Luggage Delivery Services

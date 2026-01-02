@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import trackbg from "@/asset/terms-conditions.png";
-
+import aboutmobile from "@/asset/about/about-banner-img.svg";
 
 function Termsofservice() {
   return (
@@ -17,25 +17,25 @@ function Termsofservice() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
+          className="relative w-full h-[260px] md:h-[460px] overflow-hidden "
         >
           <Image
             src={trackbg}
             alt="Track Package Background"
             fill
             priority
-            className="md:object-contain object-cover bg-center"
+            className="md:object-contain object-contain "
           />
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
             <h1 className="text-black text-3xl md:text-4xl">Terms of Use</h1>
-
-           
           </div>
         </motion.section>
+
+    
       </div>
 
-      <section className="container mx-auto py-24 px-4">
+      <section className="container mx-auto py-12 md:py-24 px-4">
         <div className="">
           <h2 className="">
             Terms & Conditions — Frisbi Luggage Delivery Services
@@ -134,7 +134,9 @@ function Termsofservice() {
             <li className="text-second">
               Liquids, inflammable items, chemicals, sharp objects
             </li>
-            <li className="text-second">Illegal items by accordance by indian law. </li>
+            <li className="text-second">
+              Illegal items by accordance by indian law.{" "}
+            </li>
             <li className="text-second">
               Items restricted by airport/security regulations
             </li>
@@ -194,8 +196,8 @@ function Termsofservice() {
           <ul className="mt-4 list-disc pl-5 space-y-4 font-medium text-[15px]">
             <li className="text-second">
               Maximum coverage:{" "}
-              <span className="text-black font-bold">₹1,999</span> per luggage (if
-              insurance opted)
+              <span className="text-black font-bold">₹1,999</span> per luggage
+              (if insurance opted)
             </li>
             <li className="text-second">
               Without insurance: Liability is limited to{" "}
@@ -285,7 +287,7 @@ function Termsofservice() {
           <h3 className="">10. Payments</h3>
           <p className="text-second mt-4">
             Accepted modes: Online payments (UPI / Wallets / Net Banking /
-            Cards). 
+            Cards).
           </p>
 
           <p className="text-second mt-4">
@@ -332,8 +334,8 @@ function Termsofservice() {
             <span className="font-bold text-black">
               {" "}
               denial of current and future services.{" "}
-            </span> and
-            legal actions.
+            </span>{" "}
+            and legal actions.
           </p>
         </div>
 
@@ -359,7 +361,8 @@ function Termsofservice() {
 
           <p className="text-second mt-4">
             Any disputes shall be subject to{" "}
-            <span className="text-black font-bold">Bangalore city</span> jurisdiction.
+            <span className="text-black font-bold">Bangalore city</span>{" "}
+            jurisdiction.
           </p>
         </div>
 
@@ -376,13 +379,18 @@ function Termsofservice() {
               Email:{" "}
               <span className="font-bold text-black"> support@frisbi.com</span>
             </li>
-         <li className="text-second">
+            <li className="text-second">
               Contact Us:{" "}
               <span className="font-bold text-black"> +91 885-065-2531</span>
             </li>
             <li className="text-second">
               Website:{" "}
-              <span className="font-bold text-black"> <Link href="www.frisbi.in" className="text-primary">www.frisbi.in</Link> </span>
+              <span className="font-bold text-black">
+                {" "}
+                <Link href="www.frisbi.in" className="text-primary">
+                  www.frisbi.in
+                </Link>{" "}
+              </span>
             </li>
           </ul>
         </div>
