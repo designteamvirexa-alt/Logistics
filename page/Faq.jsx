@@ -7,6 +7,8 @@ import { ChevronRight, ChevronDown } from "lucide-react";
 import faqbg from "@/asset/faqs.png";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
+import Link from "next/link";
+import faqmobile from "@/asset/shippment/faq-banner.svg";
 
 const menuItems = [
   "General FAQs",
@@ -49,7 +51,7 @@ function Faq() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden md:block hidden"
         >
           {/* Background Image */}
           <Image
@@ -65,16 +67,59 @@ function Faq() {
 
           {/* CONTENT */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
-            <h1 className="text-black">Frequently Asked Questions</h1>
+            <h1 className="text-black mb-4">Frequently Asked Questions</h1>
+            <p className="text-black mb-4 text-sm md:text-base">
+              India’s trusted luggage delivery service, built to make travel
+              lighter, smarter, and stress-free.
+            </p>
+
+            {/* CTA */}
+            <Link
+              href="/contact-us"
+              className="btn-primary hover:scale-105 transition-all"
+            >
+              Contact Us
+            </Link>
           </div>
         </motion.section>
+        {/* mobile section */}
+        <section className="relative bg-white overflow-hidden md:hidden">
+          <div className="container mx-auto px-4 py-20 pb-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* LEFT — CONTENT */}
+              <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
+                <h1 className="text-black mb-4">Frequently Asked Questions</h1>
+                <p className="text-black mb-4 text-sm md:text-base">
+                  India’s trusted luggage delivery service, built to make travel
+                  lighter, smarter, and stress-free.
+                </p>
+
+                {/* CTA */}
+                <Link
+                  href="/contact-us"
+                  className="btn-primary hover:scale-105 transition-all"
+                >
+                  Contact Us
+                </Link>
+              </div>
+
+              {/* RIGHT — IMAGE */}
+              <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
+                <Image
+                  src={faqmobile}
+                  alt="Hero"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <section className="container mx-auto px-4 py-24 ">
-        <MarqueeLogos />
-      </section>
-
-      <section className="w-full px-5 md:px-10 pt-0 py-24">
+      <MarqueeLogos />
+      <section className="w-full px-5 md:px-10 py-12 md:py-16 md:py-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* LEFT MENU (Fixed on Desktop) */}
           <div className="md:col-span-1">
