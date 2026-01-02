@@ -259,7 +259,7 @@ function Aboutus() {
 
       <TransformingCities />
 
-      <section className="px-4 py-24">
+      <section className="  mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
         <Testimonials />
       </section>
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">

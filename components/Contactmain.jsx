@@ -48,7 +48,9 @@ function FloatingSelect({ label, name, value, onChange, options = [] }) {
       >
         <option value="" disabled hidden></option>
         {options.map((opt, i) => (
-          <option key={i} value={opt}>{opt}</option>
+          <option key={i} value={opt}>
+            {opt}
+          </option>
         ))}
       </select>
 
@@ -134,7 +136,7 @@ function Info({ icon: Icon, title, value }) {
         <Icon className="w-6 h-6 text-primary" />
       </div>
       <div>
-        <h4 className="font-medium">{title}</h4>
+        <h5 className="font-medium">{title}</h5>
         <p className="text-gray-600 mt-1">{value}</p>
       </div>
     </div>
@@ -202,10 +204,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="py-20">
+    <section className="">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-
           {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -245,8 +246,18 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FloatingInput label="Name" name="name" value={form.name} onChange={handleChange} />
-                <FloatingInput label="Email" name="email" value={form.email} onChange={handleChange} />
+                <FloatingInput
+                  label="Name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                />
+                <FloatingInput
+                  label="Email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -257,7 +268,12 @@ export default function ContactSection() {
                   onChange={handleChange}
                   options={services}
                 />
-                <FloatingInput label="Phone Number" name="phone" value={form.phone} onChange={handleChange} />
+                <FloatingInput
+                  label="Phone Number"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                />
               </div>
 
               <FloatingTextarea
@@ -275,7 +291,6 @@ export default function ContactSection() {
               </button>
             </form>
           </motion.div>
-
         </div>
       </div>
     </section>

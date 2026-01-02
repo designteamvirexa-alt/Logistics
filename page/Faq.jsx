@@ -243,7 +243,9 @@ function Faq() {
         </div>
       </section>
 
-      <Testimonials />
+      <section className="  mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
+        <Testimonials />
+      </section>
 
       <CallToAction />
     </div>
