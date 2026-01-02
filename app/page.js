@@ -3,18 +3,12 @@ import Image from "next/image";
 
 
 export const metadata = {
-  title: "Frisbi Logistics India | Door-to-Door Luggage Delivery Service",
+  title: "Frisbi Logistics | Door-to-Door Luggage Delivery Service Across India",
   description:
-    "Frisbi Logistics India provides safe and affordable door-to-door luggage delivery across major Indian cities. Travel light and ship your baggage hassle-free.",
+    "Frisbi offers door-to-door luggage delivery across India. Ship your baggage safely between cities with clear pricing, live tracking, and professional handling.",
   keywords: [
-    "frisbi logistics india",
-    "luggage delivery service india",
-    "door to door luggage delivery india",
-    "baggage delivery india",
-    "travel luggage shipping india",
-    "intercity luggage delivery",
-    "luggage transport service india",
-    "excess baggage delivery india"
+    "frisbi luggage delivery, luggage delivery service india, door to door luggage delivery india, baggage delivery service india, intercity luggage delivery,travel luggage delivery india, luggage transport service india, excess baggage delivery india,luggage shipping service india",
+   
   ],
 };
 

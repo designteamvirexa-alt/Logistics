@@ -17,7 +17,7 @@ const servicesData = [
   {
     title: "Standard Delivery",
     description:
-      "Our Standard Luggage Delivery is perfect for travelers looking for a cost-effective way to deliver their bags safely from point A to B.",
+      "For trips and moves planned ahead. A reliable, cost-effective way to send your packages with care.",
     bgColor: "bg-white",
     textColor: "text-black",
     descColor: "text-black",
@@ -30,7 +30,7 @@ const servicesData = [
   {
     title: "Express Delivery",
     description:
-      "When time matters, choose Express Delivery. Your luggage travels ahead of you and reaches your destination the same day.",
+      "Faster delivery without cutting corners on safety. With added flexibility and priority handling.",
     bgColor: "bg-yellow-500",
     textColor: "text-black",
     descColor: "text-black",
@@ -43,7 +43,7 @@ const servicesData = [
   {
     title: "Premium Delivery",
     description:
-      "The Premium Delivery Plan comes with a dedicated assistant and 4–8 hour ultra-priority delivery. Your luggage receives white-glove handling from pickup to drop.",
+      "White glove care, end to end. For deliveries you would rather not think twice about.",
     bgColor: "bg-[#013EFE]",
     textColor: "text-white",
     descColor: "text-white",
@@ -79,9 +79,9 @@ const ServiceCard = ({ service }) => {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="relative z-10">
-        <h3 className={`text-2xl font-semibold ${service.textColor}`}>
+        <h4 className={` ${service.textColor}`}>
           {service.title}
-        </h3>
+        </h4>
 
         <p className={`mt-4 text-base ${service.descColor}`}>
           {service.description}
@@ -120,13 +120,13 @@ const FeatureCard = ({
   return (
     <div className="relative bg-white rounded-3xl p-8 h-[500px] overflow-hidden transition-transform hover:-translate-y-2">
       <div className="relative z-10">
-        <h3 className="text-2xl font-semibold">{title}</h3>
+        <h4 className="">{title}</h4>
 
         <p className="mt-3 text-gray-500">{description}</p>
 
         <Link
           href={link}
-          className="mt-4 inline-block font-semibold hover:text-[#013EFE]"
+          className="mt-4 inline-block text-[16px] font-semibold hover:text-[#013EFE]"
         >
           Learn more
         </Link>
@@ -148,11 +148,11 @@ const FeatureCard = ({
 // --- Main Services Section ---
 const ServicesSection = () => {
   return (
-    <section className="py-24">
+    <section className="py-12 md:py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 md:mb-16">
-          Services We Offer
+        <h2 className="text-center  mb-10 md:mb-12 lg:mb-16">
+          Pick the service that works best for you
         </h2>
 
         {/* Services Cards */}
@@ -166,7 +166,7 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <FeatureCard
             title="Corporate"
-            description="Seamless Package Delivery, Right at Your Doorstep!"
+            description="Business delivery that handles it all. From employee moves to event travel, we handle baggage so work keeps moving."
             image={Corporate}
             link="/corporate"
             fit="contain"
@@ -174,7 +174,7 @@ const ServicesSection = () => {
 
           <FeatureCard
             title="Individual"
-            description="Fast, reliable delivery for every shipment"
+            description="When life requires extra bags, longer stays, or city transfers, we step in to make sure your luggage reaches safely."
             image={Packing}
             link="/individual"
             fit="contain"

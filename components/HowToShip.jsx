@@ -12,43 +12,43 @@ export function HowToShip() {
       number: "1",
       icon: MessageSquare,
       title: "Get an Instant Quote",
-      description: "Enter your pickup city, destination city, and number of bags to get a clear, upfront price—no hidden charges",
+      description: "See the price upfront before you book.",
     },
     {
       number: "2",
       icon: FileText,
       title: "Schedule Your Pickup",
-      description: "Choose a convenient pickup date, time, and location (home, hotel, office, hostel, PG or Airbnb). We’ll confirm everything and assign a coordinator.",
+      description: "Choose a time and place that works.",
     },
     {
       number: "3",
       icon: Calendar,
       title: "Handover Your Luggage",
-      description: "Our executive arrives at your location, scans and secures your bags, applies seals, and shares digital proof of pickup. Optional premium packaging is available.",
+      description: "We scan, seal, and confirm pickup.",
     },
     {
       number: "4",
       icon: Radar,
-      title: "Track & Receive Delivery",
-      description: "Track your shipment through our website with live status updates. Your luggage is delivered safely at your destination with digital proof of delivery.",
+      title: "Track Your Delivery",
+      description: "Follow your luggage in real time.",
     },
     {
       number: "5",
       icon: CheckCircle,
-      title: "Support & Rewards",
-      description: "Benefit from 24/7 dedicated customer support and real-time shipment tracking to ensure a seamless service experience.",
+      title: "Receive at Destination",
+      description: "Door-to-door delivery safely done.",
     },
   ];
 
   return (
-    <div className="py-24 bg-white">
+    <div className="py-12 md:py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-4">
-          How to Ship with <span className="text-primary">Frisbi</span>
+         Here’s how we move your luggage
         </h2>
         <p className="mb-6 text-center text-second">
-          Sending packages with Frisbi is effortless. Simply pack your items
-          securely, and we’ll take care of everything else
+          Five quick steps to stress-free delivery.
+
         </p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {steps.map((step, index) => (
@@ -62,7 +62,7 @@ export function HowToShip() {
                     {step.number}
                   </div> */}
                 </div>
-                <h4 className="mb-2">{step.title}</h4>
+                <h5 className="mb-2">{step.title}</h5>
                 <p className="text-second">{step.description}</p>
               </div>
 
