@@ -107,9 +107,9 @@ function Corporate() {
       <Safety />
 
       <section className="  mx-auto relative px-4 py-12 md:py-16  sm:px-6 lg:px-8">
-             <Testimonials />
-            </section>
-     <section className=" overflow-x-hidden ">
+        <Testimonials />
+      </section>
+      <section className=" overflow-x-hidden ">
         <div>
           <FAQSection />
         </div>
@@ -139,9 +139,7 @@ function Corporate() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">
-              From Your Door to Their Door.
-            </h2>
+            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
 
             <p className="text-white mb-8 text-sm md:text-base">
               Fast, safe, and affordable – trusted by thousands across India.

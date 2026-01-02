@@ -29,7 +29,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="md:py-10  bg-white">
+    <section className="md:py-16  bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-4 text-gray-900">How It Works</h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -51,7 +51,7 @@ export function HowItWorks() {
                     </div> */}
                   </div>
                   
-                  <h4 className="mb-2">{step.title}</h4>
+                  <h5 className="mb-2">{step.title}</h5>
                   <p className="text-second ">{step.description}</p>
                 </div>
                 
@@ -63,12 +63,7 @@ export function HowItWorks() {
           })}
         </div>
         
-        <div className="mt-16 text-center">
-          <Link href="/book-shipment" className="btn-primary hover:scale-105 transition-all">
-            Book Your Luggage Delivery Now
-          </Link>
-          
-        </div>
+       
       </div>
     </section>
   );
