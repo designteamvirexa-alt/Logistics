@@ -97,7 +97,7 @@ function PricingStructure() {
               
               </span>
             </div>
-            <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-center lg:items-start gap-8">
+            <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-start gap-8">
               {/* TEXT LEFT */}
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-6">Optional add-ons:</h3>

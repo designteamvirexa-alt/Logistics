@@ -47,7 +47,7 @@ export function Features() {
               <div className="w-12 h-12 bg-blue-50 rounded-3xl flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-blue-600" />
               </div>
-              <h4 className="mb-2 text-black">{feature.title}</h4>
+              <h5 className="mb-2 text-black">{feature.title}</h5>
               <p className="text-second">{feature.description}</p>
             </div>
           ))}

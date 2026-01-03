@@ -27,7 +27,7 @@ import CallToAction from "@/components/CallToActionPremium";
 import Comparison from "@/components/ComparisonPremium";
 import PricingStructure from "@/components/PricingStructurePremium";
 import Keyfuture from "@/components/KeyfutureexpressPremium";
-import HowItWorks from "@/components/OurProcess";
+import HowItWorks from "@/components/OurProcesspremium";
 import Testimonials from "@/components/Testimonials";
 import TransformingCities from "@/components/Locations";
 
@@ -96,7 +96,7 @@ export default function PremiumServices() {
     <div className="-mt-24 -mt-16">
       {/* ================= HERO ================= */}
       <section className="relative bg-white overflow-hidden">
-        <div className="container mx-auto px-4 py-28">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT (UNCHANGED) */}
             <div className="relative z-10">
@@ -107,14 +107,14 @@ export default function PremiumServices() {
               >
                
               </motion.div> */}
-               <p className="text-primary mb-5">
+               <p className="text-primary mb-5 text-center md:text-start">
                   ✨ Because some deliveries deserve more
                 </p>
 
               <motion.h1
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-black text-4xl md:text-5xl font-bold mb-6"
+                className="text-black text-4xl md:text-5xl font-bold mb-6 text-center md:text-start"
               >
                 Premium Delivery
               </motion.h1>
@@ -122,7 +122,7 @@ export default function PremiumServices() {
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-black max-w-2xl mb-6"
+                className="text-black max-w-2xl mb-6 text-center md:text-start"
               >
                 White-glove logistics for your most valuable shipments.
               </motion.p>
@@ -130,7 +130,7 @@ export default function PremiumServices() {
               <motion.div
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex gap-4"
+                className="flex gap-4 justify-center md:justify-start"
               >
                 <Link
                   href="#contact"
@@ -149,7 +149,7 @@ export default function PremiumServices() {
             </div>
 
             {/* RIGHT — IMAGE */}
-            <div className="relative w-full h-[300px] md:h-[420px]">
+            <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
               <Image
                 src={herobg}
                 alt="Premium Delivery"
@@ -165,15 +165,15 @@ export default function PremiumServices() {
       <MarqueeLogos />
 
       {/* ================= OVERVIEW ================= */}
-      <section className="py-24 px-4">
-        <div className="container mx-auto grid md:grid-cols-3 gap-10">
+      <section className="py-12 md:py-16 lg:py-24 px-4">
+        <div className="container mx-auto grid md:grid-cols-3 gap-10 ">
           <Image
             src={one}
             alt="Overview"
             className="rounded-3xl object-cover w-full h-[400px]"
           />
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 text-center md:text-start">
             <h2 className="text-3xl font-bold mb-4">Frisbi Premium Overview</h2>
 
             <p className="text-second mb-6">

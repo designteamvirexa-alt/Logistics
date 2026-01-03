@@ -118,7 +118,7 @@ export default function Services() {
     <div className="-mt-24 -mt-16">
       {/* HERO */}
       <section className="relative bg-white overflow-hidden">
-        <div className="container mx-auto px-4 py-20 md:py-28">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT */}
             <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
@@ -175,7 +175,7 @@ export default function Services() {
 
       <MarqueeLogos />
       {/* OVERVIEW */}
-      <section className="py-24 pb-0 px-4">
+      <section className="py-12 md:py-16  px-4">
         <div className="container mx-auto grid md:grid-cols-3 gap-10 order-2">
           <Image
             src={one}
@@ -268,7 +268,7 @@ export default function Services() {
         <ContactSection />
       </section>
 
-      <section className="pt-24">
+      <section className="pt-24 px-4">
         <ServiceFAQSection />
       </section>
 

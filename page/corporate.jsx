@@ -4,6 +4,9 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import MarqueeLogos from "@/components/MarqueeLogos";
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
+import Link from "next/link";
+import Testimonials from "@/components/Testimonials";
 
 import herobg from "@/asset/service/corporate.svg";
 
@@ -15,7 +18,8 @@ import { Comparison } from "@/components/CorporateComparison";
 import { Scale } from "@/components/Scale";
 import { Safety } from "@/components/Safety";
 import CallToAction from "@/components/CallToActioncorporate";
-
+import FAQSection from "@/components/Accordion";
+import ContactSection from "@/components/ContactSection";
 function Corporate() {
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -27,7 +31,7 @@ function Corporate() {
     <div className="-mt-24 ">
       {/* HERO SECTION */}
       <section className="relative bg-white overflow-hidden">
-        <div className="container mx-auto px-4 py-24">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT */}
             <div className="relative z-10 text-center md:text-left">
@@ -90,9 +94,7 @@ function Corporate() {
         </div>
       </section>
 
-      <section className="pb-24">
-        <MarqueeLogos />
-      </section>
+      <MarqueeLogos />
 
       <TrustedBy />
 
@@ -103,7 +105,57 @@ function Corporate() {
       <Comparison />
       <Scale />
       <Safety />
-      <CallToAction />
+
+      <section className="  mx-auto relative px-4 py-12 md:py-16  sm:px-6 lg:px-8">
+        <Testimonials />
+      </section>
+      <section className=" overflow-x-hidden ">
+        <div>
+          <FAQSection />
+        </div>
+      </section>
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
+        <ContactSection />
+      </section>
+
+      <section className="w-full px-4 py-12   md:py-24 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+              Fast, safe, and affordable – trusted by thousands across India.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

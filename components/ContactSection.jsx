@@ -69,7 +69,7 @@ export default function ContactSection() {
 
   return (
     <section className="relative text-black">
-      <div className="relative z-10 max-w-7xl mx-auto py-20 px-4">
+      <div className="relative z-10 max-w-7xl mx-auto py-12 md:pt-16  md:pb-24 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
           {/* LEFT CONTENT */}
@@ -80,7 +80,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold">
+            <h2 className="">
               We're here to answer <br /> your questions.
             </h2>
 
@@ -218,7 +218,7 @@ function Info({ icon: Icon, title, value }) {
         <Icon className="w-6 h-6 text-primary" />
       </div>
       <div>
-        <h4 className="font-medium">{title}</h4>
+        <h5 className="font-medium">{title}</h5>
         <span className="text-second text-sm font-medium">{value}</span>
       </div>
     </div>

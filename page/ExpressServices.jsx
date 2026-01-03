@@ -110,7 +110,7 @@ export default function ExpressServices() {
     <div className="-mt-24 -mt-16">
       {/* HERO */}
       <section className="relative bg-white overflow-hidden">
-        <div className="container mx-auto px-4 py-28">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* LEFT — CONTENT (UNCHANGED) */}
             <div className="relative z-10">
@@ -122,13 +122,13 @@ export default function ExpressServices() {
                
               </motion.div> */}
 
-              <p className="text-primary mb-5">
+              <p className="text-primary mb-5 text-center md:text-start">
                 ✨ When time matters, choose Express
               </p>
               <motion.h1
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-black text-4xl md:text-6xl font-black mb-6"
+                className="text-black text-4xl md:text-6xl font-black mb-6 text-center md:text-start"
               >
                 Express Delivery
               </motion.h1>
@@ -136,13 +136,13 @@ export default function ExpressServices() {
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-black text-lg max-w-2xl mb-6"
+                className="text-black text-lg max-w-2xl mb-6 text-center md:text-start"
               >
                 Fast, priority parcel delivery for urgent shipments across
                 India.
               </motion.p>
 
-              <motion.p className="text-black text-lg max-w-2xl mb-8">
+              <motion.p className="text-black text-lg max-w-2xl mb-8 text-center md:text-start">
                 Best for: Urgent documents, business-critical packages, medical
                 supplies & time-sensitive deliveries.
               </motion.p>
@@ -150,7 +150,7 @@ export default function ExpressServices() {
               <motion.div
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex gap-4"
+                className="flex gap-4 justify-center md:justify-start"
               >
                 <Link
                   href="#contact"
@@ -183,8 +183,9 @@ export default function ExpressServices() {
       </section>
 
       <MarqueeLogos />
+
       {/* OVERVIEW */}
-      <section className="py-24 pb-0 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="container mx-auto grid md:grid-cols-3 items-center gap-10">
           <Image
             src={one}
@@ -193,8 +194,8 @@ export default function ExpressServices() {
           />
 
           <div className="md:col-span-2">
-            <h2 className="text-4xl font-bold mb-4">Frisbi Express Overview</h2>
-            <p className="text-second mb-8">
+            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">Frisbi Express Overview</h2>
+            <p className="text-second mb-8 text-center md:text-start">
               Express Delivery is our high-speed logistics service built for
               customers who need guaranteed and priority delivery.
             </p>
@@ -236,7 +237,7 @@ export default function ExpressServices() {
       <TransformingCities />
 
       <section className=" ">
-        <div className="py-24 bg-white">
+        <div className="py-24 pb-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-center mb-4">Why Choose Express Delivery?</h2>
 

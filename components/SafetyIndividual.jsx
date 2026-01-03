@@ -11,9 +11,12 @@ export function Safety() {
   return (
     <div className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center mb-12">
+        <h2 className="text-center mb-4">
           When to Use Frisbi
         </h2>
+        <p className="text-center text-second mb-16">
+          From a single suitcase to multiple bags, Frisbi ensures your belongings move safely while you move freely.
+        </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {features.map((feature, index) => (
@@ -26,9 +29,7 @@ export function Safety() {
           ))}
         </div>
         
-        <p className="text-center text-second">
-          From a single suitcase to multiple bags, Frisbi ensures your belongings move safely while you move freely.
-        </p>
+        
       </div>
     </div>
   );

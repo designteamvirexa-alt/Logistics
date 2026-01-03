@@ -9,7 +9,7 @@ const audiences = [
 
 export function PerfectFor() {
   return (
-    <section className="py-16 md:py-24 ">
+    <section className="py-16 md:py-24 md:pt-0">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-16 ">Perfect For</h2>
         

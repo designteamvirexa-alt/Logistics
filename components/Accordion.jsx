@@ -6,55 +6,46 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqData = [
   {
-    question: "How does door-to-door luggage delivery work?",
+    question: "How safe is my luggage during delivery?",
     answer:
-      "You book a pickup, we collect your luggage from your home, hotel, hostel, or office and deliver it directly to your destination anywhere in India — safe, secure, and on time.",
+      "Every pickup is scanned, sealed, and tracked in real time. Your luggage is accounted for from pickup to delivery, with digital confirmation at each step and careful handling throughout.",
   },
   {
-    question: "Is my luggage safe during transit?",
+    question: "Can I choose when my luggage is picked up and delivered?",
     answer:
-      "Yes. All luggage is handled by trained professionals using tamper-proof protocols and secure logistics. You also have the option to add paid insurance for higher-value items.",
+      "Yes. Express and Premium Delivery services allow you to select a pickup date, time slot, and location that works for you. Delivery timelines are shared clearly at the time of booking.",
   },
   {
-    question: "How do I track my luggage after pickup?",
+    question: "What happens if my plans change after booking?",
     answer:
-      "You can monitor your shipment in real time through our website tracking system, which displays live location, transit status, and delivery updates at every stage.",
+      "Our support team can help you reschedule pickups or update delivery details before transit begins. No chatbots. You can speak directly to a dedicated point of contact who can assist with your booking.",
   },
   {
-    question: "Do you pick up luggage from hotels, hostels, PGs, and Airbnbs?",
+    question: "How much luggage can I send at once?",
     answer:
-      "Yes. We provide pickup and delivery at homes, hotels, PGs, hostels, offices, co-living spaces, Airbnbs, and homestays across India.",
+      "You can send one or multiple bags in a single shipment. Pricing is shared upfront so you know the cost before booking.",
   },
   {
-    question: "How long does delivery take?",
+    question: "Which cities and locations does Frisbi cover?",
     answer:
-      "Delivery timelines vary by distance and service speed. You will be informed of the estimated delivery date before booking and will receive updates throughout the transit period.",
+      "Frisbi delivers luggage across 25,000+ pincodes in India, including major cities and smaller towns. You can check coverage while getting your quote.",
   },
   {
-    question: "Do you offer packaging service?",
+    question: "Is packing included or do I need to pack myself?",
     answer:
-      "Yes. We provide premium packaging — including bubble wrap, cushioning, waterproof sealing, and safety-grade boxes — as an optional add-on for fragile and valuable belongings.",
+      "We offer professional packing free with Premium Delivery. For other services, you can add packing as a paid add-on or pack the luggage yourself.",
   },
   {
-    question: "Is this service suitable for students relocating between cities?",
+    question: "Can someone else hand over or receive the luggage on my behalf?",
     answer:
-      "Absolutely. Students commonly use our service for hostel / PG / campus shifting, as we safely move clothes, essentials, personal luggage, and sports kits at affordable prices.",
+      "Yes. As long as someone is available at pickup and delivery, the luggage can be handed over or received by them.",
   },
   {
-    question: "Do you support corporate and group travellers?",
+    question: "How do you calculate the delivery price?",
     answer:
-      "Yes. We manage group luggage movement for corporate trips, conferences, retreats, and business events, with a dedicated SPOC for coordination and on-time delivery.",
+      "The price depends on your pickup city, destination city, number of bags, and service speed. You get a clear quote before booking so you know exactly what you pay.",
   },
-  {
-    question: "Can I change pickup or delivery details after booking?",
-    answer:
-      "Once a booking is confirmed and the shipment is dispatched, pickup or delivery details cannot be modified. However, if needed, the shipment can be returned to the original pickup location through a return request.",
-  },
-  {
-    question: "Is insurance included?",
-    answer:
-      "Insurance is optional and paid, recommended for electronics, luxury items, musical instruments, sports equipment, and other high-value belongings.",
-  },
+
 ];
 
 export default function FAQ() {
@@ -68,8 +59,8 @@ export default function FAQ() {
   const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-      <h2 className="text-center mb-10">Frequently asked questions</h2>
+    <div className="w-full max-w-3xl mx-auto py-12 md:pt-16  md:pb-24 px-4">
+      <h2 className="text-center mb-10 md:mb-12 lg:mb-16">Frequently asked questions</h2>
 
       <div className="space-y-6">
         {visibleFaqs.map((faq, i) => (
@@ -106,7 +97,7 @@ export default function FAQ() {
                 className="flex justify-between items-center py-5 cursor-pointer border-b"
                 onClick={() => toggle(i)}
               >
-                <h4 className="font-medium text-lg text-gray-900">
+                <h4 className="">
                   {faq.question}
                 </h4>
                 <ChevronDown className="w-6 h-6 text-black" />

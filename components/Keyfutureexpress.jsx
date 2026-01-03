@@ -74,7 +74,7 @@ export default function StickyStepsOverlap() {
         <div className="lg:flex lg:gap-20">
           {/* LEFT – STICKY */}
           <div className="lg:w-1/2">
-            <div className="lg:sticky lg:top-24">
+            <div className="lg:sticky lg:top-24 text-center md:text-left">
               <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
                 DRIVING SUPPLY CHAIN SUCCESS
               </p>

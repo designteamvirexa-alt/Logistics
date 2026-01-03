@@ -6,9 +6,9 @@ export default function Testimonials() {
   const marqueeReviews = [
     {
       img: profile,
-      name: "James",
-      title: "Amazing service",
-      text: "Rail Freight helped us move heavy shipments long distance in an eco-friendly way, while keeping costs low and schedules predictable.",
+      name: "Kavya R.",
+      title: "Bangalore",
+      text: "Booked it Sunday night. They picked up Monday morning. Tracked it the whole way. Delivered Thursday afternoon. Exactly as promised.",
     },
     {
       img: profile,
@@ -18,13 +18,10 @@ export default function Testimonials() {
     },
   ];
 
-  const marqueeReviewsReverse = [...marqueeReviews];
-
   return (
-    <div className="pb-14 px-4">
-      <h2 className=" font-bold text-center mb-10">
-        100% User Satisfaction
-      </h2>
+    <div className="">
+      <h2 className=" text-center mb-4">What customers actually say</h2>
+      <p className="mb-6 text-center text-second">Real feedback. Unedited.</p>
 
       <style>{`
         @keyframes marqueeScroll {
@@ -39,7 +36,6 @@ export default function Testimonials() {
       `}</style>
 
       <div className="overflow-hidden mt-16 w-full space-y-6">
-
         {/* FIRST MARQUEE */}
         <div
           className="flex gap-6 w-max"
@@ -59,12 +55,13 @@ export default function Testimonials() {
                   height={56}
                   className="rounded-full"
                 />
-                <div className="ml-3">
-                  <h4 className="font-semibold">{item.name}</h4>
+                <div className="ml-4">
+                  <h5 className="font-semibold mb-1">{item.name}</h5>
+                  <p className="text-second">{item.title}</p>
                 </div>
               </div>
 
-              <h4 className="mt-4 font-semibold text-lg">{item.title}</h4>
+              
               <p className="text-second mt-2">
                 <q>{item.text}</q>
               </p>
@@ -73,7 +70,7 @@ export default function Testimonials() {
         </div>
 
         {/* SECOND MARQUEE (REVERSE) */}
-        <div
+        {/* <div
           className="flex gap-6 w-max"
           style={{ animation: "marqueeReverse 20s linear infinite" }}
         >
@@ -102,8 +99,7 @@ export default function Testimonials() {
               </p>
             </div>
           ))}
-        </div>
-
+        </div> */}
       </div>
     </div>
   );

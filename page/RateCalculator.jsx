@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import aboutmobile from "@/asset/shippment/rate-caluculator.svg";
+
 import { motion } from "framer-motion";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import ShipmentCostCalculator from "@/components/ShipmentCostCalculator";
-import FAQ from "@/components/Accordion";
+import FAQ from "@/components/RateAccordion";
 import ratecalculator from "@/asset/rate-calculator.png";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
@@ -18,7 +21,7 @@ function RateCalculator() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[460px] md:h-[460px] overflow-hidden"
+          className="relative w-full h-[460px] md:h-[460px] overflow-hidden  md:block hidden"
         >
           {/* Background Image */}
           <Image
@@ -34,16 +37,62 @@ function RateCalculator() {
 
           {/* CONTENT */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
-            <h1 className="text-black">Rate Calculator</h1>
+            <h1 className="text-black mb-4">Rate Calculator</h1>
+            <p className="text-black mb-4 text-sm md:text-base">
+              India’s trusted luggage delivery service, built to make travel
+              lighter, smarter, and stress-free.
+            </p>
+
+            {/* CTA */}
+            <Link
+              href="/contact-us"
+              className="btn-primary hover:scale-105 transition-all"
+            >
+              Contact Us
+            </Link>
           </div>
         </motion.section>
+
+        {/* mobile section */}
+        <section className="relative bg-white overflow-hidden md:hidden">
+          <div className="container mx-auto px-4 py-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* LEFT — CONTENT */}
+              <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
+                <h1 className="text-black mb-4">Rate Calculator</h1>
+
+                <p className="text-black mb-4 text-sm md:text-base">
+                  India’s trusted luggage delivery service, built to make travel
+                  lighter, smarter, and stress-free.
+                </p>
+
+                {/* CTA */}
+                <Link
+                  href="/contact-us"
+                  className="btn-primary hover:scale-105 transition-all"
+                >
+                  Contact Us
+                </Link>
+              </div>
+
+              {/* RIGHT — IMAGE */}
+              <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
+                <Image
+                  src={aboutmobile}
+                  alt="Hero"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <section className="container mx-auto px-4 py-24 ">
-        <MarqueeLogos />
-      </section>
+      <MarqueeLogos />
 
-      <section className="py-24 pb-0">
+      <section className="py-12">
         <ShipmentCostCalculator />
       </section>
 
@@ -51,7 +100,9 @@ function RateCalculator() {
         <FAQ />
       </section>
 
-      <Testimonials />
+      <section className="  mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
+        <Testimonials />
+      </section>
 
       <CallToAction />
     </div>
