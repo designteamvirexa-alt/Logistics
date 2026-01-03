@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 
 /* ---------------- Pricing Config ---------------- */
 
-const BASE_PRICE = 499;
-const CHECKED_BAG_PRICE = 300;
-const CABIN_BAG_PRICE = 150;
-const WEIGHT_PRICE_PER_KG = 20;
+const BASE_PRICE = 999;
+const CHECKED_BAG_PRICE = 999;
+// const CABIN_BAG_PRICE = 150;
+const WEIGHT_PRICE_PER_KG = 99;
 
 const BAG_SIZE_MULTIPLIER = {
   Small: 1,
@@ -20,14 +20,13 @@ const BAG_SIZE_MULTIPLIER = {
 
 const calculatePrice = (values) => {
   const checkedBags = Number(values.checkedBags || 0);
-  const cabinBags = Number(values.cabinBags || 0);
+  // const cabinBags = Number(values.cabinBags || 0);
   const weight = Number(values.weight || 0);
   const bagSize = values.bagSize || "Small";
 
   let price =
-    BASE_PRICE +
     checkedBags * CHECKED_BAG_PRICE +
-    cabinBags * CABIN_BAG_PRICE +
+    // cabinBags * CABIN_BAG_PRICE +
     weight * WEIGHT_PRICE_PER_KG;
 
   price *= BAG_SIZE_MULTIPLIER[bagSize] || 1;
@@ -151,6 +150,24 @@ export default function ShipmentBookingForm() {
           </div>
 
           {/* ---------------- Pickup & Delivery ---------------- */}
+          <h3 className="font-semibold mb-3">Services</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium text-gray-700">
+                Preferred Pickup Date & Time
+              </label>
+              <input
+                type="datetime-local"
+                value={values.pickupDate || ""}
+                onChange={(e) => handleChange("pickupDate", e.target.value)}
+                className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none focus:ring-2 focus:ring-[#013EFE]"
+              />
+            </div>
+
+            
+          </div>
+
+          {/* ---------------- Pickup & Delivery ---------------- */}
           <h3 className="font-semibold mb-3">Pickup & Delivery</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             <div className="flex flex-col gap-1">
@@ -185,16 +202,11 @@ export default function ShipmentBookingForm() {
             {[
               {
                 key: "checkedBags",
-                label: "Checked-in Bags",
+                label: "Number of Bags",
                 min: 0,
                 max: 10,
               },
-              {
-                key: "cabinBags",
-                label: "Cabin Bags",
-                min: 0,
-                max: 5,
-              },
+
               {
                 key: "weight",
                 label: "Total Weight (Kg)",
@@ -229,12 +241,43 @@ export default function ShipmentBookingForm() {
                 <option value="Large">Large</option>
                 <option value="XL">XL</option>
               </select>
-              <label className={labelClass}>Largest Bag Size</label>
+              <label className={labelClass}>Bag Size</label>
+            </div>
+            <div className="relative">
+              <select
+                value={values.bagSize || ""}
+                onChange={(e) => handleChange("bagSize", e.target.value)}
+                className={`${inputClass} peer`}
+              >
+                <option value="" disabled></option>
+                <option value="Suitcase">Suitcase</option>
+                <option value="Trolley">Trolley</option>
+                <option value="Backpack">Backpack</option>
+                <option value="Others">Others</option>
+              </select>
+              <label className={labelClass}>Luggage Type</label>
+            </div>
+            <div className="relative">
+              <select
+                value={values.bagSize || ""}
+                onChange={(e) => handleChange("bagSize", e.target.value)}
+                className={`${inputClass} peer`}
+              >
+                <option value="" disabled>
+                  Select Addons
+                </option>
+                <option value="Packing">Packing</option>
+                <option value="Priority">Priority Pickup</option>
+                <option value="Fragile">Fragile Handling</option>
+                <option value="Bubblewrap">Bubblewrap Packing</option>
+                <option value="Bubblewrap">Insurance</option>
+              </select>
+              <label className={labelClass}>Luggage Addons</label>
             </div>
           </div>
 
           {/* ---------------- Luggage Type ---------------- */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <p className="font-medium mb-2">Luggage Type</p>
             <div className="flex gap-6 flex-wrap">
               {["Suitcase", "Bag", "Box"].map((item) => (
@@ -248,7 +291,7 @@ export default function ShipmentBookingForm() {
                 </label>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* ---------------- Price ---------------- */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8">
@@ -260,7 +303,7 @@ export default function ShipmentBookingForm() {
           </div>
 
           {/* ---------------- Payment ---------------- */}
-          <h4 className="font-semibold mb-3">Payment</h4>
+          <h4 className="font-semibold mb-3">Payment </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             <div className="relative">
               <select
@@ -274,11 +317,12 @@ export default function ShipmentBookingForm() {
               </select>
               <label className={labelClass}>Payment Method</label>
             </div>
+            
 
-            <label className="flex items-center gap-2 text-sm">
+            {/* <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" required />I agree to the Terms &
               Conditions
-            </label>
+            </label> */}
           </div>
 
           <button
