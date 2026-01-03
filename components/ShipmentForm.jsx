@@ -120,7 +120,7 @@ export default function ShipmentBookingForm() {
     "peer-focus:bg-white peer-focus:px-1";
 
   return (
-    <section className="w-full py-10 px-4">
+    <section className="w-full py-24 px-4">
       <form onSubmit={handleSubmit}>
         <div className="max-w-4xl mx-auto">
           <h2 className="mb-4 text-center">Shipment Booking Form</h2>

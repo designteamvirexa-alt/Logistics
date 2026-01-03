@@ -93,7 +93,7 @@ function Corporate() {
         </div>
       </section>
 
-      <MarqueeLogos />
+      
 
       <TrustedBy />
 
@@ -117,7 +117,9 @@ function Corporate() {
         <ContactSection />
       </section>
 
-      <section className="w-full px-4 py-12   md:py-24 ">
+      <MarqueeLogos />
+
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image

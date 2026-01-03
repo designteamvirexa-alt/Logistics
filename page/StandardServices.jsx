@@ -15,10 +15,8 @@ import Network from "@/asset/icon/network.svg";
 import Updates from "@/asset/icon/update.svg";
 import Hidden from "@/asset/icon/hidden-charges.svg";
 
-
 import herobg from "@/asset/service/standard-banner-img.svg";
-import one from "@/asset/service/standard-overview.png";
-
+import one from "@/asset/service/standard-overview-1.webp";
 
 // 🔥 SSR-SAFE DYNAMIC IMPORTS
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {
@@ -28,7 +26,7 @@ const ServiceFAQSection = dynamic(
   () => import("@/components/ServiceAccordion"),
   { ssr: false }
 );
-const CallToAction = dynamic(() => import("@/components/CallToAction"), {
+const CallToAction = dynamic(() => import("@/components/CallToActionStandard"), {
   ssr: false,
 });
 
@@ -173,21 +171,21 @@ export default function Services() {
         </div>
       </section>
 
-      <MarqueeLogos />
+      
       {/* OVERVIEW */}
-      <section className="py-12 md:py-16  px-4">
-        <div className="container mx-auto grid md:grid-cols-3 gap-10 order-2">
+      <section className="py-12 md:py-24 md:pb-20  px-4">
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 order-2 items-center">
           <Image
             src={one}
             alt="Overview"
-            className="rounded-3xl h-[400px] object-cover "
+            className="rounded-3xl h-[380px] object-cover "
           />
 
-          <div className="md:col-span-2  order-1">
+          <div className="md:col-span-1  order-1">
             <h2 className="text-4xl font-bold mb-4 text-center md:text-start">
               Frisbi Standard Overview
             </h2>
-            <p className="text-second mb-8 text-center md:text-start">
+            <p className="text-second mb-6 text-center md:text-start">
               Budget-friendly shipping without compromising safety.
             </p>
 
@@ -271,6 +269,8 @@ export default function Services() {
       <section className="pt-24 px-4">
         <ServiceFAQSection />
       </section>
+
+       <MarqueeLogos />
 
       <CallToAction />
     </div>

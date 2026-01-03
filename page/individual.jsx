@@ -95,7 +95,7 @@ function Individual() {
         </div>
       </section>
 
-       <MarqueeLogos />
+     
 
       {/* SECTIONS */}
       <PerfectFor />
@@ -115,7 +115,9 @@ function Individual() {
         <ContactSection />
       </section>
 
-      <section className="w-full px-4 py-12   md:py-24 ">
+        <MarqueeLogos />
+
+      <section className="px-4 py-12   md:py-20 md:pt-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image
