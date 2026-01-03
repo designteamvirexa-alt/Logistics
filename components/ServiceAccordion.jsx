@@ -62,7 +62,7 @@ export default function FAQ() {
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggle(i)}
                 >
-                  <h3 className="font-semibold text-lg">{faq.question}</h3>
+                  <h4 className="font-semibold text-lg">{faq.question}</h4>
                   <Minus className="w-6 h-6 text-gray-600" />
                 </div>
 
