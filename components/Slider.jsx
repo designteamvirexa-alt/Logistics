@@ -16,10 +16,16 @@ import Corporate from "@/asset/why-choose/corporate.png";
 import Support from "@/asset/why-choose/support.png";
 
 const data = [
+   
   {
     title: "Costs Less Than Carrying It Yourself",
     desc: "Excess baggage fees add up fast, so you can ship 20 kg or more for far less and pay once, without surprises.",
     img: Safe,
+  },
+  {
+    title: "Dedicated Support throughout",
+    desc: "No chatbots. No waiting three days for an email reply. Get a dedicated contact who knows your shipment.",
+    img: Support,
   },
   {
     title: "No More Weight Limits",
@@ -31,6 +37,7 @@ const data = [
     desc: "Skip bigger cabs, porters, and last-minute add-ons, with luggage delivered door to door.",
     img: OnTime,
   },
+  
   {
     title: "Less Carrying Less Stress",
     desc: "No dragging bags across stairs or platforms, because we pick up and deliver safely.",
@@ -46,11 +53,7 @@ const data = [
     desc: "Your luggage is handled carefully, tracked end to end, and delivered without worry.",
     img: Tier,
   },
-   {
-    title: "Dedicated SPOC Support",
-    desc: "Your luggage is handled carefully, tracked end to end, and delivered without worry.",
-    img: Support,
-  },
+  
 ];
 
 export default function Slider() {
