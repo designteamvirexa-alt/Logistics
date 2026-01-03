@@ -7,7 +7,6 @@ import MarqueeLogos from "@/components/MarqueeLogos";
 import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
 import Link from "next/link";
 import Testimonials from "@/components/Testimonials";
-
 import herobg from "@/asset/service/corporate.svg";
 
 import { TrustedBy } from "@/components/TrustedBy";

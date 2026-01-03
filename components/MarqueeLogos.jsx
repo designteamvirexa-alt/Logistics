@@ -25,7 +25,7 @@ export default function MarqueeLogos() {
     <div className="container mx-auto relative px-4 py-12 md:py-24  sm:px-6 lg:px-8">
       <div className="text-center">
         <h2 className="text-center  mb-10 md:mb-12 lg:mb-16">
-          Companies that trust our services
+          Hundreds choose us and trust us till the last mile.
         </h2>
       </div>
 
