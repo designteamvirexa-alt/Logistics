@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 // --- Import Assets ---
-import Smartbox from "@/asset/home/premium.png";
-import Standard from "@/asset/home/standard.png";
-import Airport from "@/asset/home/express.png";
-import Corporate from "@/asset/home/corporate.png";
-import Packing from "@/asset/home/individual.png";
+import Smartbox from "@/asset/service/premium-banner-img.svg";
+import Standard from "@/asset/service/standard-banner-img.svg";
+import Airport from "@/asset/service/express.svg";
+import Corporate from "@/asset/service/corporate.svg";
+import Packing from "@/asset/service/individual.svg";
 
 // --- Services Data ---
 const servicesData = [
@@ -96,7 +96,7 @@ const ServiceCard = ({ service }) => {
       </div>
 
       {/* Image */}
-      <div className="absolute bottom-[-3%] inset-x-0 w-full h-[66%] z-0">
+      <div className="absolute bottom-[-0%] inset-x-0 w-full h-[55%] z-0">
         <Image
           src={service.imageSrc}
           alt={service.imageAlt}

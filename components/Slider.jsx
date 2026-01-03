@@ -18,12 +18,12 @@ import Support from "@/asset/why-choose/support.png";
 const data = [
    
   {
-    title: "Costs Less Than Carrying It Yourself",
+    title: "Costs Less Than Carrying It ",
     desc: "Excess baggage fees add up fast, so you can ship 20 kg or more for far less and pay once, without surprises.",
     img: Safe,
   },
   {
-    title: "Dedicated Support throughout",
+    title: "Dedicated Support Throughout",
     desc: "No chatbots. No waiting three days for an email reply. Get a dedicated contact who knows your shipment.",
     img: Support,
   },
@@ -33,24 +33,24 @@ const data = [
     img: Door,
   },
   {
-    title: "Avoid Extra Travel Expenses",
-    desc: "Skip bigger cabs, porters, and last-minute add-ons, with luggage delivered door to door.",
+    title: "Built for Last-Minute Plans Too",
+    desc: "Forgot to ship earlier? Express and Premium services get your luggage moving fast. Same day pickups available. Delivered in 3-5 days or less.",
     img: OnTime,
   },
   
   {
-    title: "Less Carrying Less Stress",
-    desc: "No dragging bags across stairs or platforms, because we pick up and deliver safely.",
+    title: "Live Updates Keep You in the Loop",
+    desc: "Real time tracking plus SMS and WhatsApp alerts at every step. You always know where your luggage is. No more guess games.",
     img: LiveTracking,
   },
   {
-    title: "Predictable Pricing",
-    desc: "Know the cost before you book, and pay exactly what you see.",
+    title: "Made for Group Travel and Corporate Moves",
+    desc: "Moving an entire team? Managing event luggage? Coordinating bags for a group trip? We handle multiple shipments to multiple destinations without the chaos.",
     img: Corporate,
   },
   {
-    title: "Safe From Start to Finish",
-    desc: "Your luggage is handled carefully, tracked end to end, and delivered without worry.",
+    title: "Nationwide Luggage Delivery Network",
+    desc: "Not just metros. We deliver across 25,000+ pincodes. From big cities to smaller towns, we deliver wherever your journey takes you.",
     img: Tier,
   },
   

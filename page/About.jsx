@@ -104,15 +104,15 @@ function Aboutus() {
       <section className="container mx-auto relative px-4 py-12  sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
-          <h2 className="text-center mb-10 md:mb-12 lg:mb-16">
-            Built for worry-free luggage delivery across cities
-          </h2>
-
+        
+<h3 className=" mb-4 text-center md:text-left">About Frisbi</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div className="flex flex-col justify-center">
-              <h3 className=" mb-4 text-center md:text-left">About Frisbi</h3>
-
+              
+  <h2 className="text-center mb-10 md:mb-12 lg:mb-16">
+            Built for worry-free luggage delivery across cities
+          </h2>
               <p className="text-second mb-8 text-center md:text-left max-w-xl leading-relaxed">
                 We started because dragging 20kg through airports didn’t make
                 sense. Neither did paying ₹2,000 in excess baggage fees or
