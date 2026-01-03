@@ -99,11 +99,6 @@ export default function Services() {
         </section>
       </div>
 
-      <MarqueeLogos />
-      {/* ================= IMAGE GRID ================= */}
-
-      {/* ================= LOGOS + SERVICES ================= */}
-
       <section className="bg-[#F1F2F6] ">
         <ServicesSection />
       </section>
@@ -115,11 +110,12 @@ export default function Services() {
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-      <section className="pb-0">
+      <section className="">
         <FAQSection />
       </section>
 
-      <section className="w-full px-4 py-12   md:py-24 ">
+      <MarqueeLogos />
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image

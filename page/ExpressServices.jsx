@@ -17,7 +17,6 @@ import Peace from "@/asset/icon/delivery.svg";
 import herobg from "@/asset/service/express.svg";
 import one from "@/asset/service/express-cover.png";
 
-
 // 🔥 CLIENT-ONLY COMPONENTS (SSR SAFE)
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {
   ssr: false,
@@ -182,8 +181,6 @@ export default function ExpressServices() {
         </div>
       </section>
 
-      <MarqueeLogos />
-
       {/* OVERVIEW */}
       <section className="py-12 md:py-16 px-4">
         <div className="container mx-auto grid md:grid-cols-3 items-center gap-10">
@@ -194,7 +191,9 @@ export default function ExpressServices() {
           />
 
           <div className="md:col-span-2">
-            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">Frisbi Express Overview</h2>
+            <h2 className="text-4xl font-bold mb-4 text-center md:text-start">
+              Frisbi Express Overview
+            </h2>
             <p className="text-second mb-8 text-center md:text-start">
               Express Delivery is our high-speed logistics service built for
               customers who need guaranteed and priority delivery.
@@ -280,6 +279,7 @@ export default function ExpressServices() {
       <section className="">
         <ServiceFAQSection />
       </section>
+      <MarqueeLogos />
       <CallToAction />
     </div>
   );

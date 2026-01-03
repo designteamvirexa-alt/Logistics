@@ -216,17 +216,18 @@ export default function ContactSection() {
             className="space-y-6"
           >
             <h2 className="text-3xl font-semibold">
-              We're here to answer <br /> your questions.
+              Heavy baggage? Not your problem anymore.
             </h2>
 
             <p className="text-gray-600 max-w-md">
-              Have a question or need help? We’re happy to hear from you.
+             Send it with Frisbi and enjoy traveling hands-free while we take care of your luggage.
+
             </p>
 
             <div className="space-y-8 mt-8">
-              <Info icon={MapPin} title="Office Location" value="India" />
-              <Info icon={Mail} title="Email" value="contact@frisbi.in" />
-              <Info icon={Phone} title="Phone" value="+91 98787 98298" />
+              <Info icon={MapPin} title="Where to Find Us" value="India" />
+              <Info icon={Mail} title="Drop us a line" value="contact@frisbi.in" />
+              <Info icon={Phone} title="Drop us a line" value="+91 98787 98298" />
             </div>
           </motion.div>
 
@@ -236,11 +237,11 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white p-8 rounded-2xl shadow-xl"
+            className="bg-white p-8 rounded-2xl drop-shadow-[0_4px_100px_rgba(0,0,0,0.08)]"
           >
             {/* Heading + Radio */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-              <h3 className="text-xl font-semibold">Get In Touch</h3>
+              <h4 className="text-xl font-semibold">Plan Your Delivery</h4>
               <RadioGroup value={form.userType} onChange={handleChange} />
             </div>
 

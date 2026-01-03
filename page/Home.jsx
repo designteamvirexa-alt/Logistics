@@ -62,14 +62,17 @@ function Home() {
     <div>
       <HeroSlider />
 
-      <section className="container mx-auto relative px-4 py-12  sm:px-6 lg:px-8">
+      <section className="container mx-auto relative px-4 py-12 md:py-20  sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
-          <h3 className="  text-center md:text-center  mb-10 md:mb-12 lg:mb-16">About Frisbi</h3>
+        
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div className="flex flex-col justify-center">
+                <h4 className=" font-semibold  text-center md:text-start mb-4">
+            About Frisbi
+          </h4>
               <h2 className="md:text-left text-center mb-4">
                 Built for worry-free luggage delivery across cities
               </h2>
@@ -161,7 +164,7 @@ function Home() {
       </section>
       <MarqueeLogos />
 
-      <section className="w-full px-4 py-12   md:py-24 md:py-0 ">
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image
@@ -182,10 +185,11 @@ function Home() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+            <h2 className=" text-white mb-4">On-Time Luggage Delivery You Can Plan Around</h2>
 
-            <p className="text-white mb-8 text-sm md:text-base">
-              Fast, safe, and affordable – trusted by thousands across India.
+            <p className="text-white mb-8 max-w-2xl mx-auto text-sm md:text-base">
+              We know your world does not fit into a 7 kg suitcase. That’s why we move your baggage for you, so you can carry everything you want without worrying about weight or limits.
+
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">

@@ -90,10 +90,8 @@ function Trackyourpackage() {
         </section>
       </div>
 
-      <MarqueeLogos />
-
       {/* TRACKING SECTION */}
-      <section className="w-full py-12">
+      <section className="w-full py-12 md:pt-24 ">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 md:px-10">
           {/* IMAGE */}
           <div className="w-full rounded-3xl overflow-hidden shadow-md">
@@ -102,14 +100,14 @@ function Trackyourpackage() {
               alt="Shipment"
               width={700}
               height={600}
-              className="w-full h-[560px] object-cover"
+              className="w-full h-[300px] md:h-[560px] object-cover"
             />
           </div>
 
           {/* CONTENT */}
           <div className="flex flex-col justify-center">
-            <h2>Track Shipments, With Ease</h2>
-            <p className="text-second mt-3">
+            <h2 className="md:text-start text-center">Track Shipments, With Ease</h2>
+            <p className="md:text-start text-center text-second mt-3">
               Check your parcel’s latest updates and delivery status right here.
             </p>
 
@@ -158,17 +156,17 @@ function Trackyourpackage() {
         <FAQ />
       </section>
 
-     
-
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
 
-       <section className="  mx-auto relative px-4 py-12 md:py-16 sm:px-6 lg:px-8">
+      <section className="  mx-auto relative px-4 py-12 md:py-16 sm:px-6 lg:px-8">
         <Testimonials />
       </section>
 
-      <section className="w-full px-4 py-12   md:py-24 ">
+      <MarqueeLogos />
+
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image

@@ -3,7 +3,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import aboutmobile from "@/asset/shippment/rate-caluculator.svg";
+import { Check, Minus, NetworkIcon, Plus } from "lucide-react";
 
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
 import { motion } from "framer-motion";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import ShipmentCostCalculator from "@/components/ShipmentCostCalculator";
@@ -11,6 +13,8 @@ import FAQ from "@/components/RateAccordion";
 import ratecalculator from "@/asset/rate-calculator.png";
 import CallToAction from "@/components/CallToAction";
 import Testimonials from "@/components/Testimonials";
+import lugggaevariations from "@/asset/rate-lugggae-variation.svg";
+import lugggaevariationsmobile from "@/asset/rate-lugggae-variation-mg.svg";
 
 function RateCalculator() {
   return (
@@ -90,21 +94,106 @@ function RateCalculator() {
         </section>
       </div>
 
-      <MarqueeLogos />
+      <section className="container mx-auto relative px-4 py-12 md:py-20 sm:px-6 lg:px-8">
+        <div className="relative z-10">
+          {/* 40 / 60 layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-[30%_70%] gap-12 items-center">
+            {/* LEFT CONTENT – SMALL */}
+            <div className="flex flex-col justify-center max-w-md mx-auto md:mx-0">
+              <h2 className="md:text-left text-center mb-4 text-2xl md:text-3xl font-semibold">
+                Smart luggage delivery, built for every size.
+              </h2>
 
-      <section className="py-12">
+              <p className="text-second text-center md:text-left leading-relaxed">
+                From small bags to oversized luggage, we handle every variation with care. No dragging, no excess baggage stress — just safe, reliable door-to-door delivery across cities.
+              </p>
+            </div>
+
+            {/* RIGHT IMAGE – BIG */}
+            <div className="flex justify-center lg:justify-end md:block hidden">
+              <div className="relative w-full h-[360px] md:h-[480px] lg:h-[full]">
+                <Image
+                  src={lugggaevariations}
+                  alt="Frisbi luggage delivery illustration"
+                  fill
+                  priority
+                  className="object-contain md:object-cover"
+                />
+              </div>
+            </div>
+            <div className="flex justify-center lg:justify-end md:hidden">
+              <div className="relative w-full h-[900px]">
+                <Image
+                  src={lugggaevariationsmobile}
+                  alt="Frisbi luggage delivery illustration"
+                  fill
+                  priority
+                  className="object-contain h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 md:pt-0 md:pb-0">
         <ShipmentCostCalculator />
+      </section>
+      <section className="container mx-auto px-4 py-12 md:py-24 md:pb-0">
+        <Image
+          src={lugggaevariations}
+          alt="Overview"
+          className="rounded-3xl h-[full] object-cover"
+        />
       </section>
 
       <section>
         <FAQ />
       </section>
 
-      <section className="  mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
+      <section className="  mx-auto relative px-4 py-12 md:py-16 sm:px-6 lg:px-8">
         <Testimonials />
       </section>
+      <MarqueeLogos />
 
-      <CallToAction />
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+              Fast, safe, and affordable – trusted by thousands across India.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

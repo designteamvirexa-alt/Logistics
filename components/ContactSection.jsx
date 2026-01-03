@@ -71,7 +71,6 @@ export default function ContactSection() {
     <section className="relative text-black">
       <div className="relative z-10 max-w-7xl mx-auto py-12 md:pt-16  md:pb-24 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -80,18 +79,31 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h2 className="">
-              We're here to answer <br /> your questions.
-            </h2>
+            <h2 className="">Heavy baggage? Not your problem anymore.</h2>
 
             <p className="text-second max-w-md">
-              Have a question or need help? Feel free to reach out.
+              Send it with Frisbi and enjoy traveling hands-free while we take
+              care of your luggage.
             </p>
 
             <div className="space-y-8 mt-8">
-              <Info icon={MapPin} title="Office Location" value="100 S Main St, New York, NY" />
-              <Info icon={Mail} title="Send a Message" value="info@frisbi.in" />
-              <Info icon={Phone} title="Call Us Directly" value="+91 987-879-8298" />
+              <Info
+                icon={MapPin}
+                title="Where to Find Us
+"
+                value="India"
+              />
+              <Info
+                icon={Mail}
+                title="Drop us a line
+"
+                value="info@frisbi.in"
+              />
+              <Info
+                icon={Phone}
+                title="Call or WhatsApp"
+                value="+91 987-879-8298"
+              />
             </div>
           </motion.div>
 
@@ -105,7 +117,7 @@ export default function ContactSection() {
           >
             {/* Heading + Radio */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-              <h3 className="text-xl font-semibold">Get In Touch</h3>
+              <h4 className="text-xl font-semibold">Plan Your Delivery</h4>
 
               <div className="flex gap-4">
                 {["Corporate", "Individual"].map((type) => (
@@ -172,7 +184,9 @@ export default function ContactSection() {
                     Select Service
                   </option>
                   {services.map((s, i) => (
-                    <option key={i} value={s}>{s}</option>
+                    <option key={i} value={s}>
+                      {s}
+                    </option>
                   ))}
                 </select>
 

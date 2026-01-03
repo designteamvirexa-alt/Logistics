@@ -99,18 +99,17 @@ function Aboutus() {
         </div>
       </section>
 
-      <MarqueeLogos />
-
-      <section className="container mx-auto relative px-4 py-12  sm:px-6 lg:px-8">
+      <section className="container mx-auto relative px-4 py-12 md:pt-24 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
-          <h3 className="  text-center md:text-center  mb-10 md:mb-12 lg:mb-16">
-            About Frisbi
-          </h3>
+          
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div className="flex flex-col justify-center">
+              <h3 className="  text-center md:text-start  mb-4">
+            About Frisbi
+          </h3>
               <h2 className="md:text-left text-center mb-4">
                 Built for worry-free luggage delivery across cities
               </h2>
@@ -266,6 +265,8 @@ function Aboutus() {
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
+
+      <MarqueeLogos />
 
       <CallToAction />
     </div>

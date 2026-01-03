@@ -6,7 +6,7 @@ import { Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Check } from "lucide-react";
-
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
 
 import Maximum from "@/asset/icon/security-lock.svg";
 import goods from "@/asset/icon/goods.svg";
@@ -18,7 +18,6 @@ import MarqueeLogos from "@/components/MarqueeLogos";
 // Assets
 import herobg from "@/asset/service/premium-banner-img.svg";
 import one from "@/asset/service/luggageee.jpg";
-
 
 // Components
 import ContactSection from "@/components/ContactSection";
@@ -107,9 +106,9 @@ export default function PremiumServices() {
               >
                
               </motion.div> */}
-               <p className="text-primary mb-5 text-center md:text-start">
-                  ✨ Because some deliveries deserve more
-                </p>
+              <p className="text-primary mb-5 text-center md:text-start">
+                ✨ Because some deliveries deserve more
+              </p>
 
               <motion.h1
                 {...fadeUp}
@@ -161,8 +160,6 @@ export default function PremiumServices() {
           </div>
         </div>
       </section>
-
-      <MarqueeLogos />
 
       {/* ================= OVERVIEW ================= */}
       <section className="py-12 md:py-16 lg:py-24 px-4">
@@ -250,7 +247,46 @@ export default function PremiumServices() {
       </section>
 
       <ServiceFAQSection />
-      <CallToAction />
+
+      <MarqueeLogos />
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+              Fast, safe, and affordable – trusted by thousands across India.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
