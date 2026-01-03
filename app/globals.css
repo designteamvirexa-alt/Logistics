@@ -3,11 +3,6 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-
-
-
-
-
 body {
   background: #ffffff;
 
@@ -38,12 +33,12 @@ h3 {
 }
 
 h4 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.2em;
 }
 h5 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.2em;
 }
@@ -79,7 +74,6 @@ p {
 .text-second {
   color: #4a5565;
 }
-
 
 .text-404 {
   font-size: 7rem !important;
@@ -151,7 +145,6 @@ p {
     font-weight: 600;
     line-height: 1.4em;
   }
- 
 
   .content-top {
     top: 3rem;
@@ -179,7 +172,6 @@ p {
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
-
 }
 
 .btn-white:hover {
@@ -192,9 +184,7 @@ p {
   font-size: 0.9rem;
   font-weight: 600;
   color: #fff;
-
 }
-
 
 .btn-primary {
   background-color: #013efe;
@@ -202,7 +192,7 @@ p {
   border-radius: 25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
@@ -216,14 +206,12 @@ p {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-
-
 }
 
 .btn-primary:hover {
   background-color: #ffffff;
   position: relative;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   line-height: 1.25;
   border-radius: 25rem;
   padding: calc(0.85rem - 1px) calc(2rem - 1px);
@@ -231,16 +219,15 @@ p {
   font-weight: 600;
   color: #000000;
   box-shadow: 0 6px 18px rgb(21 34 53 / 30%);
-
 }
 
-.btn-white-outline{
+.btn-white-outline {
   background-color: transparent;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   border-radius: 25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
@@ -256,8 +243,7 @@ p {
   vertical-align: baseline;
 }
 
-
-.btn-primary-outline{
+.btn-primary-outline {
   background-color: transparent;
   border: 1px solid #013efe;
   border-radius: 25rem;
@@ -278,9 +264,6 @@ p {
   touch-action: manipulation;
   vertical-align: baseline;
 }
-
-
-
 
 .pulse-effect {
   -webkit-animation: pulse 1.6s infinite;
@@ -307,19 +290,14 @@ p {
   }
 }
 
-
 .bg-light {
   background: linear-gradient(
-  to top,
-  #ffffff 0%,
-  /* #f2f5ff 50%, */
-  #013efe 100%
-);
-
+    to top,
+    #ffffff 0%,
+    /* #f2f5ff 50%, */ #013efe 100%
+  );
 }
 
 .bg-light-blue {
-  background-color: #A7B6E6;
-
-
+  background-color: #a7b6e6;
 }
