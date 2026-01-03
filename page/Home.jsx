@@ -62,22 +62,17 @@ function Home() {
     <div>
       <HeroSlider />
 
-      <MarqueeLogos />
-
       <section className="container mx-auto relative px-4 py-12  sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
-           <h3 className=" mb-4 text-center md:text-left">
-                About Frisbi
-              </h3>
+          <h3 className="  text-center md:text-center  mb-10 md:mb-12 lg:mb-16">About Frisbi</h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div className="flex flex-col justify-center">
-             
-<h2 className="text-center mb-10 md:mb-12 lg:mb-16">
-            Built for worry-free luggage delivery across cities
-          </h2>
+              <h2 className="md:text-left text-center mb-4">
+                Built for worry-free luggage delivery across cities
+              </h2>
               <p className="text-second mb-8 text-center md:text-left max-w-xl leading-relaxed">
                 We started because dragging 20kg through airports didn’t make
                 sense. Neither did paying ₹2,000 in excess baggage fees or
@@ -148,14 +143,12 @@ function Home() {
 
       <HowToShip />
 
-     
-
       <section className="relative bg-primary overflow-x-hidden">
         <CustomSlider />
       </section>
 
       <section className="  mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
-       <Testimonials />
+        <Testimonials />
       </section>
 
       <section className=" overflow-x-hidden ">
@@ -166,8 +159,9 @@ function Home() {
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
+      <MarqueeLogos />
 
-      <section className="w-full px-4 py-12   md:py-24 ">
+      <section className="w-full px-4 py-12   md:py-24 md:py-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image
@@ -188,9 +182,7 @@ function Home() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">
-              From Your Door to Their Door.
-            </h2>
+            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
 
             <p className="text-white mb-8 text-sm md:text-base">
               Fast, safe, and affordable – trusted by thousands across India.
