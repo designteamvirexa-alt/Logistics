@@ -71,7 +71,7 @@ const submitToGoogleSheet = async (values, totalPrice, router) => {
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(
         key,
-        Array.isArray(value) ? value.join(",") : value ?? ""
+        Array.isArray(value) ? value.join(", ") : value ?? ""
       );
     });
 
@@ -149,6 +149,11 @@ export default function ShipmentBookingForm() {
     addons: [],
     includeGST: false,
     luggageType: "Suitcase",
+
+    pickupCity: "",
+    pickupAddress: "",
+    dropCity: "",
+    dropAddress: "",
   });
 
   const price = useMemo(() => calculatePriceBreakup(values), [values]);
@@ -181,6 +186,16 @@ export default function ShipmentBookingForm() {
       return;
     }
 
+    if (
+      !values.pickupCity ||
+      !values.pickupAddress ||
+      !values.dropCity ||
+      !values.dropAddress
+    ) {
+      toast.error("Pickup & Drop location required");
+      return;
+    }
+
     if (values.customerType === "Corporate" && !values.companyName) {
       toast.error("Company name required");
       return;
@@ -200,24 +215,47 @@ export default function ShipmentBookingForm() {
   return (
     <section className="py-12 md:pt-24 px-4">
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-10">
-
-        <h2 className="text-center text-2xl font-semibold mb-4">
+        <h2 className="text-center text-2xl font-semibold">
           Shipment Booking Form
         </h2>
-        <p className="text-second text-center">Book door-to-door luggage delivery</p>
 
-        {/* Customer */}
+        {/* Customer Details */}
         <div>
           <h4 className="font-semibold mb-4">Customer Details</h4>
 
-          <select
-            className={fieldClass}
-            value={values.customerType}
-            onChange={(e) => handleChange("customerType", e.target.value)}
-          >
-            <option value="Individual">Individual</option>
-            <option value="Corporate">Corporate</option>
-          </select>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium text-gray-700">
+              Customer Type
+            </label>
+
+            <div className="flex items-center gap-6">
+              {/* Individual */}
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="customerType"
+                  value="Individual"
+                  checked={values.customerType === "Individual"}
+                  onChange={(e) => handleChange("customerType", e.target.value)}
+                  className="h-4 w-4 accent-blue"
+                />
+                <span className="text-sm text-gray-700">Individual</span>
+              </label>
+
+              {/* Corporate */}
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="customerType"
+                  value="Corporate"
+                  checked={values.customerType === "Corporate"}
+                  onChange={(e) => handleChange("customerType", e.target.value)}
+                  className="h-4 w-4 accent-"
+                />
+                <span className="text-sm text-gray-700">Corporate</span>
+              </label>
+            </div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-4 mt-4">
             <input
@@ -253,7 +291,40 @@ export default function ShipmentBookingForm() {
           </div>
         </div>
 
-        {/* Pickup & Delivery */}
+        {/* Pickup & Drop Location */}
+        <div>
+          <h4 className="font-semibold mb-4">Pickup & Drop Location</h4>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <input
+                placeholder="Pickup City"
+                className={fieldClass}
+                onChange={(e) => handleChange("pickupCity", e.target.value)}
+              />
+              {/* <textarea
+                placeholder="Pickup Address"
+                className={`${fieldClass} h-[90px] resize-none`}
+                onChange={(e) => handleChange("pickupAddress", e.target.value)}
+              /> */}
+            </div>
+
+            <div className="space-y-4">
+              <input
+                placeholder="Drop City"
+                className={fieldClass}
+                onChange={(e) => handleChange("dropCity", e.target.value)}
+              />
+              {/* <textarea
+                placeholder="Drop Address"
+                className={`${fieldClass} h-[90px] resize-none`}
+                onChange={(e) => handleChange("dropAddress", e.target.value)}
+              /> */}
+            </div>
+          </div>
+        </div>
+
+        {/* Pickup & Delivery Date */}
         <div>
           <h4 className="font-semibold mb-4">Pickup & Delivery</h4>
           <div className="grid md:grid-cols-3 gap-4">
@@ -269,9 +340,7 @@ export default function ShipmentBookingForm() {
             />
             <select
               className={fieldClass}
-              onChange={(e) =>
-                handleChange("pickupTimeSlot", e.target.value)
-              }
+              onChange={(e) => handleChange("pickupTimeSlot", e.target.value)}
             >
               <option value="">Pickup Time Slot</option>
               {PICKUP_SLOTS.map((slot) => (
@@ -326,9 +395,9 @@ export default function ShipmentBookingForm() {
               onChange={(e) => handleChange("luggageType", e.target.value)}
             >
               <option>Suitcase</option>
-              <option>Backpack</option>
-              <option>Duffel</option>
-              <option>Box</option>
+              <option>Trolley</option>
+              <option>BackPack</option>
+              <option>Others</option>
             </select>
           </div>
         </div>
@@ -342,9 +411,7 @@ export default function ShipmentBookingForm() {
                 <input
                   type="checkbox"
                   checked={values.addons.includes(addon)}
-                  onChange={(e) =>
-                    handleAddonChange(addon, e.target.checked)
-                  }
+                  onChange={(e) => handleAddonChange(addon, e.target.checked)}
                 />
                 {addon} (+₹{ADDON_PRICES[addon]})
               </label>
