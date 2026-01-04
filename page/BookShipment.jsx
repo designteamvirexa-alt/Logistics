@@ -96,7 +96,7 @@ function BookShipment() {
       <section className="py-12 md:pb-0">
         <FAQ />
       </section>
-      <MarqueeLogos />
+     
     </div>
   );
 }
