@@ -139,13 +139,7 @@ function RateCalculator() {
       <section className="py-12 md:pt-0 md:pb-0">
         <ShipmentCostCalculator />
       </section>
-      <section className="container mx-auto px-4 py-12 md:py-24 md:pb-0">
-        <Image
-          src={lugggaevariations}
-          alt="Overview"
-          className="rounded-3xl h-[full] object-cover"
-        />
-      </section>
+     
 
       <section>
         <FAQ />
