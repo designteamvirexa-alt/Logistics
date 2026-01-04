@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
-
+import { useRouter, useSearchParams } from "next/navigation";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import InvoiceContent from "./InvoiceContent";
 /* ---------------- Pricing Config ---------------- */
 
 const SERVICE_BASE_PRICE = {
@@ -143,6 +145,15 @@ const calculatePriceBreakup = (values) => {
 
 export default function ShipmentBookingForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+
+  const [showInvoice, setShowInvoice] = useState(false);
+
+
+  /* ✅ READ DATA FROM URL */
+  const pickupFromUrl = searchParams.get("pickup") || "";
+  const dropFromUrl = searchParams.get("drop") || "";
 
   const [values, setValues] = useState({
     customerType: "Individual",
@@ -155,6 +166,37 @@ export default function ShipmentBookingForm() {
     dropCity: "",
     dropAddress: "",
   });
+  const invoiceRef = useRef(null);
+
+
+  // downloadInvoice
+
+const downloadInvoice = async () => {
+  const canvas = await html2canvas(invoiceRef.current, {
+    scale: 2,
+    backgroundColor: "#fff",
+  });
+
+  const img = canvas.toDataURL("image/png");
+  const pdf = new jsPDF("p", "mm", "a4");
+  pdf.addImage(img, "PNG", 0, 0, 210, 297);
+  pdf.save("Invoice.pdf");
+};
+
+
+
+
+
+  /* ✅ AUTO FILL PICKUP & DROP */
+  useEffect(() => {
+    if (pickupFromUrl || dropFromUrl) {
+      setValues((prev) => ({
+        ...prev,
+        pickupCity: pickupFromUrl,
+        dropCity: dropFromUrl,
+      }));
+    }
+  }, [pickupFromUrl, dropFromUrl]);
 
   const price = useMemo(() => calculatePriceBreakup(values), [values]);
 
@@ -171,33 +213,67 @@ export default function ShipmentBookingForm() {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (
+  //     !values.name ||
+  //     !values.phone ||
+  //     !values.serviceType ||
+  //     !values.pickupDate ||
+  //     !values.deliveryDate ||
+  //     !values.pickupTimeSlot
+  //   ) {
+  //     toast.error("Please fill all required fields");
+  //     return;
+  //   }
+
+  //   if (
+  //     !values.pickupCity ||
+  //     !values.pickupAddress ||
+  //     !values.dropCity ||
+  //     !values.dropAddress
+  //   ) {
+  //     toast.error("Pickup & Drop location required");
+  //     return;
+  //   }
+
+  //   if (values.customerType === "Corporate" && !values.companyName) {
+  //     toast.error("Company name required");
+  //     return;
+  //   }
+
+  //   if (!values.paymentMode) {
+  //     toast.error("Select payment mode");
+  //     return;
+  //   }
+
+  //   await submitToGoogleSheet(values, price.total, router);
+  // };
+
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!values.name || !values.phone) {
+      toast.error("Name and mobile number required");
+      return;
+    }
+
+    if (!values.pickupCity || !values.dropCity) {
+      toast.error("Pickup & Drop location required");
+      return;
+    }
+
     if (
-      !values.name ||
-      !values.phone ||
       !values.serviceType ||
       !values.pickupDate ||
       !values.deliveryDate ||
       !values.pickupTimeSlot
     ) {
-      toast.error("Please fill all required fields");
-      return;
-    }
-
-    if (
-      !values.pickupCity ||
-      !values.pickupAddress ||
-      !values.dropCity ||
-      !values.dropAddress
-    ) {
-      toast.error("Pickup & Drop location required");
-      return;
-    }
-
-    if (values.customerType === "Corporate" && !values.companyName) {
-      toast.error("Company name required");
+      toast.error("Pickup & delivery details required");
       return;
     }
 
@@ -206,8 +282,16 @@ export default function ShipmentBookingForm() {
       return;
     }
 
-    await submitToGoogleSheet(values, price.total, router);
+    // ✅ FIRST show invoice popup
+    setShowInvoice(true);
+
+    // ⏳ Wait for DOM to render
+    setTimeout(async () => {
+      await downloadInvoice();
+      await submitToGoogleSheet(values, price.total, router);
+    }, 6000);
   };
+
 
   const fieldClass =
     "w-full h-[48px] rounded-lg px-4 bg-[#f5f5f5] text-sm outline-none border border-transparent focus:ring-1 focus:ring-[#013EFE] focus:border-[#013EFE]";
@@ -223,41 +307,31 @@ export default function ShipmentBookingForm() {
         <div>
           <h4 className="font-semibold mb-4">Customer Details</h4>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-gray-700">
-              Customer Type
+          <div className="flex items-center gap-6 mb-4">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="customerType"
+                value="Individual"
+                checked={values.customerType === "Individual"}
+                onChange={(e) => handleChange("customerType", e.target.value)}
+              />
+              Individual
             </label>
 
-            <div className="flex items-center gap-6">
-              {/* Individual */}
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="customerType"
-                  value="Individual"
-                  checked={values.customerType === "Individual"}
-                  onChange={(e) => handleChange("customerType", e.target.value)}
-                  className="h-4 w-4 accent-blue"
-                />
-                <span className="text-sm text-gray-700">Individual</span>
-              </label>
-
-              {/* Corporate */}
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="customerType"
-                  value="Corporate"
-                  checked={values.customerType === "Corporate"}
-                  onChange={(e) => handleChange("customerType", e.target.value)}
-                  className="h-4 w-4 accent-"
-                />
-                <span className="text-sm text-gray-700">Corporate</span>
-              </label>
-            </div>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="customerType"
+                value="Corporate"
+                checked={values.customerType === "Corporate"}
+                onChange={(e) => handleChange("customerType", e.target.value)}
+              />
+              Corporate
+            </label>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <input
               placeholder="Full Name"
               className={fieldClass}
@@ -291,40 +365,28 @@ export default function ShipmentBookingForm() {
           </div>
         </div>
 
-        {/* Pickup & Drop Location */}
+        {/* Pickup & Drop */}
         <div>
           <h4 className="font-semibold mb-4">Pickup & Drop Location</h4>
-
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <input
-                placeholder="Pickup City"
-                className={fieldClass}
-                onChange={(e) => handleChange("pickupCity", e.target.value)}
-              />
-              {/* <textarea
-                placeholder="Pickup Address"
-                className={`${fieldClass} h-[90px] resize-none`}
-                onChange={(e) => handleChange("pickupAddress", e.target.value)}
-              /> */}
-            </div>
-
-            <div className="space-y-4">
-              <input
-                placeholder="Drop City"
-                className={fieldClass}
-                onChange={(e) => handleChange("dropCity", e.target.value)}
-              />
-              {/* <textarea
-                placeholder="Drop Address"
-                className={`${fieldClass} h-[90px] resize-none`}
-                onChange={(e) => handleChange("dropAddress", e.target.value)}
-              /> */}
-            </div>
+            <input
+              placeholder="Pickup City"
+              readOnly
+              className={fieldClass}
+              value={values.pickupCity}
+              onChange={(e) => handleChange("pickupCity", e.target.value)}
+            />
+            <input
+              placeholder="Drop City"
+              readOnly
+              className={fieldClass}
+              value={values.dropCity}
+              onChange={(e) => handleChange("dropCity", e.target.value)}
+            />
           </div>
         </div>
 
-        {/* Pickup & Delivery Date */}
+        {/* Pickup & Delivery */}
         <div>
           <h4 className="font-semibold mb-4">Pickup & Delivery</h4>
           <div className="grid md:grid-cols-3 gap-4">
@@ -407,11 +469,13 @@ export default function ShipmentBookingForm() {
           <h4 className="font-semibold mb-4">Add-ons</h4>
           <div className="flex flex-wrap gap-6">
             {Object.keys(ADDON_PRICES).map((addon) => (
-              <label key={addon} className="flex gap-2 text-sm">
+              <label key={addon} className="flex gap-2">
                 <input
                   type="checkbox"
                   checked={values.addons.includes(addon)}
-                  onChange={(e) => handleAddonChange(addon, e.target.checked)}
+                  onChange={(e) =>
+                    handleAddonChange(addon, e.target.checked)
+                  }
                 />
                 {addon} (+₹{ADDON_PRICES[addon]})
               </label>
@@ -438,27 +502,8 @@ export default function ShipmentBookingForm() {
         </div>
 
         {/* Price */}
-        <div className="bg-blue-50 border rounded-xl p-5 space-y-2">
-          <div className="flex justify-between">
-            <span>Subtotal</span>
-            <span>₹{price.subtotal}</span>
-          </div>
-
-          {price.discount > 0 && (
-            <div className="flex justify-between text-green-600">
-              <span>Corporate Discount</span>
-              <span>-₹{price.discount}</span>
-            </div>
-          )}
-
-          {price.gst > 0 && (
-            <div className="flex justify-between">
-              <span>GST (18%)</span>
-              <span>₹{price.gst}</span>
-            </div>
-          )}
-
-          <div className="flex justify-between font-bold text-lg border-t pt-2">
+        <div className="bg-blue-50 border rounded-xl p-5">
+          <div className="flex justify-between font-bold text-lg">
             <span>Total Payable</span>
             <span>₹{price.total}</span>
           </div>
@@ -468,6 +513,72 @@ export default function ShipmentBookingForm() {
           Confirm Booking
         </button>
       </form>
+
+
+
+
+      {/* ================= INVOICE POPUP ================= */}
+{showInvoice && (
+  <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center">
+    <div className="bg-white rounded-xl shadow-xl w-[90vw] max-w-[900px] h-[90vh] overflow-y-auto p-6">
+
+      <div className="flex justify-between mb-4">
+        <h3 className="font-semibold text-lg">Invoice Preview</h3>
+        <button onClick={() => setShowInvoice(false)}>✕</button>
+      </div>
+
+      {/* A4 LOOK */}
+      <div
+        style={{
+          width: 794,
+          minHeight: 1123,
+          margin: "0 auto",
+          backgroundColor: "#fff",
+          padding: 40,
+          boxShadow: "0 0 10px rgba(0,0,0,0.15)",
+        }}
+      >
+        <InvoiceContent values={values} price={price} />
+      </div>
+
+      <div className="flex justify-end mt-6">
+        <button
+          onClick={downloadInvoice}
+          style={{
+            backgroundColor: "#2563EB",
+            color: "#fff",
+            padding: "10px 24px",
+            borderRadius: 8,
+          }}
+        >
+          Download PDF
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
+<div
+  ref={invoiceRef}
+  style={{
+    position: "fixed",
+    left: "-9999px",
+    top: 0,
+    width: "794px",
+    minHeight: "1123px",
+    backgroundColor: "#fff",
+    color: "#000",
+    padding: 40,
+    fontFamily: "Arial",
+  }}
+>
+  <InvoiceContent values={values} price={price} />
+</div>
+
+
+
     </section>
   );
 }

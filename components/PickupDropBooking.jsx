@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const GOOGLE_MAPS_KEY = "AIzaSyCUFg0FXQzrsLAuQ0Cs59mkQlwp6mzIQHc";
 const libraries = ["places"];
@@ -12,6 +13,8 @@ export default function PorterPickupDrop() {
     googleMapsApiKey: GOOGLE_MAPS_KEY,
     libraries,
   });
+
+  const router = useRouter();
 
   const [pickup, setPickup] = useState("");
   const [drop, setDrop] = useState("");
@@ -35,12 +38,16 @@ export default function PorterPickupDrop() {
   /* ---------- DESKTOP HANDLERS ---------- */
   const handlePickupChange = () => {
     const place = pickupAuto.current?.getPlace();
-    if (place?.formatted_address) setPickup(place.formatted_address);
+    if (place?.formatted_address) {
+      setPickup(place.formatted_address);
+    }
   };
 
   const handleDropChange = () => {
     const place = dropAuto.current?.getPlace();
-    if (place?.formatted_address) setDrop(place.formatted_address);
+    if (place?.formatted_address) {
+      setDrop(place.formatted_address);
+    }
   };
 
   /* ---------- MOBILE POPUP SELECT ---------- */
@@ -48,15 +55,16 @@ export default function PorterPickupDrop() {
     const place = popupAuto.current?.getPlace();
     if (!place?.formatted_address) return;
 
-    open === "pickup"
-      ? setPickup(place.formatted_address)
-      : setDrop(place.formatted_address);
+    if (open === "pickup") setPickup(place.formatted_address);
+    if (open === "drop") setDrop(place.formatted_address);
 
     setOpen(null);
   };
 
   /* ---------- CURRENT LOCATION ---------- */
- const useCurrentLocation = (type) => {
+const useCurrentLocation = (type) => {
+  const selectedType = type; // 🔒 lock value
+
   if (!navigator.geolocation) {
     alert("Geolocation not supported");
     return;
@@ -74,15 +82,34 @@ export default function PorterPickupDrop() {
 
       if (!address) return;
 
-      if (type === "pickup") setPickup(address);
-      if (type === "drop") setDrop(address);
+      if (selectedType === "pickup") {
+        setPickup(address);
+      }
 
-      setOpen(null);
+      if (selectedType === "drop") {
+        setDrop(address);
+      }
+
+      setOpen(null); // close popup AFTER setting value
     },
     () => alert("Location permission denied")
   );
 };
 
+
+  /* ---------- BOOK NOW NAVIGATION ---------- */
+  const handleBookNow = () => {
+    if (!pickup || !drop) {
+      alert("Please select pickup and drop location");
+      return;
+    }
+
+    router.push(
+      `/book-shipment?pickup=${encodeURIComponent(
+        pickup
+      )}&drop=${encodeURIComponent(drop)}`
+    );
+  };
 
   return (
     <>
@@ -138,7 +165,10 @@ export default function PorterPickupDrop() {
           </Autocomplete>
         )}
 
-        <button className="w-full bg-blue-600 text-white py-3 rounded-xl">
+        <button
+          onClick={handleBookNow}
+          className="w-full bg-blue-600 text-white py-3 rounded-xl"
+        >
           Book Now
         </button>
       </div>
@@ -159,12 +189,13 @@ export default function PorterPickupDrop() {
               <button onClick={() => setOpen(null)}>✕</button>
             </div>
 
-            <button
-              onClick={useCurrentLocation}
-              className="w-full mb-4 p-3 border rounded-xl text-blue-600 font-medium"
-            >
-              📍 Use Current Location
-            </button>
+            {/* <button
+  onClick={() => useCurrentLocation(open)}
+  className="w-full mb-4 p-3 border rounded-xl text-blue-600 font-medium"
+>
+  📍 Use Current Location
+</button> */}
+
 
             <Autocomplete
               onLoad={(a) => (popupAuto.current = a)}
