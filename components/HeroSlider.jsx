@@ -1,10 +1,6 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-
-import { Navigation, Autoplay } from "swiper/modules";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,143 +8,134 @@ import Image from "next/image";
 import bannerone from "@/asset/banner-1-1.jpg";
 import bannertwo from "@/asset/luggage-bag.jpg";
 import bannerthree from "@/asset/luggage-person.jpg";
+import PorterPickupDrop from "./PickupDropBooking";
 
 const slides = [
   {
     title: "Door-to-Door Luggage Delivery for Stress-Free Travel",
-    desc: "Skip the heavy bags and travel hands-free. Frisbi picks up your luggage from your doorstep and delivers it safely to your destination. Book in minutes, track in real time, and enjoy a smoother, lighter journey.",
+    desc: "Skip the heavy bags and travel hands-free. Frisbi picks up your luggage from your doorstep and delivers it safely to your destination.",
     img: bannerone,
   },
   {
     title: "Safe, Fast & Reliable Luggage Delivery Across Cities",
-    desc: "Frisbi provides safe, fast, and reliable intercity luggage delivery across India. Enjoy secure handling, transparent pricing, and real-time tracking for a hassle-free travel experience.",
+    desc: "Frisbi provides safe, fast, and reliable intercity luggage delivery across India.",
     img: bannertwo,
   },
   {
     title: "India’s Smart Luggage Delivery Solution",
-    desc: "Smart logistics meets seamless travel. Book online, track in real time, and get your luggage delivered safely to your destination.",
+    desc: "Smart logistics meets seamless travel. Book online and track in real time.",
     img: bannerthree,
   },
 ];
 
 export default function HeroSlider() {
+  const [index, setIndex] = useState(0);
+  const [nextIndex, setNextIndex] = useState(0); // For smooth crossfade
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNextIndex((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (nextIndex !== index) {
+      const timeout = setTimeout(() => {
+        setIndex(nextIndex);
+      }, 800); // matches fade duration
+      return () => clearTimeout(timeout);
+    }
+  }, [nextIndex]);
+
+  const goNext = () => setNextIndex((index + 1) % slides.length);
+  const goPrev = () =>
+    setNextIndex(index === 0 ? slides.length - 1 : index - 1);
+
   return (
-    <section className="relative w-full h-screen p-3 -mt-24 overflow-hidden">
-      <Swiper
-        navigation
-        autoplay={{ delay: 8000, disableOnInteraction: false }}
-        modules={[Navigation, Autoplay]}
-        className="w-full h-full hero-swiper"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            {/* BACKGROUND */}
-            <div className="absolute inset-0">
-              <Image
-                src={slide.img}
-                alt={slide.title}
-                fill
-                priority
-                className="object-cover rounded-2xl"
-              />
-              <div className="absolute inset-0 bg-black/50 rounded-2xl" />
-            </div>
+    <div>
+      <section className="relative w-full h-[110vh] md:h-screen -mt-24 overflow-hidden">
+        {/* FLOATING COMPONENT */}
+        <div className="absolute z-40 hidden md:block
+                bottom-4 left-1/2 -translate-x-1/2 md:right-10 md:top-1/2 md:bottom-auto md:translate-x-0 md:-translate-y-1/2">
+          <PorterPickupDrop />
+        </div>
 
-            {/* CONTENT */}
-            <div className="relative z-30 h-full">
-              <div className="container mx-auto px-4 md:px-8 h-full flex items-start md:items-center pt-24 md:pt-0">
-                <div className="w-full flex flex-col lg:flex-row items-center">
-                  
-                  {/* LEFT CONTENT */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-white max-w-xl w-full text-center lg:text-left"
-                  >
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                      {slide.title}
-                    </h1>
 
-                    <p className="text-sm sm:text-base md:text-lg mb-6 text-gray-100">
-                      {slide.desc}
-                    </p>
-
-                    <div className="flex justify-center lg:justify-start">
-                      <Link
-                        href="#"
-                        className="btn-primary hover:scale-105 transition-all"
-                      >
-                        Book Shipment
-                      </Link>
-                    </div>
-                  </motion.div>
-
-                  {/* RIGHT FORM */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="w-full max-w-md mt-10 lg:mt-0 lg:ml-auto bg-white rounded-3xl  p-8 sm:p-8"
-                  >
-                    <h3 className="text-lg font-semibold mb-6 text-center lg:text-left">
-                      Send your luggage now!
-                    </h3>
-
-                    <div className="space-y-5">
-                      <FloatingInput label="Pickup Location" />
-                      <FloatingInput label="Drop Location" />
-
-                      <button className="w-full btn-primary hover:scale-105 transition-all">
-                        Get Quote
-                      </button>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+        {/* SLIDES (both old and new) */}
+        {slides.map((slide, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: i === index ? 1 : 0 }}
+            animate={{ opacity: i === nextIndex ? 1 : i === index ? 1 : 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slide.img}
+              alt={slide.title}
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </motion.div>
         ))}
-      </Swiper>
 
-      {/* MOBILE ARROW POSITION FIX */}
-      <style jsx global>{`
-        @media (max-width: 768px) {
-          .hero-swiper .swiper-button-prev,
-          .hero-swiper .swiper-button-next {
-            top: auto;
-            bottom: 20px;
-            transform: none;
-          }
+        {/* CONTENT */}
+        <div className="relative z-20 h-full container mx-auto px-4  md:px-8 flex items-center">
+          <motion.div
+            key={index + "-text"}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-xl text-white text-center md:text-left"
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+              {slides[index].title}
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg mb-6 text-gray-100">
+              {slides[index].desc}
+            </p>
+            <Link
+              href="#"
+              className="inline-block btn-primary hover:scale-105 transition"
+            >
+              Book Shipment
+            </Link>
+          </motion.div>
+        </div>
 
-          .hero-swiper .swiper-button-prev {
-            left: 35%;
-          }
+        {/* ARROWS */}
+        <button
+          onClick={goPrev}
+          className="absolute block md:hidden left-4 md:left-8 bottom-6 md:top-1/2 md:-translate-y-1/2 z-30 bg-white/80 hover:bg-white p-3 rounded-full"
+        >
+          ←
+        </button>
+        <button
+          onClick={goNext}
+          className="absolute block md:hidden right-4 md:right-8 bottom-6 md:top-1/2 md:-translate-y-1/2 z-30 bg-white/80 hover:bg-white p-3 rounded-full"
+        >
+          →
+        </button>
 
-          .hero-swiper .swiper-button-next {
-            right: 35%;
-          }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-/* FLOATING INPUT */
-function FloatingInput({ label }) {
-  return (
-    <div className="relative">
-      <input
-        type="text"
-        placeholder=" "
-        className="peer w-full p-3 rounded-lg bg-gray-100 border border-gray-300 outline-none focus:ring-2 focus:ring-primary placeholder-transparent"
-      />
-      <label className="absolute left-3 top-3 text-gray-500 text-sm transition-all 
-        peer-placeholder-shown:top-3 
-        peer-focus:-top-2 peer-focus:text-xs 
-        peer-focus:bg-white peer-focus:px-1">
-        {label}
-      </label>
+        {/* DOTS */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setNextIndex(i)}
+              className={`w-3 h-3 rounded-full ${i === index ? "bg-white" : "bg-white/40"
+                }`}
+            />
+          ))}
+        </div>
+      </section>
+      <div className="mt-10 z-40 mb-7 shadow-2xl block md:hidden">
+        <PorterPickupDrop />
+      </div>
     </div>
   );
 }
