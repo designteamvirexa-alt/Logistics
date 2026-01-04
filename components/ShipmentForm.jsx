@@ -204,7 +204,7 @@ export default function ShipmentBookingForm() {
         <h2 className="text-center text-2xl font-semibold mb-4">
           Shipment Booking Form
         </h2>
-        <p className="text-second">Book door-to-door luggage delivery</p>
+        <p className="text-second text-center">Book door-to-door luggage delivery</p>
 
         {/* Customer */}
         <div>
