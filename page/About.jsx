@@ -29,7 +29,7 @@ function Aboutus() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[460px] md:h-[460px] overflow-hidden md:block hidden"
+        className="relative w-full h-[460px] md:h-[560px] overflow-hidden md:block hidden"
       >
         {/* Background Image */}
         <Image
@@ -43,12 +43,13 @@ function Aboutus() {
         {/* CONTENT */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
           <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
-            Hi! 👋 We are Frisbi
+            Hi Frisbi Fam, Pack Everything. We'll Bring It There.
           </h1>
 
           <p className="text-black mb-8 text-sm md:text-base">
-            India’s trusted luggage delivery service, built to make travel
-            lighter, smarter, and stress-free.
+            India's most reliable door-to-door luggage delivery service,
+            designed to make your travel lighter, smarter, and completely
+            hassle-free.
           </p>
 
           {/* CTA */}
@@ -68,7 +69,7 @@ function Aboutus() {
             {/* LEFT — CONTENT */}
             <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
               <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
-                Hi! 👋 We are Frisbi
+                Hi Frisbi Fam, Pack Everything. We'll Bring It There.
               </h1>
 
               <p className="text-black mb-4 text-sm md:text-base">
@@ -102,51 +103,29 @@ function Aboutus() {
       <section className="container mx-auto relative px-4 py-12 md:pt-24 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
-          
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div className="flex flex-col justify-center">
               <h3 className="  text-center md:text-start  mb-4">
-            About Frisbi
-          </h3>
+                The Idea Behind Frisbi
+              </h3>
               <h2 className="md:text-left text-center mb-4">
-                Built for worry-free luggage delivery across cities
+                Built to make luggage the easiest part of your journey
               </h2>
-              <p className="text-second mb-8 text-center md:text-left max-w-xl leading-relaxed">
-                We started because dragging 20kg through airports didn’t make
-                sense. Neither did paying ₹2,000 in excess baggage fees or
-                leaving behind things you actually need. So we built a reliable
-                luggage delivery service made for real travel. Your luggage now
-                travels just as safely as you do.
+              <p className="text-second mb-3 text-center md:text-left max-w-xl leading-relaxed">
+                Travel shouldn't mean choosing between what you need and what
+                fits the luggage limit. It shouldn't mean paying ₹2,000 for an
+                extra 5kg or dragging heavy bags through terminals and stations.
+                That's why we built Frisbi.
               </p>
-
-              <ul className="space-y-3 font-medium text-[15px] mb-8">
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary mt-0.5" />
-                  Professional packing using sturdy boxes
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary mt-0.5" />
-                  Live tracking from pickup to delivery
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary mt-0.5" />
-                  Service available across 25,000+ pincodes in India
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary mt-0.5" />
-                  24/7 support on phone, email, and WhatsApp
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary mt-0.5" />
-                  Dedicated point of contact for every shipment
-                </li>
-              </ul>
+              <p className="text-second mb-8 text-center md:text-left max-w-xl leading-relaxed">
+                We’re a door-to-door luggage delivery service that moves your
+                belongings safely between cities so you can travel light.
+                Whether you’re heading on a pilgrimage, exploring new places,
+                visiting family, or relocating for work, we take care of your
+                baggage so you can focus on where you’re going, not what you’re
+                carrying.
+              </p>
 
               {/* CTA */}
               <div className="flex justify-center md:justify-start">
@@ -178,10 +157,11 @@ function Aboutus() {
       <section className="py-12 md:py-16 lg:py-24 ">
         <Stats
           data={[
-            { start: 0, end: 22, label: "Loads delivered" },
-            { start: 0, end: 15, label: "Client Served" },
-            { start: 0, end: 5, label: "Year of Experience" },
-            { start: 0, end: 30, label: "Order Completed" },
+            { start: 0, end: 2500, label: "Loads delivered" },
+            { start: 0, end: 1200, label: "Happy Travelers" },
+            { start: 0, end: 3, label: "Years Moving Luggage" },
+            { start: 0, end: 25000, label: "Pincodes Reached" },
+            { start: 0, end: 99, label: "Customer Satisfaction" },
           ]}
         />
       </section>
@@ -220,36 +200,34 @@ function Aboutus() {
 
           {/* RIGHT CONTENT */}
           <div className="order-1">
-            <h2 className="md:text-left text-center">Our Frisbi Values</h2>
+            <h2 className="md:text-left text-center">What We Stand For</h2>
 
             <p className="text-second mt-4 leading-relaxed max-w-lg md:text-left text-center">
-              Our values align to our mission, support our culture, and serve as
-              a declaration of how we treat each other, our customers, and our
-              partners.
+              Three principles behind every delivery
             </p>
 
             {/* VALUES LIST */}
             <div className="mt-6 space-y-8 md:text-left text-center">
               <div>
-                <h4 className="text-lg font-semibold">Respect</h4>
+                <h4 className="text-lg font-semibold">Care</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
-                  We recognize that the thoughts, feelings, and backgrounds of
-                  others are as important as our own.
+                  Every bag gets handled properly. We make sure your belongings move safely from first pickup to final delivery.
                 </p>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold">Integrity</h4>
+                <h4 className="text-lg font-semibold">Clarity</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
-                  We are honest, ethical, and trustworthy.
+                  The price you see upfront is what you pay. Get realistic timelines and real-time updates as things move forward. 
+
                 </p>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold">Accountability</h4>
+                <h4 className="text-lg font-semibold">Commitment</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
-                  We accept full responsibility for our decisions, actions, and
-                  results.
+                 On time, every time. Scheduled pickups stay on track, delivery dates are met, and your bags arrive as promised.
+
                 </p>
               </div>
             </div>

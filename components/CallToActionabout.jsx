@@ -31,11 +31,12 @@ export default function CallToAction() {
           className="relative z-10 text-center py-16 md:py-20 px-6"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
-            Ready to ship your parcel at the best price?
+            Send Your Luggage Anywhere in India
           </h2>
 
           <p className="text-white mb-8 text-sm md:text-base">
-            Fast, safe, and affordable – trusted by thousands across India.
+           Safe handling. Fair pricing. Delivery you can count on.
+
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">

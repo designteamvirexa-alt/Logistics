@@ -65,14 +65,12 @@ function Home() {
       <section className="container mx-auto relative px-4 py-12 md:py-20  sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="relative z-10">
-        
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div className="flex flex-col justify-center">
-                <h4 className=" font-semibold  text-center md:text-start mb-4">
-            About Frisbi
-          </h4>
+              <h4 className=" font-semibold  text-center md:text-start mb-4">
+                About Frisbi
+              </h4>
               <h2 className="md:text-left text-center mb-4">
                 Built for worry-free luggage delivery across cities
               </h2>
@@ -85,11 +83,15 @@ function Home() {
               </p>
 
               <ul className="space-y-3 font-medium text-[15px] mb-8">
+                
                 <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5" />
-                  Professional packing using sturdy boxes
+                  Door step pickup and delivery
                 </li>
-
+                 <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5" />
+                  Dedicated point of contact for every shipment
+                </li>
                 <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5" />
                   Live tracking from pickup to delivery
@@ -102,12 +104,12 @@ function Home() {
 
                 <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5" />
-                  24/7 support on phone, email, and WhatsApp
+                  24/7 support, Live tracking from pickup to delivery
                 </li>
 
                 <li className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5" />
-                  Dedicated point of contact for every shipment
+                  Professional packing using sturdy boxes
                 </li>
               </ul>
 
@@ -185,11 +187,14 @@ function Home() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">On-Time Luggage Delivery You Can Plan Around</h2>
+            <h2 className=" text-white mb-4">
+              On-Time Luggage Delivery You Can Plan Around
+            </h2>
 
             <p className="text-white mb-8 max-w-2xl mx-auto text-sm md:text-base">
-              We know your world does not fit into a 7 kg suitcase. That’s why we move your baggage for you, so you can carry everything you want without worrying about weight or limits.
-
+              We know your world does not fit into a 7 kg suitcase. That’s why
+              we move your baggage for you, so you can carry everything you want
+              without worrying about weight or limits.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">

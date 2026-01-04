@@ -6,9 +6,13 @@ import { useRouter } from "next/navigation";
 
 /* ---------------- Pricing Config ---------------- */
 
-const BASE_PRICE = 999;
+const SERVICE_BASE_PRICE = {
+  Standard: 999,
+  Express: 1499,
+  Premium: 1999,
+};
+
 const CHECKED_BAG_PRICE = 999;
-// const CABIN_BAG_PRICE = 150;
 const WEIGHT_PRICE_PER_KG = 99;
 
 const BAG_SIZE_MULTIPLIER = {
@@ -18,320 +22,384 @@ const BAG_SIZE_MULTIPLIER = {
   XL: 1.4,
 };
 
-const calculatePrice = (values) => {
-  const checkedBags = Number(values.checkedBags || 0);
-  // const cabinBags = Number(values.cabinBags || 0);
+const LUGGAGE_TYPE_MULTIPLIER = {
+  Suitcase: 1,
+  Backpack: 0.9,
+  Duffel: 0.95,
+  Box: 1.2,
+};
+
+const ADDON_PRICES = {
+  Packing: 199,
+  "Priority Pickup": 299,
+  Fragile: 149,
+  Bubblewrap: 249,
+  Insurance: 399,
+};
+
+/* ---------------- Corporate & GST ---------------- */
+
+const CORPORATE_DISCOUNT_PERCENT = 10;
+
+const CORPORATE_BULK_DISCOUNT = [
+  { min: 20, discount: 15 },
+  { min: 10, discount: 10 },
+  { min: 5, discount: 5 },
+];
+
+const GST_PERCENT = 18;
+
+/* ---------------- Pickup Slots ---------------- */
+
+const PICKUP_SLOTS = [
+  "6 AM - 9 AM",
+  "9 AM - 12 PM",
+  "12 PM - 3 PM",
+  "3 PM - 6 PM",
+  "6 PM - 9 PM",
+];
+
+/* ---------------- Google Sheet Submit ---------------- */
+
+const submitToGoogleSheet = async (values, totalPrice, router) => {
+  const toastId = toast.loading("Submitting...");
+
+  try {
+    const formData = new URLSearchParams();
+    const payload = { ...values, totalPrice };
+
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(
+        key,
+        Array.isArray(value) ? value.join(",") : value ?? ""
+      );
+    });
+
+    const res = await fetch(
+      "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
+      }
+    );
+
+    const data = await res.json();
+    toast.dismiss(toastId);
+
+    if (data.result === "success") {
+      toast.success("Booking confirmed 🎉");
+      router.push("/thank-you");
+    } else {
+      toast.error("Submission failed");
+    }
+  } catch (err) {
+    toast.dismiss(toastId);
+    toast.error("Something went wrong");
+    console.error(err);
+  }
+};
+
+/* ---------------- Price Calculation ---------------- */
+
+const calculatePriceBreakup = (values) => {
+  const servicePrice = SERVICE_BASE_PRICE[values.serviceType] || 0;
+  const bags = Number(values.checkedBags || 0);
   const weight = Number(values.weight || 0);
-  const bagSize = values.bagSize || "Small";
 
-  let price =
-    checkedBags * CHECKED_BAG_PRICE +
-    // cabinBags * CABIN_BAG_PRICE +
-    weight * WEIGHT_PRICE_PER_KG;
+  let subtotal =
+    servicePrice + bags * CHECKED_BAG_PRICE + weight * WEIGHT_PRICE_PER_KG;
 
-  price *= BAG_SIZE_MULTIPLIER[bagSize] || 1;
+  const addonTotal = (values.addons || []).reduce(
+    (sum, addon) => sum + (ADDON_PRICES[addon] || 0),
+    0
+  );
 
-  return Math.round(price);
+  subtotal += addonTotal;
+  subtotal *= BAG_SIZE_MULTIPLIER[values.bagSize || "Small"];
+  subtotal *= LUGGAGE_TYPE_MULTIPLIER[values.luggageType || "Suitcase"];
+
+  let discount = 0;
+  if (values.customerType === "Corporate") {
+    discount += (subtotal * CORPORATE_DISCOUNT_PERCENT) / 100;
+    const bulk = CORPORATE_BULK_DISCOUNT.find((b) => bags >= b.min);
+    if (bulk) discount += (subtotal * bulk.discount) / 100;
+  }
+
+  const discountedTotal = subtotal - discount;
+
+  const gst =
+    values.customerType === "Corporate" || values.includeGST
+      ? (discountedTotal * GST_PERCENT) / 100
+      : 0;
+
+  return {
+    subtotal: Math.round(subtotal),
+    discount: Math.round(discount),
+    gst: Math.round(gst),
+    total: Math.round(discountedTotal + gst),
+  };
 };
 
 export default function ShipmentBookingForm() {
   const router = useRouter();
-  const [values, setValues] = useState({});
 
-  const totalPrice = useMemo(() => calculatePrice(values), [values]);
+  const [values, setValues] = useState({
+    customerType: "Individual",
+    addons: [],
+    includeGST: false,
+    luggageType: "Suitcase",
+  });
 
-  /* ---------------- Handlers ---------------- */
+  const price = useMemo(() => calculatePriceBreakup(values), [values]);
 
   const handleChange = (field, value) => {
     setValues((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleCheckbox = (item, checked) => {
-    const luggage = values.luggageType || [];
-    const updated = checked
-      ? [...luggage, item]
-      : luggage.filter((i) => i !== item);
-
-    setValues((prev) => ({ ...prev, luggageType: updated }));
+  const handleAddonChange = (addon, checked) => {
+    setValues((prev) => ({
+      ...prev,
+      addons: checked
+        ? [...prev.addons, addon]
+        : prev.addons.filter((a) => a !== addon),
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!values.name || !values.phone) {
-      toast.error("Please fill required fields");
+    if (
+      !values.name ||
+      !values.phone ||
+      !values.serviceType ||
+      !values.pickupDate ||
+      !values.deliveryDate ||
+      !values.pickupTimeSlot
+    ) {
+      toast.error("Please fill all required fields");
       return;
     }
 
-    const toastId = toast.loading("Submitting...");
-
-    try {
-      const formData = new URLSearchParams();
-
-      const payload = {
-        ...values,
-        totalPrice,
-      };
-
-      Object.entries(payload).forEach(([key, value]) => {
-        formData.append(
-          key,
-          Array.isArray(value) ? value.join(",") : value ?? ""
-        );
-      });
-
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData.toString(),
-        }
-      );
-
-      const data = await res.json();
-      toast.dismiss(toastId);
-
-      if (data.result === "success") {
-        toast.success("Form submitted successfully 🎉");
-        setValues({});
-        router.push("/thank-you");
-      } else {
-        toast.error("Submission failed");
-      }
-    } catch (err) {
-      toast.dismiss(toastId);
-      toast.error("Something went wrong");
-      console.error(err);
+    if (values.customerType === "Corporate" && !values.companyName) {
+      toast.error("Company name required");
+      return;
     }
+
+    if (!values.paymentMode) {
+      toast.error("Select payment mode");
+      return;
+    }
+
+    await submitToGoogleSheet(values, price.total, router);
   };
 
-  /* ---------------- Common Classes ---------------- */
-
-  const inputClass =
-    "peer w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE]";
-
-  const labelClass =
-    "absolute left-4 top-3 text-gray-500 text-sm transition-all pointer-events-none " +
-    "peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm " +
-    "peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600 " +
-    "peer-focus:bg-white peer-focus:px-1";
+  const fieldClass =
+    "w-full h-[48px] rounded-lg px-4 bg-[#f5f5f5] text-sm outline-none border border-transparent focus:ring-1 focus:ring-[#013EFE] focus:border-[#013EFE]";
 
   return (
-    <section className="w-full py-24 px-4">
-      <form onSubmit={handleSubmit}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="mb-4 text-center">Shipment Booking Form</h2>
-          <p className="mb-10 text-center text-gray-600">
-            Book door-to-door luggage delivery
-          </p>
+    <section className="py-12 md:pt-24 px-4">
+      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-10">
 
-          {/* ---------------- Customer Details ---------------- */}
-          <h3 className="font-semibold mb-3">Customer Details</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {[
-              { key: "name", label: "Full Name" },
-              { key: "email", label: "Email", type: "email" },
-              { key: "phone", label: "Mobile Number" },
-            ].map(({ key, label, type = "text" }) => (
-              <div key={key} className="relative">
-                <input
-                  type={type}
-                  placeholder=" "
-                  value={values[key] || ""}
-                  onChange={(e) => handleChange(key, e.target.value)}
-                  className={inputClass}
-                />
-                <label className={labelClass}>{label}</label>
-              </div>
-            ))}
-          </div>
+        <h2 className="text-center text-2xl font-semibold mb-4">
+          Shipment Booking Form
+        </h2>
+        <p className="text-second">Book door-to-door luggage delivery</p>
 
-          {/* ---------------- Pickup & Delivery ---------------- */}
-          <h3 className="font-semibold mb-3">Services</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-gray-700">
-                Preferred Pickup Date & Time
-              </label>
-              <input
-                type="datetime-local"
-                value={values.pickupDate || ""}
-                onChange={(e) => handleChange("pickupDate", e.target.value)}
-                className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none focus:ring-2 focus:ring-[#013EFE]"
-              />
-            </div>
+        {/* Customer */}
+        <div>
+          <h4 className="font-semibold mb-4">Customer Details</h4>
 
-            
-          </div>
-
-          {/* ---------------- Pickup & Delivery ---------------- */}
-          <h3 className="font-semibold mb-3">Pickup & Delivery</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-gray-700">
-                Preferred Pickup Date & Time
-              </label>
-              <input
-                type="datetime-local"
-                value={values.pickupDate || ""}
-                onChange={(e) => handleChange("pickupDate", e.target.value)}
-                className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none focus:ring-2 focus:ring-[#013EFE]"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-gray-700">
-                Expected Delivery Date
-              </label>
-              <input
-                type="date"
-                value={values.deliveryDate || ""}
-                onChange={(e) => handleChange("deliveryDate", e.target.value)}
-                className="w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none focus:ring-2 focus:ring-[#013EFE]"
-              />
-            </div>
-          </div>
-
-          {/* ---------------- Luggage Details ---------------- */}
-          <h3 className="font-semibold mb-3">Luggage Details</h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {[
-              {
-                key: "checkedBags",
-                label: "Number of Bags",
-                min: 0,
-                max: 10,
-              },
-
-              {
-                key: "weight",
-                label: "Total Weight (Kg)",
-                min: 1,
-                max: 100,
-              },
-            ].map(({ key, label, min, max }) => (
-              <div key={key} className="relative">
-                <input
-                  type="number"
-                  min={min}
-                  max={max}
-                  placeholder=" "
-                  value={values[key] || ""}
-                  onChange={(e) => handleChange(key, e.target.value)}
-                  className={inputClass}
-                />
-                <label className={labelClass}>{label}</label>
-              </div>
-            ))}
-
-            {/* Bag Size */}
-            <div className="relative">
-              <select
-                value={values.bagSize || ""}
-                onChange={(e) => handleChange("bagSize", e.target.value)}
-                className={`${inputClass} peer`}
-              >
-                <option value="" disabled></option>
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-                <option value="XL">XL</option>
-              </select>
-              <label className={labelClass}>Bag Size</label>
-            </div>
-            <div className="relative">
-              <select
-                value={values.bagSize || ""}
-                onChange={(e) => handleChange("bagSize", e.target.value)}
-                className={`${inputClass} peer`}
-              >
-                <option value="" disabled></option>
-                <option value="Suitcase">Suitcase</option>
-                <option value="Trolley">Trolley</option>
-                <option value="Backpack">Backpack</option>
-                <option value="Others">Others</option>
-              </select>
-              <label className={labelClass}>Luggage Type</label>
-            </div>
-            <div className="relative">
-              <select
-                value={values.bagSize || ""}
-                onChange={(e) => handleChange("bagSize", e.target.value)}
-                className={`${inputClass} peer`}
-              >
-                <option value="" disabled>
-                  Select Addons
-                </option>
-                <option value="Packing">Packing</option>
-                <option value="Priority">Priority Pickup</option>
-                <option value="Fragile">Fragile Handling</option>
-                <option value="Bubblewrap">Bubblewrap Packing</option>
-                <option value="Bubblewrap">Insurance</option>
-              </select>
-              <label className={labelClass}>Luggage Addons</label>
-            </div>
-          </div>
-
-          {/* ---------------- Luggage Type ---------------- */}
-          {/* <div className="mb-8">
-            <p className="font-medium mb-2">Luggage Type</p>
-            <div className="flex gap-6 flex-wrap">
-              {["Suitcase", "Bag", "Box"].map((item) => (
-                <label key={item} className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={values.luggageType?.includes(item) || false}
-                    onChange={(e) => handleCheckbox(item, e.target.checked)}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          </div> */}
-
-          {/* ---------------- Price ---------------- */}
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8">
-            <p className="text-sm text-gray-600">Estimated Price</p>
-            <p className="text-3xl font-bold text-blue-600">₹{totalPrice}</p>
-            <p className="text-xs text-gray-500">
-              Final price may vary after verification
-            </p>
-          </div>
-
-          {/* ---------------- Payment ---------------- */}
-          <h4 className="font-semibold mb-3">Payment </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="relative">
-              <select
-                value={values.paymentMethod || ""}
-                onChange={(e) => handleChange("paymentMethod", e.target.value)}
-                className={inputClass}
-              >
-                <option value="" disabled></option>
-                <option>UPI</option>
-                <option>Card</option>
-              </select>
-              <label className={labelClass}>Payment Method</label>
-            </div>
-            
-
-            {/* <label className="flex items-center gap-2 text-sm">
-              <input type="checkbox" required />I agree to the Terms &
-              Conditions
-            </label> */}
-          </div>
-
-          <button
-            type="submit"
-            className="btn-primary hover:scale-105 transition-all"
+          <select
+            className={fieldClass}
+            value={values.customerType}
+            onChange={(e) => handleChange("customerType", e.target.value)}
           >
-            Book Shipment
-          </button>
+            <option value="Individual">Individual</option>
+            <option value="Corporate">Corporate</option>
+          </select>
+
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <input
+              placeholder="Full Name"
+              className={fieldClass}
+              onChange={(e) => handleChange("name", e.target.value)}
+            />
+            <input
+              placeholder="Mobile Number"
+              className={fieldClass}
+              onChange={(e) => handleChange("phone", e.target.value)}
+            />
+            <input
+              placeholder="Email"
+              className={fieldClass}
+              onChange={(e) => handleChange("email", e.target.value)}
+            />
+
+            {values.customerType === "Corporate" && (
+              <>
+                <input
+                  placeholder="Company Name"
+                  className={fieldClass}
+                  onChange={(e) => handleChange("companyName", e.target.value)}
+                />
+                <input
+                  placeholder="GST Number"
+                  className={fieldClass}
+                  onChange={(e) => handleChange("gstNumber", e.target.value)}
+                />
+              </>
+            )}
+          </div>
         </div>
+
+        {/* Pickup & Delivery */}
+        <div>
+          <h4 className="font-semibold mb-4">Pickup & Delivery</h4>
+          <div className="grid md:grid-cols-3 gap-4">
+            <input
+              type="date"
+              className={fieldClass}
+              onChange={(e) => handleChange("pickupDate", e.target.value)}
+            />
+            <input
+              type="date"
+              className={fieldClass}
+              onChange={(e) => handleChange("deliveryDate", e.target.value)}
+            />
+            <select
+              className={fieldClass}
+              onChange={(e) =>
+                handleChange("pickupTimeSlot", e.target.value)
+              }
+            >
+              <option value="">Pickup Time Slot</option>
+              {PICKUP_SLOTS.map((slot) => (
+                <option key={slot}>{slot}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Service */}
+        <div>
+          <h4 className="font-semibold mb-4">Service</h4>
+          <select
+            className={fieldClass}
+            onChange={(e) => handleChange("serviceType", e.target.value)}
+          >
+            <option value="">Select Service</option>
+            <option>Standard</option>
+            <option>Express</option>
+            <option>Premium</option>
+          </select>
+        </div>
+
+        {/* Luggage */}
+        <div>
+          <h4 className="font-semibold mb-4">Luggage</h4>
+          <div className="grid md:grid-cols-4 gap-4">
+            <input
+              type="number"
+              placeholder="No of Bags"
+              className={fieldClass}
+              onChange={(e) => handleChange("checkedBags", e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Total Weight (kg)"
+              className={fieldClass}
+              onChange={(e) => handleChange("weight", e.target.value)}
+            />
+            <select
+              className={fieldClass}
+              onChange={(e) => handleChange("bagSize", e.target.value)}
+            >
+              <option value="">Bag Size</option>
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>XL</option>
+            </select>
+            <select
+              className={fieldClass}
+              onChange={(e) => handleChange("luggageType", e.target.value)}
+            >
+              <option>Suitcase</option>
+              <option>Backpack</option>
+              <option>Duffel</option>
+              <option>Box</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Add-ons */}
+        <div>
+          <h4 className="font-semibold mb-4">Add-ons</h4>
+          <div className="flex flex-wrap gap-6">
+            {Object.keys(ADDON_PRICES).map((addon) => (
+              <label key={addon} className="flex gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={values.addons.includes(addon)}
+                  onChange={(e) =>
+                    handleAddonChange(addon, e.target.checked)
+                  }
+                />
+                {addon} (+₹{ADDON_PRICES[addon]})
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Payment */}
+        <div>
+          <h4 className="font-semibold mb-4">Payment Mode</h4>
+          <select
+            className={fieldClass}
+            onChange={(e) => handleChange("paymentMode", e.target.value)}
+          >
+            <option value="">Select Payment Mode</option>
+            <option>UPI</option>
+            <option>Card</option>
+            <option>Net Banking</option>
+            <option>Cash</option>
+            {values.customerType === "Corporate" && (
+              <option>Corporate Credit</option>
+            )}
+          </select>
+        </div>
+
+        {/* Price */}
+        <div className="bg-blue-50 border rounded-xl p-5 space-y-2">
+          <div className="flex justify-between">
+            <span>Subtotal</span>
+            <span>₹{price.subtotal}</span>
+          </div>
+
+          {price.discount > 0 && (
+            <div className="flex justify-between text-green-600">
+              <span>Corporate Discount</span>
+              <span>-₹{price.discount}</span>
+            </div>
+          )}
+
+          {price.gst > 0 && (
+            <div className="flex justify-between">
+              <span>GST (18%)</span>
+              <span>₹{price.gst}</span>
+            </div>
+          )}
+
+          <div className="flex justify-between font-bold text-lg border-t pt-2">
+            <span>Total Payable</span>
+            <span>₹{price.total}</span>
+          </div>
+        </div>
+
+        <button type="submit" className="btn-primary w-full md:w-auto">
+          Confirm Booking
+        </button>
       </form>
     </section>
   );
