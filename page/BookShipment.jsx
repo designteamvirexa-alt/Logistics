@@ -10,7 +10,7 @@ import Link from "next/link";
 import aboutmobile from "@/asset/shippment/book-shipment.svg";
 
 
-function BookShipment() {
+function BookShipment({ pickupFromUrl, dropFromUrl }) {
   return (
     <div>
       <div className="-mt-24 -mt-16 ">
@@ -90,7 +90,7 @@ function BookShipment() {
       
 
       <div>
-        <ShipmentForm />
+        <ShipmentForm pickupFromUrl={pickupFromUrl} dropFromUrl={dropFromUrl} />
       </div>
 
       <section className="py-12 md:pb-0">

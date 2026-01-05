@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import InvoiceContent from "./InvoiceContent";
@@ -68,6 +68,10 @@ const submitToGoogleSheet = async (values, totalPrice, router) => {
 
   try {
     const formData = new URLSearchParams();
+
+    // 🔑 Sheet routing
+    formData.append("sheetName", "Sheet1");
+
     const payload = { ...values, totalPrice };
 
     Object.entries(payload).forEach(([key, value]) => {
@@ -77,30 +81,29 @@ const submitToGoogleSheet = async (values, totalPrice, router) => {
       );
     });
 
-    const res = await fetch(
+    // ✅ IMPORTANT FIX
+    await fetch(
       "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
       {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
+        body: formData,     // ❌ no headers
+        mode: "no-cors",    // 🔥 KEY LINE
       }
     );
 
-    const data = await res.json();
+    // ✅ If fetch didn’t crash → success
     toast.dismiss(toastId);
+    toast.success("Booking confirmed 🎉");
+    router.push("/thank-you");
 
-    if (data.result === "success") {
-      toast.success("Booking confirmed 🎉");
-      router.push("/thank-you");
-    } else {
-      toast.error("Submission failed");
-    }
   } catch (err) {
     toast.dismiss(toastId);
-    toast.error("Something went wrong");
     console.error(err);
+    toast.error("Submission failed");
   }
 };
+
+
 
 /* ---------------- Price Calculation ---------------- */
 
@@ -143,17 +146,14 @@ const calculatePriceBreakup = (values) => {
   };
 };
 
-export default function ShipmentBookingForm() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
+export default function ShipmentBookingForm({
+  pickupFromUrl,
+  dropFromUrl,
+}) {
+const router = useRouter();
+  const invoiceRef = useRef(null);
 
   const [showInvoice, setShowInvoice] = useState(false);
-
-
-  /* ✅ READ DATA FROM URL */
-  const pickupFromUrl = searchParams.get("pickup") || "";
-  const dropFromUrl = searchParams.get("drop") || "";
 
   const [values, setValues] = useState({
     customerType: "Individual",
@@ -162,30 +162,12 @@ export default function ShipmentBookingForm() {
     luggageType: "Suitcase",
 
     pickupCity: "",
-    pickupAddress: "",
     dropCity: "",
-    dropAddress: "",
+
+    name: "",
+    phone: "",
+    email: "",
   });
-  const invoiceRef = useRef(null);
-
-
-  // downloadInvoice
-
-const downloadInvoice = async () => {
-  const canvas = await html2canvas(invoiceRef.current, {
-    scale: 2,
-    backgroundColor: "#fff",
-  });
-
-  const img = canvas.toDataURL("image/png");
-  const pdf = new jsPDF("p", "mm", "a4");
-  pdf.addImage(img, "PNG", 0, 0, 210, 297);
-  pdf.save("Invoice.pdf");
-};
-
-
-
-
 
   /* ✅ AUTO FILL PICKUP & DROP */
   useEffect(() => {
@@ -198,7 +180,10 @@ const downloadInvoice = async () => {
     }
   }, [pickupFromUrl, dropFromUrl]);
 
-  const price = useMemo(() => calculatePriceBreakup(values), [values]);
+  const price = useMemo(
+    () => calculatePriceBreakup(values),
+    [values]
+  );
 
   const handleChange = (field, value) => {
     setValues((prev) => ({ ...prev, [field]: value }));
@@ -213,46 +198,17 @@ const downloadInvoice = async () => {
     }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  const downloadInvoice = async () => {
+    const canvas = await html2canvas(invoiceRef.current, {
+      scale: 2,
+      backgroundColor: "#fff",
+    });
 
-  //   if (
-  //     !values.name ||
-  //     !values.phone ||
-  //     !values.serviceType ||
-  //     !values.pickupDate ||
-  //     !values.deliveryDate ||
-  //     !values.pickupTimeSlot
-  //   ) {
-  //     toast.error("Please fill all required fields");
-  //     return;
-  //   }
-
-  //   if (
-  //     !values.pickupCity ||
-  //     !values.pickupAddress ||
-  //     !values.dropCity ||
-  //     !values.dropAddress
-  //   ) {
-  //     toast.error("Pickup & Drop location required");
-  //     return;
-  //   }
-
-  //   if (values.customerType === "Corporate" && !values.companyName) {
-  //     toast.error("Company name required");
-  //     return;
-  //   }
-
-  //   if (!values.paymentMode) {
-  //     toast.error("Select payment mode");
-  //     return;
-  //   }
-
-  //   await submitToGoogleSheet(values, price.total, router);
-  // };
-
-
-
+    const img = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    pdf.addImage(img, "PNG", 0, 0, 210, 297);
+    pdf.save("Invoice.pdf");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -262,40 +218,18 @@ const downloadInvoice = async () => {
       return;
     }
 
-    if (!values.pickupCity || !values.dropCity) {
-      toast.error("Pickup & Drop location required");
-      return;
-    }
-
-    if (
-      !values.serviceType ||
-      !values.pickupDate ||
-      !values.deliveryDate ||
-      !values.pickupTimeSlot
-    ) {
-      toast.error("Pickup & delivery details required");
-      return;
-    }
-
-    if (!values.paymentMode) {
-      toast.error("Select payment mode");
-      return;
-    }
-
-    // ✅ FIRST show invoice popup
     setShowInvoice(true);
 
-    // ⏳ Wait for DOM to render
     setTimeout(async () => {
       await downloadInvoice();
       await submitToGoogleSheet(values, price.total, router);
-    }, 6000);
+    }, 3000);
   };
 
-
   const fieldClass =
-    "w-full h-[48px] rounded-lg px-4 bg-[#f5f5f5] text-sm outline-none border border-transparent focus:ring-1 focus:ring-[#013EFE] focus:border-[#013EFE]";
+    "w-full h-[48px] rounded-lg px-4 bg-[#f5f5f5] text-sm outline-none border focus:ring-1 focus:ring-[#013EFE]";
 
+ 
   return (
     <section className="py-12 md:pt-24 px-4">
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-10">
