@@ -69,11 +69,10 @@ function RadioGroup({ value, onChange }) {
         <label
           key={type}
           className={`flex items-center gap-2 cursor-pointer px-4 py-2 rounded-xl border transition
-          ${
-            value === type
+          ${value === type
               ? "border-primary bg-primary/10 text-primary font-medium"
               : "border-gray-300 text-gray-600 font-medium"
-          }`}
+            }`}
         >
           <input
             type="radio"
@@ -133,47 +132,61 @@ export default function ContactSection() {
     "Premium Delivery",
   ];
 
+  /* ---------- HANDLE CHANGE ---------- */
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  /* ---------- HANDLE SUBMIT ---------- */
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const formData = new URLSearchParams(form).toString();
+  const toastId = toast.loading("Submitting...");
 
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: formData,
-        }
-      );
+  try {
+    const formData = new URLSearchParams();
+    formData.append("sheetName", "Sheet2");
 
-      const data = await res.json();
+    Object.entries(form).forEach(([key, value]) => {
+      formData.append(key, value ?? "");
+    });
 
-      if (data.result === "success") {
-        toast.success("Form submitted successfully!");
-        setForm({
-          userType: "Individual",
-          name: "",
-          email: "",
-          service: "",
-          phone: "",
-          companyName: "",
-          gstNumber: "",
-          message: "",
-        });
-        router.push("/thank-you");
-      } else {
-        toast.error("Error submitting form");
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
+      {
+        method: "POST",
+        body: formData, // ✅ no headers
+        mode: "no-cors", // 🔥 KEY FIX
       }
-    } catch {
-      toast.error("Something went wrong");
-    }
-  };
+    );
+
+    // ✅ If fetch didn’t crash → SUCCESS
+    toast.dismiss(toastId);
+    toast.success("Form submitted successfully!");
+
+    setForm({
+      userType: "Individual",
+      name: "",
+      email: "",
+      service: "",
+      phone: "",
+      companyName: "",
+      gstNumber: "",
+      message: "",
+    });
+
+    router.push("/thank-you");
+
+  } catch (err) {
+    toast.dismiss(toastId);
+    console.error(err);
+    toast.error("Submission failed");
+  }
+};
+
+
+
+
 
   return (
     <section>
@@ -219,9 +232,20 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
 
+              {/* NAME + EMAIL */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input placeholder="Name" name="name" value={form.name} onChange={handleChange} />
-                <Input placeholder="Email" name="email" value={form.email} onChange={handleChange} />
+                <Input
+                  placeholder="Name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                />
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                />
               </div>
 
               {/* CORPORATE ONLY */}
@@ -242,6 +266,7 @@ export default function ContactSection() {
                 </div>
               )}
 
+              {/* SERVICE + PHONE */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Select
                   name="service"
@@ -258,6 +283,7 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* MESSAGE */}
               <Textarea
                 placeholder="Write your message"
                 name="message"

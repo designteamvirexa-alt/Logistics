@@ -6,6 +6,7 @@ import HeaderWrapper from "@/components/HeaderWrapper";
 import FooterSection from "@/components/FooterSection";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import FloatingActions from "@/components/FloatingActions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} antialiased`}>
         {!is404 && <HeaderWrapper />}
         {children}
+        <FloatingActions />
+
         <FooterSection />
           {/* TOASTER COMPONENT */}
       <Toaster position="top-right" reverseOrder={false} />
