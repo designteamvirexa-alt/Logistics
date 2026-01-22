@@ -93,18 +93,19 @@ export default function Services() {
     },
   ];
   const idealFor = [
-    "Small businesses",
-    "E-commerce sellers",
     "Students & families",
-    "Regular parcel senders",
-    "Document & lightweight package shipping",
+    "Working professionals",
+    "Frequent travelers",
+    "Hostel & PG residents",
+    "Individuals & first-time movers",
+    "Senior citizens",
   ];
 
   const ensures = [
-    "Secure handling",
-    "Professional pickup",
     "Cost-efficient delivery",
-    "Full tracking visibility",
+    "Careful handling at every step",
+    "Trained delivery partners",
+    "Complete tracking transparency","24x7 support throughout",
   ];
 
   const fadeUp = {
@@ -129,12 +130,11 @@ export default function Services() {
               </motion.h1>
 
               <motion.p {...fadeUp} className="text-black max-w-2xl mb-6">
-                India’s most affordable and reliable parcel delivery solution.
+                Because moving luggage shouldn’t move your budget
               </motion.p>
 
               <motion.p {...fadeUp} className="text-black max-w-2xl mb-8">
-                Perfect for: Documents, parcels, business shipments, e-commerce
-                orders, and personal packages.
+                Send your bags ahead for less than you’d expect. Secure, pan-India delivery that lets you travel lighter, without paying extra for it.
               </motion.p>
 
               <motion.div
@@ -186,12 +186,13 @@ export default function Services() {
               Frisbi Standard Overview
             </h2>
             <p className="text-second mb-6 text-center md:text-start">
-              Budget-friendly shipping without compromising safety.
+              Cost-effective shipping that doesn't compromise on safety
             </p>
 
             <div className="grid lg:grid-cols-2 gap-6 ">
-              <div className="bg-blue-50 p-6 rounded-3xl border">
-                <h4 className="font-semibold mb-4">Ideal for:</h4>
+              <div className="bg-blue-50 p-6 rounded-3xl ">
+                <h4 className="font-semibold mb-4">Who gets the most value:
+</h4>
                 <ul className="space-y-3 font-semibold">
                   {idealFor.map((item, i) => (
                     <li key={i} className="flex gap-3">
@@ -202,8 +203,8 @@ export default function Services() {
                 </ul>
               </div>
 
-              <div className="bg-green-50 p-6 rounded-3xl border">
-                <h4 className="font-semibold mb-4">This service ensures:</h4>
+              <div className="bg-green-50 p-6 rounded-3xl ">
+                <h4 className="font-semibold mb-4">What you can count on:</h4>
                 <ul className="space-y-3 font-semibold">
                   {ensures.map((item, i) => (
                     <li key={i} className="flex gap-3">
