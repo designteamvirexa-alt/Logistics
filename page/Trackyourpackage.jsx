@@ -11,7 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import { motion } from "framer-motion";
 
 import MarqueeLogos from "@/components/MarqueeLogos";
-import FAQ from "@/components/Accordion";
+import FAQ from "@/components/AccordionCorporate";
 import aboutmobile from "@/asset/about/about-banner-img.svg";
 
 import trackbg from "@/asset/track-your-package.png";
@@ -40,8 +40,7 @@ function Trackyourpackage() {
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
             <h1 className="text-black  mb-4">Track your package</h1>
             <p className="text-black mb-8 text-sm md:text-base">
-              India’s trusted luggage delivery service, built to make travel
-              lighter, smarter, and stress-free.
+             India's trusted luggage delivery service, built to make travel lighter, smarter, and stress-free.
             </p>
 
             {/* CTA */}
@@ -62,8 +61,7 @@ function Trackyourpackage() {
               <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
                 <h1 className="text-black  mb-4">Track your package</h1>
                 <p className="text-black mb-4 text-sm md:text-base">
-                  India’s trusted luggage delivery service, built to make travel
-                  lighter, smarter, and stress-free.
+                  India's trusted luggage delivery service, built to make travel lighter, smarter, and stress-free.
                 </p>
 
                 {/* CTA */}
@@ -108,13 +106,14 @@ function Trackyourpackage() {
           <div className="flex flex-col justify-center">
             <h2 className="md:text-start text-center">Track Shipments, With Ease</h2>
             <p className="md:text-start text-center text-second mt-3">
-              Check your parcel’s latest updates and delivery status right here.
+              Check your parcel's latest updates and delivery status right here.
             </p>
 
             {/* FORM CARD */}
             <div className="mt-8 bg-white rounded-3xl drop-shadow-[0_4px_100px_rgba(0,0,0,0.08)] p-10">
               <h4 className="text-xl md:text-2xl font-semibold text-gray-900">
-                Track your orders easily
+               Track Your Orders Easily
+
               </h4>
 
               <div className="mt-5">
@@ -139,11 +138,11 @@ function Trackyourpackage() {
 
               <div className="mt-6">
                 <h4 className="text-gray-900 font-semibold text-base">
-                  Can’t Find Your Order Details?
+                  Can't Find Your Order Details?
                 </h4>
                 <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                  Your AWB number was sent to you via Email and SMS at the time
-                  of order confirmation.
+                  Your AWB number was sent to you via Email and SMS at the time of order confirmation.
+
                 </p>
               </div>
             </div>

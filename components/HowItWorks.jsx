@@ -12,7 +12,7 @@ export function HowItWorks() {
       number: "1",
       icon: MessageSquare,
       title: "Share Your Requirement",
-      description: "Locations, dates, number of bags & timelines",
+      description: "Locations, dates, number of bags, and timelines.",
     },
     {
       number: "2",
@@ -24,26 +24,26 @@ export function HowItWorks() {
       number: "3",
       icon: Calendar,
       title: "Schedule Pickup",
-      description: "Office, hotel, airport or venue",
+      description: "Office, hotel, airport, or venue.",
     },
     {
       number: "4",
       icon: Radar,
       title: "Track in Real Time",
-      description: "Bag-level tracking & status updates",
+      description: "Bag-level tracking and status updates.",
     },
     {
       number: "5",
       icon: CheckCircle,
       title: "Secure Delivery",
-      description: "On-time delivery with confirmation & reports",
+      description: "On-time delivery with confirmation and reports.",
     },
   ];
 
   return (
     <div className="pt-16 pb-0 bg-white">
       <div className="container mx-auto px-4 ">
-        <h2 className="text-center mb-4">How It Works</h2>
+        <h2 className="text-center mb-4">How Corporate Delivery Works</h2>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {steps.map((step, index) => (

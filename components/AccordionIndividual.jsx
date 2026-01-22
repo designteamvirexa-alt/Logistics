@@ -6,44 +6,54 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqData = [
   {
-    question: "How safe is my luggage during delivery?",
+    question: "How much does it cost to ship my luggage?",
     answer:
-      "Every pickup is scanned, sealed, and tracked in real time. Your luggage is accounted for from pickup to delivery, with digital confirmation at each step and careful handling throughout.",
+      "Price depends on where you're shipping from, where it's going, how many bags, and how fast you need it. Use our rate calculator, enter your details and get the exact price instantly before you book.",
   },
   {
-    question: "Can I choose when my luggage is picked up and delivered?",
+    question: "Can I ship just one bag or does it need to be more?",
     answer:
-      "Yes. Express and Premium Delivery services allow you to select a pickup date, time slot, and location that works for you. Delivery timelines are shared clearly at the time of booking.",
+      "One bag works perfectly. So do ten. We handle single suitcases, multiple bags, backpacks, duffel bags, whatever you're traveling with.",
   },
   {
-    question: "What happens if my plans change after booking?",
+    question: "What if something goes wrong with my luggage?",
     answer:
-      "Our support team can help you reschedule pickups or update delivery details before transit begins. No chatbots. You can speak directly to a dedicated point of contact who can assist with your booking.",
+      "Every bag gets printed labels and is sealed at pickup and tracked all the way. If there's an issue, our support team handles it immediately. You can also add insurance when booking for valuable items.",
   },
   {
-    question: "How much luggage can I send at once?",
+    question: "Can I use this service for religious travel?",
     answer:
-      "You can send one or multiple bags in a single shipment. Pricing is shared upfront so you know the cost before booking.",
+      "Yes. Many travelers use Frisbi for trips to Varanasi, Tirupati, Shirdi, Amritsar, Ajmer, and other pilgrimage destinations. Ship your bags so you can focus on the journey, not the weight.",
   },
   {
-    question: "Which cities and locations does Frisbi cover?",
+    question: "How long does delivery take?",
     answer:
-      "Frisbi delivers luggage across 25,000+ pincodes in India, including major cities and smaller towns. You can check coverage while getting your quote.",
+      "Standard Delivery takes 5-7 days. Express takes 3-5 days. Premium takes 3 days. Choose based on when you need your bags and how much you want to spend.",
   },
   {
-    question: "Is packing included or do I need to pack myself?",
+    question: "What happens if I need to change my delivery address?",
     answer:
-      "We offer professional packing free with Premium Delivery. For other services, you can add packing as a paid add-on or pack the luggage yourself.",
+      "Call or message support before your bags start moving. If they haven't left the pickup city yet, we can update the delivery address without issues.",
   },
   {
-    question: "Can someone else hand over or receive the luggage on my behalf?",
+    question: "Can my friend collect my luggage at the destination?",
     answer:
-      "Yes. As long as someone is available at pickup and delivery, the luggage can be handed over or received by them.",
+      "Yes. Anyone can receive your luggage as long as they're at the delivery address and can sign for it. Just let them know it's coming.",
   },
   {
-    question: "How do you calculate the delivery price?",
+    question: "Do you deliver to small towns or just big cities?",
     answer:
-      "The price depends on your pickup city, destination city, number of bags, and service speed. You get a clear quote before booking so you know exactly what you pay.",
+      "We cover 25,000+ pincodes including metros, small towns, temple cities, hill stations, and remote areas. If people live there, we will probably deliver there. Check your pincode on the rate calculator.",
+  },
+  {
+    question: "Can I send luggage for a round trip?",
+    answer:
+      "Yes. Book two separate shipments. One for the outbound journey and one for the return. Or book both together and let your account manager coordinate the timing.",
+  },
+   {
+    question: "Is there a weight limit per bag?",
+    answer:
+      "Individual bags can weigh between 5 kg to 30 kg. If your bag is heavier, contact support and we'll figure out the best way to handle it.",
   },
 
 ];

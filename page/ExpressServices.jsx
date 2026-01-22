@@ -86,18 +86,19 @@ export default function ExpressServices() {
   ];
 
   const idealFor = [
-    "Urgent documents",
-    "Business contracts",
-    "Medical & pharmacy shipments",
-    "E-commerce priority orders",
-    "Time-sensitive parcels",
+    "Pilgrimage trips with fixed travel dates",
+    "Tourist bookings with hotel check-ins",
+    "Work transfers requiring quick luggage movement",
+    "Festival visits with family timelines",
+    "Travel plans that cannot wait",
   ];
 
   const ensures = [
     "Faster transit times",
-    "Priority pickup & delivery",
+    "Priority pickup and delivery",
     "Higher handling care",
     "Minimal transit delays",
+    "Dedicated support",
   ];
 
   const fadeUp = {
@@ -137,13 +138,11 @@ export default function ExpressServices() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-black text-lg max-w-2xl mb-6 text-center md:text-start"
               >
-                Fast, priority parcel delivery for urgent shipments across
-                India.
+                Fast luggage delivery when time matters most across India.
               </motion.p>
 
               <motion.p className="text-black text-lg max-w-2xl mb-8 text-center md:text-start">
-                Best for: Urgent documents, business-critical packages, medical
-                supplies & time-sensitive deliveries.
+                When your bags need to reach faster, we make it happen. Get your luggage delivered within 3 to 5 days with priority handling and flexible scheduling.
               </motion.p>
 
               <motion.div
@@ -195,12 +194,11 @@ export default function ExpressServices() {
               Frisbi Express Overview
             </h2>
             <p className="text-second mb-8 text-center md:text-start">
-              Express Delivery is our high-speed logistics service built for
-              customers who need guaranteed and priority delivery.
+              Express Delivery is our priority luggage service built for travelers who need their bags faster without compromising on safety.
             </p>
 
             <div className="grid lg:grid-cols-2 gap-6">
-              <div className="bg-blue-50 p-6 rounded-3xl border">
+              <div className="bg-blue-50 p-6 rounded-3xl ">
                 <h4 className="font-semibold mb-4">Ideal for:</h4>
                 <ul className="space-y-3 font-semibold">
                   {idealFor.map((item, i) => (
@@ -212,7 +210,7 @@ export default function ExpressServices() {
                 </ul>
               </div>
 
-              <div className="bg-green-50 p-6 rounded-3xl border">
+              <div className="bg-green-50 p-6 rounded-3xl ">
                 <h4 className="font-semibold mb-4">This service ensures:</h4>
                 <ul className="space-y-3 font-semibold">
                   {ensures.map((item, i) => (

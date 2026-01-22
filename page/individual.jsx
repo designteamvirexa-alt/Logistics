@@ -10,7 +10,7 @@ import Link from "next/link";
 import Testimonials from "@/components/Testimonials";
 import herobg from "@/asset/service/individual.svg";
 
-import FAQSection from "@/components/Accordion";
+import FAQSection from "@/components/AccordionIndividual";
 import ContactSection from "@/components/ContactSection";
 import { PerfectFor } from "@/components/PerfectFor";
 import { WhyChoose } from "@/components/Whychoose";
@@ -39,8 +39,7 @@ function Individual() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-black font-extrabold text-4xl md:text-6xl max-w-xl mb-6"
               >
-                Travel Light. 
-                We Deliver Your Luggage.
+                Travel Light. We Deliver Your Luggage.
               </motion.h1>
 
               <motion.p
@@ -50,8 +49,8 @@ function Individual() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-black text-lg md:text-xl max-w-xl mb-6"
               >
-                Frisbi makes personal travel easier by taking the weight off
-                your shoulders—literally.
+                Frisbi makes personal travel easier by taking the weight off your shoulders
+
               </motion.p>
 
               <motion.p
@@ -61,10 +60,8 @@ function Individual() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-black max-w-xl mb-8"
               >
-                Whether you're moving between cities, heading to a hotel, or
-                planning a long stay, we pick up your luggage from your doorstep
-                and deliver it safely to your destination—so you can travel
-                hands-free and stress-free.
+                Whether you're moving between cities, heading to a hotel, planning a pilgrimage, or exploring tourist spots, we pick up your luggage from your doorstep and deliver it safely to your destination so you can travel hands-free and stress-free.
+
               </motion.p>
 
               <motion.div
@@ -138,10 +135,10 @@ function Individual() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+            <h2 className=" text-white mb-4">Your next trip doesn't need to feel heavy.</h2>
 
             <p className="text-white mb-8 text-sm md:text-base">
-              Fast, safe, and affordable – trusted by thousands across India.
+             Thousands already ship their bags with us. Your turn.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -149,7 +146,8 @@ function Individual() {
                 href="/contact-us"
                 className="btn-white hover:scale-105 transition-all"
               >
-                Contact Us
+                Book Now
+
               </Link>
             </div>
           </motion.div>

@@ -7,27 +7,31 @@ import { Plus, Minus } from "lucide-react";
 const faqData = [
   {
     question: "How fast is Express Delivery?",
-    answer: "Delivery typically happens within 24–72 hours.",
+    answer: "Express Delivery takes 3 to 5 days from pickup to delivery. Your luggage receives priority processing through our network, which speeds up sorting and transit times compared to Standard Delivery.",
   },
   {
-    question: "Is same-day delivery available?",
-    answer: "Yes, on selected city routes.",
+    question: "Is same-day pickup available with Express?",
+    answer: "Yes. Express Delivery offers same-day pickup slots based on availability in your city. Select your preferred time window during booking, and we confirm the earliest available slot.",
   },
   {
-    question: "Is Express Delivery tracked?",
-    answer: "Yes, live real-time tracking is included.",
+    question: "Can I track my Express Delivery luggage?",
+    answer: "Yes. Every Express shipment includes live tracking with real-time updates. You receive SMS and WhatsApp notifications at each checkpoint from pickup to final delivery.",
   },
   {
-    question: "Can I reschedule pickup?",
-    answer: "Yes, before courier dispatch.",
+    question: "What if I need to reschedule my Express pickup?",
+    answer: "Contact your dedicated support person before the scheduled pickup time. We can reschedule your collection slot if your travel plans change before transit begins",
   },
   {
-    question: "What happens if delivery is delayed?",
-    answer: "Our support team proactively assists and updates.",
+    question: "Does Express Delivery cover tourist and pilgrimage destinations?",
+    answer: "Yes. Express Delivery covers 25,000+ pincodes across India, including popular pilgrimage sites, tourist cities, and remote temple towns. Check coverage by entering your destination during quote.",
   },
   {
-    question: "Is Express available everywhere?",
-    answer: "Currently available in major cities & expanding rapidly.",
+    question: "What happens if my Express Delivery is delayed?",
+    answer: "If an Express Delivery shipment is delayed beyond the committed timeline due to operational reasons, our support team proactively updates you and assists with next steps, including priority escalation and resolution to minimize impact on your travel plans.",
+  },
+   {
+    question: "Is Express Delivery available for all luggage sizes and weights?",
+    answer: "Express Delivery is available for most standard luggage sizes and weights. Very large, oversized, or unusually heavy items may be subject to specific limits or require special handling. During booking, simply enter your luggage details and we’ll instantly confirm Express availability and eligibility for your shipment.",
   },
 ];
 
@@ -58,7 +62,7 @@ export default function FAQ() {
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggle(i)}
                 >
-                  <h3 className="font-semibold text-lg">{faq.question}</h3>
+                  <h4 className="font-semibold text-lg">{faq.question}</h4>
                   <Minus className="w-6 h-6 text-gray-600" />
                 </div>
 

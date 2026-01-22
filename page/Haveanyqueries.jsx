@@ -39,11 +39,10 @@ function Haveanyqueries() {
           {/* CONTENT */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
             <h1 className="text-black mb-4">
-              We'd 💙 to hear from you Get in touch
+              We'd 💙 to help you travel <span className="text-primary">lighter</span>
             </h1>
             <p className="text-black  text-sm md:text-base">
-              Please send us an email using the form provided. Phone calls are
-              also effective.
+              Tell us what you’ve packed, overpacked, and where it all needs to go. We’ll handle the planning
             </p>
           </div>
         </motion.section>
