@@ -11,7 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import { motion } from "framer-motion";
 
 import MarqueeLogos from "@/components/MarqueeLogos";
-import FAQ from "@/components/Accordion";
+import FAQ from "@/components/AccordionCorporate";
 import aboutmobile from "@/asset/about/about-banner-img.svg";
 
 import trackbg from "@/asset/track-your-package.png";

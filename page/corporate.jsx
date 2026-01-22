@@ -17,7 +17,7 @@ import { Comparison } from "@/components/CorporateComparison";
 import { Scale } from "@/components/Scale";
 import { Safety } from "@/components/Safety";
 import CallToAction from "@/components/CallToActioncorporate";
-import FAQSection from "@/components/Accordion";
+import FAQSection from "@/components/AccordionCorporate";
 import ContactSection from "@/components/ContactSection";
 function Corporate() {
   const fadeUp = {
@@ -27,7 +27,7 @@ function Corporate() {
   };
 
   return (
-    <div className="-mt-24 ">
+    <div className="-mt-28 ">
       {/* HERO SECTION */}
       <section className="relative bg-white overflow-hidden">
         <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-0">
@@ -45,10 +45,9 @@ function Corporate() {
               <motion.p
                 {...fadeUp}
                 transition={{ delay: 0.2 }}
-                className="text-black text-lg max-w-xl mb-6"
+                className="text-black text-lg max-w-xl mb-4"
               >
-                Hassle-Free Luggage Logistics for Businesses, Events & Travel
-                Partners
+               When hundreds of bags need to move, guessing isn’t an option.
               </motion.p>
 
               <motion.p
@@ -56,18 +55,11 @@ function Corporate() {
                 transition={{ delay: 0.3 }}
                 className="text-black max-w-xl mb-4"
               >
-                Frisbi helps organizations move luggage securely, on time, and
-                at scale—so employees, guests, and clients can travel light.
+                Ideal for corporate travel managers, event planners, tour operators, and pilgrimage organizers managing large groups across locations.
+
               </motion.p>
 
-              <motion.p
-                {...fadeUp}
-                transition={{ delay: 0.4 }}
-                className="text-black max-w-xl mb-8"
-              >
-                From corporate travel to events and hotels, we manage luggage
-                end-to-end with real-time visibility.
-              </motion.p>
+              
 
               <motion.div {...fadeUp} transition={{ delay: 0.5 }}>
                 <button className="btn-primary hover:scale-105 transition-all">
@@ -140,10 +132,10 @@ function Corporate() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+            <h2 className=" text-white mb-4">Built for schedules that can’t slip</h2>
 
             <p className="text-white mb-8 text-sm md:text-base">
-              Fast, safe, and affordable – trusted by thousands across India.
+              Planned pickups, committed delivery windows, and clear ownership throughout.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -151,7 +143,7 @@ function Corporate() {
                 href="/contact-us"
                 className="btn-white hover:scale-105 transition-all"
               >
-                Contact Us
+                Get started
               </Link>
             </div>
           </motion.div>

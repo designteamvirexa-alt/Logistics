@@ -1,21 +1,39 @@
-import { Lock, Umbrella, UserCheck, FileText } from 'lucide-react';
+import {
+  Luggage,
+  ShieldCheck,
+  HeartHandshake,
+  Clock
+} from "lucide-react";
 
 export function Safety() {
   const features = [
-    { icon: Lock, text: 'Skip carrying heavy bags to airports or stations' },
-    { icon: Umbrella, text: 'Avoid excess baggage hassles' },
-    { icon: UserCheck, text: 'Travel comfortably with kids or elders' },
-    { icon: FileText, text: 'Move luggage ahead during long or multi-stop trips' }
-  ];
+  {
+    icon: Luggage,
+    text: "Because your shoulders aren’t built for airports",
+  },
+  {
+    icon: ShieldCheck,
+    text: "Because airline rules change, your plans shouldn’t",
+  },
+  {
+    icon: HeartHandshake,
+    text: "Because people matter more than suitcases",
+  },
+  {
+    icon: Clock,
+    text: "Because long trips are already long enough",
+  },
+];
+
 
   return (
-    <div className="py-16 bg-white">
+    <div className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-4">
-          When to Use Frisbi
+          When carrying your bags just doesn’t make sense
         </h2>
         <p className="text-center text-second mb-16">
-          From a single suitcase to multiple bags, Frisbi ensures your belongings move safely while you move freely.
+          If the luggage is slowing you down, it’s probably not meant to travel with you.
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">

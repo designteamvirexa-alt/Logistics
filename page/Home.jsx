@@ -17,7 +17,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import FAQSection from "@/components/Accordion";
+import FAQSection from "@/components/AccordionCorporate";
 import ContactSection from "@/components/ContactSection";
 import HowToShip from "@/components/HowToShip";
 import Testimonials from "@/components/Testimonials";

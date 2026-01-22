@@ -4,12 +4,12 @@ import { Check, X, AlertTriangle } from "lucide-react";
 
 export function Comparison() {
   const features = [
-    { feature: "Luggage-specific handling", frisbi: true, courier: false },
-    { feature: "Dedicated corporate support", frisbi: true, courier: false },
-    { feature: "Bulk & multi-location pickup", frisbi: true, courier: "partial" },
-    { feature: "Real-time tracking", frisbi: true, courier: "partial" },
-    { feature: "Event & hotel coordination", frisbi: true, courier: false },
-    { feature: "Corporate pricing & SLA", frisbi: true, courier: false },
+    { feature: "Luggage-first operating model", frisbi: true, courier: false },
+    { feature: "Dedicated point of contact", frisbi: true, courier: false },
+    { feature: "Multi-location pickup", frisbi: true, courier: "partial" },
+    { feature: "Proactive tracking & status updates", frisbi: true, courier: "partial" },
+    { feature: "End-to-end accountability", frisbi: true, courier: false },
+    { feature: "Corporate pricing and SLAs", frisbi: true, courier: false },
   ];
 
   const renderIcon = (value) => {
@@ -26,7 +26,7 @@ export function Comparison() {
     <section className="md:py-24 pb-0">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className=" text-center mb-16">
-          What makes frisbi better than alternatives
+          Purpose-made for corporate luggage movement
         </h2>
 
         <div className="bg-white rounded-3xl  overflow-hidden">
