@@ -6,45 +6,41 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqData = [
   {
-    question: "How safe is my luggage during delivery?",
+    question: "Why do you need bag dimensions, not just weight?",
     answer:
-      "Every pickup is scanned, sealed, and tracked in real time. Your luggage is accounted for from pickup to delivery, with digital confirmation at each step and careful handling throughout.",
+      "Because luggage takes up physical space in our vehicles. A 15 kg compact bag fits efficiently. A 15 kg oversized bag takes space that could fit two compact bags. Dimensions help us calculate fair pricing for everyone.",
   },
   {
-    question: "Can I choose when my luggage is picked up and delivered?",
+    question: "Can I reduce my cost by splitting one large bag into two smaller ones?",
     answer:
-      "Yes. Express and Premium Delivery services allow you to select a pickup date, time slot, and location that works for you. Delivery timelines are shared clearly at the time of booking.",
+      "Not usually. Two smaller bags often cost similar to or more than one larger bag because we handle, seal, and track each bag separately. Pack efficiently into fewer bags when possible.",
   },
   {
-    question: "What happens if my plans change after booking?",
+    question: "Are there any hidden charges after I get the calculator quote?",
     answer:
-      "Our support team can help you reschedule pickups or update delivery details before transit begins. No chatbots. You can speak directly to a dedicated point of contact who can assist with your booking.",
+      "No. The calculator price is what you pay unless your actual bag weight or dimensions differ significantly from what you entered. Always measure and weigh accurately for precise quotes.",
   },
   {
-    question: "How much luggage can I send at once?",
+    question: "What happens if my bag is heavier than I estimated?",
     answer:
-      "You can send one or multiple bags in a single shipment. Pricing is shared upfront so you know the cost before booking.",
+      "Our pickup team weighs and measures bags during collection. If there's a significant difference (3+ kg or much larger dimensions), they recalculate the price. Small differences (under 2 kg) usually don't change the cost.",
   },
   {
-    question: "Which cities and locations does Frisbi cover?",
+    question: "Do remote areas cost extra?",
     answer:
-      "Frisbi delivers luggage across 25,000+ pincodes in India, including major cities and smaller towns. You can check coverage while getting your quote.",
+      "Some remote pincodes have small delivery surcharges. The calculator automatically includes these when you enter your exact pincode. You'll see the adjusted price in your quote.",
   },
   {
-    question: "Is packing included or do I need to pack myself?",
+    question: "Can I negotiate the calculator price?",
     answer:
-      "We offer professional packing free with Premium Delivery. For other services, you can add packing as a paid add-on or pack the luggage yourself.",
+      "Standard pricing is fixed and transparent as per the quote. For very high volumes (10+ bags regularly) or corporate accounts, contact us for custom pricing agreements.",
   },
   {
-    question: "Can someone else hand over or receive the luggage on my behalf?",
+    question: "Why does Standard delivery cost less if everything else is the same?",
     answer:
-      "Yes. As long as someone is available at pickup and delivery, the luggage can be handed over or received by them.",
+      "Standard takes longer (5-7 days) so we can optimize routes and vehicle loads. Express and Premium require priority handling, faster trucks, and dedicated scheduling, which increases operational costs reflected in pricing.",
   },
-  {
-    question: "How do you calculate the delivery price?",
-    answer:
-      "The price depends on your pickup city, destination city, number of bags, and service speed. You get a clear quote before booking so you know exactly what you pay.",
-  },
+  
 
 ];
 
@@ -60,7 +56,7 @@ export default function FAQ() {
 
   return (
     <div className="w-full max-w-3xl mx-auto py-12 md:pt-16  md:pb-24 px-4">
-      <h2 className="text-center mb-10 md:mb-12 lg:mb-16">Frequently asked questions</h2>
+      <h2 className="text-center mb-10 md:mb-12 lg:mb-16">Questions about pricing and payments</h2>
 
       <div className="space-y-6">
         {visibleFaqs.map((faq, i) => (

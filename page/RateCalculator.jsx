@@ -41,10 +41,9 @@ function RateCalculator() {
 
           {/* CONTENT */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
-            <h1 className="text-black mb-4">Rate Calculator</h1>
+            <h1 className="text-black mb-4">Know your price in 60 seconds.</h1>
             <p className="text-black mb-4 text-sm md:text-base">
-              India’s trusted luggage delivery service, built to make travel
-              lighter, smarter, and stress-free.
+              Calculate now. Book when ready. Travel lighter tomorrow.
             </p>
 
             {/* CTA */}
@@ -52,7 +51,7 @@ function RateCalculator() {
               href="/contact-us"
               className="btn-primary hover:scale-105 transition-all"
             >
-              Contact Us
+              Calculate Your Cost
             </Link>
           </div>
         </motion.section>
@@ -63,11 +62,11 @@ function RateCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* LEFT — CONTENT */}
               <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
-                <h1 className="text-black mb-4">Rate Calculator</h1>
-
+                <h1 className="text-black mb-4">
+                  Know your price in 60 seconds.
+                </h1>
                 <p className="text-black mb-4 text-sm md:text-base">
-                  India’s trusted luggage delivery service, built to make travel
-                  lighter, smarter, and stress-free.
+                  Calculate now. Book when ready. Travel lighter tomorrow.
                 </p>
 
                 {/* CTA */}
@@ -75,7 +74,7 @@ function RateCalculator() {
                   href="/contact-us"
                   className="btn-primary hover:scale-105 transition-all"
                 >
-                  Contact Us
+                  Calculate Your Cost
                 </Link>
               </div>
 
@@ -105,7 +104,7 @@ function RateCalculator() {
               </h2>
 
               <p className="text-second text-center md:text-left leading-relaxed">
-                From small bags to oversized luggage, we handle every variation with care. No dragging, no excess baggage stress — just safe, reliable door-to-door delivery across cities.
+                A 10 kg compact suitcase costs less than a 10 kg oversized bag.
               </p>
             </div>
 
@@ -139,7 +138,6 @@ function RateCalculator() {
       <section className="py-12 md:pt-0 md:pb-0">
         <ShipmentCostCalculator />
       </section>
-     
 
       <section>
         <FAQ />
