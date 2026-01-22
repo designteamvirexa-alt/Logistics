@@ -21,49 +21,49 @@ export default function StickyStepsOverlap() {
     {
       step: "STEP 1",
       title: "Priority Pickup",
-      desc: "Your parcel is picked up ahead of standard shipments.",
+      desc: "Your chosen time slot guaranteed with professional team arrival on-time. ",
       icon: icon1,
     },
     {
       step: "STEP 2",
-      title: "Faster Transit",
-      desc: "Minimal hub delays with optimized routes.",
+      title: "Free Premium Packaging",
+      desc: "Sturdy boxes, bubble wrap, corner protection, sealing, and printed shipping labels included at no extra cost.",
       icon: icon2,
     },
     {
       step: "STEP 3",
       title: "Live Real-Time Tracking",
-      desc: "Track your parcel at every stage.",
+      desc: "Monitor your luggage at every checkpoint throughout the journey.",
       icon: icon3,
     },
     {
       step: "STEP 4",
       title: "Enhanced Insurance Coverage",
-      desc: "Higher insurance protection than Standard Delivery.",
+      desc: "Higher coverage limits protect your valuable luggage contents.",
       icon: icon4,
     },
     {
       step: "STEP 5",
-      title: "Instant Notifications",
-      desc: "SMS & Email alerts for every status update.",
+      title: "Get Notified Instantly",
+      desc: "Receive alerts at every status change throughout delivery.",
       icon: icon5,
     },
     {
       step: "STEP 6",
-      title: "GST Invoice & Digital Receipt",
-      desc: "Auto-generated invoices for businesses.",
+      title: "GST Invoice and Digital Receipt",
+      desc: "Complete documentation for business and personal records.",
       icon: icon6,
     },
     {
       step: "STEP 7",
-      title: "Extended Customer Support",
-      desc: "Priority support during delivery hours.",
+      title: "Dedicated Customer Support",
+      desc: "One point of contact throughout your entire delivery journey.",
       icon: icon7,
     },
     {
       step: "STEP 8",
-      title: "Pan-India Express Network",
-      desc: "Strong coverage across metro & tier-1 cities.",
+      title: "Pan-India Premium Network",
+      desc: "Exclusive handling lanes across our entire logistics network.",
       icon: icon8,
     },
   ];
@@ -76,24 +76,22 @@ export default function StickyStepsOverlap() {
           <div className="lg:w-1/2">
             <div className="lg:sticky lg:top-24 text-center md:text-left">
               <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
-                DRIVING SUPPLY CHAIN SUCCESS
+                A RELIABLE WAY TO SHIP YOUR LUGGAGE
               </p>
 
               <h2 className="text-4xl font-bold leading-tight mb-6">
-                Key Features
+                Why Premium Delivery works
               </h2>
 
               <p className="text-gray-500 text-lg mb-8 max-w-lg">
-                Supply delivers tailored logistics and freight solutions,
-                empowering businesses with fast, safe, and efficient transport
-                across India.
+               Premium luggage delivery engineered for maximum security with tamper-proof seals, minimal handling touchpoints, dedicated support, enhanced insurance coverage.
               </p>
 
               <Link
                 href="/services"
                 className="btn-primary hover:scale-105 transition-all"
               >
-                Our Services
+                View Services
               </Link>
 
               <Image
@@ -120,9 +118,9 @@ export default function StickyStepsOverlap() {
 
                 <div className="flex items-start gap-5">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-3">
+                    <h4 className="text-2xl font-semibold mb-3">
                       {item.title}
-                    </h3>
+                    </h4>
 
                     <p className="text-gray-500 mb-4">{item.desc}</p>
 
