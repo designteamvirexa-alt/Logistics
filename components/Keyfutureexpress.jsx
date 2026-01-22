@@ -21,37 +21,37 @@ export default function StickyStepsOverlap() {
     {
       step: "STEP 1",
       title: "Priority Pickup",
-      desc: "Your parcel is picked up ahead of standard shipments.",
+      desc: "Your booking is placed in front of standard shipments.",
       icon: icon1,
     },
     {
       step: "STEP 2",
       title: "Faster Transit",
-      desc: "Minimal hub delays with optimized routes.",
+      desc: "Reduced hub halts with accelerated routes.",
       icon: icon2,
     },
     {
       step: "STEP 3",
       title: "Live Real-Time Tracking",
-      desc: "Track your parcel at every stage.",
+      desc: "Status your luggage at every stage.",
       icon: icon3,
     },
     {
       step: "STEP 4",
       title: "Enhanced Insurance Coverage",
-      desc: "Higher insurance protection than Standard Delivery.",
+      desc: "Higher coverage protection than standard handling.",
       icon: icon4,
     },
     {
       step: "STEP 5",
       title: "Instant Notifications",
-      desc: "SMS & Email alerts for every status update.",
+      desc: "Get alerts for every status update.",
       icon: icon5,
     },
     {
       step: "STEP 6",
       title: "GST Invoice & Digital Receipt",
-      desc: "Auto-generated invoices for businesses.",
+      desc: "Fully generated invoices for businesses.",
       icon: icon6,
     },
     {
@@ -63,7 +63,7 @@ export default function StickyStepsOverlap() {
     {
       step: "STEP 8",
       title: "Pan-India Express Network",
-      desc: "Strong coverage across metro & tier-1 cities.",
+      desc: "Strong coverage across metro to tier-3 cities.",
       icon: icon8,
     },
   ];
@@ -76,24 +76,22 @@ export default function StickyStepsOverlap() {
           <div className="lg:w-1/2">
             <div className="lg:sticky lg:top-24 text-center md:text-left">
               <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
-                DRIVING SUPPLY CHAIN SUCCESS
+                A RELIABLE WAY TO SHIP YOUR LUGGAGE
               </p>
 
               <h2 className="text-4xl font-bold leading-tight mb-6">
-                Key Features
+                Why Express Delivery works
               </h2>
 
               <p className="text-gray-500 text-lg mb-8 max-w-lg">
-                Supply delivers tailored logistics and freight solutions,
-                empowering businesses with fast, safe, and efficient transport
-                across India.
+                Luggage delivery designed for urgent timelines with freight accuracy, exceptional handling, seamless pickups, real-time tracking, professional teams, 24x7 customer support, and fast pan-India transit across routes.
               </p>
 
               <Link
                 href="/services"
                 className="btn-primary hover:scale-105 transition-all"
               >
-                Our Services
+                View Services
               </Link>
 
               <Image
@@ -120,9 +118,9 @@ export default function StickyStepsOverlap() {
 
                 <div className="flex items-start gap-5">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-3">
+                    <h4 className="text-2xl font-semibold mb-3">
                       {item.title}
-                    </h3>
+                    </h4>
 
                     <p className="text-gray-500 mb-4">{item.desc}</p>
 
