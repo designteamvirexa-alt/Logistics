@@ -154,6 +154,7 @@ export default function ShipmentBookingForm({
   const invoiceRef = useRef(null);
 
   const [showInvoice, setShowInvoice] = useState(false);
+  const [orderData, setOrderData] = useState(null);
 
   const [values, setValues] = useState({
     customerType: "Individual",
@@ -236,27 +237,25 @@ export default function ShipmentBookingForm({
       }
   
       // 1️⃣ Create order
-      const orderRes = await fetch("/api/razorpay/order", {
+      const res = await fetch("/api/razorpay/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: price.total }),
       });
   
-      if (!orderRes.ok) {
-        const errText = await orderRes.text();
-        console.error("Order API error:", errText);
-        toast.error("Unable to create payment order");
+      if (!res.ok) {
+        toast.error("Order creation failed");
         return;
       }
   
-      const order = await orderRes.json();
+      const order = await res.json();
   
       if (!window.Razorpay) {
-        toast.error("Razorpay SDK not loaded");
+        toast.error("Razorpay not loaded");
         return;
       }
   
-      // 2️⃣ Razorpay options
+      // 2️⃣ Open Razorpay immediately (VERY IMPORTANT)
       const options = {
         key: "rzp_test_S9MbPhPiYZr1P9",
         amount: order.amount,
@@ -266,6 +265,7 @@ export default function ShipmentBookingForm({
         description: "Shipment Charges",
   
         handler: async function (response) {
+          // 3️⃣ Verify payment
           const verifyRes = await fetch("/api/razorpay/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -281,22 +281,16 @@ export default function ShipmentBookingForm({
   
           toast.success("Payment Successful ✅");
   
-          setShowInvoice(true);
-  
-          setTimeout(async () => {
-            await downloadInvoice();
-  
-            await submitToGoogleSheet(
-              {
-                ...values,
-                paymentId: response.razorpay_payment_id,
-                orderId: response.razorpay_order_id,
-                paymentStatus: "PAID",
-              },
-              price.total,
-              router
-            );
-          }, 2000);
+          await submitToGoogleSheet(
+            {
+              ...values,
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+              paymentStatus: "PAID",
+            },
+            price.total,
+            router
+          );
         },
   
         prefill: {
@@ -311,17 +305,17 @@ export default function ShipmentBookingForm({
       const rzp = new window.Razorpay(options);
   
       rzp.on("payment.failed", function (response) {
-        console.error("Razorpay failed:", response.error);
         toast.error(response.error.description || "Payment failed");
       });
   
       rzp.open();
-  
     } catch (err) {
-      console.error("Payment error:", err);
+      console.error(err);
       toast.error("Payment failed");
     }
   };
+  
+  
   
   
 
