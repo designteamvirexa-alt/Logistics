@@ -1,22 +1,29 @@
 import crypto from "crypto";
 
+const SECRET = "XqgnLetVkiuJK8wIZcqckftH";
+
 export async function POST(req) {
-  const body = await req.json();
+  try {
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+    } = await req.json();
 
-  const {
-    razorpay_order_id,
-    razorpay_payment_id,
-    razorpay_signature,
-  } = body;
+    const body = razorpay_order_id + "|" + razorpay_payment_id;
 
-  const generated = crypto
-    .createHmac("sha256", "XqgnLetVkiuJK8wIZcqckftH")
-    .update(razorpay_order_id + "|" + razorpay_payment_id)
-    .digest("hex");
+    const expectedSignature = crypto
+      .createHmac("sha256", SECRET)
+      .update(body)
+      .digest("hex");
 
-  if (generated === razorpay_signature) {
-    return Response.json({ success: true });
+    if (expectedSignature === razorpay_signature) {
+      return Response.json({ success: true });
+    }
+
+    return Response.json({ success: false }, { status: 400 });
+  } catch (err) {
+    console.error(err);
+    return Response.json({ success: false }, { status: 500 });
   }
-
-  return Response.json({ success: false }, { status: 400 });
 }
