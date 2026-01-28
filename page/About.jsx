@@ -3,119 +3,173 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import aboutone from "@/asset/about/aboutone.png";
-import abouttwo from "@/asset/about/abouttwo.png";
-import aboutUs from "@/asset/about/about-bg.webp";
-import vision from "@/asset/about/vision.webp";
-import mission from "@/asset/about/mission.webp";
-import CallToAction from "@/components/CallToAction";
+import About from "@/asset/home/about-frisbi.png";
+
+import aboutUs from "@/asset/about/about-bg.png";
+import aboutmobile from "@/asset/about/about-banner-img.svg";
+import { Check, Minus, NetworkIcon, Plus } from "lucide-react";
+
+import vision from "@/asset/about/vision.png";
+import mission from "@/asset/about/mission.jpeg";
+import CallToAction from "@/components/CallToActionabout";
 import Testimonials from "@/components/Testimonials";
 import MarqueeLogos from "@/components/MarqueeLogos";
-import CustomSlider from "@/components/LocationSlider";
+
 import Stats from "@/components/Stats";
-import TestimonialSliderRight from "@/components/TestimonialSliderRight";
 import ContactSection from "@/components/ContactSection";
+import TransformingCities from "@/components/Locations";
+// import { Link } from "lucide-react";
+
+import Link from "next/link";
 function Aboutus() {
   return (
-    <div className="-mt-20 ">
+    <div className="-mt-24">
       <motion.section
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative w-full h-[460px] md:h-[460px] rounded-3xl overflow-hidden "
+        className="relative w-full h-[460px] md:h-[560px] overflow-hidden md:block hidden"
       >
         {/* Background Image */}
         <Image
-          src={aboutUs} // your hero image path
+          src={aboutUs}
           alt="About Background"
           fill
           priority
-          className="object-cover p-2  rounded-3xl"
+          className="md:object-contain object-cover bg-center"
         />
-
-        {/* Gradient Overlay */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-blue-700/90"></div> */}
-
+        {/* <div className="absolute inset-0 bg-black/30 " /> */}
         {/* CONTENT */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h2 className="text-white text-3xl md:text-4xl font-semibold ">
-            About us
-          </h2>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+          <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
+            Hi Frisbi Fam, Pack Everything. We'll Bring It There.
+          </h1>
 
-          <p className="text-white/80 mt-3 text-sm md:text-base">
-            Home <span className="text-blue-200">›</span> about-us
+          <p className="text-black mb-8 text-sm md:text-base">
+            India's most reliable door-to-door luggage delivery service,
+            designed to make your travel lighter, smarter, and completely
+            hassle-free.
           </p>
+
+          {/* CTA */}
+          <Link
+            href="/contact-us"
+            className="btn-primary hover:scale-105 transition-all"
+          >
+            Contact Us
+          </Link>
         </div>
       </motion.section>
 
-      <section className="max-w-7xl mx-auto px-4 pt-30">
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* LEFT IMAGE (Always first on mobile) */}
-          <div className="w-full order-1">
-            <Image
-              src={aboutone}
-              alt="Logistics"
-              className="rounded-3xl  w-full  h-[160px]  sm:h-[200px]  md:h-[260px]  lg:h-[600px] object-cover"
-            />
-          </div>
+      {/* mobile section */}
+      <section className="relative bg-white overflow-hidden md:hidden">
+        <div className="container mx-auto px-4 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT */}
+            <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
+              <h1 className="text-black text-3xl md:text-4xl font-semibold mb-4">
+                Hi Frisbi Fam, Pack Everything. We'll Bring It There.
+              </h1>
 
-          {/* RIGHT CONTENT (2nd on mobile) */}
-          <div className="flex flex-col space-y-3 md:space-y-3 order-2">
-            <p className=" font-medium">
-              FAST, SMART & CONNECTED SUPPLY CHAINS
-            </p>
+              <p className="text-black mb-4 text-sm md:text-base">
+                India’s trusted luggage delivery service, built to make travel
+                lighter, smarter, and stress-free.
+              </p>
 
-            <h2 className=" ">
-              Optimizing logistics <br /> with purpose
-            </h2>
+              {/* CTA */}
+              <Link
+                href="/contact-us"
+                className="btn-primary hover:scale-105 transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
 
-            <p className="font-medium">
-              Supply is a leader in logistics, making shipping simple and
-              reliable for any business that needs to move goods.
-            </p>
-
-            {/* SECOND IMAGE – stays inside right column but stacks on mobile */}
-            <Image
-              src={abouttwo}
-              alt="Logistics Team"
-              className="
-          rounded-3xl 
-          w-full 
-          h-[160px] 
-          sm:h-[200px] 
-          md:h-[260px] 
-          lg:h-[540px]
-          object-cover 
-          mt-5
-        "
-            />
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
+              <Image
+                src={aboutmobile}
+                alt="Hero"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto lg:py-20 ">
-        <MarqueeLogos />
+      <section className="container mx-auto relative px-4 py-12 md:pt-24 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div className="flex flex-col justify-center">
+              <h3 className="  text-center md:text-start  mb-4">
+                The Idea Behind Frisbi
+              </h3>
+              <h2 className="md:text-left text-center mb-4">
+                Built to make luggage the easiest part of your journey
+              </h2>
+              <p className="text-second mb-3 text-center md:text-left max-w-xl leading-relaxed">
+                Travel shouldn't mean choosing between what you need and what
+                fits the luggage limit. It shouldn't mean paying ₹2,000 for an
+                extra 5kg or dragging heavy bags through terminals and stations.
+                That's why we built Frisbi.
+              </p>
+              <p className="text-second mb-8 text-center md:text-left max-w-xl leading-relaxed">
+                We’re a door-to-door luggage delivery service that moves your
+                belongings safely between cities so you can travel light.
+                Whether you’re heading on a pilgrimage, exploring new places,
+                visiting family, or relocating for work, we take care of your
+                baggage so you can focus on where you’re going, not what you’re
+                carrying.
+              </p>
+
+              {/* CTA */}
+              <div className="flex justify-center md:justify-start">
+                <Link
+                  href="/about"
+                  className="btn-primary transition-transform hover:scale-105"
+                >
+                  Get in touch
+                </Link>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-xl h-[280px] md:h-[500px] rounded-2xl overflow-hidden">
+                <Image
+                  src={About}
+                  alt="Frisbi luggage delivery illustration"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="bg-[#000] py-30 pb-30">
-        <CustomSlider title="Our Key Locations" />
-      </section>
-      <section className="py-30">
+      <section className="py-12 md:py-16 lg:py-24 ">
         <Stats
           data={[
-            { start: 0, end: 22, label: "Loads delivered" },
-            { start: 0, end: 15, label: "Client Served" },
-            { start: 0, end: 5, label: "Year of Experience" },
-            { start: 0, end: 30, label: "Order Completed" },
+            { start: 0, end: 2500, label: "Loads delivered" },
+            { start: 0, end: 1200, label: "Happy Travelers" },
+            { start: 0, end: 3, label: "Years Moving Luggage" },
+            { start: 0, end: 25000, label: "Pincodes Reached" },
+            { start: 0, end: 99, label: "Customer Satisfaction" },
           ]}
         />
       </section>
 
-      <section className="pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4">
+      <section className="py-12 md:pt-16 md:pb-24 ">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4">
           {/* LEFT GRID IMAGES */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 order-2">
             {/* BLUE BOX */}
             <div className="bg-primary rounded-3xl p-6 leading-[1.4] flex items-end justify-end text-white text-3xl font-semibold min-h-[150px] md:min-h-[200px]">
               Our Corporate Values
@@ -145,43 +199,35 @@ function Aboutus() {
           </div>
 
           {/* RIGHT CONTENT */}
-          <div>
-            <p className="text-xs tracking-wide  uppercase">
-              Business forward with trust
-            </p>
+          <div className="order-1">
+            <h2 className="md:text-left text-center">What We Stand For</h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">
-              Our Corporate Values
-            </h2>
-
-            <p className="text-second mt-4 leading-relaxed max-w-lg">
-              Our values align to our mission, support our culture, and serve as
-              a declaration of how we treat each other, our customers, and our
-              partners.
+            <p className="text-second mt-4 leading-relaxed max-w-lg md:text-left text-center">
+              Three principles behind every delivery
             </p>
 
             {/* VALUES LIST */}
-            <div className="mt-6 space-y-6">
+            <div className="mt-6 space-y-8 md:text-left text-center">
               <div>
-                <h3 className="text-lg font-semibold">Respect</h3>
+                <h4 className="text-lg font-semibold">Care</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
-                  We recognize that the thoughts, feelings, and backgrounds of
-                  others are as important as our own.
+                  Every bag gets handled properly. We make sure your belongings move safely from first pickup to final delivery.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold">Integrity</h3>
+                <h4 className="text-lg font-semibold">Clarity</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
-                  We are honest, ethical, and trustworthy.
+                  The price you see upfront is what you pay. Get realistic timelines and real-time updates as things move forward. 
+
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold">Accountability</h3>
+                <h4 className="text-lg font-semibold">Commitment</h4>
                 <p className="text-second text-sm mt-1 max-w-md">
-                  We accept full responsibility for our decisions, actions, and
-                  results.
+                 On time, every time. Scheduled pickups stay on track, delivery dates are met, and your bags arrive as promised.
+
                 </p>
               </div>
             </div>
@@ -189,15 +235,18 @@ function Aboutus() {
         </div>
       </section>
 
-      <section>
-         <Testimonials />
-      </section>
+      <TransformingCities />
 
-      <section className="mt-7 bg-[#050A1F] mx-auto">
+      <section className="  mx-auto relative px-4 py-12 md:py-16 lg:py-24 sm:px-6 lg:px-8">
+        <Testimonials />
+      </section>
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
 
-       <CallToAction />
+      <MarqueeLogos />
+
+      <CallToAction />
     </div>
   );
 }

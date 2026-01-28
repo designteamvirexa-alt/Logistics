@@ -10,11 +10,15 @@ export function Scale() {
   ];
 
   return (
-    <div className="py-24 bg-black from-blue-900 via-blue-800 to-indigo-900 text-white">
+    <div className="py-24 bg-primary text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-4">
-          Designed for Scale & Reliability
+          Built to scale with businesses that move fast
         </h2>
+        <p className="text-center text-white max-w-2xl mx-auto mb-12">
+          From startups to enterprises, Frisbi scales with your operations.
+
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
           {features.map((feature, index) => (
@@ -22,14 +26,12 @@ export function Scale() {
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-white" />
               </div>
-              <p className="text-blue-100">{feature.text}</p>
+              <p className="text-white">{feature.text}</p>
             </div>
           ))}
         </div>
         
-        <p className="text-center mt-12 text-white">
-          From startups to enterprises—Frisbi scales with your operations.
-        </p>
+       
       </div>
     </div>
   );

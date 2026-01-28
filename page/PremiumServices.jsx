@@ -1,254 +1,263 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Check, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { Check } from "lucide-react";
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
 
-import herobg from "@/asset/service/standard-services.png";
-import one from "@/asset/service/2.png";
-import location from "@/asset/location.png";
+import Maximum from "@/asset/icon/security-lock.svg";
+import goods from "@/asset/icon/goods.svg";
+import Transparency from "@/asset/icon/transparency.svg";
+import Priority from "@/asset/icon/safe.svg";
+import Peace from "@/asset/icon/delivery.svg";
+import MarqueeLogos from "@/components/MarqueeLogos";
+
+// Assets
+import herobg from "@/asset/service/premium-banner-img.svg";
+import one from "@/asset/service/express-cover.png";
+
+
+// Components
 import ContactSection from "@/components/ContactSection";
 import ServiceFAQSection from "@/components/ServiceAccordionPremium";
 import CallToAction from "@/components/CallToActionPremium";
 import Comparison from "@/components/ComparisonPremium";
-
 import PricingStructure from "@/components/PricingStructurePremium";
-import Keyfurture from "@/components/KeyfutureexpressPremium";
-import PackageGuidelines from "@/components/PackageGuidelines";
-import HowItWorks from "@/components/OurProcess";
+import Keyfuture from "@/components/KeyfutureexpressPremium";
+import HowItWorks from "@/components/OurProcesspremium";
 import Testimonials from "@/components/Testimonials";
-
 import TransformingCities from "@/components/Locations";
 
-function PremiumServices() {
-  const idealFor = [
-    "High-value electronics",
-    "Confidential documents",
-    "Corporate & enterprise shipments",
-    "Jewelry & luxury items",
-    "Medical & lab equipment",
-    "Fragile & sensitive goods",
-  ];
+export default function PremiumServices() {
+  /* ----------------------------------------
+     ✅ SSR FIX (IMPORTANT)
+  ---------------------------------------- */
+  const [mounted, setMounted] = useState(false);
+  const [open, setOpen] = useState(1);
 
-  const ensures = [
-    "Secure handling",
-    "Professional pickup",
-    "Cost-efficient delivery",
-    "Full tracking visibility",
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // ⛔ Prevent server-side crash (HTMLDivElement error)
+  if (!mounted) return null;
+
+  const idealFor = [
+    "Expensive luggage with high-value contents",
+    "Pilgrimage trips carrying offerings and valuables",
+    "Higher standards. Fewer handoffs.",
+    "Priority movement that stays on track",
+    "Dedicated support when it matters",
+    "Built for journeys where nothing can go wrong",
+  ];
+   const ensures = [
+    "Delivered within 3 days",
+    "Free premium packaging included",
+    "Priority pickup and delivery slots",
+    "Dedicated support throughout the journey",
+   
   ];
 
   const fadeUp = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
   };
 
-  const [open, setOpen] = useState(1);
-
-  const faqData = [
+  const steps = [
     {
-      id: 1,
-      title: "1. Maximum Security",
-      content: "Tamper-proof seals & minimal handling points.",
+      number: "1",
+      icon: Maximum,
+      title: "Maximum Security",
+      description: "Tamper-proof seals & minimal handling points.",
     },
     {
-      id: 2,
-      title: "2. Best for High-Value Goods",
-      content: "Perfect for expensive & sensitive shipments.",
+      number: "2",
+      icon: goods,
+      title: "Best for High-Value Goods",
+      description: "Perfect for expensive & sensitive shipments.",
     },
     {
-      id: 3,
-      title: "3. Guaranteed Priority",
-      content: "No delays. No compromise.",
+      number: "3",
+      icon: Priority,
+      title: "Guaranteed Priority",
+      description: "No delays. No compromise.",
     },
     {
-      id: 4,
-      title: "4. Complete Transparency",
-      content: "Live updates, call support & delivery proof.",
+      number: "4",
+      icon: Transparency,
+      title: "Complete Transparency",
+      description: "Live updates, call support & delivery proof.",
     },
     {
-      id: 5,
-      title: "5. Peace of Mind",
-      content: "Handled by trained professionals only.",
+      number: "5",
+      icon: Peace,
+      title: "Peace of Mind",
+      description: "Handled by trained professionals only.",
     },
   ];
 
   return (
-    <div className="-mt-20">
-      {/* HERO SECTION */}
-      <section className="relative h-[650px] md:h-[660px] rounded-3xl p-2">
-        <Image
-          src={herobg}
-          alt="Hero Background"
-          fill
-          priority
-          className="object-cover rounded-3xl p-2"
-        />
+    <div className="-mt-24 -mt-16">
+      {/* ================= HERO ================= */}
+      <section className="relative bg-white overflow-hidden">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT (UNCHANGED) */}
+            <div className="relative z-10">
+              {/* <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.6 }}
+                className="inline-block bg-white/10 backdrop-blur border border-white/20 px-6 py-2 rounded-full mb-6"
+              >
+               
+              </motion.div> */}
+              <p className="text-primary mb-5 text-center md:text-start">
+                ✨ Because some deliveries deserve more core
+              </p>
 
-        <div className="container relative z-10 mx-auto px-4 py-24 md:py-32">
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.6 }}
-            className="inline-block bg-white/10 backdrop-blur-xl border border-white/20 px-8 py-2 rounded-full mb-6"
-          >
-            <p className="text-white flex items-center gap-3">
-              <span className="text-2xl">✨</span>
-              Because some deliveries deserve more than speed.
-            </p>
-          </motion.div>
+              <motion.h1
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-black text-4xl md:text-5xl font-bold mb-6 text-center md:text-start"
+              >
+                Premium Delivery
+              </motion.h1>
 
-          <motion.h1
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white font-black mb-6"
-          >
-            Premium Delivery
-          </motion.h1>
+              <motion.p
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-black max-w-2xl mb-4 text-center md:text-start"
+              >
+                White-glove luggage delivery service for your most valuable belongings.
+              </motion.p>
+              <motion.p
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-black max-w-2xl mb-6 text-center md:text-start"
+              >
+                Best for luggage that needs careful handling, from heavy gears to high-value items.
+              </motion.p>
 
-          <motion.p
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-blue-100 text-lg max-w-2xl mb-6"
-          >
-            Elite, white-glove logistics for your most valuable and time-critical shipments.
-          </motion.p>
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex gap-4 justify-center md:justify-start"
+              >
+                <Link
+                  href="#contact"
+                  className="btn-primary hover:scale-105 transition-all"
+                >
+                  Book Now
+                </Link>
 
-          <motion.p
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-purple-100 max-w-2xl mb-10"
-          >
-            <span className="font-semibold text-white">Best for: </span>
-            High-value goods, confidential documents, luxury items, fragile cargo & VIP customers.
-          </motion.p>
+                <Link
+                  href="#pricing"
+                  className="btn-primary-outline hover:scale-105 transition-all"
+                >
+                  View Pricing
+                </Link>
+              </motion.div>
+            </div>
 
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-4"
-          >
-            <button className="bg-white px-8 py-3 text-sm sm:text-base font-semibold rounded-full hover:scale-105 transition-all">
-              Book Now
-            </button>
-
-            <button className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full text-sm sm:text-base hover:bg-white/20 transition-all">
-              View Pricing
-            </button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* OVERVIEW SECTION */}
-      <section className="w-full py-12 md:py-20 px-4">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
-          <Image
-            src={one}
-            alt="Overview"
-            width={500}
-            height={500}
-            className="rounded-3xl w-full h-56 sm:h-72 md:h-80 lg:h-[450px] object-cover"
-          />
-
-          <div className="col-span-1 md:col-span-2">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Frisbi Overview
-            </h2>
-
-            <p className="text-second text-base leading-relaxed mb-6">
-              Premium Delivery is our most advanced and exclusive logistics service, designed for shipments that demand maximum security, priority handling, and personalized care.
-            </p>
-             <p className="text-second text-base leading-relaxed mb-6">
-              Every Premium shipment is handled with dedicated resources, minimal touchpoints, and real-time supervision from pickup to final delivery.
-            </p>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-6 border border-blue-100">
-                <h4 className="text-lg font-semibold mb-4">Ideal for:</h4>
-                <ul className="space-y-3">
-                  {idealFor.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-black">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 border border-green-100">
-                <h4 className="text-lg font-semibold mb-4">
-                  This service ensures:
-                </h4>
-                <ul className="space-y-3">
-                  {ensures.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-black">
-                      <Check className="w-5 h-5 text-green-600 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[260px] sm:h-[300px] md:h-[420px] flex justify-center">
+              <Image
+                src={herobg}
+                alt="Premium Delivery"
+                fill
+                priority
+                className="object-cover rounded-3xl"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* LOGOS + PRICING */}
-      <section className="bg-[#F1F2F6]">
+      {/* ================= OVERVIEW ================= */}
+      <section className="py-12 md:py-16 px-4">
+            <div className="container mx-auto grid md:grid-cols-3 items-center gap-10">
+              <Image
+                src={one}
+                alt="Overview"
+                className="rounded-3xl h-[400px] object-cover"
+              />
+    
+              <div className="md:col-span-2">
+                <h2 className="text-4xl font-bold mb-4 text-center md:text-start">
+                  Frisbi Premium Overview
+                </h2>
+                <p className="text-second mb-8 text-center md:text-start">
+                  Premium Delivery is our highest tier of luggage delivery service built for travelers who want absolute care, guaranteed timelines, and dedicated attention from start to finish.
+
+                </p>
+    
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <div className="bg-blue-50 p-6 rounded-3xl ">
+                    <h4 className="font-semibold mb-4">Ideal for:</h4>
+                    <ul className="space-y-3 font-semibold">
+                      {idealFor.map((item, i) => (
+                        <li key={i} className="flex gap-3">
+                          <Check className="text-primary w-5 h-5" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+    
+                  <div className="bg-green-50 p-6 rounded-3xl ">
+                    <h4 className="font-semibold mb-4">This service ensures:</h4>
+                    <ul className="space-y-3 font-semibold">
+                      {ensures.map((item, i) => (
+                        <li key={i} className="flex gap-3">
+                          <Check className="text-green-600 w-5 h-5" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+      {/* ================= PRICING ================= */}
+      <section id="pricing" className="bg-[#F1F2F6]">
         <PricingStructure />
-        <Keyfurture />
+        <Keyfuture />
       </section>
 
-      {/* <PackageGuidelines /> */}
       <Comparison />
       <HowItWorks />
-
       <TransformingCities />
-      {/* HOW TO SHIP SECTION */}
-      <section
-        className="px-4 md:px-10 py-28 py-10 w-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/asset/background.png')` }}
-      >
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* LEFT IMAGE */}
-          <div>
-            <Image src={location} alt="Location" width={500} height={500} />
-          </div>
 
-          {/* ACCORDION */}
-          <div>
-            <h2 className="mb-7">Why Choose Premium Delivery?</h2>
+      {/* ================= WHY PREMIUM ================= */}
+      <section className=" ">
+        <div className="py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center mb-4">Why Choose Premium Delivery?</h2>
 
-            <p className="mb-6">Benefits of Choosing Premium Delivery</p>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {steps.map((step, index) => (
+                <div key={index} className="relative">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="relative mb-4">
+                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                        <Image src={step.icon} alt="" width={28} height={28} />
+                      </div>
+                      {/* <div className="absolute -top-3 -right-1 w-7 h-7 bg-white text-black rounded-full shadow-xl flex items-center justify-center text-xs font-semibold">
+                        {step.number}
+                      </div> */}
+                    </div>
+                    <h4 className="mb-2">{step.title}</h4>
+                    <p className="text-second">{step.description}</p>
+                  </div>
 
-            <div>
-              {faqData.map((step) => (
-                <div key={step.id} className="border-b py-4">
-                  <button
-                    onClick={() => setOpen(open === step.id ? null : step.id)}
-                    className="flex w-full justify-between items-center text-left"
-                  >
-                    <span className="font-bold text-[22px]">{step.title}</span>
-                    {open === step.id ? (
-                      <Minus size={20} />
-                    ) : (
-                      <Plus size={20} />
-                    )}
-                  </button>
-
-                  <AnimatePresence>
-                    {open === step.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                      >
-                        <p className="text-second mt-3 pr-4">
-                          {step.content}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {index < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-gradient-to-r from-blue-500 to-transparent" />
+                  )}
                 </div>
               ))}
             </div>
@@ -256,18 +265,58 @@ function PremiumServices() {
         </div>
       </section>
 
-      <Testimonials />
+      <section className="pb-16">
+        <Testimonials />
+      </section>
 
-      <section className=" bg-[#000] mx-auto ">
+      <section
+        className=" bg-[#F1F2F6] mx-auto overflow-x-hidden "
+        id="contact"
+      >
         <ContactSection />
       </section>
-      <section className="py-24">
-        <ServiceFAQSection />
-      </section>
 
-      <CallToAction />
+      <ServiceFAQSection />
+
+      <MarqueeLogos />
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+              Fast, safe, and affordable – trusted by thousands across India.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
-
-export default PremiumServices;

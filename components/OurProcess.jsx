@@ -2,60 +2,61 @@
 
 import { motion } from "framer-motion";
 import {
-  MapPin,
-  Truck,
-  Package,
+  PackageCheck,
+  ClipboardList,
+  CalendarCheck,
   CreditCard,
-  Hash,
-  Home,
+  ShieldCheck,
+  Navigation,
   CheckCircle,
 } from "lucide-react";
 
 export function HowItWorks() {
   const steps = [
-    {
-      icon: MapPin,
-      title: "Submit Delivery Request",
-      description: "Choose Premium Delivery from the service list.",
-      color: "blue",
-    },
-    {
-      icon: Truck,
-      title: "Declare Item Value & Handling Needs",
-      description: "For insurance and security setup.",
-      color: "purple",
-    },
-    {
-      icon: Package,
-      title: "Schedule Dedicated Pickup",
-      description: "Select exact date & time.",
-      color: "green",
-    },
-    {
-      icon: CreditCard,
-      title: "Secure Payment Confirmation",
-      description: "Payment confirms resource allocation.",
-      color: "orange",
-    },
-    {
-      icon: Hash,
-      title: "Dedicated Agent Pickup",
-      description: "Agent verifies, seals & documents parcel.",
-      color: "pink",
-    },
-    {
-      icon: Home,
-      title: "Live Supervised Transit",
-      description: "Shipment monitored throughout journey.",
-      color: "indigo",
-    },
-    {
-      icon: CheckCircle,
-      title: "Secure Final Delivery",
-      description: "ID-verified delivery with digital proof.",
-      color: "teal",
-    },
-  ];
+  {
+    icon: PackageCheck,
+    title: "Pick Standard Delivery",
+    description: "Affordable by default, with add-ons if needed",
+    color: "blue",
+  },
+  {
+    icon: ClipboardList,
+    title: "Share the Details",
+    description: "Tell us what you’re sending, its weight and size.",
+    color: "purple",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Pick a Pickup Date",
+    description: "Choose a day that works for you.",
+    color: "green",
+  },
+  {
+    icon: CreditCard,
+    title: "Confirm & Pay",
+    description: "Pay once and your booking is locked in.",
+    color: "orange",
+  },
+  {
+    icon: ShieldCheck,
+    title: "We Secure Your Bags",
+    description: "Timely pickup, printed labels, packaging on request.",
+    color: "pink",
+  },
+  {
+    icon: Navigation,
+    title: "Track It in Real Time",
+    description: "Follow your luggage as it moves across India.",
+    color: "indigo",
+  },
+  {
+    icon: CheckCircle,
+    title: "Delivered, Stress-Free",
+    description: "Confirmed with a digital signature and photo proof.",
+    color: "teal",
+  },
+];
+
 
   const colorClasses = {
     blue: "text-blue-600 bg-blue-500/10 border-blue-200",
@@ -77,17 +78,18 @@ export function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-         
-
-          <h2 className="text-3xl md:text-4xl font-bold ">
-            How Premium Delivery Works
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            HHow Standard Luggage Delivery Works
           </h2>
+          <p className="text-second">Your luggage, seven easy moves</p>
         </motion.div>
 
         {/* Steps Grid */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center 
-      mx-auto">
+          <div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center 
+      mx-auto"
+          >
             {steps.map((step, index) => {
               const colors = colorClasses[step.color];
               const [textColor, bgColor, borderColor] = colors.split(" ");
@@ -110,7 +112,9 @@ export function HowItWorks() {
                   </div>
 
                   {/* Icon */}
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mt-2 ${bgColor}`}>
+                  <div
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 mt-2 ${bgColor}`}
+                  >
                     <step.icon className={`w-7 h-7 ${textColor}`} />
                   </div>
 

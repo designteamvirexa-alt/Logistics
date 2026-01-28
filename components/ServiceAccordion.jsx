@@ -62,7 +62,7 @@ export default function FAQ() {
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggle(i)}
                 >
-                  <h3 className="font-semibold text-lg">{faq.question}</h3>
+                  <h4 className="font-semibold text-lg">{faq.question}</h4>
                   <Minus className="w-6 h-6 text-gray-600" />
                 </div>
 
@@ -99,14 +99,13 @@ export default function FAQ() {
         {!showAll ? (
           <button
             onClick={() => setShowAll(true)}
-            className="bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full shadow-xl shadow-blue-500/50 transition"
-          >
+            className="btn-primary hover:scale-105 transition-all">
             View More
           </button>
         ) : (
           <button
             onClick={() => setShowAll(false)}
-            className="bg-gray-200 text-[16px] text-gray-900 font-semibold py-3 px-12 rounded-full transition"
+            className="btn-primary hover:scale-105 transition-all"
           >
             View Less
           </button>

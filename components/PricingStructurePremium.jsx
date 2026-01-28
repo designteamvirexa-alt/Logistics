@@ -7,32 +7,32 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import illsutration from "@/asset/illustration.svg";
+import illsutration from "@/asset/common-illustrator.png";
 import Image from "next/image";
 
 function PricingStructure() {
   const factors = [
     {
       icon: MapPin,
-      title: "Pickup & delivery locations",
-      description: "City pairs, zone mapping, road distance.",
+      title: "Pickup and delivery locations",
+      description: "From origin to destination, and the distance in between.",
       gradient: "bg-primary",
     },
     {
       icon: Ruler,
-      title: "Distance & route exclusivity",
+      title: "Distance and route exclusivity",
       description: "The larger the distance, the lesser per-km cost.",
       gradient: "bg-primary",
     },
     {
       icon: Weight,
-      title: "Weight & parcel dimensions",
-      description: "Starting from 0.5 kg to 25 kg.",
+      title: "Weight and luggage dimensions",
+      description: "Starting from 5 kg to 30 kg.",
       gradient: "bg-primary",
     },
     {
       icon: Plus,
-      title: "Declared value of goods",
+      title: "Declared value of luggage",
       description: "Optional add-ons available.",
       gradient: "bg-primary",
     },
@@ -88,19 +88,26 @@ function PricingStructure() {
         </div>
 
         <section className="w-full ">
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-10 items-center">
+          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[2fr_4fr] gap-10 items-center">
             {/* LEFT CARD with image on right */}
-            <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-center lg:items-start gap-8">
+            <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-center">
+              <span className=" text-2xl font-semibold  leading-[1.6]">
+               Premium Delivery includes free packaging, faster timelines, and extra care but you can add more protection based on your needs.
+
+              
+              </span>
+            </div>
+            <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-start gap-8">
               {/* TEXT LEFT */}
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-6">Optional add-ons:</h3>
 
                 <ul className="space-y-4 text-[16px]">
                   {[
-                    "Special handling",
-                    "Fragile care",
-                    "High-value insurance",
-                    "Return pickup",
+                    "Insurance for high-value luggage items",
+                    "Special handling for fragile bags",
+                    "Additional protective wrapping layers",
+                    "Flexible pick-up and delivery slots",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
                       <span className="text-primary text-lg">➤</span>
@@ -121,13 +128,7 @@ function PricingStructure() {
             </div>
 
             {/* RIGHT CARD */}
-            <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-center">
-              <span className=" text-2xl font-semibold  leading-[1.6]">
-                💰 <br />
-               Premium Delivery offers maximum value, not minimum price.
-              
-              </span>
-            </div>
+            
           </div>
         </section>
       </div>

@@ -3,105 +3,139 @@
 import { useState } from "react";
 import Image from "next/image";
 
+/* ✅ City Images */
+import Delhi from "@/asset/cities/Delhi.webp";
+import Mumbai from "@/asset/cities/Mumbai.webp";
+import Bengaluru from "@/asset/cities/Bangalore.webp";
+import Chennai from "@/asset/cities/Chennai.webp";
+import Hyderabad from "@/asset/cities/Hyderabad.webp";
+import Kolkata from "@/asset/cities/Kolkata.webp";
+import Pune from "@/asset/cities/Pune.webp";
+import Goa from "@/asset/cities/Surat.webp";
+import Agra from "@/asset/cities/Agra.webp";
+import Ladakh from "@/asset/cities/Kanpur.webp"; // Leh–Ladakh fallback
+import Rishikesh from "@/asset/cities/Dehradun.webp"; // Rishikesh & Haridwar
+import Varanasi from "@/asset/cities/Varanasi.webp"; // Kashi
+import Rameshwaram from "@/asset/cities/Madurai.webp";
+import Amritsar from "@/asset/cities/Amritsar.webp";
+import Ahmedabad from "@/asset/cities/Ahmedabad.webp";
+import Jaipur from "@/asset/cities/Jaipur.webp";
+import Chandigarh from "@/asset/cities/Chandigarh.webp";
+import Coimbatore from "@/asset/cities/Coimbatore.webp";
+import Indore from "@/asset/cities/Indore.webp";
+import Kochi from "@/asset/cities/Kochi.webp";
+import Nagpur from "@/asset/cities/Nagpur.webp";
+import Bhubaneswar from "@/asset/cities/Bhubaneswar.webp";
+import Lucknow from "@/asset/cities/Lucknow.webp";
+import Visakhapatnam from "@/asset/cities/Visakhapatnam.webp";
+import Surat from "@/asset/cities/Surat.webp";
+import Vadodara from "@/asset/cities/Vadodara.webp";
+import Trivandrum from "@/asset/cities/Thiruvananthapuram.webp";
+import Madurai from "@/asset/cities/Madurai.webp";
+import Vijayawada from "@/asset/cities/Vijayawada.webp";
+
+/* ✅ Fallback */
+import DefaultCity from "@/asset/cities/Bangalore.webp";
+
 export default function TransformingCities() {
   const [showAll, setShowAll] = useState(false);
 
+  /* ✅ ONLY your city names */
   const cities = [
+    "Delhi (NCR)",
     "Mumbai",
-    "Delhi / New Delhi",
     "Bengaluru",
     "Chennai",
-    "Kolkata",
     "Hyderabad",
+    "Kolkata",
     "Pune",
+    "Goa",
+    "Agra",
+    "Leh–Ladakh",
+    "Rishikesh & Haridwar",
+    "Kashi",
+    "Rameshwaram",
+    "Amritsar",
+    "Varanasi",
     "Ahmedabad",
+    "Jaipur",
+    "Chandigarh",
+    "Coimbatore",
+    "Indore",
+    "Kochi",
+    "Nagpur",
+    "Bhubaneswar",
+    "Lucknow",
+    "Visakhapatnam",
     "Surat",
     "Vadodara",
-    "Rajkot",
-    "Nashik",
-    "Nagpur",
-    "Indore",
-    "Bhopal",
-    "Jaipur",
-    "Jodhpur",
-    "Kota",
-    "Lucknow",
-    "Kanpur",
-    "Varanasi",
-    "Prayagraj (Allahabad)",
-    "Patna",
-    "Ranchi",
-    "Bhubaneswar",
-    "Raipur",
-    "Guwahati",
-    "Dehradun",
-    "Chandigarh",
-    "Ludhiana",
-    "Amritsar",
-    "Mangalore",
-    "Mysuru",
-    "Coimbatore",
+    "Trivandrum",
     "Madurai",
-    "Salem",
-    "Trichy (Tiruchirappalli)",
-    "Kochi",
-    "Thiruvananthapuram",
     "Vijayawada",
-    "Visakhapatnam",
-    "Warangal",
-    "Hubli–Dharwad",
-    "Belagavi",
-    "Jabalpur",
-    "Gwalior",
-    "Agra",
-    "Faridabad",
-    "Ghaziabad",
-    "Noida",
-    "Gurugram",
   ];
 
-  const visibleCities = showAll ? cities : cities.slice(0, 18);
+  /* ✅ Name → Image mapping */
+  const cityImages = {
+    "Delhi (NCR)": Delhi,
+    Mumbai,
+    Bengaluru,
+    Chennai,
+    Hyderabad,
+    Kolkata,
+    Pune,
+    Goa,
+    Agra,
+    "Leh–Ladakh": Ladakh,
+    "Rishikesh & Haridwar": Rishikesh,
+    Kashi: Varanasi,
+    Rameshwaram,
+    Amritsar,
+    Varanasi,
+    Ahmedabad,
+    Jaipur,
+    Chandigarh,
+    Coimbatore,
+    Indore,
+    Kochi,
+    Nagpur,
+    Bhubaneswar,
+    Lucknow,
+    Visakhapatnam,
+    Surat,
+    Vadodara,
+    Trivandrum,
+    Madurai,
+    Vijayawada,
+  };
+
+  const visibleCities = showAll ? cities : cities.slice(0, 21);
 
   return (
-    <section className="relative w-full bg-[#06030F] py-24">
-      
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70 pointer-events-none"></div>
+    <section className="relative w-full bg-primary py-12 md:py-16 lg:py-24">
+      <div className="container mx-auto px-4">
+        <h2 className="text-center text-white">Connecting Cities, Made Simple</h2>
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        
-        <h2 className="text-center text-white font-bold text-4xl md:text-5xl">
-          We are transforming cities
-        </h2>
-
-        <p className="mt-3 text-center text-gray-300 text-[15px]">
-          Our business is growing by the day — we are now present in 21+ cities
-        </p>
-
-        <div className="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-y-12 gap-x-6 place-items-center">
-          {visibleCities.map((city, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-2xl overflow-hidden">
-                <Image
-                  src="/city.png" // Replace with your image
-                  alt={city}
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-
-              <p className="mt-2 text-white text-xs font-medium tracking-wide text-center">
+        <div className="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-y-12 gap-x-6 place-items-center">
+          {visibleCities.map((city) => (
+            <div key={city} className="flex flex-col items-center">
+              <Image
+                src={cityImages[city] || DefaultCity}
+                alt={city}
+                width={100}
+                height={100}
+                className="object-contain"
+              />
+              <p className="mt-2 text-white text-xs font-medium text-center">
                 {city}
               </p>
             </div>
           ))}
         </div>
 
-        {/* VIEW MORE / LESS BUTTON */}
         <div className="text-center mt-24">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-6 py-3 text-sm font-semibold text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-200"
+            className="btn-white hover:scale-105 transition-all"
           >
             {showAll ? "View Less" : "View More"}
           </button>

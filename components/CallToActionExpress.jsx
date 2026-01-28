@@ -31,23 +31,20 @@ export default function CallToAction() {
           className="relative z-10 text-center py-16 md:py-20 px-6"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
-            Ready to ship your parcel at the best price?
+            Ready to ship your luggage at the best price?
           </h2>
 
           <p className="text-white mb-8 text-sm md:text-base">
-            Fast, safe, and affordable – trusted by thousands across India.
+            Fast, safe, and affordable. Trusted by thousands across India.
+
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-black px-6 py-3 rounded-full 
-                               font-semibold text-sm md:text-base 
-                               hover:scale-105 transition-all">
+            <button className="btn-white hover:scale-105 transition-all">
               Book  Now
             </button>
 
-            <button className="border border-white/40 text-white px-6 py-3 rounded-full
-                               font-semibold text-sm md:text-base
-                               hover:bg-white/10 transition-all">
+            <button className="btn-white-outline hover:scale-105 transition-all">
               Contact Support
             </button>
           </div>

@@ -1,118 +1,145 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+
+// --- Images ---
+import illustration from "@/asset/premium-luggage.jpg";
+
+// --- icon ---
+import icon1 from "@/asset/icon/priority-pickup.svg";
+import icon2 from "@/asset/icon/faster-transit.svg";
+import icon3 from "@/asset/icon/tracking.svg";
+import icon4 from "@/asset/icon/insurance.svg";
+import icon5 from "@/asset/icon/notification.svg";
+import icon6 from "@/asset/icon/invoice.svg";
+import icon7 from "@/asset/icon/support.svg";
+import icon8 from "@/asset/icon/express.svg";
 
 export default function StickyStepsOverlap() {
   const steps = [
     {
       step: "STEP 1",
       title: "Priority Pickup",
-      desc: "Your parcel is picked up ahead of standard shipments.",
-      icon: "📦",
+      desc: "Your chosen time slot guaranteed with professional team arrival on-time. ",
+      icon: icon1,
     },
     {
       step: "STEP 2",
-      title: "Faster Transit",
-      desc: "Minimal hub delays with optimized routes.",
-      icon: "📡",
+      title: "Free Premium Packaging",
+      desc: "Sturdy boxes, bubble wrap, corner protection, sealing, and printed shipping labels included at no extra cost.",
+      icon: icon2,
     },
     {
       step: "STEP 3",
       title: "Live Real-Time Tracking",
-      desc: "Track your parcel at every stage.",
-      icon: "🚢",
+      desc: "Monitor your luggage at every checkpoint throughout the journey.",
+      icon: icon3,
     },
-
     {
       step: "STEP 4",
       title: "Enhanced Insurance Coverage",
-      desc: "Higher insurance protection than Standard Delivery.",
-      icon: "🚢",
+      desc: "Higher coverage limits protect your valuable luggage contents.",
+      icon: icon4,
     },
     {
       step: "STEP 5",
-      title: "Instant Notifications",
-      desc: "SMS & Email alerts for every status update.",
-      icon: "🚢",
+      title: "Get Notified Instantly",
+      desc: "Receive alerts at every status change throughout delivery.",
+      icon: icon5,
     },
     {
       step: "STEP 6",
-      title: "GST Invoice & Digital Receipt",
-      desc: "Auto-generated invoices for businesses.",
-      icon: "🚢",
+      title: "GST Invoice and Digital Receipt",
+      desc: "Complete documentation for business and personal records.",
+      icon: icon6,
     },
     {
       step: "STEP 7",
-      title: "Extended Customer Support",
-      desc: "Priority support during delivery hours.",
-      icon: "🚢",
+      title: "Dedicated Customer Support",
+      desc: "One point of contact throughout your entire delivery journey.",
+      icon: icon7,
     },
     {
       step: "STEP 8",
-      title: "Pan-India Express Network",
-      desc: "Strong coverage across metro & tier-1 cities.",
-      icon: "🚢",
+      title: "Pan-India Premium Network",
+      desc: "Exclusive handling lanes across our entire logistics network.",
+      icon: icon8,
     },
   ];
 
-  const scrollRef = (useRef < HTMLDivElement) | (null > null);
-  const [scrollY, setScrollY] = useState(0);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      setScrollY(scrollRef.current.scrollTop);
-    }
-  };
-
   return (
- <section className="py-20 bg-[#F4F2F7]">
+    <section className="py-20 bg-[#F4F2F7]">
       <div className="container mx-auto px-6">
-        <div className="lg:flex lg:gap-20">
-
-          {/* LEFT SECTION – STICKY ON DESKTOP */}
+        <div className="lg:flex lg:gap-20 ">
+          {/* LEFT – STICKY */}
           <div className="lg:w-1/2">
-            <div className="lg:sticky lg:top-24">
+            <div className="lg:sticky lg:top-24 text-center md:text-left">
               <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
-                DRIVING SUPPLY CHAIN SUCCESS
+                A RELIABLE WAY TO SHIP YOUR LUGGAGE
               </p>
 
-              <h2 className="font-bold leading-tight mb-6">Key Features</h2>
+              <h2 className="text-4xl font-bold leading-tight mb-6">
+                Why Premium Delivery works
+              </h2>
 
               <p className="text-gray-500 text-lg mb-8 max-w-lg">
-                Supply delivers tailored logistics and freight solutions, empowering
-                businesses with fast, safe, and efficient transport across North America.
+               Premium luggage delivery engineered for maximum security with tamper-proof seals, minimal handling touchpoints, dedicated support, enhanced insurance coverage.
               </p>
 
-              <button className="px-6 py-3 bg-[#613BFF] text-white rounded-full">
-                Our Services
-              </button>
+              <Link
+                href="/services"
+                className="btn-primary hover:scale-105 transition-all"
+              >
+                View Services
+              </Link>
+
+              <Image
+                src={illustration}
+                alt="Logistics Overview"
+                width={500}
+                height={500}
+                className="rounded-3xl object-cover w-full mt-10"
+                priority
+              />
             </div>
           </div>
 
-          {/* RIGHT SECTION – SCROLLABLE */}
+          {/* RIGHT – STEPS */}
           <div className="lg:w-1/2 space-y-6 mt-10 lg:mt-0">
             {steps.map((item, i) => (
               <div
                 key={i}
-                className="bg-white border border-gray-200 shadow-sm p-10 rounded-3xl transition-all duration-300"
+                className="bg-white border border-gray-200 p-10 rounded-3xl transition-all duration-300 hover:shadow-xl"
               >
                 <p className="text-xs tracking-widest text-gray-400 font-semibold mb-6">
                   {item.step}
                 </p>
 
-                <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-gray-500 mb-6">{item.desc}</p>
+                <div className="flex items-start gap-5">
+                  <div>
+                    <h4 className="text-2xl font-semibold mb-3">
+                      {item.title}
+                    </h4>
 
-                <div className="text-5xl text-purple-500">{item.icon}</div>
+                    <p className="text-gray-500 mb-4">{item.desc}</p>
+
+                    {/* Icon with light blue background */}
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-blue-100">
+                      <Image
+                        src={item.icon}
+                        alt={item.title}
+                        width={28}
+                        height={28}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
-
-
   );
 }

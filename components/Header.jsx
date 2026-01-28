@@ -1,90 +1,59 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, ChevronDown } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import Logo from "@/asset/frisbi_white.png"; // change path if needed
-import LogoBlack from "@/asset/logo-black.svg"; // change path if needed
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Menu, X, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const servicesList = [
-  "Standard Delivery",
-  "Express Delivery",
-  "Premium Delivery",
- 
-];
+import LogoWhite from "@/asset/frisbi_white.png";
+import LogoBlack from "@/asset/logo-black.svg";
 
-const booklist = [
-  "Corporate",
-"Individual"
-];
+const servicesList = ["Standard Delivery", "Express Delivery", "Premium Delivery"];
+const booklist = ["Corporate", "Individual"];
 
+export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
-export default function Header({ mode = "default" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [hoverService, setHoverService] = useState(false);
-
-   const [bookopen, setBookeOpen] = useState(false);
+  const [bookOpen, setBookOpen] = useState(false);
   const [hoverBook, setHoverBook] = useState(false);
   const [scroll, setScroll] = useState(false);
 
-  // Detect Scroll
+  // Scroll detection
   useEffect(() => {
     const handleScroll = () => setScroll(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Force white header for these pages
-  const isDarkHeader = mode === "black";
-  // Mobile Menu Link Click -> Close Menu
-  const handleLinkClick = () => setIsOpen(false);
-  return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300
-        ${
-          isDarkHeader
-            ? "bg-white"
-            : scroll
-            ? "bg-white shadow-md"
-            : "bg-transparent"
-        }
-      `}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+  // Header bg and text color logic
+  const headerBg = scroll ? "bg-white shadow-md" : "bg-transparent";
+  const textColor = isHome && !scroll ? "text-white" : "text-black";
+  const mobileIconColor = isHome && !scroll ? "text-white" : "text-black";
+  const logoSrc = isHome && !scroll ? LogoWhite : LogoBlack;
 
+  const handleLinkClick = () => setIsOpen(false);
+
+  return (
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${headerBg}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="font-bold">
-          <Image
-            src={isDarkHeader || scroll ? LogoBlack : Logo}
-            alt="Frisbi"
-            width={140}
-            height={40}
-            className="object-contain"
-          />
+          <Image src={logoSrc} alt="Logo" width={140} height={40} className="object-contain" />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav
-          className={`hidden md:flex space-x-8 text-[15px] font-semibold transition-all duration-300
-            ${isDarkHeader || scroll ? "text-black" : "text-white"}
-          `}
-        >
-            <div
-            className="relative"
-            onMouseEnter={() => setHoverBook(true)}
-            onMouseLeave={() => setHoverBook(false)}
-          >
-            <button
-              className={`flex items-center gap-1 transition 
-                ${isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"}
-              `}
-            >
+        <nav className={`hidden md:flex space-x-8 text-[15px] font-semibold transition-all duration-300 ${textColor}`}>
+          {/* Book Dropdown */}
+          <div className="relative" onMouseEnter={() => setHoverBook(true)} onMouseLeave={() => setHoverBook(false)}>
+            <button className="flex items-center gap-1 transition hover:text-[#013efe]">
               Book <ChevronDown className="h-4 w-4" />
             </button>
-
             {hoverBook && (
               <motion.div
                 initial={{ opacity: 0, y: -5 }}
@@ -96,7 +65,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/book/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-[#013efe] transition"
                   >
                     {item}
                   </Link>
@@ -104,31 +73,14 @@ export default function Header({ mode = "default" }) {
               </motion.div>
             )}
           </div>
-          
 
-          <Link
-            href="/about"
-            className={`${
-              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
-            } transition`}
-          >
-            About Us
-          </Link>
+          <Link href="/about" className="hover:text-[#013efe] transition">About Us</Link>
 
           {/* Services Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setHoverService(true)}
-            onMouseLeave={() => setHoverService(false)}
-          >
-            <button
-              className={`flex items-center gap-1 transition 
-                ${isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"}
-              `}
-            >
+          <div className="relative" onMouseEnter={() => setHoverService(true)} onMouseLeave={() => setHoverService(false)}>
+            <button className="flex items-center gap-1 transition hover:text-[#013efe]">
               Services <ChevronDown className="h-4 w-4" />
             </button>
-
             {hoverService && (
               <motion.div
                 initial={{ opacity: 0, y: -5 }}
@@ -140,7 +92,7 @@ export default function Header({ mode = "default" }) {
                   <Link
                     key={index}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                    className="block px-4 py-2 text-black hover:bg-blue-50 hover:text-[#013efe] transition"
                   >
                     {item}
                   </Link>
@@ -149,47 +101,29 @@ export default function Header({ mode = "default" }) {
             )}
           </div>
 
-          <Link
-            href="/rate-calculator"
-            className={`${
-              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
-            } transition`}
-          >
-            Rate Calculator
-          </Link>
-
-          <Link
-            href="/faq"
-            className={`${
-              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
-            } transition`}
-          >
-            FAQs
-          </Link>
-
-          <Link
-            href="/contact"
-            className={`${
-              isDarkHeader || scroll ? "hover:text-blue-600" : "hover:text-blue-300"
-            } transition`}
-          >
-            Contact Us
-          </Link>
+          <Link href="/rate-calculator" className="hover:text-[#013efe]">Rate Calculator</Link>
+          <Link href="/faq" className="hover:text-[#013efe]">FAQs</Link>
+          <Link href="/contact-us" className="hover:text-[#013efe]">Contact Us</Link>
         </nav>
 
         {/* Desktop Button */}
         <div className="hidden md:flex items-center">
-          <Link href='/track-your-package' className="bg-primary text-[16px] text-white font-semibold py-3 px-10 rounded-full transition">
-            Track Now
-          </Link>
+          <Link href="/track-your-package" className="btn-primary hover:scale-105 transition-all">Track Now</Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+
+        <div className="md:hidden flex gap-6">
+         <Link href="/track-your-package" onClick={handleLinkClick} className="bg-blue-600 pl-3 pr-3 pt-3 pb-3 text-center rounded-4xl text-white text-sm hover:scale-105 transition-all">Track Now</Link>
           <button onClick={() => setIsOpen(!isOpen)}>
-            <Menu className={`h-6 w-6 transition ${isDarkHeader || scroll ? "text-black" : "text-white"}`} />
+            {isOpen ? (
+              <X className="h-9 w-9 text-black transition" /> // Menu open -> show X icon
+            ) : (
+              <Menu className={`h-9 w-9 transition ${textColor}`} /> // Menu closed -> show Hamburger
+            )}
           </button>
         </div>
+
       </div>
 
       {/* Mobile Dropdown */}
@@ -198,21 +132,17 @@ export default function Header({ mode = "default" }) {
           initial={{ height: 0 }}
           animate={{ height: "auto" }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-white overflow-hidden shadow-lg"
+          className="md:hidden bg-white overflow-hidden shadow-lg h-full"
         >
           <div className="flex flex-col px-6 py-4 space-y-4">
-            <Link href="/" onClick={handleLinkClick} className="hover:text-blue-600">Home</Link>
-            <Link href="/about" onClick={handleLinkClick} className="hover:text-blue-600">About Us</Link>
+            <Link href="/" onClick={handleLinkClick} className="hover:text-[#013efe]">Home</Link>
+            <Link href="/about" onClick={handleLinkClick} className="hover:text-[#013efe]">About Us</Link>
 
-            {/* Mobile Service Dropdown */}
-            <button
-              onClick={() => setServiceOpen(!serviceOpen)}
-              className="flex justify-between items-center text-gray-800 font-medium"
-            >
+            {/* Mobile Services */}
+            <button onClick={() => setServiceOpen(!serviceOpen)} className="flex justify-between items-center text-gray-800 font-medium">
               Services
               <ChevronDown className={`h-4 w-4 transition-transform ${serviceOpen ? "rotate-180" : ""}`} />
             </button>
-
             {serviceOpen && (
               <div className="pl-4 flex flex-col space-y-2">
                 {servicesList.map((item, i) => (
@@ -220,7 +150,7 @@ export default function Header({ mode = "default" }) {
                     key={i}
                     href={`/services/${item.toLowerCase().replace(/ /g, "-")}`}
                     onClick={handleLinkClick}
-                    className="text-gray-700 hover:text-blue-600 transition"
+                    className="text-gray-700 hover:text-[#013efe] transition"
                   >
                     {item}
                   </Link>
@@ -228,13 +158,11 @@ export default function Header({ mode = "default" }) {
               </div>
             )}
 
-            <Link href="/rate-calculator" onClick={handleLinkClick} className="hover:text-blue-600">Rate Calculator</Link>
-            <Link href="/faq" onClick={handleLinkClick} className="hover:text-blue-600">FAQs</Link>
-            <Link href="/contact" onClick={handleLinkClick} className="hover:text-blue-600">Contact Us</Link>
+            <Link href="/rate-calculator" onClick={handleLinkClick} className="hover:text-[#013efe]">Rate Calculator</Link>
+            <Link href="/faq" onClick={handleLinkClick} className="hover:text-[#013efe]">FAQs</Link>
+            <Link href="/contact-us" onClick={handleLinkClick} className="hover:text-[#013efe]">Contact Us</Link>
 
-            <Link href="/track-your-package" onClick={handleLinkClick} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full w-full">
-              Track Now
-            </Link>
+            <Link href="/track-your-package" onClick={handleLinkClick} className="btn-primary hidden md:block hover:scale-105 transition-all">Track Now</Link>
           </div>
         </motion.div>
       )}

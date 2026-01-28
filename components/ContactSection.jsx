@@ -6,222 +6,214 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-/* ---------------- FLOATING INPUT ---------------- */
+/* ---------------- INPUT COMPONENTS (PLACEHOLDER ONLY) ---------------- */
 
-function FloatingInput({ label, type = "text", name, value, onChange }) {
+function Input({ type = "text", name, value, onChange, placeholder }) {
   return (
-    <div className="relative w-full">
-      <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder=" "
-        required
-        className="peer w-full bg-white/5 border border-white/10 text-white px-4 py-4 rounded-xl outline-none focus:border-primary transition placeholder-transparent"
-      />
-      <label
-        className="
-        absolute left-4 top-4 text-white/70 text-sm transition-all
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      required
+      className="w-full bg-[#f5f5f5] text-black px-4 py-3 rounded-xl outline-none
+      focus:ring-1 focus:ring-[#013efe] transition text-sm placeholder:text-sm placeholder:text-gray-600"
+    />
+  );
+}
 
-        peer-placeholder-shown:top-4
-        peer-placeholder-shown:text-sm
-        peer-placeholder-shown:bg-transparent
-        peer-placeholder-shown:px-0
+function Select({ name, value, onChange, options = [], placeholder }) {
+  return (
+    <select
+      name={name}
+      value={value}
+      onChange={onChange}
+      required
+      className="w-full bg-[#f5f5f5] text-black px-4 py-3 rounded-xl outline-none
+      focus:ring-1 focus:ring-[#013efe] transition text-sm placeholder:text-xs placeholder:text-gray-600"
+    >
+      <option value="" disabled>
+        {placeholder}
+      </option>
+      {options.map((opt, i) => (
+        <option key={i} value={opt}>
+          {opt}
+        </option>
+      ))}
+    </select>
+  );
+}
 
-        peer-focus:-top-2
-        peer-focus:text-xs
-        peer-focus:text-primary
-        peer-focus:bg-black
-        peer-focus:px-1
+function Textarea({ name, value, onChange, placeholder }) {
+  return (
+    <textarea
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      rows={5}
+      required
+      className="w-full bg-[#f5f5f5] text-black px-4 py-3 rounded-xl outline-none
+      focus:ring-1 focus:ring-[#013efe] transition text-sm placeholder:text-sm placeholder:text-gray-600"
+    />
+  );
+}
 
-        peer-valid:-top-2
-        peer-valid:text-xs
-        peer-valid:bg-black
-        peer-valid:px-1
-        "
-      >
-        {label}
-      </label>
+/* ---------------- RADIO GROUP ---------------- */
+
+function RadioGroup({ value, onChange }) {
+  return (
+    <div className="flex gap-4">
+      {["Individual", "Corporate"].map((type) => (
+        <label
+          key={type}
+          className={`flex items-center gap-2 cursor-pointer px-4 py-2 rounded-xl border transition
+          ${value === type
+              ? "border-primary bg-primary/10 text-primary font-medium"
+              : "border-gray-300 text-gray-600 font-medium"
+            }`}
+        >
+          <input
+            type="radio"
+            name="userType"
+            value={type}
+            checked={value === type}
+            onChange={onChange}
+            className="hidden"
+          />
+          <span className="w-3 h-3 rounded-full border flex items-center justify-center">
+            {value === type && (
+              <span className="w-2 h-2 bg-primary rounded-full"></span>
+            )}
+          </span>
+          {type}
+        </label>
+      ))}
     </div>
   );
 }
 
-/* ---------------- FLOATING SELECT ---------------- */
+/* ---------------- INFO ITEM ---------------- */
 
-function FloatingSelect({ label, name, value, onChange, options = [] }) {
+function Info({ icon: Icon, title, value }) {
   return (
-    <div className="relative w-full">
-      <select
-        name={name}
-        value={value}
-        onChange={onChange}
-        required
-        className="peer w-full bg-white/5 border border-white/10 text-white px-4 py-4 rounded-xl outline-none focus:border-primary appearance-none transition"
-      >
-        <option value="" disabled hidden></option>
-        {options.map((opt, i) => (
-          <option key={i} value={opt} className="bg-gray-900 text-white">
-            {opt}
-          </option>
-        ))}
-      </select>
-
-      <label
-        className="
-        absolute left-4 top-4 text-white/70 text-sm transition-all
-
-        peer-focus:-top-2
-        peer-focus:text-xs
-        peer-focus:bg-black
-        peer-focus:px-1
-
-        peer-valid:-top-2
-        peer-valid:text-xs
-        peer-valid:bg-black
-        peer-valid:px-1
-        "
-      >
-        {label}
-      </label>
+    <div className="flex items-start gap-4">
+      <div className="p-3 bg-gray-100 rounded-xl">
+        <Icon className="w-6 h-6 text-primary" />
+      </div>
+      <div>
+        <h5 className="font-medium">{title}</h5>
+        <p className="text-gray-600 mt-1">{value}</p>
+      </div>
     </div>
   );
 }
 
-/* ---------------- FLOATING TEXTAREA ---------------- */
-
-function FloatingTextarea({ label, name, value, onChange }) {
-  return (
-    <div className="relative w-full">
-      <textarea
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder=" "
-        rows={5}
-        required
-        className="peer w-full bg-white/5 border border-white/10 text-white px-4 py-4 rounded-xl outline-none focus:border-primary transition placeholder-transparent"
-      />
-
-      <label
-        className="
-        absolute left-4 top-4 text-white/70 text-sm transition-all
-
-        peer-placeholder-shown:top-4
-        peer-placeholder-shown:text-sm
-        peer-placeholder-shown:bg-transparent
-        peer-placeholder-shown:px-0
-
-        peer-focus:-top-2
-        peer-focus:text-xs
-        peer-focus:bg-black
-        peer-focus:px-1
-
-        peer-valid:-top-2
-        peer-valid:text-xs
-        peer-valid:bg-black
-        peer-valid:px-1
-        "
-      >
-        {label}
-      </label>
-    </div>
-  );
-}
-
-/* ---------------- MAIN CONTACT SECTION ---------------- */
+/* ---------------- MAIN COMPONENT ---------------- */
 
 export default function ContactSection() {
   const router = useRouter();
 
   const [form, setForm] = useState({
+    userType: "Individual",
     name: "",
     email: "",
     service: "",
     phone: "",
+    companyName: "",
+    gstNumber: "",
     message: "",
   });
 
   const services = [
-    "Web Development",
-    "App Development",
-    "SEO Optimization",
-    "UI/UX Design",
-    "Digital Marketing",
+    "Standard Delivery",
+    "Express Delivery",
+    "Premium Delivery",
   ];
 
+  /* ---------- HANDLE CHANGE ---------- */
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  /* ---------- HANDLE SUBMIT ---------- */
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const formData = new URLSearchParams(form).toString();
+  const toastId = toast.loading("Submitting...");
 
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData,
-        }
-      );
+  try {
+    const formData = new URLSearchParams();
+    formData.append("sheetName", "Sheet2");
 
-      const data = await res.json();
+    Object.entries(form).forEach(([key, value]) => {
+      formData.append(key, value ?? "");
+    });
 
-      if (data.result === "success") {
-        toast.success("Form submitted successfully!");
-        setForm({
-          name: "",
-          email: "",
-          service: "",
-          phone: "",
-          message: "",
-        });
-        router.push("/thank-you");
-      } else {
-        toast.error("Error submitting form");
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
+      {
+        method: "POST",
+        body: formData, // ✅ no headers
+        mode: "no-cors", // 🔥 KEY FIX
       }
-    } catch (error) {
-      toast.error("Something went wrong");
-      console.error(error);
-    }
-  };
+    );
+
+    // ✅ If fetch didn’t crash → SUCCESS
+    toast.dismiss(toastId);
+    toast.success("Form submitted successfully!");
+
+    setForm({
+      userType: "Individual",
+      name: "",
+      email: "",
+      service: "",
+      phone: "",
+      companyName: "",
+      gstNumber: "",
+      message: "",
+    });
+
+    router.push("/thank-you");
+
+  } catch (err) {
+    toast.dismiss(toastId);
+    console.error(err);
+    toast.error("Submission failed");
+  }
+};
+
+
+
+
 
   return (
-    <section
-      className="relative bg-cover bg-center overflow-x-hidden"
-      style={{ backgroundImage: "url('/images/contact-bg.jpg')" }}
-    >
-      <div className="absolute inset-0 bg-black/70"></div>
+    <section>
+      <div className="container mx-auto px-4 py-13 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-      <div className="relative z-10 max-w-7xl mx-auto py-20 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
-          {/* LEFT CONTENT */}
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-white space-y-6"
+            className="space-y-6"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold">
-              We're here to answer <br /> your questions.
+            <h2 className="text-3xl font-semibold">
+              Heavy baggage? Not your problem anymore.
             </h2>
 
-            <p className="text-white/90 max-w-md">
-              Have a question, suggestion, or just want to say hi? We’re here and happy to hear from you!
+            <p className="text-gray-600 max-w-md">
+              Send it with Frisbi and enjoy traveling hands-free while we take
+              care of your luggage.
             </p>
 
             <div className="space-y-8 mt-8">
-              <Info icon={MapPin} title="Office Location" value="100 S Main St, New York, NY" />
-              <Info icon={Mail} title="Send a Message" value="contact@frisbi.in" />
-              <Info icon={Phone} title="Call Us Directly" value="+91 987-879-8298" />
+              <Info icon={MapPin} title="Where to Find Us" value="India" />
+              <Info icon={Mail} title="Drop us a line" value="contact@frisbi.in" />
+              <Info icon={Phone} title="Call us" value="+91 88506 52531" />
             </div>
           </motion.div>
 
@@ -231,62 +223,82 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl"
+            className="bg-white p-8 rounded-2xl drop-shadow-[0_4px_100px_rgba(0,0,0,0.08)]"
           >
-            <h3 className="text-xl font-semibold text-white mb-6">
-              Get In Touch
-            </h3>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+              <h4 className="text-xl font-semibold">Plan Your Delivery</h4>
+              <RadioGroup value={form.userType} onChange={handleChange} />
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+
+              {/* NAME + EMAIL */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FloatingInput label="Name" name="name" value={form.name} onChange={handleChange} />
-                <FloatingInput label="Email Address" name="email" value={form.email} onChange={handleChange} />
+                <Input
+                  placeholder="Name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                />
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                />
               </div>
 
+              {/* CORPORATE ONLY */}
+              {form.userType === "Corporate" && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input
+                    placeholder="Company Name"
+                    name="companyName"
+                    value={form.companyName}
+                    onChange={handleChange}
+                  />
+                  <Input
+                    placeholder="GST Number"
+                    name="gstNumber"
+                    value={form.gstNumber}
+                    onChange={handleChange}
+                  />
+                </div>
+              )}
+
+              {/* SERVICE + PHONE */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FloatingSelect
-                  label="Select Service"
+                <Select
                   name="service"
                   value={form.service}
                   onChange={handleChange}
                   options={services}
+                  placeholder="Select Service"
                 />
-                <FloatingInput label="Phone Number" name="phone" value={form.phone} onChange={handleChange} />
+                <Input
+                  placeholder="Phone Number"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                />
               </div>
 
-              <FloatingTextarea
-                label="Write your message"
+              {/* MESSAGE */}
+              <Textarea
+                placeholder="Write your message"
                 name="message"
                 value={form.message}
                 onChange={handleChange}
               />
 
-              <button
-                type="submit"
-                className="w-full bg-primary text-white font-semibold py-3 rounded-full hover:opacity-90 transition"
-              >
+              <button type="submit" className="w-full btn-primary">
                 Get a Free Quote
               </button>
             </form>
           </motion.div>
+
         </div>
       </div>
     </section>
-  );
-}
-
-/* ---------------- INFO ITEM ---------------- */
-
-function Info({ icon: Icon, title, value }) {
-  return (
-    <div className="flex items-start gap-4">
-      <div className="p-3 bg-white/10 rounded-xl">
-        <Icon className="w-6 h-6 text-white" />
-      </div>
-      <div>
-        <h4 className="font-medium">{title}</h4>
-        <span className="text-white/80 text-sm">{value}</span>
-      </div>
-    </div>
   );
 }

@@ -3,8 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-import herobg from "@/asset/service/standard-services.png";
+import MarqueeLogos from "@/components/MarqueeLogos";
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
+import Link from "next/link";
+import Testimonials from "@/components/Testimonials";
+import herobg from "@/asset/service/corporate.svg";
 
 import { TrustedBy } from "@/components/TrustedBy";
 import { Features } from "@/components/Features";
@@ -14,7 +17,8 @@ import { Comparison } from "@/components/CorporateComparison";
 import { Scale } from "@/components/Scale";
 import { Safety } from "@/components/Safety";
 import CallToAction from "@/components/CallToActioncorporate";
-
+import FAQSection from "@/components/AccordionCorporate";
+import ContactSection from "@/components/ContactSection";
 function Corporate() {
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -23,90 +27,128 @@ function Corporate() {
   };
 
   return (
-    <div className="-mt-20">
+    <div className="-mt-28 ">
       {/* HERO SECTION */}
-      <section className="relative h-[650px] md:h-[660px] rounded-3xl p-2">
-        <Image
-          src={herobg}
-          alt="Corporate Luggage Delivery"
-          fill
-          priority
-          className="object-cover rounded-3xl p-2"
-        />
+      <section className="relative bg-white overflow-hidden">
+        <div className="container mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT */}
+            <div className="relative z-10 text-center md:text-left">
+              <motion.h1
+                {...fadeUp}
+                transition={{ delay: 0.1 }}
+                className="text-black font-black mb-6 max-w-xl"
+              >
+                Corporate Luggage Delivery Solutions
+              </motion.h1>
 
-        <div className="container relative z-10 mx-auto px-4 py-24 md:py-32">
-          {/* Badge */}
-          <motion.div
-            {...fadeUp}
-            className="inline-block bg-white/10 backdrop-blur-xl border border-white/20 px-8 py-2 rounded-full mb-6"
-          >
-            <p className="text-white flex items-center gap-3">
-              <span className="text-2xl">✨</span>
-              Frisbi
-            </p>
-          </motion.div>
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.2 }}
+                className="text-black text-lg max-w-xl mb-4"
+              >
+               When hundreds of bags need to move, guessing isn’t an option.
+              </motion.p>
 
-          {/* Title */}
-          <motion.h1
-            {...fadeUp}
-            transition={{ delay: 0.1 }}
-            className="text-white font-black mb-6"
-          >
-            Corporate Luggage Delivery Solutions
-          </motion.h1>
+              <motion.p
+                {...fadeUp}
+                transition={{ delay: 0.3 }}
+                className="text-black max-w-xl mb-4"
+              >
+                Ideal for corporate travel managers, event planners, tour operators, and pilgrimage organizers managing large groups across locations.
 
-          {/* Subtitle */}
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.2 }}
-            className="text-blue-100 text-lg max-w-2xl mb-6"
-          >
-            Hassle-Free Luggage Logistics for Businesses, Events & Travel
-            Partners
-          </motion.p>
+              </motion.p>
 
-          {/* Description */}
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.3 }}
-            className="text-purple-100 max-w-2xl mb-4"
-          >
-            Frisbi helps organizations move luggage securely, on time, and at
-            scale—so employees, guests, and clients can travel light and
-            stress-free.
-          </motion.p>
+              
 
-          <motion.p
-            {...fadeUp}
-            transition={{ delay: 0.4 }}
-            className="text-purple-100 max-w-2xl mb-10"
-          >
-            From corporate travel to events, hotels, and group movements, we
-            manage luggage end-to-end with professional coordination and
-            real-time visibility.
-          </motion.p>
+              <motion.div {...fadeUp} transition={{ delay: 0.5 }}>
+                <button className="btn-primary hover:scale-105 transition-all">
+                  Get a Custom Corporate Quote
+                </button>
+              </motion.div>
+            </div>
 
-          {/* CTA */}
-          <motion.div
-            {...fadeUp}
-            transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-4"
-          >
-            <button className="bg-white px-8 py-3 text-sm sm:text-base font-semibold rounded-full hover:scale-105 transition-all">
-              Get a Custom Corporate Quote
-            </button>
-          </motion.div>
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[320px] md:h-[520px]">
+              <Image
+                src={herobg}
+                alt="Corporate Luggage Delivery"
+                fill
+                priority
+                className="object-contain"
+              />
+
+              {/* Optional gradient on image */}
+              {/* <div className="absolute inset-0 bg-gradient-to-l from-white/70 to-transparent"></div> */}
+            </div>
+          </div>
         </div>
       </section>
 
+      
+
       <TrustedBy />
-      <Features />
+
       <UseCases />
+      <Features />
       <HowItWorks />
+
       <Comparison />
       <Scale />
       <Safety />
-      <CallToAction />
+
+      <section className="  mx-auto relative px-4 py-12 md:py-16  sm:px-6 lg:px-8">
+        <Testimonials />
+      </section>
+      <section className=" overflow-x-hidden ">
+        <div>
+          <FAQSection />
+        </div>
+      </section>
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
+        <ContactSection />
+      </section>
+
+      <MarqueeLogos />
+
+      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className=" text-white mb-4">Built for schedules that can’t slip</h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+              Planned pickups, committed delivery windows, and clear ownership throughout.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Get started
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

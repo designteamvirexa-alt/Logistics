@@ -1,413 +1,621 @@
 "use client";
-import { useState } from "react";
-import { toast } from "react-hot-toast"; // Import toast
-import Link from "next/link";
+
+import { useState, useMemo, useEffect, useRef } from "react";
+import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import InvoiceContent from "./InvoiceContent";
+/* ---------------- Pricing Config ---------------- */
 
-export default function ShipmentBookingForm() {
-  const [values, setValues] = useState({});
-  const [active, setActive] = useState("");
+const SERVICE_BASE_PRICE = {
+  Standard: 999,
+  Express: 1499,
+  Premium: 1999,
+};
 
+const CHECKED_BAG_PRICE = 999;
+const WEIGHT_PRICE_PER_KG = 99;
 
-const router = useRouter();
+const BAG_SIZE_MULTIPLIER = {
+  Small: 1,
+  Medium: 1.1,
+  Large: 1.25,
+  XL: 1.4,
+};
 
+const LUGGAGE_TYPE_MULTIPLIER = {
+  Suitcase: 1,
+  Backpack: 0.9,
+  Duffel: 0.95,
+  Box: 1.2,
+};
 
-  const handleChange = (field, value) => {
-    setValues((prev) => ({ ...prev, [field]: value }));
-  };
+const ADDON_PRICES = {
+  Packing: 199,
+  "Priority Pickup": 299,
+  Fragile: 149,
+  Bubblewrap: 249,
+  Insurance: 399,
+};
 
-  // Handle checkbox group
-  const handleCheckbox = (item, checked) => {
-    let luggage = values.luggageType || [];
-    if (checked) {
-      luggage.push(item);
-    } else {
-      luggage = luggage.filter((i) => i !== item);
-    }
-    setValues((prev) => ({ ...prev, luggageType: luggage }));
-  };
+/* ---------------- Corporate & GST ---------------- */
 
- 
-  
+const CORPORATE_DISCOUNT_PERCENT = 10;
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+const CORPORATE_BULK_DISCOUNT = [
+  { min: 20, discount: 15 },
+  { min: 10, discount: 10 },
+  { min: 5, discount: 5 },
+];
 
-  // Basic validation (optional)
-  if (!values.name || !values.phone) {
-    toast.error("Please fill required fields");
-    return;
-  }
+const GST_PERCENT = 18;
 
+/* ---------------- Pickup Slots ---------------- */
+
+const PICKUP_SLOTS = [
+  "6 AM - 9 AM",
+  "9 AM - 12 PM",
+  "12 PM - 3 PM",
+  "3 PM - 6 PM",
+  "6 PM - 9 PM",
+];
+
+/* ---------------- Google Sheet Submit ---------------- */
+
+const submitToGoogleSheet = async (values, totalPrice, router) => {
   const toastId = toast.loading("Submitting...");
 
   try {
     const formData = new URLSearchParams();
 
-    Object.entries(values).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        formData.append(key, value.join(","));
-      } else {
-        formData.append(key, value ?? "");
-      }
+    // 🔑 Sheet routing
+    formData.append("sheetName", "Sheet1");
+
+    const payload = { ...values, totalPrice };
+
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(
+        key,
+        Array.isArray(value) ? value.join(", ") : value ?? ""
+      );
     });
 
-    const res = await fetch(
+    // ✅ IMPORTANT FIX
+    await fetch(
       "https://script.google.com/macros/s/AKfycbze9DM1_lUgyOJ1-JQuIfjfU8rXHfA-yUs8xeSu0Sqh05fi-YzaxBEH7Tzy8l_hpSgmHw/exec",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formData.toString(),
+        body: formData,     // ❌ no headers
+        mode: "no-cors",    // 🔥 KEY LINE
       }
     );
 
-    if (!res.ok) {
-      throw new Error("Network response failed");
-    }
-
-    const data = await res.json();
-
+    // ✅ If fetch didn’t crash → success
     toast.dismiss(toastId);
+    toast.success("Booking confirmed 🎉");
+    router.push("/thank-you");
 
-    if (data.result === "success") {
-      toast.success("Form submitted successfully 🎉");
-      setValues({}); // reset form
-      router.push("/thank-you");
-
-    } else {
-      toast.error("Submission failed. Try again.");
-      console.error(data);
-    }
-
-  } catch (error) {
+  } catch (err) {
     toast.dismiss(toastId);
-    toast.error("Something went wrong. Please try again.");
-    console.error(error);
+    console.error(err);
+    toast.error("Submission failed");
   }
 };
 
 
-  const labelClass = (field) =>
-    `absolute left-3 transition-all duration-200 pointer-events-none
-     ${
-       values[field] || active === field
-         ? "-top-2 text-xs text-blue-600 bg-white px-1"
-         : "top-3 text-gray-500"
-     }
-    `;
 
-  const textareaClass =
-    "w-full rounded-xl px-4 py-3 bg-[#f5f5f5] outline-none border-0 resize-none overflow-hidden focus:ring-2 focus:ring-[#013EFE] transition";
+/* ---------------- Price Calculation ---------------- */
 
-  const inputClass =
-    "w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition";
+const calculatePriceBreakup = (values) => {
+  const servicePrice = SERVICE_BASE_PRICE[values.serviceType] || 0;
+  const bags = Number(values.checkedBags || 0);
+  const weight = Number(values.weight || 0);
 
-  const selectClass =
-    "w-full rounded-lg px-4 py-3 bg-[#f5f5f5] outline-none border-0 focus:ring-2 focus:ring-[#013EFE] transition";
+  let subtotal =
+    servicePrice + bags * CHECKED_BAG_PRICE + weight * WEIGHT_PRICE_PER_KG;
+
+  const addonTotal = (values.addons || []).reduce(
+    (sum, addon) => sum + (ADDON_PRICES[addon] || 0),
+    0
+  );
+
+  subtotal += addonTotal;
+  subtotal *= BAG_SIZE_MULTIPLIER[values.bagSize || "Small"];
+  subtotal *= LUGGAGE_TYPE_MULTIPLIER[values.luggageType || "Suitcase"];
+
+  let discount = 0;
+  if (values.customerType === "Corporate") {
+    discount += (subtotal * CORPORATE_DISCOUNT_PERCENT) / 100;
+    const bulk = CORPORATE_BULK_DISCOUNT.find((b) => bags >= b.min);
+    if (bulk) discount += (subtotal * bulk.discount) / 100;
+  }
+
+  const discountedTotal = subtotal - discount;
+
+  const gst =
+    values.customerType === "Corporate" || values.includeGST
+      ? (discountedTotal * GST_PERCENT) / 100
+      : 0;
+
+  return {
+    subtotal: Math.round(subtotal),
+    discount: Math.round(discount),
+    gst: Math.round(gst),
+    total: Math.round(discountedTotal + gst),
+  };
+};
+
+export default function ShipmentBookingForm({
+  pickupFromUrl,
+  dropFromUrl,
+}) {
+  const router = useRouter();
+  const invoiceRef = useRef(null);
+
+  const [showInvoice, setShowInvoice] = useState(false);
+
+  const [values, setValues] = useState({
+    customerType: "Individual",
+    addons: [],
+    includeGST: false,
+    luggageType: "Suitcase",
+
+    pickupCity: "",
+    dropCity: "",
+
+    name: "",
+    phone: "",
+    email: "",
+  });
+
+  /* ✅ AUTO FILL PICKUP & DROP */
+  useEffect(() => {
+    if (pickupFromUrl || dropFromUrl) {
+      setValues((prev) => ({
+        ...prev,
+        pickupCity: pickupFromUrl,
+        dropCity: dropFromUrl,
+      }));
+    }
+  }, [pickupFromUrl, dropFromUrl]);
+
+  const price = useMemo(
+    () => calculatePriceBreakup(values),
+    [values]
+  );
+
+  const handleChange = (field, value) => {
+    setValues((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleAddonChange = (addon, checked) => {
+    setValues((prev) => ({
+      ...prev,
+      addons: checked
+        ? [...prev.addons, addon]
+        : prev.addons.filter((a) => a !== addon),
+    }));
+  };
+
+  const downloadInvoice = async () => {
+    const canvas = await html2canvas(invoiceRef.current, {
+      scale: 2,
+      backgroundColor: "#fff",
+    });
+
+    const img = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    pdf.addImage(img, "PNG", 0, 0, 210, 297);
+    pdf.save("Invoice.pdf");
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (!values.name || !values.phone) {
+  //     toast.error("Name and mobile number required");
+  //     return;
+  //   }
+
+  //   setShowInvoice(true);
+
+  //   setTimeout(async () => {
+  //     await downloadInvoice();
+  //     await submitToGoogleSheet(values, price.total, router);
+  //   }, 3000);
+  // };
+
+
+
+  const startPayment = async () => {
+    try {
+      if (!values.name || !values.phone) {
+        toast.error("Name and mobile number required");
+        return;
+      }
+  
+      // 1️⃣ Create order
+      const orderRes = await fetch("/api/razorpay/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: price.total }),
+      });
+  
+      if (!orderRes.ok) {
+        const errText = await orderRes.text();
+        console.error("Order API error:", errText);
+        toast.error("Unable to create payment order");
+        return;
+      }
+  
+      const order = await orderRes.json();
+  
+      if (!window.Razorpay) {
+        toast.error("Razorpay SDK not loaded");
+        return;
+      }
+  
+      // 2️⃣ Razorpay options (IMPORTANT FIX HERE)
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: order.amount,
+        currency: "INR",
+        order_id: order.id,
+        name: "Shipment Booking",
+        description: "Shipment Charges",
+  
+        // 🔥 VERY IMPORTANT
+        method: {
+          card: true,
+          upi: false,
+          netbanking: false,
+          wallet: false,
+          emi: false,
+        },
+  
+        // 🔥 VERY IMPORTANT
+        redirect: true,
+  
+        handler: async function (response) {
+          // 3️⃣ Verify payment
+          const verifyRes = await fetch("/api/razorpay/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(response),
+          });
+  
+          const verify = await verifyRes.json();
+  
+          if (!verify.success) {
+            toast.error("Payment verification failed");
+            return;
+          }
+  
+          toast.success("Payment Successful ✅");
+  
+          setShowInvoice(true);
+  
+          setTimeout(async () => {
+            await downloadInvoice();
+  
+            await submitToGoogleSheet(
+              {
+                ...values,
+                paymentId: response.razorpay_payment_id,
+                orderId: response.razorpay_order_id,
+                paymentStatus: "PAID",
+              },
+              price.total,
+              router
+            );
+          }, 2000);
+        },
+  
+        prefill: {
+          name: values.name,
+          email: values.email,
+          contact: values.phone,
+        },
+  
+        theme: { color: "#2563EB" },
+      };
+  
+      const rzp = new window.Razorpay(options);
+  
+      rzp.on("payment.failed", function (response) {
+        console.error("Razorpay failed:", response.error);
+        toast.error(response.error.description || "Payment failed");
+      });
+  
+      rzp.open();
+  
+    } catch (err) {
+      console.error("Payment error:", err);
+      toast.error("Payment failed");
+    }
+  };
+  
+
+
+  const fieldClass =
+    "w-full h-[48px] rounded-lg px-4 bg-[#f5f5f5] text-sm outline-none border focus:ring-1 focus:ring-[#013EFE]";
+
 
   return (
-    <section className="w-full py-10 px-4">
-      <form onSubmit={handleSubmit}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="mb-4 text-center">Shipment Booking Form</h2>
-          <p className="mb-10 text-second text-center">
-            Book door-to-door luggage delivery. Share your pickup & delivery
-            details.
-          </p>
+    <section className="py-12 md:pt-24 px-4">
+      <form onSubmit={(e) => e.preventDefault()} className="max-w-4xl mx-auto space-y-10">
+        <h2 className="text-center text-2xl font-semibold">
+          Shipment Booking Form
+        </h2>
 
-          {/* ---------------- Customer Details ---------------- */}
-          <h3 className="font-semibold mb-3">Customer Details</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="relative">
-              <label className={labelClass("name")}>Full Name</label>
+        {/* Customer Details */}
+        <div>
+          <h4 className="font-semibold mb-4">Customer Details</h4>
+
+          <div className="flex items-center gap-6 mb-4">
+            <label className="flex items-center gap-2">
               <input
-                type="text"
-                value={values.name || ""}
-                onFocus={() => setActive("name")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("name", e.target.value)}
-                className={inputClass}
+                type="radio"
+                name="customerType"
+                value="Individual"
+                checked={values.customerType === "Individual"}
+                onChange={(e) => handleChange("customerType", e.target.value)}
               />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("email")}>Email</label>
-              <input
-                type="email"
-                value={values.email || ""}
-                onFocus={() => setActive("email")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("email", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("phone")}>Mobile Number</label>
-              <input
-                type="tel"
-                value={values.phone || ""}
-                onFocus={() => setActive("phone")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("phone", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-          </div>
-
-          {/* ---------------- Pickup & Delivery ---------------- */}
-          <h3 className="font-semibold mb-3">Pickup & Delivery</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="relative">
-              <label className={labelClass("pickupCity")}>Pickup City</label>
-              <input
-                type="text"
-                value={values.pickupCity || ""}
-                onFocus={() => setActive("pickupCity")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("pickupCity", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("deliveryCity")}>Delivery City</label>
-              <input
-                type="text"
-                value={values.deliveryCity || ""}
-                onFocus={() => setActive("deliveryCity")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("deliveryCity", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("pickupAddress")}>
-                Pickup Address
-              </label>
-              <textarea
-                value={values.pickupAddress || ""}
-                onFocus={() => setActive("pickupAddress")}
-                onBlur={() => setActive("")}
-                onChange={(e) => {
-                  handleChange("pickupAddress", e.target.value);
-                  e.target.style.height = "auto";
-                  e.target.style.height = e.target.scrollHeight + "px";
-                }}
-                className={textareaClass}
-                rows={1}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("deliveryAddress")}>
-                Delivery Address
-              </label>
-              <textarea
-                value={values.deliveryAddress || ""}
-                onFocus={() => setActive("deliveryAddress")}
-                onBlur={() => setActive("")}
-                onChange={(e) => {
-                  handleChange("deliveryAddress", e.target.value);
-                  e.target.style.height = "auto";
-                  e.target.style.height = e.target.scrollHeight + "px";
-                }}
-                className={textareaClass}
-                rows={1}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("pickupDate")}>
-                Preferred Pickup Date & Time
-              </label>
-              <input
-                type="datetime-local"
-                value={values.pickupDate || ""}
-                onFocus={() => setActive("pickupDate")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("pickupDate", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("deliveryDate")}>
-                Expected Delivery Date
-              </label>
-              <input
-                type="date"
-                value={values.deliveryDate || ""}
-                onFocus={() => setActive("deliveryDate")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("deliveryDate", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-          </div>
-
-          {/* ---------------- Luggage Details ---------------- */}
-          <h3 className="font-semibold mb-3">Luggage Details</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="relative">
-              <label className={labelClass("checkedBags")}>
-                Number of Checked-in Bags
-              </label>
-              <input
-                type="number"
-                value={values.checkedBags || ""}
-                onFocus={() => setActive("checkedBags")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("checkedBags", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("cabinBags")}>
-                Number of Cabin Bags
-              </label>
-              <input
-                type="number"
-                value={values.cabinBags || ""}
-                onFocus={() => setActive("cabinBags")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("cabinBags", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("weight")}>
-                Approx. Total Weight (Kg)
-              </label>
-              <input
-                type="number"
-                value={values.weight || ""}
-                onFocus={() => setActive("weight")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("weight", e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("bagSize")}>Largest Bag Size</label>
-              <select
-                className={selectClass}
-                value={values.bagSize || ""}
-                onFocus={() => setActive("bagSize")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("bagSize", e.target.value)}
-              >
-                <option value=""></option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>XL</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Checkbox Group */}
-          <div className="mb-8">
-            <p className="font-medium mb-2">Luggage Type</p>
-            <div className="flex gap-6 flex-wrap">
-              {["Suitcase", "Bag", "Box", "Sports Gear"].map((item) => (
-                <label key={item} className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4"
-                    checked={values.luggageType?.includes(item) || false}
-                    onChange={(e) => handleCheckbox(item, e.target.checked)}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Special Instructions */}
-          <div className="relative mb-12">
-            <label className={labelClass("special")}>
-              Special Instructions
+              Individual
             </label>
-            <textarea
-              rows={3}
-              value={values.special || ""}
-              onFocus={() => setActive("special")}
-              onBlur={() => setActive("")}
-              onChange={(e) => handleChange("special", e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-3 bg-gray-100 outline-none focus:bg-white focus:border-blue-600 transition-all"
-            ></textarea>
-          </div>
 
-          {/* ---------------- Payment & Extras ---------------- */}
-          <h3 className="font-semibold mb-3">Payment & Extras</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div className="relative">
-              <label className={labelClass("paymentMethod")}>
-                Payment Method
-              </label>
-              <select
-                className={selectClass}
-                value={values.paymentMethod || ""}
-                onFocus={() => setActive("paymentMethod")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("paymentMethod", e.target.value)}
-              >
-                <option value=""></option>
-                <option>Cash</option>
-                <option>UPI</option>
-                <option>Card</option>
-              </select>
-            </div>
-
-            <div className="relative">
-              <label className={labelClass("billingAddress")}>
-                Billing Address
-              </label>
+            <label className="flex items-center gap-2">
               <input
-                type="text"
-                value={values.billingAddress || ""}
-                onFocus={() => setActive("billingAddress")}
-                onBlur={() => setActive("")}
-                onChange={(e) => handleChange("billingAddress", e.target.value)}
-                className={inputClass}
+                type="radio"
+                name="customerType"
+                value="Corporate"
+                checked={values.customerType === "Corporate"}
+                onChange={(e) => handleChange("customerType", e.target.value)}
               />
+              Corporate
+            </label>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <input
+              placeholder="Full Name"
+              className={fieldClass}
+              onChange={(e) => handleChange("name", e.target.value)}
+            />
+            <input
+              placeholder="Mobile Number"
+              className={fieldClass}
+              onChange={(e) => handleChange("phone", e.target.value)}
+            />
+            <input
+              placeholder="Email"
+              className={fieldClass}
+              onChange={(e) => handleChange("email", e.target.value)}
+            />
+
+            {values.customerType === "Corporate" && (
+              <>
+                <input
+                  placeholder="Company Name"
+                  className={fieldClass}
+                  onChange={(e) => handleChange("companyName", e.target.value)}
+                />
+                <input
+                  placeholder="GST Number"
+                  className={fieldClass}
+                  onChange={(e) => handleChange("gstNumber", e.target.value)}
+                />
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Pickup & Drop */}
+        <div>
+          <h4 className="font-semibold mb-4">Pickup & Drop Location</h4>
+          <div className="grid md:grid-cols-2 gap-6">
+            <input
+              placeholder="Pickup City"
+              readOnly
+              className={fieldClass}
+              value={values.pickupCity}
+              onChange={(e) => handleChange("pickupCity", e.target.value)}
+            />
+            <input
+              placeholder="Drop City"
+              readOnly
+              className={fieldClass}
+              value={values.dropCity}
+              onChange={(e) => handleChange("dropCity", e.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* Pickup & Delivery */}
+        <div>
+          <h4 className="font-semibold mb-4">Pickup & Delivery</h4>
+          <div className="grid md:grid-cols-3 gap-4">
+            <input
+              type="date"
+              className={fieldClass}
+              onChange={(e) => handleChange("pickupDate", e.target.value)}
+            />
+            <input
+              type="date"
+              className={fieldClass}
+              onChange={(e) => handleChange("deliveryDate", e.target.value)}
+            />
+            <select
+              className={fieldClass}
+              onChange={(e) => handleChange("pickupTimeSlot", e.target.value)}
+            >
+              <option value="">Pickup Time Slot</option>
+              {PICKUP_SLOTS.map((slot) => (
+                <option key={slot}>{slot}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Service */}
+        <div>
+          <h4 className="font-semibold mb-4">Service</h4>
+          <select
+            className={fieldClass}
+            onChange={(e) => handleChange("serviceType", e.target.value)}
+          >
+            <option value="">Select Service</option>
+            <option>Standard</option>
+            <option>Express</option>
+            <option>Premium</option>
+          </select>
+        </div>
+
+        {/* Luggage */}
+        <div>
+          <h4 className="font-semibold mb-4">Luggage</h4>
+          <div className="grid md:grid-cols-4 gap-4">
+            <input
+              type="number"
+              placeholder="No of Bags"
+              className={fieldClass}
+              onChange={(e) => handleChange("checkedBags", e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Total Weight (kg)"
+              className={fieldClass}
+              onChange={(e) => handleChange("weight", e.target.value)}
+            />
+            <select
+              className={fieldClass}
+              onChange={(e) => handleChange("bagSize", e.target.value)}
+            >
+              <option value="">Bag Size</option>
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>XL</option>
+            </select>
+            <select
+              className={fieldClass}
+              onChange={(e) => handleChange("luggageType", e.target.value)}
+            >
+              <option value="Suitcase">Suitcase</option>
+              <option value="Backpack">Backpack</option>
+              <option value="Duffel">Duffel</option>
+              <option value="Box">Box</option>
+            </select>
+
+          </div>
+        </div>
+
+        {/* Add-ons */}
+        <div>
+          <h4 className="font-semibold mb-4">Add-ons</h4>
+          <div className="flex flex-wrap gap-6">
+            {Object.keys(ADDON_PRICES).map((addon) => (
+              <label key={addon} className="flex gap-2">
+                <input
+                  type="checkbox"
+                  checked={values.addons.includes(addon)}
+                  onChange={(e) =>
+                    handleAddonChange(addon, e.target.checked)
+                  }
+                />
+                {addon} (+₹{ADDON_PRICES[addon]})
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Payment */}
+
+
+        {/* Price */}
+        <div className="bg-blue-50 border rounded-xl p-5">
+          <div className="flex justify-between font-bold text-lg">
+            <span>Total Payable</span>
+            <span>₹{price.total}</span>
+          </div>
+        </div>
+
+        <button
+  type="button"
+  className="btn-primary w-full md:w-auto"
+  onClick={startPayment}
+>
+  Pay ₹{price.total} & Confirm Booking
+</button>
+
+      </form>
+
+
+
+
+      {/* ================= INVOICE POPUP ================= */}
+      {showInvoice && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center">
+          <div className="bg-white rounded-xl shadow-xl w-[90vw] max-w-[900px] h-[90vh] overflow-y-auto p-6">
+
+            <div className="flex justify-between mb-4">
+              <h3 className="font-semibold text-lg">Invoice Preview</h3>
+              <button onClick={() => setShowInvoice(false)}>✕</button>
+            </div>
+
+            {/* A4 LOOK */}
+            <div
+              style={{
+                width: 794,
+                minHeight: 1123,
+                margin: "0 auto",
+                backgroundColor: "#fff",
+                padding: 40,
+                boxShadow: "0 0 10px rgba(0,0,0,0.15)",
+              }}
+            >
+              <InvoiceContent values={values} price={price} />
+            </div>
+
+            <div className="flex justify-end mt-6">
+              <button
+                onClick={downloadInvoice}
+                style={{
+                  backgroundColor: "#2563EB",
+                  color: "#fff",
+                  padding: "10px 24px",
+                  borderRadius: 8,
+                }}
+              >
+                Download PDF
+              </button>
             </div>
           </div>
-
-          <div className="relative mb-8">
-            <label className={labelClass("notes")}>Additional Notes</label>
-            <textarea
-              rows={3}
-              value={values.notes || ""}
-              onFocus={() => setActive("notes")}
-              onBlur={() => setActive("")}
-              onChange={(e) => handleChange("notes", e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-3 bg-gray-100 outline-none focus:bg-white focus:border-blue-600 transition-all"
-            ></textarea>
-          </div>
-
-          {/* Terms & Conditions */}
-          <div className="flex items-center gap-2 mb-6">
-            <input type="checkbox" className="w-4 h-4" />
-            <p className="text-sm">I agree to the Terms & Conditions</p>
-          </div>
-
-          {/* Button */}
-          <button
-            type="submit"
-            className="w-[30%] bg-primary text-[16px] text-white font-semibold py-3 px-12 rounded-full transition duration-300 shadow-xl shadow-blue-500/50"
-          >
-            Book Shipment
-          </button>
         </div>
-      </form>
+      )}
+
+
+
+      <div
+        ref={invoiceRef}
+        style={{
+          position: "fixed",
+          left: "-9999px",
+          top: 0,
+          width: "794px",
+          minHeight: "1123px",
+          backgroundColor: "#fff",
+          color: "#000",
+          padding: 40,
+          fontFamily: "Arial",
+        }}
+      >
+        <InvoiceContent values={values} price={price} />
+      </div>
+
+
+
     </section>
   );
 }

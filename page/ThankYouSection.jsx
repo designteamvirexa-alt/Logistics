@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import thankyou from "@/asset/thankyou.svg";
 import Link from "next/link";
+import ServicesSection from "@/components/ServiceCard";
 
-import TestimonialSliderRight from "@/components/TestimonialSliderRight";
+import Testimonials from "@/components/Testimonials";
 
 export default function ThankYouSection() {
   return (
@@ -43,11 +44,43 @@ export default function ThankYouSection() {
         </div>
       </motion.div>
 
-      <section className="mb-9 mt-7">
-        <div className="max-w-7xl mx-auto">
-          <TestimonialSliderRight />
-        </div>
+      <section className=" bg-[#f1f1f5] pt-16 pb-8">
+        <ServicesSection />
+      
       </section>
+       <section className="pt-24">
+      <Testimonials />
+       </section>
+
+      
     </section>
+
+  );
+}
+
+
+function FeatureCard({ title, description, image, fit = "cover" }) {
+  return (
+    <div className="relative bg-white rounded-3xl p-8 h-[550px] overflow-hidden">
+      <div className="relative z-10">
+        <h3 className="text-2xl font-semibold">{title}</h3>
+        <p className="mt-3">{description}</p>
+        <Link
+          href="#"
+          className="mt-4 inline-block font-semibold hover:text-[#013EFE]"
+        >
+          Learn more
+        </Link>
+      </div>
+
+      <div className="absolute bottom-[-10%] inset-x-0 h-[60%]">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={fit === "contain" ? "object-contain" : "object-cover"}
+        />
+      </div>
+    </div>
   );
 }

@@ -16,25 +16,25 @@ export function HowItWorks() {
     {
       icon: MapPin,
       title: "Enter Pickup & Delivery Address",
-      description: "Choose express-enabled routes.",
+      description: "We’ve got your route covered",
       color: "blue",
     },
     {
       icon: Truck,
       title: "Select Express Delivery",
-      description: "System prioritizes your shipment automatically.",
+      description: "We prioritise your shipment by default.",
       color: "purple",
     },
     {
       icon: Package,
-      title: "Enter Parcel Details",
+      title: "Enter Luggage Details",
       description: "Weight, dimensions, value, item category.",
       color: "green",
     },
     {
       icon: CreditCard,
       title: "Complete Payment",
-      description: "UPI, card, wallet, net banking.",
+      description: "UPI, card, net banking.",
       color: "orange",
     },
     {
@@ -46,7 +46,7 @@ export function HowItWorks() {
     {
       icon: Home,
       title: "Priority Door Pickup",
-      description: "Courier arrives at the earliest available slot.",
+      description: "Early-slot pickups to keep your travel plans on track.",
       color: "indigo",
     },
     {
@@ -80,7 +80,7 @@ export function HowItWorks() {
          
 
           <h2 className="text-3xl md:text-4xl font-bold ">
-            How Standard Delivery Works
+            How Express Delivery Works
           </h2>
         </motion.div>
 

@@ -7,27 +7,29 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import illsutration from "@/asset/illustration.svg";
+// import illsutration from "@/asset/illustration.svg";
 import Image from "next/image";
+import illsutration from "@/asset/common-illustrator.png";
+
 
 function PricingStructure() {
   const factors = [
     {
       icon: MapPin,
-      title: "Pickup & drop locations",
-      description: "City pairs, zone mapping, road distance.",
+      title: "Pickup and drop locations",
+      description: "From origin to destination, and the distance in between.",
       gradient: "bg-primary",
     },
     {
       icon: Ruler,
-      title: "Distance & delivery zone",
+      title: "Distance and delivery zone",
       description: "The larger the distance, the lesser per-km cost.",
       gradient: "bg-primary",
     },
     {
       icon: Weight,
-      title: "Weight & parcel dimensions",
-      description: "Starting from 0.5 kg to 25 kg.",
+      title: "Weight and luggage dimensions",
+      description: "Starting from 5 kg to 30 kg. ",
       gradient: "bg-primary",
     },
     {
@@ -55,10 +57,10 @@ function PricingStructure() {
           className="text-center mb-16"
         >
           <h2 className="mb-4 ">
-            Pricing Structure
+             Pricing Structure
           </h2>
           <p className="text-second max-w-2xl mx-auto">
-            Pricing is calculated using a transparent automated system
+            Pricing is calculated using a transparent system
           </p>
         </motion.div>
 
@@ -88,19 +90,30 @@ function PricingStructure() {
         </div>
 
         <section className="w-full ">
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-10 items-center">
+          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-10 items-start">
             {/* LEFT CARD with image on right */}
-            <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-center lg:items-start gap-8">
+           
+
+            {/* RIGHT CARD */}
+            <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-start">
+              <span className=" text-2xl font-semibold  leading-[1.6]">
+                Choose Express Delivery for priority handling and faster arrival when time matters most.
+
+              
+              </span>
+            </div>
+
+             <div className="bg-[#E0E1FF] rounded-3xl p-8 flex flex-col lg:flex-row items-start gap-8">
               {/* TEXT LEFT */}
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-6">Optional add-ons:</h3>
 
-                <ul className="space-y-4 text-[16px]">
+                <ul className="space-y-4 text-[16px] font-semibold">
                   {[
-                    "Special handling",
-                    "Fragile care",
-                    "High-value insurance",
-                    "Return pickup",
+                    "Special handling for delicate luggage",
+                    "Fragile care for breakable items",
+                    "High-value insurance for expensive luggage",
+                    "Return pickup for round-trip luggage",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
                       <span className="text-primary text-lg">➤</span>
@@ -118,16 +131,6 @@ function PricingStructure() {
                 height={400}
                 className="rounded-3xl object-cover w-full lg:w-1/2"
               />
-            </div>
-
-            {/* RIGHT CARD */}
-            <div className="bg-[#1448FF] text-white p-10 rounded-3xl h-full flex items-center">
-              <span className=" text-2xl font-semibold  leading-[1.6]">
-                💰 <br />
-                Express Delivery costs more  
-              than Standard but ensures faster delivery.
-              
-              </span>
             </div>
           </div>
         </section>

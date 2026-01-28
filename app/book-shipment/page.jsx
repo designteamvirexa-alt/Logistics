@@ -1,12 +1,22 @@
-import BookShipment from '@/page/BookShipment'
-import React from 'react'
+// app/book-shipment/page.jsx
 
-function page() {
+export const dynamic = "force-dynamic";
+
+import BookShipment from "@/page/BookShipment";
+
+export default async function Page({ searchParams }) {
+  // 🔥 IMPORTANT: unwrap Promise
+  const params = await searchParams;
+
+  const pickup = params?.pickup ?? "";
+  const drop = params?.drop ?? "";
+
+  console.log("pickup, drop:", pickup, drop);
+
   return (
-    <div>
-      <BookShipment />
-    </div>
-  )
+    <BookShipment
+      pickupFromUrl={pickup}
+      dropFromUrl={drop}
+    />
+  );
 }
-
-export default page

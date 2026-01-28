@@ -1,6 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Autocomplete, useLoadScript } from "@react-google-maps/api";
+
+/* ================= GOOGLE CONFIG ================= */
+const GOOGLE_MAPS_KEY = "AIzaSyCUFg0FXQzrsLAuQ0Cs59mkQlwp6mzIQHc";
+const libraries = ["places"];
+/* ================================================= */
 
 /* ---------------- Floating Input ---------------- */
 const FloatingInput = ({ label, value, onChange, type = "text", error }) => {
@@ -23,8 +29,7 @@ const FloatingInput = ({ label, value, onChange, type = "text", error }) => {
           peer-focus:-top-2 peer-focus:text-xs peer-focus:bg-white
           peer-valid:-top-2 peer-valid:text-xs peer-valid:bg-white
           peer-focus:rounded-md peer-valid:rounded-md
-          ${error ? "text-red-600" : ""}
-        `}
+          ${error ? "text-red-600" : ""}`}
       >
         {label}
       </label>
@@ -36,6 +41,14 @@ const FloatingInput = ({ label, value, onChange, type = "text", error }) => {
 
 /* ---------------- Main Component ---------------- */
 export default function ShipmentCalculator() {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GOOGLE_MAPS_KEY,
+    libraries,
+  });
+
+  const pickupAuto = useRef(null);
+  const dropAuto = useRef(null);
+
   const [pickup, setPickup] = useState("");
   const [drop, setDrop] = useState("");
   const [weight, setWeight] = useState("");
@@ -47,25 +60,32 @@ export default function ShipmentCalculator() {
   const [total, setTotal] = useState(null);
   const [errors, setErrors] = useState({});
 
+  if (!isLoaded) return null;
+
+  /* -------- Google Place Select -------- */
+  const handlePlaceSelect = (type) => {
+    const auto =
+      type === "pickup" ? pickupAuto.current : dropAuto.current;
+
+    if (!auto) return;
+
+    const place = auto.getPlace();
+    if (!place?.formatted_address) return;
+
+    if (type === "pickup") setPickup(place.formatted_address);
+    else setDrop(place.formatted_address);
+  };
+
   /* -------- Validation -------- */
   const validateForm = () => {
     const newErrors = {};
 
     if (!pickup.trim()) newErrors.pickup = "Pickup address is required";
     if (!drop.trim()) newErrors.drop = "Drop address is required";
-
-    if (!weight || Number(weight) <= 0)
-      newErrors.weight = "Enter valid weight";
-
-    if (!length || Number(length) <= 0)
-      newErrors.length = "Enter valid length";
-
-    if (!width || Number(width) <= 0)
-      newErrors.width = "Enter valid width";
-
-    if (!height || Number(height) <= 0)
-      newErrors.height = "Enter valid height";
-
+    if (!weight || Number(weight) <= 0) newErrors.weight = "Enter valid weight";
+    if (!length || Number(length) <= 0) newErrors.length = "Enter valid length";
+    if (!width || Number(width) <= 0) newErrors.width = "Enter valid width";
+    if (!height || Number(height) <= 0) newErrors.height = "Enter valid height";
     if (!bags) newErrors.bags = "Select number of bags";
     if (!service) newErrors.service = "Select a service type";
 
@@ -87,111 +107,75 @@ export default function ShipmentCalculator() {
   };
 
   return (
-    <div className="w-full flex justify-center py-12 px-4">
-      <div className="w-full max-w-2xl bg-white shadow-xl rounded-3xl p-10">
+    <div className="w-full flex justify-center pb-12 px-4">
+      <div className="w-full max-w-2xl bg-white drop-shadow-[0_4px_100px_rgba(0,0,0,0.08)] rounded-3xl p-8">
 
-        <h2 className="text-center text-xl font-semibold">
+        <h3 className="text-center text-xl font-semibold">
           Calculate your shipment cost
-        </h2>
+        </h3>
         <p className="text-center text-gray-500 mt-2 text-sm">
           Prices are estimates. Final cost may vary.
         </p>
 
-        {/* -------- FORM -------- */}
         <div className="mt-8 space-y-5">
 
-          <FloatingInput
-            label="Pickup address"
-            value={pickup}
-            onChange={(e) => setPickup(e.target.value)}
-            error={errors.pickup}
-          />
+          {/* PICKUP (Google Autocomplete) */}
+          <Autocomplete
+            onLoad={(auto) => (pickupAuto.current = auto)}
+            onPlaceChanged={() => handlePlaceSelect("pickup")}
+            options={{ componentRestrictions: { country: "in" } }}
+          >
+            <FloatingInput
+              label="Pickup address"
+              value={pickup}
+              onChange={(e) => setPickup(e.target.value)}
+              error={errors.pickup}
+            />
+          </Autocomplete>
 
-          <FloatingInput
-            label="Dropping address"
-            value={drop}
-            onChange={(e) => setDrop(e.target.value)}
-            error={errors.drop}
-          />
+          {/* DROP (Google Autocomplete) */}
+          <Autocomplete
+            onLoad={(auto) => (dropAuto.current = auto)}
+            onPlaceChanged={() => handlePlaceSelect("drop")}
+            options={{ componentRestrictions: { country: "in" } }}
+          >
+            <FloatingInput
+              label="Dropping address"
+              value={drop}
+              onChange={(e) => setDrop(e.target.value)}
+              error={errors.drop}
+            />
+          </Autocomplete>
 
           {/* Weight + Dimensions */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <FloatingInput
-              label="Weight (kg)"
-              type="number"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              error={errors.weight}
-            />
-            <FloatingInput
-              label="L (cm)"
-              type="number"
-              value={length}
-              onChange={(e) => setLength(e.target.value)}
-              error={errors.length}
-            />
-            <FloatingInput
-              label="W (cm)"
-              type="number"
-              value={width}
-              onChange={(e) => setWidth(e.target.value)}
-              error={errors.width}
-            />
-            <FloatingInput
-              label="H (cm)"
-              type="number"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              error={errors.height}
-            />
+            <FloatingInput label="Weight (kg)" type="number" value={weight} onChange={(e) => setWeight(e.target.value)} error={errors.weight} />
+            <FloatingInput label="L (cm)" type="number" value={length} onChange={(e) => setLength(e.target.value)} error={errors.length} />
+            <FloatingInput label="W (cm)" type="number" value={width} onChange={(e) => setWidth(e.target.value)} error={errors.width} />
+            <FloatingInput label="H (cm)" type="number" value={height} onChange={(e) => setHeight(e.target.value)} error={errors.height} />
           </div>
 
           {/* Bags + Service */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <select
-                value={bags}
-                onChange={(e) => setBags(e.target.value)}
-                className={`w-full rounded-lg px-4 py-3 border
-                  ${errors.bags ? "border-red-500" : "border-gray-300"}`}
-              >
-                <option value="">Select No of Bags</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-              {errors.bags && (
-                <p className="text-red-600 text-xs mt-1">{errors.bags}</p>
-              )}
-            </div>
+            <select value={bags} onChange={(e) => setBags(e.target.value)} className={`w-full rounded-lg px-4 py-3 border ${errors.bags ? "border-red-500" : "border-gray-300"}`}>
+              <option value="">Select No of Bags</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
 
-            <div>
-              <select
-                value={service}
-                onChange={(e) => setService(e.target.value)}
-                className={`w-full rounded-lg px-4 py-3 border
-                  ${errors.service ? "border-red-500" : "border-gray-300"}`}
-              >
-                <option value="">Select Service</option>
-                <option value="Standard">Standard</option>
-                <option value="Express">Express</option>
-                <option value="Premium">Premium</option>
-              </select>
-              {errors.service && (
-                <p className="text-red-600 text-xs mt-1">{errors.service}</p>
-              )}
-            </div>
+            <select value={service} onChange={(e) => setService(e.target.value)} className={`w-full rounded-lg px-4 py-3 border ${errors.service ? "border-red-500" : "border-gray-300"}`}>
+              <option value="">Select Service</option>
+              <option value="Standard">Standard</option>
+              <option value="Express">Express</option>
+              <option value="Premium">Premium</option>
+            </select>
           </div>
 
-          {/* Button */}
-          <button
-            onClick={calculatePrice}
-            className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold hover:bg-blue-700"
-          >
+          <button onClick={calculatePrice} className="w-full btn-primary hover:scale-105 transition-all">
             Calculate Price
           </button>
 
-          {/* -------- RESULT (FULL DETAILS) -------- */}
           {total !== null && (
             <div className="bg-[#E7ECFF] rounded-3xl p-6 mt-6 space-y-4">
 

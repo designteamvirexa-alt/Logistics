@@ -3,9 +3,15 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import MarqueeLogos from "@/components/MarqueeLogos";
+import { Safety } from "@/components/SafetyIndividual";
+import bg from "@/asset/profiles/cta-banner.svg"; // <<< CHANGE TO YOUR BG IMAGE
+import Link from "next/link";
+import Testimonials from "@/components/Testimonials";
+import herobg from "@/asset/service/individual.svg";
 
-import herobg from "@/asset/service/standard-services.png";
-
+import FAQSection from "@/components/AccordionIndividual";
+import ContactSection from "@/components/ContactSection";
 import { PerfectFor } from "@/components/PerfectFor";
 import { WhyChoose } from "@/components/Whychoose";
 import { WhenToUse } from "@/components/WhenToUse";
@@ -19,95 +25,134 @@ const fadeUp = {
 
 function Individual() {
   return (
-    <div className="-mt-20">
+    <div className="-mt-24 -mt-16">
       {/* HERO SECTION */}
-      <section className="relative h-[650px] md:h-[680px] rounded-3xl overflow-hidden">
-        {/* Background Image */}
-        <Image
-          src={herobg}
-          alt="Individual Luggage Delivery"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover p-2 rounded-3xl"
-        />
+      <section className="relative bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 pt-28 pb-12 md:pt-28 md:pb-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* LEFT — CONTENT (UNCHANGED) */}
+            <div className="relative z-10">
+              <motion.h1
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-black font-extrabold text-4xl md:text-6xl max-w-xl mb-6"
+              >
+                Travel Light. We Deliver Your Luggage.
+              </motion.h1>
 
-      
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 py-24 md:py-32">
-          {/* Badge */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-2 rounded-full mb-6"
-          >
-            <span className="text-xl">✨</span>
-            <span className="text-white text-sm font-medium">
-              Individual Luggage Delivery
-            </span>
-          </motion.div>
+              <motion.p
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-black text-lg md:text-xl max-w-xl mb-6"
+              >
+                Frisbi makes personal travel easier by taking the weight off your shoulders
 
-          {/* Heading */}
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white font-extrabold text-4xl md:text-6xl max-w-3xl mb-6"
-          >
-            Travel Light. <br className="hidden md:block" />
-            We Deliver Your Luggage.
-          </motion.h1>
+              </motion.p>
 
-          {/* Subtitle */}
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-blue-100 text-lg md:text-xl max-w-2xl mb-6"
-          >
-            Frisbi makes personal travel easier by taking the weight off your
-            shoulders—literally.
-          </motion.p>
+              <motion.p
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-black max-w-xl mb-8"
+              >
+                Whether you're moving between cities, heading to a hotel, planning a pilgrimage, or exploring tourist spots, we pick up your luggage from your doorstep and deliver it safely to your destination so you can travel hands-free and stress-free.
 
-          {/* Description */}
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-purple-100 max-w-2xl mb-8"
-          >
-            Whether you're moving between cities, heading to a hotel, or planning
-            a long stay, we pick up your luggage from your doorstep and deliver
-            it safely to your destination—so you can travel hands-free and
-            stress-free.
-          </motion.p>
+              </motion.p>
 
-          {/* CTA */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-4"
-          >
-            <button className="bg-white text-black px-8 py-3 rounded-full font-semibold text-sm md:text-base hover:scale-105 transition-transform">
-              Book Your Delivery Now
-            </button>
-          </motion.div>
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap gap-4"
+              >
+                <button className="btn-primary hover:scale-105 transition-all">
+                  Book Your Delivery Now
+                </button>
+              </motion.div>
+            </div>
+
+            {/* RIGHT — IMAGE */}
+            <div className="relative w-full h-[320px] md:h-[520px]">
+              <Image
+                src={herobg}
+                alt="Individual Luggage Delivery"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain"
+              />
+            </div>
+          </div>
         </div>
       </section>
+
+     
 
       {/* SECTIONS */}
       <PerfectFor />
       <WhyChoose />
-      <WhenToUse />
-        <HowItWorks />
-      <CallToAction />
+       <Safety />
+      <HowItWorks />
+    
+       <section className="  mx-auto relative px-4 py-12 md:py-16  sm:px-6 lg:px-8">
+        <Testimonials />
+      </section>
+      <section className=" overflow-x-hidden ">
+        <div>
+          <FAQSection />
+        </div>
+      </section>
+      <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
+        <ContactSection />
+      </section>
+
+        <MarqueeLogos />
+
+      <section className="px-4 py-12   md:py-20 md:pt-0 ">
+        <div className="relative container mx-auto rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src={bg}
+            alt="CTA background"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* Gradient overlay */}
+          {/* <div className="absolute inset-0 bg-[#003BE3] " /> */}
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-10 text-center py-16 md:py-20 px-6"
+          >
+            <h2 className=" text-white mb-4">Your next trip doesn't need to feel heavy.</h2>
+
+            <p className="text-white mb-8 text-sm md:text-base">
+             Thousands already ship their bags with us. Your turn.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact-us"
+                className="btn-white hover:scale-105 transition-all"
+              >
+                Book Now
+
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
