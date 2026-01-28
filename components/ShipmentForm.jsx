@@ -256,29 +256,16 @@ export default function ShipmentBookingForm({
         return;
       }
   
-      // 2️⃣ Razorpay options (IMPORTANT FIX HERE)
+      // 2️⃣ Razorpay options
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        key: "rzp_test_S9MbPhPiYZr1P9",
         amount: order.amount,
         currency: "INR",
         order_id: order.id,
         name: "Shipment Booking",
         description: "Shipment Charges",
   
-        // 🔥 VERY IMPORTANT
-        method: {
-          card: true,
-          upi: false,
-          netbanking: false,
-          wallet: false,
-          emi: false,
-        },
-  
-        // 🔥 VERY IMPORTANT
-        redirect: true,
-  
         handler: async function (response) {
-          // 3️⃣ Verify payment
           const verifyRes = await fetch("/api/razorpay/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -335,6 +322,7 @@ export default function ShipmentBookingForm({
       toast.error("Payment failed");
     }
   };
+  
   
 
 
