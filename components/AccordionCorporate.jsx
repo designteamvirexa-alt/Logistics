@@ -6,41 +6,45 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqData = [
   {
-    question: "Why do you need bag dimensions, not just weight?",
+    question: "Can Frisbi handle bulk luggage shipments for corporate events?",
     answer:
-      "Because luggage takes up physical space in our vehicles. A 15 kg compact bag fits efficiently. A 15 kg oversized bag takes space that could fit two compact bags. Dimensions help us calculate fair pricing for everyone.",
+      "Yes. Frisbi specializes in bulk luggage handling for corporate events, conferences, offsites, and relocations. We coordinate pickups from multiple locations and deliver to single or multiple destinations based on your requirements.",
   },
   {
-    question: "Can I reduce my cost by splitting one large bag into two smaller ones?",
+    question: "Do we get a dedicated account manager for corporate bookings?",
     answer:
-      "Not usually. Two smaller bags often cost similar to or more than one larger bag because we handle, seal, and track each bag separately. Pack efficiently into fewer bags when possible.",
+      "Yes. Every corporate account is assigned a dedicated account manager who serves as your single point of contact from planning through delivery. They coordinate logistics, provide updates, and resolve any issues throughout your shipment.",
   },
   {
-    question: "Are there any hidden charges after I get the calculator quote?",
+    question: "How does pricing work for corporate luggage delivery?",
     answer:
-      "No. The calculator price is what you pay unless your actual bag weight or dimensions differ significantly from what you entered. Always measure and weigh accurately for precise quotes.",
+      "Corporate pricing is customized based on shipment volume, distance, pickup and delivery locations, service speed, and any special requirements. Contact us with your details to receive a tailored quote that fits your budget and timeline.",
   },
   {
-    question: "What happens if my bag is heavier than I estimated?",
+    question: "Can Frisbi coordinate luggage pickup and delivery with flight schedules?",
     answer:
-      "Our pickup team weighs and measures bags during collection. If there's a significant difference (3+ kg or much larger dimensions), they recalculate the price. Small differences (under 2 kg) usually don't change the cost.",
+      "Yes. We schedule pickups and deliveries aligned with your flight times, event check-ins, hotel bookings, and conference schedules. Your account manager ensures timing works seamlessly with your travel plans.",
   },
   {
-    question: "Do remote areas cost extra?",
+    question: "Is insurance available for corporate luggage shipments?",
     answer:
-      "Some remote pincodes have small delivery surcharges. The calculator automatically includes these when you enter your exact pincode. You'll see the adjusted price in your quote.",
+      "Yes. Insurance coverage is available for corporate shipments based on declared luggage value. Discuss coverage limits with your account manager during booking to protect high-value bags and contents.",
   },
   {
-    question: "Can I negotiate the calculator price?",
+    question: "Can we track all bags in a corporate shipment separately?",
     answer:
-      "Standard pricing is fixed and transparent as per the quote. For very high volumes (10+ bags regularly) or corporate accounts, contact us for custom pricing agreements.",
+      "Yes. Each bag receives individual tracking so you can monitor every piece of luggage separately. Your account manager provides consolidated reports showing status updates for all bags in your shipment.",
   },
   {
-    question: "Why does Standard delivery cost less if everything else is the same?",
+    question: "Does Frisbi handle employee relocation luggage?",
     answer:
-      "Standard takes longer (5-7 days) so we can optimize routes and vehicle loads. Express and Premium require priority handling, faster trucks, and dedicated scheduling, which increases operational costs reflected in pricing.",
+      "Yes. Frisbi manages employee relocation luggage across cities. We coordinate pickups from employee homes, track bags individually, and deliver to new office locations or residences based on your relocation timeline.",
   },
-  
+  {
+    question: "What cities does Frisbi cover for corporate luggage delivery?",
+    answer:
+      "Frisbi covers 25,000+ pincodes across India, including major metros, tier-2 cities, and smaller towns. We handle inter-city transfers, multi-location pickups, and event venue deliveries across our entire network.",
+  },
 
 ];
 
@@ -56,7 +60,7 @@ export default function FAQ() {
 
   return (
     <div className="w-full max-w-3xl mx-auto py-12 md:pt-16  md:pb-24 px-4">
-      <h2 className="text-center mb-10 md:mb-12 lg:mb-16">Questions about pricing and payments</h2>
+      <h2 className="text-center mb-10 md:mb-12 lg:mb-16">Frequently asked questions</h2>
 
       <div className="space-y-6">
         {visibleFaqs.map((faq, i) => (
@@ -71,7 +75,7 @@ export default function FAQ() {
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggle(i)}
                 >
-                  <h5 className="font-semibold text-lg">{faq.question}</h5>
+                  <h4 className="font-semibold text-lg">{faq.question}</h4>
                   <ChevronUp className="w-6 h-6 text-black" />
                 </div>
 
@@ -93,9 +97,9 @@ export default function FAQ() {
                 className="flex justify-between items-center py-5 cursor-pointer border-b"
                 onClick={() => toggle(i)}
               >
-                <h5 className="">
+                <h4 className="">
                   {faq.question}
-                </h5>
+                </h4>
                 <ChevronDown className="w-6 h-6 text-black" />
               </div>
             )}

@@ -17,7 +17,8 @@ import MarqueeLogos from "@/components/MarqueeLogos";
 
 // Assets
 import herobg from "@/asset/service/premium-banner-img.svg";
-import one from "@/asset/service/luggageee.jpg";
+import one from "@/asset/service/express-cover.png";
+
 
 // Components
 import ContactSection from "@/components/ContactSection";
@@ -45,12 +46,19 @@ export default function PremiumServices() {
   if (!mounted) return null;
 
   const idealFor = [
-    "High-value electronics",
-    "Confidential documents",
-    "Corporate & enterprise shipments",
-    "Jewelry & luxury items",
-    "Medical & lab equipment",
-    "Fragile & sensitive goods",
+    "Expensive luggage with high-value contents",
+    "Pilgrimage trips carrying offerings and valuables",
+    "Higher standards. Fewer handoffs.",
+    "Priority movement that stays on track",
+    "Dedicated support when it matters",
+    "Built for journeys where nothing can go wrong",
+  ];
+   const ensures = [
+    "Delivered within 3 days",
+    "Free premium packaging included",
+    "Priority pickup and delivery slots",
+    "Dedicated support throughout the journey",
+   
   ];
 
   const fadeUp = {
@@ -107,7 +115,7 @@ export default function PremiumServices() {
                
               </motion.div> */}
               <p className="text-primary mb-5 text-center md:text-start">
-                ✨ Because some deliveries deserve more
+                ✨ Because some deliveries deserve more core
               </p>
 
               <motion.h1
@@ -121,9 +129,16 @@ export default function PremiumServices() {
               <motion.p
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-black max-w-2xl mb-4 text-center md:text-start"
+              >
+                White-glove luggage delivery service for your most valuable belongings.
+              </motion.p>
+              <motion.p
+                {...fadeUp}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-black max-w-2xl mb-6 text-center md:text-start"
               >
-                White-glove logistics for your most valuable shipments.
+                Best for luggage that needs careful handling, from heavy gears to high-value items.
               </motion.p>
 
               <motion.div
@@ -162,36 +177,51 @@ export default function PremiumServices() {
       </section>
 
       {/* ================= OVERVIEW ================= */}
-      <section className="py-12 md:py-16 lg:py-24 px-4">
-        <div className="container mx-auto grid md:grid-cols-3 gap-10 ">
-          <Image
-            src={one}
-            alt="Overview"
-            className="rounded-3xl object-cover w-full h-[400px]"
-          />
+      <section className="py-12 md:py-16 px-4">
+            <div className="container mx-auto grid md:grid-cols-3 items-center gap-10">
+              <Image
+                src={one}
+                alt="Overview"
+                className="rounded-3xl h-[400px] object-cover"
+              />
+    
+              <div className="md:col-span-2">
+                <h2 className="text-4xl font-bold mb-4 text-center md:text-start">
+                  Frisbi Premium Overview
+                </h2>
+                <p className="text-second mb-8 text-center md:text-start">
+                  Premium Delivery is our highest tier of luggage delivery service built for travelers who want absolute care, guaranteed timelines, and dedicated attention from start to finish.
 
-          <div className="md:col-span-2 text-center md:text-start">
-            <h2 className="text-3xl font-bold mb-4">Frisbi Premium Overview</h2>
-
-            <p className="text-second mb-6">
-              Premium Delivery is designed for shipments that require absolute
-              care, security, and priority handling.
-            </p>
-
-            <div className="bg-blue-50 rounded-3xl p-6 border max-w-lg">
-              <h4 className="font-semibold mb-4">Ideal for:</h4>
-              <ul className="space-y-3">
-                {idealFor.map((item, i) => (
-                  <li key={i} className="flex gap-3 items-start">
-                    <Check className="w-5 h-5 text-primary" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+                </p>
+    
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <div className="bg-blue-50 p-6 rounded-3xl ">
+                    <h4 className="font-semibold mb-4">Ideal for:</h4>
+                    <ul className="space-y-3 font-semibold">
+                      {idealFor.map((item, i) => (
+                        <li key={i} className="flex gap-3">
+                          <Check className="text-primary w-5 h-5" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+    
+                  <div className="bg-green-50 p-6 rounded-3xl ">
+                    <h4 className="font-semibold mb-4">This service ensures:</h4>
+                    <ul className="space-y-3 font-semibold">
+                      {ensures.map((item, i) => (
+                        <li key={i} className="flex gap-3">
+                          <Check className="text-green-600 w-5 h-5" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
       {/* ================= PRICING ================= */}
       <section id="pricing" className="bg-[#F1F2F6]">

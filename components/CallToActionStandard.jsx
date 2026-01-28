@@ -31,11 +31,12 @@ export default function CallToAction() {
           className="relative z-10 text-center py-16 md:py-20 px-6"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
-            Ready to ship your parcel at the best price?
+            Ready to Ship Your Bags the Smart Way?
           </h2>
 
           <p className="text-white mb-8 text-sm md:text-base">
-            Fast, safe, and affordable – trusted by thousands across India.
+            Affordable, reliable, and stress-free. Book Standard Delivery today.
+
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -44,7 +45,7 @@ export default function CallToAction() {
             </button>
 
             <button className="btn-white-outline hover:scale-105 transition-all">
-              Contact Support
+              Calculate Price
             </button>
           </div>
         </motion.div>

@@ -113,7 +113,7 @@ export default function TransformingCities() {
   return (
     <section className="relative w-full bg-primary py-12 md:py-16 lg:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-center text-white">Cities We Connect</h2>
+        <h2 className="text-center text-white">Connecting Cities, Made Simple</h2>
 
         <div className="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-y-12 gap-x-6 place-items-center">
           {visibleCities.map((city) => (

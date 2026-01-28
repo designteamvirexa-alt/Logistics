@@ -114,10 +114,10 @@ const useCurrentLocation = (type) => {
   return (
     <>
       {/* ================= BOOKING CARD ================= */}
-      <div className="bg-white shadow-2xl p-6 rounded-3xl max-w-md mx-auto">
-        <h3 className="text-xl font-bold mb-4 text-center">
+      <div className="bg-white shadow-2xl p-8 rounded-3xl max-w-md mx-auto">
+        <h4 className="text-xl font-bold mb-7 text-center">
           Your Booking is a Step Away!
-        </h3>
+        </h4>
 
         {/* PICKUP */}
         {isMobile ? (
@@ -126,7 +126,7 @@ const useCurrentLocation = (type) => {
             value={pickup}
             placeholder="Pickup Location"
             onClick={() => setOpen("pickup")}
-            className="w-full p-4 mb-3 border rounded-xl"
+            className="w-full p-3 mb-4  bg-gray-100 rounded-xl "
           />
         ) : (
           <Autocomplete
@@ -137,7 +137,7 @@ const useCurrentLocation = (type) => {
               value={pickup}
               onChange={(e) => setPickup(e.target.value)}
               placeholder="Pickup Location"
-              className="w-full p-4 mb-3 border rounded-xl"
+              className="w-full p-3 mb-4 bg-gray-100 rounded-xl"
             />
           </Autocomplete>
         )}
@@ -149,7 +149,7 @@ const useCurrentLocation = (type) => {
             value={drop}
             placeholder="Drop Location"
             onClick={() => setOpen("drop")}
-            className="w-full p-4 mb-4 border rounded-xl"
+            className="w-full p-3 mb-4 bg-gray-100 rounded-xl"
           />
         ) : (
           <Autocomplete
@@ -160,14 +160,14 @@ const useCurrentLocation = (type) => {
               value={drop}
               onChange={(e) => setDrop(e.target.value)}
               placeholder="Drop Location"
-              className="w-full p-4 mb-4 border rounded-xl"
+              className="w-full p-3 mb-4 bg-gray-100 rounded-xl"
             />
           </Autocomplete>
         )}
 
         <button
           onClick={handleBookNow}
-          className="w-full bg-blue-600 text-white py-3 rounded-xl"
+          className="w-full btn-primary"
         >
           Book Now
         </button>
@@ -183,7 +183,7 @@ const useCurrentLocation = (type) => {
             exit={{ y: "100%" }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h4 className="font-semibold text-lg">
+              <h4 className="font-semibold text-sm">
                 {open === "pickup" ? "Pickup Location" : "Drop Location"}
               </h4>
               <button onClick={() => setOpen(null)}>✕</button>
@@ -204,7 +204,7 @@ const useCurrentLocation = (type) => {
               <input
                 autoFocus
                 placeholder="Type location..."
-                className="w-full p-4 border rounded-xl"
+                className="w-full p-3 bg-gray-100 rounded-xl"
               />
             </Autocomplete>
           </motion.div>

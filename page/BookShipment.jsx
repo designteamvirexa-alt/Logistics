@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import MarqueeLogos from "@/components/MarqueeLogos";
 import ShipmentForm from "@/components/ShipmentForm";
-import FAQ from "@/components/Accordion";
+import FAQ from "@/components/AccordionCorporate";
 import bookshipment from "@/asset/book-shipment.png";
 import Link from "next/link";
 import aboutmobile from "@/asset/shippment/book-shipment.svg";

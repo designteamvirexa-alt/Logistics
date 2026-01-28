@@ -20,50 +20,50 @@ export default function StickyStepsOverlap() {
   const steps = [
     {
       step: "STEP 1",
-      title: "Priority Pickup",
-      desc: "Your parcel is picked up ahead of standard shipments.",
+      title: "Cost-Effective Pickup",
+      desc: "Professional delivery service at rates that fit comfortably within your budget.",
       icon: icon1,
     },
     {
       step: "STEP 2",
-      title: "Faster Transit",
-      desc: "Minimal hub delays with optimized routes.",
+      title: "Reliable 5-7 Day Transit",
+      desc: "Predictable delivery windows you can actually plan your trip around.",
       icon: icon2,
     },
     {
       step: "STEP 3",
-      title: "Live Real-Time Tracking",
-      desc: "Track your parcel at every stage.",
+      title: "Live Tracking",
+      desc: "Watch your bags move across India with real checkpoint updates.",
       icon: icon3,
     },
     {
       step: "STEP 4",
-      title: "Enhanced Insurance Coverage",
-      desc: "Higher insurance protection than Standard Delivery.",
+      title: "Standard Insurance Included",
+      desc: "Basic coverage comes free, with options to add more for valuables.",
       icon: icon4,
     },
     {
       step: "STEP 5",
-      title: "Instant Notifications",
-      desc: "SMS & Email alerts for every status update.",
+      title: "Automatic Alerts",
+      desc: "Get notified at every major movement point.",
       icon: icon5,
     },
     {
       step: "STEP 6",
-      title: "GST Invoice & Digital Receipt",
-      desc: "Auto-generated invoices for businesses.",
+      title: "Digital Documentation",
+      desc: "GST invoices and delivery receipts generated for every booking.",
       icon: icon6,
     },
     {
       step: "STEP 7",
-      title: "Extended Customer Support",
-      desc: "Priority support during delivery hours.",
+      title: "24/7 Support Access",
+      desc: "Get help anytime through phone, email, or WhatsApp channels.",
       icon: icon7,
     },
     {
       step: "STEP 8",
-      title: "Pan-India Express Network",
-      desc: "Strong coverage across metro & tier-1 cities.",
+      title: "25,000+ Pincode Coverage",
+      desc: "From metros to pilgrimage towns, hill stations to hometown addresses.",
       icon: icon8,
     },
   ];
@@ -76,24 +76,22 @@ export default function StickyStepsOverlap() {
           <div className="lg:w-1/2">
             <div className="lg:sticky lg:top-24 text-center md:text-left">
               <p className="text-sm tracking-widest text-gray-500 font-semibold mb-4">
-                DRIVING SUPPLY CHAIN SUCCESS
+                A RELIABLE WAY TO SHIP YOUR LUGGAGE
               </p>
 
               <h2 className="text-4xl font-bold leading-tight mb-6">
-                Key Features
+                Why Standard Delivery works
               </h2>
 
               <p className="text-gray-500 text-lg mb-8 max-w-lg">
-                Supply delivers tailored logistics and freight solutions,
-                empowering businesses with fast, safe, and efficient transport
-                across India.
+               When you're planning ahead and want your belongings moved safely without breaking the bank, Standard Delivery checks all the right boxes.
               </p>
 
               <Link
-                href="/services"
+                href="/contact-us"
                 className="btn-primary hover:scale-105 transition-all"
               >
-                Our Services
+                Get Started
               </Link>
 
               <Image
@@ -120,9 +118,9 @@ export default function StickyStepsOverlap() {
 
                 <div className="flex md:items-start items-center gap-5">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-3">
+                    <h4 className="text-2xl font-semibold mb-3">
                       {item.title}
-                    </h3>
+                    </h4>
 
                     <p className="text-gray-500 mb-4">{item.desc}</p>
 

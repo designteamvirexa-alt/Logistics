@@ -12,10 +12,10 @@ export function Safety() {
     <div className="py-12   md:py-24 md:pb-0 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center mb-4">
-          Safety, Security & Compliance
+          Designed for secure corporate movement
         </h2>
          <p className="text-center text-second mb-16">
-          Your luggage is handled with the same care as your people.
+          Careful handling, verified staff, and controlled movement at every step.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {features.map((feature, index) => (

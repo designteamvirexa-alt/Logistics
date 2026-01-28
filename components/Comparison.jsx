@@ -2,11 +2,11 @@ import { Check, X } from "lucide-react";
 
 export default function Comparison() {
   const comparisons = [
-    { feature: "Delivery Time", standard: "2–5 days", express: "1–3 days" },
-    { feature: "Cost", standard: "Low", express: "Medium" },
+    { feature: "Delivery Time", standard: "5–7 days", express: "3–5 days" },
+    { feature: "Cost", standard: "LoBudget-friendlyw", express: "Slightly higher, worth the speed" },
     { feature: "Priority Handling", standard: false, express: true },
-    { feature: "Insurance", standard: "Basic", express: "Enhanced" },
-    { feature: "Ideal For", standard: "Non-urgent", express: "Urgent" },
+    { feature: "Insurance", standard: "Basic coverage", express: "Enhanced protection" },
+    { feature: "Best For", standard: "Trips planned in advance", express: "Last-minute & urgent travel" },
   ];
 
   return (
@@ -26,8 +26,8 @@ export default function Comparison() {
             <thead>
               <tr className="bg-primary text-white">
                 <th className="px-6 py-4 text-left">Feature</th>
-                <th className="px-6 py-4 text-left">Standard</th>
-                <th className="px-6 py-4 text-left">Express</th>
+                <th className="px-6 py-4 text-left">Standard Delivery</th>
+                <th className="px-6 py-4 text-left">Express Delivery</th>
               </tr>
             </thead>
 
