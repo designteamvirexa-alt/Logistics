@@ -10,7 +10,7 @@ export async function POST(req) {
   } = body;
 
   const generated = crypto
-    .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+    .createHmac("sha256", XqgnLetVkiuJK8wIZcqckftH)
     .update(razorpay_order_id + "|" + razorpay_payment_id)
     .digest("hex");
 
