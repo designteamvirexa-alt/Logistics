@@ -27,10 +27,10 @@ export default function RootLayout({ children }) {
         <FooterSection />
 
         {/* ✅ Razorpay SDK */}
-        <Script
-          src="https://checkout.razorpay.com/v1/checkout.js"
-          strategy="beforeInteractive"
-        />
+    <Script
+  src="https://checkout.razorpay.com/v1/checkout.js"
+  strategy="afterInteractive"
+/>
 
         {/* ✅ Toast */}
         <Toaster position="top-right" reverseOrder={false} />

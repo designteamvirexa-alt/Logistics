@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
@@ -154,7 +154,6 @@ export default function ShipmentBookingForm({
   const invoiceRef = useRef(null);
 
   const [showInvoice, setShowInvoice] = useState(false);
-  const [orderData, setOrderData] = useState(null);
 
   const [values, setValues] = useState({
     customerType: "Individual",
@@ -229,95 +228,57 @@ export default function ShipmentBookingForm({
 
 
 
-  const startPayment = async () => {
-    try {
-      if (!values.name || !values.phone) {
-        toast.error("Name and mobile number required");
-        return;
-      }
-  
-      // 1️⃣ Create order
-      const res = await fetch("/api/razorpay/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: price.total }),
-      });
-  
-      if (!res.ok) {
-        toast.error("Order creation failed");
-        return;
-      }
-  
-      const order = await res.json();
-  
-      if (!window.Razorpay) {
-        toast.error("Razorpay not loaded");
-        return;
-      }
-  
-      // 2️⃣ Open Razorpay immediately (VERY IMPORTANT)
-      const options = {
-        key: "rzp_test_S9MbPhPiYZr1P9",
-        amount: order.amount,
-        currency: "INR",
-        order_id: order.id,
-        name: "Shipment Booking",
-        description: "Shipment Charges",
-  
-        handler: async function (response) {
-          // 3️⃣ Verify payment
-          const verifyRes = await fetch("/api/razorpay/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(response),
-          });
-  
-          const verify = await verifyRes.json();
-  
-          if (!verify.success) {
-            toast.error("Payment verification failed");
-            return;
-          }
-  
-          toast.success("Payment Successful ✅");
-  
-          await submitToGoogleSheet(
-            {
-              ...values,
-              paymentId: response.razorpay_payment_id,
-              orderId: response.razorpay_order_id,
-              paymentStatus: "PAID",
-            },
-            price.total,
-            router
-          );
-        },
-  
-        prefill: {
-          name: values.name,
-          email: values.email,
-          contact: values.phone,
-        },
-  
-        theme: { color: "#2563EB" },
-      };
-  
-      const rzp = new window.Razorpay(options);
-  
-      rzp.on("payment.failed", function (response) {
-        toast.error(response.error.description || "Payment failed");
-      });
-  
-      rzp.open();
-    } catch (err) {
-      console.error(err);
-      toast.error("Payment failed");
-    }
+const startPayment = async () => {
+  if (!values.name || !values.phone) {
+    toast.error("Name and mobile number required");
+    return;
+  }
+
+  // ✅ WAIT FOR RAZORPAY SDK
+  await new Promise((resolve) => {
+    const check = () => {
+      if (window.Razorpay) resolve(true);
+      else setTimeout(check, 100);
+    };
+    check();
+  });
+
+  // ✅ CREATE ORDER
+  const orderRes = await fetch("/api/razorpay/order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount: price.total }),
+  });
+
+  const order = await orderRes.json();
+
+  // ✅ OPEN RAZORPAY
+  const options = {
+    key: "rzp_test_S9MbPhPiYZr1P9", // hardcode test
+    amount: order.amount,
+    currency: "INR",
+    order_id: order.id,
+
+    name: "Shipment Booking",
+    description: "Shipment Charges",
+
+    handler: function (response) {
+      toast.success("Payment successful 🎉");
+      router.push("/thank-you");
+    },
+
+    prefill: {
+      name: values.name,
+      email: values.email,
+      contact: values.phone,
+    },
+
+    theme: { color: "#2563EB" },
   };
-  
-  
-  
-  
+
+  new window.Razorpay(options).open();
+};
+
 
 
   const fieldClass =
@@ -524,12 +485,12 @@ export default function ShipmentBookingForm({
         </div>
 
         <button
-  type="button"
-  className="btn-primary w-full md:w-auto"
-  onClick={startPayment}
->
-  Pay ₹{price.total} & Confirm Booking
-</button>
+          type="button"
+          className="btn-primary w-full md:w-auto"
+          onClick={startPayment}
+        >
+          Pay ₹{price.total} & Confirm Booking
+        </button>
 
       </form>
 
