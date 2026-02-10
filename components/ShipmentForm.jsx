@@ -65,7 +65,7 @@ const PICKUP_SLOTS = [
 
 const submitToGoogleSheet = async (values, totalPrice, router) => {
   const toastId = toast.loading("Submitting...");
-
+  console.log("values>>>>>",values)
   try {
     const formData = new URLSearchParams();
 
@@ -167,7 +167,10 @@ export default function ShipmentBookingForm({
     name: "",
     phone: "",
     email: "",
+    
   });
+
+  console.log("values",values)
 
   /* ✅ AUTO FILL PICKUP & DROP */
   useEffect(() => {
@@ -228,6 +231,9 @@ export default function ShipmentBookingForm({
 
 
 
+
+
+
 const startPayment = async () => {
   if (!values.name || !values.phone) {
     toast.error("Name and mobile number required");
@@ -254,7 +260,7 @@ const startPayment = async () => {
 
   // ✅ OPEN RAZORPAY
   const options = {
-    key: "rzp_test_S9MbPhPiYZr1P9", // hardcode test
+    key: "rzp_test_S9MbPhPiYZr1P9",
     amount: order.amount,
     currency: "INR",
     order_id: order.id,
@@ -262,9 +268,39 @@ const startPayment = async () => {
     name: "Shipment Booking",
     description: "Shipment Charges",
 
-    handler: function (response) {
-      toast.success("Payment successful 🎉");
-      router.push("/thank-you");
+    handler: async function (response) {
+      try {
+        toast.loading("Processing payment...");
+
+        // 1️⃣ OPTIONAL – show invoice
+        setShowInvoice(true);
+
+        // 2️⃣ OPTIONAL – download invoice
+        await downloadInvoice();
+
+        // 3️⃣ STORE IN GOOGLE SHEET
+        await submitToGoogleSheet(
+          {
+            ...values,
+            paymentId: response.razorpay_payment_id,
+            orderId: response.razorpay_order_id,
+            paymentStatus: "PAID",
+            totalAmount: price.total,
+          },
+          price.total,
+          router // 👈 router inside function
+        );
+
+        // submitToGoogleSheet already does router.push("/thank-you")
+        toast.dismiss();
+        toast.success("Payment successful 🎉");
+
+      } catch (err) {
+        toast.dismiss();
+        console.error(err);
+        toast.error("Payment done, but saving failed");
+        router.push("/thank-you"); // still allow user
+      }
     },
 
     prefill: {
@@ -278,6 +314,9 @@ const startPayment = async () => {
 
   new window.Razorpay(options).open();
 };
+
+
+
 
 
 
