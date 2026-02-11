@@ -172,7 +172,7 @@ function InvoiceContent({ values, price }) {
         }}
       >
         <p>Thank you for choosing Frisbi Logistics 🚚</p>
-        <p>support@frisbi.com | +91 98765 43210</p>
+        <p>support@frisbi.in | +91 98765 43210</p>
       </div>
     </>
   );
