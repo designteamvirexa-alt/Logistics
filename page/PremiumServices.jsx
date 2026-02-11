@@ -277,8 +277,10 @@ export default function PremiumServices() {
       </section>
 
       <ServiceFAQSection />
-
-      <MarqueeLogos />
+<section className="mt-14">
+   <MarqueeLogos />
+</section>
+   
       <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
@@ -300,10 +302,11 @@ export default function PremiumServices() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center py-16 md:py-20 px-6"
           >
-            <h2 className=" text-white mb-4">From Your Door to Their Door.</h2>
+            <h2 className=" text-white mb-4">Ready to ship your valuable luggage with complete confidence?</h2>
 
             <p className="text-white mb-8 text-sm md:text-base">
-              Fast, safe, and affordable – trusted by thousands across India.
+              Free packaging, dedicated support, guaranteed timelines, and white-glove care from door to door.
+
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -311,7 +314,7 @@ export default function PremiumServices() {
                 href="/contact-us"
                 className="btn-white hover:scale-105 transition-all"
               >
-                Contact Us
+                Contact Support
               </Link>
             </div>
           </motion.div>

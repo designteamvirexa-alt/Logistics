@@ -7,6 +7,7 @@ import FooterSection from "@/components/FooterSection";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
 import FloatingActions from "@/components/FloatingActions";
+import Script from "next/script";   // ✅ THIS WAS MISSING
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,8 +16,6 @@ const inter = Inter({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-
-  // Next.js shows not-found page at this internal route
   const is404 = pathname === "/not-found";
 
   return (
@@ -25,10 +24,16 @@ export default function RootLayout({ children }) {
         {!is404 && <HeaderWrapper />}
         {children}
         <FloatingActions />
-
         <FooterSection />
-          {/* TOASTER COMPONENT */}
-      <Toaster position="top-right" reverseOrder={false} />
+
+        {/* ✅ Razorpay SDK */}
+    <Script
+  src="https://checkout.razorpay.com/v1/checkout.js"
+  strategy="afterInteractive"
+/>
+
+        {/* ✅ Toast */}
+        <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
   );

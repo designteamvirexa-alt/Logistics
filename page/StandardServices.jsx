@@ -122,7 +122,7 @@ export default function Services() {
             {/* LEFT — CONTENT */}
             <div className="relative z-10 mt-10 text-center md:text-left flex flex-col items-center md:items-start">
               <p className="text-primary mb-5">
-                ✨ Safe. Affordable. Reliable.
+              Safe. Affordable. Reliable.
               </p>
 
               <motion.h1 {...fadeUp} className="text-black mb-6">
@@ -131,6 +131,7 @@ export default function Services() {
 
               <motion.p {...fadeUp} className="text-black max-w-2xl mb-6">
                 Because moving luggage shouldn’t move your budget
+
               </motion.p>
 
               <motion.p {...fadeUp} className="text-black max-w-2xl mb-8">

@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
@@ -65,7 +65,7 @@ const PICKUP_SLOTS = [
 
 const submitToGoogleSheet = async (values, totalPrice, router) => {
   const toastId = toast.loading("Submitting...");
-
+  console.log("values>>>>>",values)
   try {
     const formData = new URLSearchParams();
 
@@ -150,7 +150,7 @@ export default function ShipmentBookingForm({
   pickupFromUrl,
   dropFromUrl,
 }) {
-const router = useRouter();
+  const router = useRouter();
   const invoiceRef = useRef(null);
 
   const [showInvoice, setShowInvoice] = useState(false);
@@ -167,7 +167,10 @@ const router = useRouter();
     name: "",
     phone: "",
     email: "",
+    
   });
+
+  console.log("values",values)
 
   /* ✅ AUTO FILL PICKUP & DROP */
   useEffect(() => {
@@ -210,29 +213,120 @@ const router = useRouter();
     pdf.save("Invoice.pdf");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    if (!values.name || !values.phone) {
-      toast.error("Name and mobile number required");
-      return;
-    }
+  //   if (!values.name || !values.phone) {
+  //     toast.error("Name and mobile number required");
+  //     return;
+  //   }
 
-    setShowInvoice(true);
+  //   setShowInvoice(true);
 
-    setTimeout(async () => {
-      await downloadInvoice();
-      await submitToGoogleSheet(values, price.total, router);
-    }, 3000);
+  //   setTimeout(async () => {
+  //     await downloadInvoice();
+  //     await submitToGoogleSheet(values, price.total, router);
+  //   }, 3000);
+  // };
+
+
+
+
+
+
+const startPayment = async () => {
+  if (!values.name || !values.phone) {
+    toast.error("Name and mobile number required");
+    return;
+  }
+
+  // ✅ WAIT FOR RAZORPAY SDK
+  await new Promise((resolve) => {
+    const check = () => {
+      if (window.Razorpay) resolve(true);
+      else setTimeout(check, 100);
+    };
+    check();
+  });
+
+  // ✅ CREATE ORDER
+  const orderRes = await fetch("/api/razorpay/order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount: price.total }),
+  });
+
+  const order = await orderRes.json();
+
+  // ✅ OPEN RAZORPAY
+  const options = {
+    key: "rzp_test_S9MbPhPiYZr1P9",
+    amount: order.amount,
+    currency: "INR",
+    order_id: order.id,
+
+    name: "Shipment Booking",
+    description: "Shipment Charges",
+
+    handler: async function (response) {
+      try {
+        toast.loading("Processing payment...");
+
+        // 1️⃣ OPTIONAL – show invoice
+        setShowInvoice(true);
+
+        // 2️⃣ OPTIONAL – download invoice
+        await downloadInvoice();
+
+        // 3️⃣ STORE IN GOOGLE SHEET
+        await submitToGoogleSheet(
+          {
+            ...values,
+            paymentId: response.razorpay_payment_id,
+            orderId: response.razorpay_order_id,
+            paymentStatus: "PAID",
+            totalAmount: price.total,
+          },
+          price.total,
+          router // 👈 router inside function
+        );
+
+        // submitToGoogleSheet already does router.push("/thank-you")
+        toast.dismiss();
+        toast.success("Payment successful 🎉");
+
+      } catch (err) {
+        toast.dismiss();
+        console.error(err);
+        toast.error("Payment done, but saving failed");
+        router.push("/thank-you"); // still allow user
+      }
+    },
+
+    prefill: {
+      name: values.name,
+      email: values.email,
+      contact: values.phone,
+    },
+
+    theme: { color: "#2563EB" },
   };
+
+  new window.Razorpay(options).open();
+};
+
+
+
+
+
 
   const fieldClass =
     "w-full h-[48px] rounded-lg px-4 bg-[#f5f5f5] text-sm outline-none border focus:ring-1 focus:ring-[#013EFE]";
 
- 
+
   return (
     <section className="py-12 md:pt-24 px-4">
-      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-10">
+      <form onSubmit={(e) => e.preventDefault()} className="max-w-4xl mx-auto space-y-10">
         <h2 className="text-center text-2xl font-semibold">
           Shipment Booking Form
         </h2>
@@ -390,11 +484,12 @@ const router = useRouter();
               className={fieldClass}
               onChange={(e) => handleChange("luggageType", e.target.value)}
             >
-              <option>Suitcase</option>
-              <option>Trolley</option>
-              <option>BackPack</option>
-              <option>Others</option>
+              <option value="Suitcase">Suitcase</option>
+              <option value="Backpack">Backpack</option>
+              <option value="Duffel">Duffel</option>
+              <option value="Box">Box</option>
             </select>
+
           </div>
         </div>
 
@@ -418,22 +513,7 @@ const router = useRouter();
         </div>
 
         {/* Payment */}
-        <div>
-          <h4 className="font-semibold mb-4">Payment Mode</h4>
-          <select
-            className={fieldClass}
-            onChange={(e) => handleChange("paymentMode", e.target.value)}
-          >
-            <option value="">Select Payment Mode</option>
-            <option>UPI</option>
-            <option>Card</option>
-            <option>Net Banking</option>
-            <option>Cash</option>
-            {values.customerType === "Corporate" && (
-              <option>Corporate Credit</option>
-            )}
-          </select>
-        </div>
+
 
         {/* Price */}
         <div className="bg-blue-50 border rounded-xl p-5">
@@ -443,73 +523,78 @@ const router = useRouter();
           </div>
         </div>
 
-        <button type="submit" className="btn-primary w-full md:w-auto">
-          Confirm Booking
+        <button
+          type="button"
+          className="btn-primary w-full md:w-auto"
+          onClick={startPayment}
+        >
+          Pay ₹{price.total} & Confirm Booking
         </button>
+
       </form>
 
 
 
 
       {/* ================= INVOICE POPUP ================= */}
-{showInvoice && (
-  <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center">
-    <div className="bg-white rounded-xl shadow-xl w-[90vw] max-w-[900px] h-[90vh] overflow-y-auto p-6">
+      {showInvoice && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center">
+          <div className="bg-white rounded-xl shadow-xl w-[90vw] max-w-[900px] h-[90vh] overflow-y-auto p-6">
 
-      <div className="flex justify-between mb-4">
-        <h3 className="font-semibold text-lg">Invoice Preview</h3>
-        <button onClick={() => setShowInvoice(false)}>✕</button>
-      </div>
+            <div className="flex justify-between mb-4">
+              <h3 className="font-semibold text-lg">Invoice Preview</h3>
+              <button onClick={() => setShowInvoice(false)}>✕</button>
+            </div>
 
-      {/* A4 LOOK */}
+            {/* A4 LOOK */}
+            <div
+              style={{
+                width: 794,
+                minHeight: 1123,
+                margin: "0 auto",
+                backgroundColor: "#fff",
+                padding: 40,
+                boxShadow: "0 0 10px rgba(0,0,0,0.15)",
+              }}
+            >
+              <InvoiceContent values={values} price={price} />
+            </div>
+
+            <div className="flex justify-end mt-6">
+              <button
+                onClick={downloadInvoice}
+                style={{
+                  backgroundColor: "#2563EB",
+                  color: "#fff",
+                  padding: "10px 24px",
+                  borderRadius: 8,
+                }}
+              >
+                Download PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+
       <div
+        ref={invoiceRef}
         style={{
-          width: 794,
-          minHeight: 1123,
-          margin: "0 auto",
+          position: "fixed",
+          left: "-9999px",
+          top: 0,
+          width: "794px",
+          minHeight: "1123px",
           backgroundColor: "#fff",
+          color: "#000",
           padding: 40,
-          boxShadow: "0 0 10px rgba(0,0,0,0.15)",
+          fontFamily: "Arial",
         }}
       >
         <InvoiceContent values={values} price={price} />
       </div>
-
-      <div className="flex justify-end mt-6">
-        <button
-          onClick={downloadInvoice}
-          style={{
-            backgroundColor: "#2563EB",
-            color: "#fff",
-            padding: "10px 24px",
-            borderRadius: 8,
-          }}
-        >
-          Download PDF
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
-
-<div
-  ref={invoiceRef}
-  style={{
-    position: "fixed",
-    left: "-9999px",
-    top: 0,
-    width: "794px",
-    minHeight: "1123px",
-    backgroundColor: "#fff",
-    color: "#000",
-    padding: 40,
-    fontFamily: "Arial",
-  }}
->
-  <InvoiceContent values={values} price={price} />
-</div>
 
 
 
