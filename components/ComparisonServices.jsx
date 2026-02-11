@@ -3,53 +3,36 @@ import { Check, X } from "lucide-react";
 export default function ServiceComparison() {
   const rows = [
     {
-      feature: "Delivery Time",
-      standard: "5-7 days",
-      express: "3-5 days",
-      premium: "Within 3 days",
+      feature: "Lowest price, can wait a week",
+      standard: "Standard",
+      express: "Budget-friendly with 5-7 day delivery",
+    
     },
     {
-      feature: "Cost",
-      standard: "Low",
-      express: "Medium",
-      premium: "High",
+      feature: "Need it faster, traveling soon",
+      standard: "Express",
+      express: "3-5 days with priority handling",
+      
     },
     {
-      feature: "Priority Handling",
-      standard: false,
-      express: true,
-      premium: true,
+      feature: "Expensive luggage, zero stress",
+      standard: "Premium",
+      express: "3 days, free packaging, dedicated support",
+      
     },
     {
-      feature: "Free Packaging",
-      standard: false,
-      express: true,
-      premium: true,
+      feature: "Moving a team or organizing an event",
+      standard: "Corporate",
+      express: "Bulk handling with",
+     
     },
     {
-      feature: "Dedicated Support",
-      standard: "Basic",
-      express: "Standard",
-      premium: "Premium 24/7",
+      feature: "Just me and my bags",
+      standard: "Individual",
+      express: "Flexible and affordable for solo travelers",
+     
     },
-    {
-      feature: "Insurance",
-      standard: "Basic",
-      express: "Enhanced",
-      premium: "Maximum",
-    },
-    {
-      feature: "Scheduled Slots",
-      standard: false,
-      express: "Add",
-      premium: true,
-    },
-    {
-      feature: "Ideal For",
-      standard: "Affordable trips",
-      express: "Urgent travel",
-      premium: "Valuable luggage",
-    },
+    
   ];
 
   const renderValue = (value) => {
@@ -63,11 +46,13 @@ export default function ServiceComparison() {
   };
 
   return (
-    <section className="py-24 sm:py-24">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          Standard vs Express vs Premium Delivery
+        <h2 className="text-3xl font-bold mb-10 text-center">
+          Match your trip to the right service
+
         </h2>
+       
 
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
@@ -75,12 +60,10 @@ export default function ServiceComparison() {
               <table className="min-w-full divide-y divide-purple-200">
                 <thead className="bg-primary">
                   <tr>
-                    <th className="px-6 py-4 text-left text-white">Feature</th>
-                    <th className="px-6 py-4 text-center text-white">Standard</th>
-                    <th className="px-6 py-4 text-center text-white">Express</th>
-                    <th className="px-6 py-4 text-center text-white bg-yellow-400/20">
-                      Premium
-                    </th>
+                    <th className="px-6 py-4 text-left text-white">What You Need</th>
+                    <th className="px-6 py-4 text-center text-white">Best Service</th>
+                    <th className="px-6 py-4 text-center text-white">Why</th>
+                    
                   </tr>
                 </thead>
 
@@ -102,9 +85,7 @@ export default function ServiceComparison() {
                         {renderValue(row.express)}
                       </td>
 
-                      <td className="px-6 py-4 text-center font-semibold text-primary bg-blue-50">
-                        {renderValue(row.premium)}
-                      </td>
+                     
                     </tr>
                   ))}
                 </tbody>
