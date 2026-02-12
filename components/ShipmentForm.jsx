@@ -213,21 +213,7 @@ export default function ShipmentBookingForm({
     pdf.save("Invoice.pdf");
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
 
-  //   if (!values.name || !values.phone) {
-  //     toast.error("Name and mobile number required");
-  //     return;
-  //   }
-
-  //   setShowInvoice(true);
-
-  //   setTimeout(async () => {
-  //     await downloadInvoice();
-  //     await submitToGoogleSheet(values, price.total, router);
-  //   }, 3000);
-  // };
 
 
 
@@ -268,40 +254,162 @@ const startPayment = async () => {
     name: "Shipment Booking",
     description: "Shipment Charges",
 
-    handler: async function (response) {
-      try {
-        toast.loading("Processing payment...");
+    // handler: async function (response) {
+    //   try {
+    //     toast.loading("Processing payment...");
 
-        // 1️⃣ OPTIONAL – show invoice
-        setShowInvoice(true);
+    //     // 1️⃣ OPTIONAL – show invoice
+    //     setShowInvoice(true);
 
-        // 2️⃣ OPTIONAL – download invoice
-        await downloadInvoice();
+    //     // 2️⃣ OPTIONAL – download invoice
+    //     await downloadInvoice();
 
-        // 3️⃣ STORE IN GOOGLE SHEET
-        await submitToGoogleSheet(
-          {
-            ...values,
-            paymentId: response.razorpay_payment_id,
-            orderId: response.razorpay_order_id,
-            paymentStatus: "PAID",
-            totalAmount: price.total,
-          },
-          price.total,
-          router // 👈 router inside function
-        );
+    //     // 3️⃣ STORE IN GOOGLE SHEET
+    //     await submitToGoogleSheet(
+    //       {
+    //         ...values,
+    //         paymentId: response.razorpay_payment_id,
+    //         orderId: response.razorpay_order_id,
+    //         paymentStatus: "PAID",
+    //         totalAmount: price.total,
+    //       },
+    //       price.total,
+    //       router // 👈 router inside function
+    //     );
 
-        // submitToGoogleSheet already does router.push("/thank-you")
-        toast.dismiss();
-        toast.success("Payment successful 🎉");
+    //     // submitToGoogleSheet already does router.push("/thank-you")
+    //     toast.dismiss();
+    //     toast.success("Payment successful 🎉");
 
-      } catch (err) {
-        toast.dismiss();
-        console.error(err);
-        toast.error("Payment done, but saving failed");
-        router.push("/thank-you"); // still allow user
+    //   } catch (err) {
+    //     toast.dismiss();
+    //     console.error(err);
+    //     toast.error("Payment done, but saving failed");
+    //     router.push("/thank-you"); // still allow user
+    //   }
+    // },
+
+
+handler: async function (response) {
+  try {
+    toast.loading("Processing order...");
+
+    // =========================
+    // 1️⃣ LOGIN XPRESSBEES
+    // =========================
+    const loginRes = await fetch(
+      "https://shipment.xpressbees.com/api/users/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: "javidsherif1@gmail.com",
+          password: "Frisbi@2026",
+        }),
       }
-    },
+    );
+
+    const loginData = await loginRes.json();
+    const token = loginData.data;
+
+    if (!token) throw new Error("Xpress login failed");
+
+    // =========================
+    // 2️⃣ CREATE SHIPMENT
+    // =========================
+    const shipRes = await fetch(
+      "https://shipment.xpressbees.com/api/shipments2",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          order_number: "ORD" + Date.now(),
+          payment_type: "prepaid",
+          order_amount: price.total,
+          collectable_amount: 0,
+          package_weight: Number(values.weight || 1),
+
+          consignee: {
+            name: values.name,
+            address: "Customer Address",
+            city: "dropCity",
+            // city: values.dropCity,
+            state: "Tamil Nadu",
+            pincode: "600001",
+            phone: values.phone,
+          },
+
+          pickup: {
+            warehouse_name: "WH1",
+            name: "Sender",
+            address: "Office Address",
+            city: "pickupCity",
+            // city: values.pickupCity,
+            state: "Tamil Nadu",
+            pincode: "600050",
+            phone: "9999999999",
+          },
+
+          order_items: [
+            {
+              name: "Shipment",
+              qty: "1",
+              price: price.total,
+              sku: "SHIP01",
+            },
+          ],
+        }),
+      }
+    );
+
+    const shipData = await shipRes.json();
+
+    if (!shipData.status)
+      throw new Error(shipData.message || "Shipment failed");
+
+    const awb = shipData.data.awb_number;
+
+    // =========================
+    // 3️⃣ SHOW INVOICE
+    // =========================
+    setShowInvoice(true);
+    await downloadInvoice();
+
+    // =========================
+    // 4️⃣ SAVE GOOGLE SHEET
+    // =========================
+await submitToGoogleSheet(
+  {
+    ...values,
+
+    paymentId: response.razorpay_payment_id,
+    orderId: response.razorpay_order_id,
+
+    awb: shipData.data.awb_number,
+    courier: shipData.data.courier_name,
+    shipmentId: shipData.data.shipment_id,
+    shipmentStatus: shipData.data.status,
+    labelUrl: shipData.data.label,
+
+    paymentStatus: "PAID",
+  },
+  price.total,
+  router
+);
+
+
+    toast.dismiss();
+    toast.success("Order + Shipment success 🚚");
+
+  } catch (err) {
+    toast.dismiss();
+    console.error(err);
+    toast.error(err.message || "Process failed");
+  }
+},
 
     prefill: {
       name: values.name,
