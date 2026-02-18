@@ -16,7 +16,8 @@ import Testimonials from "@/components/Testimonials";
 import lugggaevariations from "@/asset/rate-lugggae-variation.svg";
 import lugggaevariationsmobile from "@/asset/rate-lugggae-variation-mg.svg";
 
-function RateCalculator() {
+function RateCalculator({  pickupFromUrl,
+  dropFromUrl,}) {
   return (
     <div>
       <div className="-mt-24 -mt-16 ">
@@ -134,9 +135,8 @@ function RateCalculator() {
           </div>
         </div>
       </section>
-
       <section className="py-12 md:pt-0 md:pb-0">
-        <ShipmentCostCalculator />
+        <ShipmentCostCalculator pickupFromUrl={pickupFromUrl} dropFromUrl={dropFromUrl} />
       </section>
 
       <section>

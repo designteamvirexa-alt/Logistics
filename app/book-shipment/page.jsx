@@ -5,18 +5,20 @@ export const dynamic = "force-dynamic";
 import BookShipment from "@/page/BookShipment";
 
 export default async function Page({ searchParams }) {
-  // 🔥 IMPORTANT: unwrap Promise
+  // ✅ unwrap promise
   const params = await searchParams;
 
-  const pickup = params?.pickup ?? "";
-  const drop = params?.drop ?? "";
+  let formData = {};
 
-  console.log("pickup, drop:", pickup, drop);
+  try {
+    if (params?.data) {
+      formData = JSON.parse(decodeURIComponent(params.data));
+    }
+  } catch (err) {
+    console.error("Data parse error:", err);
+  }
 
-  return (
-    <BookShipment
-      pickupFromUrl={pickup}
-      dropFromUrl={drop}
-    />
-  );
+  console.log("Received booking data:", formData);
+
+  return <BookShipment bookingData={formData} />;
 }
