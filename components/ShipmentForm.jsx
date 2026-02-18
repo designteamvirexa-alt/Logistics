@@ -65,7 +65,7 @@ const PICKUP_SLOTS = [
 
 const submitToGoogleSheet = async (values, totalPrice, router) => {
   const toastId = toast.loading("Submitting...");
-  console.log("values>>>>>",values)
+  console.log("values>>>>>", values)
   try {
     const formData = new URLSearchParams();
 
@@ -80,6 +80,8 @@ const submitToGoogleSheet = async (values, totalPrice, router) => {
         Array.isArray(value) ? value.join(", ") : value ?? ""
       );
     });
+
+    console.log("formData",formData);
 
     // ✅ IMPORTANT FIX
     await fetch(
@@ -109,7 +111,7 @@ const submitToGoogleSheet = async (values, totalPrice, router) => {
 
 const calculatePriceBreakup = (values) => {
   const servicePrice = SERVICE_BASE_PRICE[values.serviceType] || 0;
-  const bags = Number(values.checkedBags || 0);
+  const bags = Number(values.bags || 0);
   const weight = Number(values.weight || 0);
 
   let subtotal =
@@ -147,8 +149,7 @@ const calculatePriceBreakup = (values) => {
 };
 
 export default function ShipmentBookingForm({
-  pickupFromUrl,
-  dropFromUrl,
+  bookingData
 }) {
   const router = useRouter();
   const invoiceRef = useRef(null);
@@ -161,27 +162,46 @@ export default function ShipmentBookingForm({
     includeGST: false,
     luggageType: "Suitcase",
 
+    // already existing
     pickupCity: "",
     dropCity: "",
-
     name: "",
     phone: "",
     email: "",
-    
+
+    // ✅ ADD THESE (NEW)
+    pickupAddress: "",
+    pickupState: "",
+    pickupPincode: "",
+    pickupPhone:"",
+    pickupName:"",
+
+    address: "",
+    dropState: "",
+    dropPincode: "",
+
+    bags: "",
+    weight: "",
+    length: "",
+    width: "",
+    height: "",
+    bagSize: "",
+    serviceType: "",
   });
 
-  console.log("values",values)
+
+  console.log("values", values)
 
   /* ✅ AUTO FILL PICKUP & DROP */
   useEffect(() => {
-    if (pickupFromUrl || dropFromUrl) {
+    if (bookingData) {
       setValues((prev) => ({
         ...prev,
-        pickupCity: pickupFromUrl,
-        dropCity: dropFromUrl,
+        ...bookingData,
       }));
     }
-  }, [pickupFromUrl, dropFromUrl]);
+  }, [bookingData]);
+
 
   const price = useMemo(
     () => calculatePriceBreakup(values),
@@ -220,208 +240,207 @@ export default function ShipmentBookingForm({
 
 
 
-const startPayment = async () => {
-  if (!values.name || !values.phone) {
-    toast.error("Name and mobile number required");
-    return;
-  }
+  const startPayment = async () => {
+    if (!values.name || !values.phone) {
+      toast.error("Name and mobile number required");
+      return;
+    }
 
-  // ✅ WAIT FOR RAZORPAY SDK
-  await new Promise((resolve) => {
-    const check = () => {
-      if (window.Razorpay) resolve(true);
-      else setTimeout(check, 100);
-    };
-    check();
-  });
+    // ✅ WAIT FOR RAZORPAY SDK
+    await new Promise((resolve) => {
+      const check = () => {
+        if (window.Razorpay) resolve(true);
+        else setTimeout(check, 100);
+      };
+      check();
+    });
 
-  // ✅ CREATE ORDER
-  const orderRes = await fetch("/api/razorpay/order", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ amount: price.total }),
-  });
+    // ✅ CREATE ORDER
+    const orderRes = await fetch("/api/razorpay/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: price.total }),
+    });
 
-  const order = await orderRes.json();
+    const order = await orderRes.json();
 
-  // ✅ OPEN RAZORPAY
-  const options = {
-    key: "rzp_test_S9MbPhPiYZr1P9",
-    amount: order.amount,
-    currency: "INR",
-    order_id: order.id,
+    // ✅ OPEN RAZORPAY
+    const options = {
+      key: "rzp_test_S9MbPhPiYZr1P9",
+      amount: order.amount,
+      currency: "INR",
+      order_id: order.id,
 
-    name: "Shipment Booking",
-    description: "Shipment Charges",
+      name: "Shipment Booking",
+      description: "Shipment Charges",
 
-    // handler: async function (response) {
-    //   try {
-    //     toast.loading("Processing payment...");
+      // handler: async function (response) {
+      //   try {
+      //     toast.loading("Processing payment...");
 
-    //     // 1️⃣ OPTIONAL – show invoice
-    //     setShowInvoice(true);
+      //     // 1️⃣ OPTIONAL – show invoice
+      //     setShowInvoice(true);
 
-    //     // 2️⃣ OPTIONAL – download invoice
-    //     await downloadInvoice();
+      //     // 2️⃣ OPTIONAL – download invoice
+      //     await downloadInvoice();
 
-    //     // 3️⃣ STORE IN GOOGLE SHEET
-    //     await submitToGoogleSheet(
-    //       {
-    //         ...values,
-    //         paymentId: response.razorpay_payment_id,
-    //         orderId: response.razorpay_order_id,
-    //         paymentStatus: "PAID",
-    //         totalAmount: price.total,
-    //       },
-    //       price.total,
-    //       router // 👈 router inside function
-    //     );
+      //     // 3️⃣ STORE IN GOOGLE SHEET
+      //     await submitToGoogleSheet(
+      //       {
+      //         ...values,
+      //         paymentId: response.razorpay_payment_id,
+      //         orderId: response.razorpay_order_id,
+      //         paymentStatus: "PAID",
+      //         totalAmount: price.total,
+      //       },
+      //       price.total,
+      //       router // 👈 router inside function
+      //     );
 
-    //     // submitToGoogleSheet already does router.push("/thank-you")
-    //     toast.dismiss();
-    //     toast.success("Payment successful 🎉");
+      //     // submitToGoogleSheet already does router.push("/thank-you")
+      //     toast.dismiss();
+      //     toast.success("Payment successful 🎉");
 
-    //   } catch (err) {
-    //     toast.dismiss();
-    //     console.error(err);
-    //     toast.error("Payment done, but saving failed");
-    //     router.push("/thank-you"); // still allow user
-    //   }
-    // },
+      //   } catch (err) {
+      //     toast.dismiss();
+      //     console.error(err);
+      //     toast.error("Payment done, but saving failed");
+      //     router.push("/thank-you"); // still allow user
+      //   }
+      // },
 
 
-handler: async function (response) {
-  try {
-    toast.loading("Processing order...");
+      handler: async function (response) {
+        try {
+          toast.loading("Processing order...");
 
-    // =========================
-    // 1️⃣ LOGIN XPRESSBEES
-    // =========================
-    const loginRes = await fetch(
-      "https://shipment.xpressbees.com/api/users/login",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: "javidsherif1@gmail.com",
-          password: "Frisbi@2026",
-        }),
-      }
-    );
-
-    const loginData = await loginRes.json();
-    const token = loginData.data;
-
-    if (!token) throw new Error("Xpress login failed");
-
-    // =========================
-    // 2️⃣ CREATE SHIPMENT
-    // =========================
-    const shipRes = await fetch(
-      "https://shipment.xpressbees.com/api/shipments2",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          order_number: "ORD" + Date.now(),
-          payment_type: "prepaid",
-          order_amount: price.total,
-          collectable_amount: 0,
-          package_weight: Number(values.weight || 1),
-
-          consignee: {
-            name: values.name,
-            address: "Customer Address",
-            city: "dropCity",
-            // city: values.dropCity,
-            state: "Tamil Nadu",
-            pincode: "600001",
-            phone: values.phone,
-          },
-
-          pickup: {
-            warehouse_name: "WH1",
-            name: "Sender",
-            address: "Office Address",
-            city: "pickupCity",
-            // city: values.pickupCity,
-            state: "Tamil Nadu",
-            pincode: "600050",
-            phone: "9999999999",
-          },
-
-          order_items: [
+          // =========================
+          // 1️⃣ LOGIN XPRESSBEES
+          // =========================
+          const loginRes = await fetch(
+            "https://shipment.xpressbees.com/api/users/login",
             {
-              name: "Shipment",
-              qty: "1",
-              price: price.total,
-              sku: "SHIP01",
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: "javidsherif1@gmail.com",
+                password: "Frisbi@2026",
+              }),
+            }
+          );
+
+          const loginData = await loginRes.json();
+          const token = loginData.data;
+
+          if (!token) throw new Error("Xpress login failed");
+
+          // =========================
+          // 2️⃣ CREATE SHIPMENT
+          // =========================
+          const shipRes = await fetch(
+            "https://shipment.xpressbees.com/api/shipments2",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                order_number: "ORD" + Date.now(),
+                payment_type: "prepaid",
+                order_amount: price.total,
+                collectable_amount: 0,
+                package_weight: Number(values.weight || 1),
+
+                consignee: {
+                  name: values.name,
+                  address: values.address || "Customer Address",
+                  city: values.dropCity,
+                  state: values.dropState || "Tamil Nadu",
+                  pincode: values.dropPincode || "---",
+                  phone: values.phone,
+                },
+
+                pickup: {
+                  warehouse_name: "WH1",
+                  name: values.pickupName,
+                  address: values.pickupAddress || "Office Address",
+                  city: values.pickupCity,
+                  state: values.pickupState || "Tamil Nadu",
+                  pincode: values.pickupPincode || "---",
+                  phone: values.pickupPhone,
+                },
+
+
+                order_items: [
+                  {
+                    name: "Shipment",
+                    qty: "1",
+                    price: price.total,
+                    sku: "SHIP01",
+                  },
+                ],
+              }),
+            }
+          );
+
+          const shipData = await shipRes.json();
+
+          if (!shipData.status)
+            throw new Error(shipData.message || "Shipment failed");
+
+          const awb = shipData.data.awb_number;
+
+          // =========================
+          // 3️⃣ SHOW INVOICE
+          // =========================
+          setShowInvoice(true);
+          await downloadInvoice();
+
+          // =========================
+          // 4️⃣ SAVE GOOGLE SHEET
+          // =========================
+          await submitToGoogleSheet(
+            {
+              ...values,
+
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+
+              awb: shipData.data.awb_number,
+              courier: shipData.data.courier_name,
+              shipmentId: shipData.data.shipment_id,
+              shipmentStatus: shipData.data.status,
+              labelUrl: shipData.data.label,
+
+              paymentStatus: "PAID",
             },
-          ],
-        }),
-      }
-    );
-
-    const shipData = await shipRes.json();
-
-    if (!shipData.status)
-      throw new Error(shipData.message || "Shipment failed");
-
-    const awb = shipData.data.awb_number;
-
-    // =========================
-    // 3️⃣ SHOW INVOICE
-    // =========================
-    setShowInvoice(true);
-    await downloadInvoice();
-
-    // =========================
-    // 4️⃣ SAVE GOOGLE SHEET
-    // =========================
-await submitToGoogleSheet(
-  {
-    ...values,
-
-    paymentId: response.razorpay_payment_id,
-    orderId: response.razorpay_order_id,
-
-    awb: shipData.data.awb_number,
-    courier: shipData.data.courier_name,
-    shipmentId: shipData.data.shipment_id,
-    shipmentStatus: shipData.data.status,
-    labelUrl: shipData.data.label,
-
-    paymentStatus: "PAID",
-  },
-  price.total,
-  router
-);
+            price.total,
+            router
+          );
 
 
-    toast.dismiss();
-    toast.success("Order + Shipment success 🚚");
+          toast.dismiss();
+          toast.success("Order + Shipment success 🚚");
 
-  } catch (err) {
-    toast.dismiss();
-    console.error(err);
-    toast.error(err.message || "Process failed");
-  }
-},
+        } catch (err) {
+          toast.dismiss();
+          console.error(err);
+          toast.error(err.message || "Process failed");
+        }
+      },
 
-    prefill: {
-      name: values.name,
-      email: values.email,
-      contact: values.phone,
-    },
+      prefill: {
+        name: values.name,
+        email: values.email,
+        contact: values.phone,
+      },
 
-    theme: { color: "#2563EB" },
+      theme: { color: "#2563EB" },
+    };
+
+    new window.Razorpay(options).open();
   };
-
-  new window.Razorpay(options).open();
-};
 
 
 
@@ -469,10 +488,11 @@ await submitToGoogleSheet(
 
           <div className="grid md:grid-cols-2 gap-4">
             <input
-              placeholder="Full Name"
-              className={fieldClass}
-              onChange={(e) => handleChange("name", e.target.value)}
-            />
+                placeholder="Enter Name"
+                className={fieldClass}
+                value={values.pickupName}
+                onChange={(e) => handleChange("name", e.target.value)}
+              />
             <input
               placeholder="Mobile Number"
               className={fieldClass}
@@ -503,23 +523,142 @@ await submitToGoogleSheet(
 
         {/* Pickup & Drop */}
         <div>
-          <h4 className="font-semibold mb-4">Pickup & Drop Location</h4>
+          <h4 className="font-semibold mb-4">Pickup  Location</h4>
           <div className="grid md:grid-cols-2 gap-6">
-            <input
-              placeholder="Pickup City"
-              readOnly
-              className={fieldClass}
-              value={values.pickupCity}
-              onChange={(e) => handleChange("pickupCity", e.target.value)}
-            />
-            <input
-              placeholder="Drop City"
-              readOnly
-              className={fieldClass}
-              value={values.dropCity}
-              onChange={(e) => handleChange("dropCity", e.target.value)}
-            />
+
+            {/* Name */}
+            {/* <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">Name</label>
+              <input
+                placeholder="Enter Name"
+                className={fieldClass}
+                value={values.name}
+                onChange={(e) => handleChange("name", e.target.value)}
+              />
+            </div> */}
+
+            {/* Pickup City */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Pickup City
+              </label>
+              <input
+                placeholder="Pickup City"
+                readOnly
+                className={fieldClass}
+                value={values.pickupCity}
+              />
+            </div>
+
+
+
+            {/* Pickup Address */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Pickup Address
+              </label>
+              <input
+                placeholder="Enter Pickup Address"
+                className={fieldClass}
+                value={values.pickupAddress}
+                onChange={(e) => handleChange("pickupAddress", e.target.value)}
+              />
+            </div>
+
+            {/* Pickup State */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Pickup State
+              </label>
+              <input
+                placeholder="Enter Pickup State"
+                className={fieldClass}
+                value={values.pickupState}
+                onChange={(e) => handleChange("pickupState", e.target.value)}
+              />
+            </div>
+
+            {/* Pickup Pincode */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Pickup Pincode
+              </label>
+              <input
+                placeholder="Enter Pickup Pincode"
+                className={fieldClass}
+                value={values.pickupPincode}
+                onChange={(e) => handleChange("pickupPincode", e.target.value)}
+              />
+            </div>
+
+            </div>
+
+            <h4 className="font-semibold mb-4 mt-3">Drop  Location</h4>
+            <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">Name</label>
+              <input
+                placeholder="Enter Name"
+                className={fieldClass}
+                value={values.name}
+                onChange={(e) => handleChange("name", e.target.value)}
+              />
+            </div>
+
+            {/* Drop Address */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Drop Address
+              </label>
+              <input
+                placeholder="Enter Drop Address"
+                className={fieldClass}
+                value={values.address}
+                onChange={(e) => handleChange("dropAddress", e.target.value)}
+              />
+            </div>
+
+            {/* Drop City */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Drop City
+              </label>
+              <input
+                placeholder="Drop City"
+                readOnly
+                className={fieldClass}
+                value={values.dropCity}
+              />
+            </div>
+
+            {/* Drop State */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Drop State
+              </label>
+              <input
+                placeholder="Enter Drop State"
+                className={fieldClass}
+                value={values.dropState}
+                onChange={(e) => handleChange("dropState", e.target.value)}
+              />
+            </div>
+
+            {/* Drop Pincode */}
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">
+                Drop Pincode
+              </label>
+              <input
+                placeholder="Enter Drop Pincode"
+                className={fieldClass}
+                value={values.dropPincode}
+                onChange={(e) => handleChange("dropPincode", e.target.value)}
+              />
+            </div>
+
           </div>
+
         </div>
 
         {/* Pickup & Delivery */}
@@ -570,14 +709,46 @@ await submitToGoogleSheet(
               type="number"
               placeholder="No of Bags"
               className={fieldClass}
-              onChange={(e) => handleChange("checkedBags", e.target.value)}
+              value={values.bags}
+              onChange={(e) => handleChange("bags", e.target.value)}
             />
+
             <input
               type="number"
               placeholder="Total Weight (kg)"
               className={fieldClass}
+              value={values.weight}
               onChange={(e) => handleChange("weight", e.target.value)}
             />
+
+
+            <input
+              type="number"
+              placeholder="Length (cm)"
+              className={fieldClass}
+              value={values.length}
+              onChange={(e) => handleChange("length", e.target.value)}
+            />
+
+
+            <input
+              type="number"
+              placeholder="Width (cm)"
+              className={fieldClass}
+              value={values.width}
+              onChange={(e) => handleChange("width", e.target.value)}
+            />
+
+
+            <input
+              type="number"
+              placeholder="Height (cm)"
+              className={fieldClass}
+              value={values.height}
+              onChange={(e) => handleChange("height", e.target.value)}
+            />
+
+
             <select
               className={fieldClass}
               onChange={(e) => handleChange("bagSize", e.target.value)}

@@ -105,7 +105,7 @@ const useCurrentLocation = (type) => {
     }
 
     router.push(
-      `/book-shipment?pickup=${encodeURIComponent(
+      `/rate-calculator?pickup=${encodeURIComponent(
         pickup
       )}&drop=${encodeURIComponent(drop)}`
     );

@@ -13,12 +13,21 @@ export const metadata = {
 };
 
 
-function page() {
+export default async function Page({ searchParams }) {
+  const params = await searchParams; // ⭐ IMPORTANT
+
+  const pickup = params?.pickup ?? "";
+  const drop = params?.drop ?? "";
+
+  console.log("pickup, drop:", pickup, drop);
+
   return (
     <div>
-      <RateCalculator />
+      <RateCalculator
+        pickupFromUrl={pickup}
+        dropFromUrl={drop}
+      />
     </div>
-  )
+  );
 }
 
-export default page
