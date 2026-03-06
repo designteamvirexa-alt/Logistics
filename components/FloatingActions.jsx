@@ -46,7 +46,7 @@ export default function FloatingActions() {
 
       {/* 💬 WhatsApp */}
       <motion.a
-        href="https://wa.me/919878798298"
+        href="https://wa.me/917418152531"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0 }}

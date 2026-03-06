@@ -143,7 +143,7 @@ export default function Footer() {
           <ul className="space-y-4 text-sm font-semibold">
             <li>
               <Link href="tel:9878798298" className="hover:text-blue-900">
-                • +91 987-879-8298
+                • +91 7418152531
               </Link>
             </li>
             <li>

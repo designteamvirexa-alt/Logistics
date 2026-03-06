@@ -71,9 +71,9 @@ function Individual() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="flex flex-wrap gap-4"
               >
-                <button className="btn-primary hover:scale-105 transition-all">
+                <a href="rate-calculator" className="btn-primary hover:scale-105 transition-all">
                   Book Your Delivery Now
-                </button>
+                </a>
               </motion.div>
             </div>
 

@@ -494,7 +494,7 @@ export default function ShipmentBookingForm({
                 onChange={(e) => handleChange("name", e.target.value)}
               />
             <input
-              placeholder="Mobile Number"
+              placeholder="Whatsapp Number"
               className={fieldClass}
               onChange={(e) => handleChange("phone", e.target.value)}
             />
@@ -663,18 +663,18 @@ export default function ShipmentBookingForm({
 
         {/* Pickup & Delivery */}
         <div>
-          <h4 className="font-semibold mb-4">Pickup & Delivery</h4>
+          <h4 className="font-semibold mb-4">Select Pickup Date & Time Slot</h4>
           <div className="grid md:grid-cols-3 gap-4">
             <input
               type="date"
               className={fieldClass}
               onChange={(e) => handleChange("pickupDate", e.target.value)}
             />
-            <input
+            {/* <input
               type="date"
               className={fieldClass}
               onChange={(e) => handleChange("deliveryDate", e.target.value)}
-            />
+            /> */}
             <select
               className={fieldClass}
               onChange={(e) => handleChange("pickupTimeSlot", e.target.value)}
@@ -694,24 +694,18 @@ export default function ShipmentBookingForm({
             className={fieldClass}
             onChange={(e) => handleChange("serviceType", e.target.value)}
           >
-            <option value="">Select Service</option>
+             <option>Express</option>
             <option>Standard</option>
-            <option>Express</option>
+         
             <option>Premium</option>
           </select>
         </div>
 
         {/* Luggage */}
         <div>
-          <h4 className="font-semibold mb-4">Luggage</h4>
+          <h4 className="font-semibold mb-4">Luggage Details</h4>
           <div className="grid md:grid-cols-4 gap-4">
-            <input
-              type="number"
-              placeholder="No of Bags"
-              className={fieldClass}
-              value={values.bags}
-              onChange={(e) => handleChange("bags", e.target.value)}
-            />
+            
 
             <input
               type="number"
@@ -719,6 +713,13 @@ export default function ShipmentBookingForm({
               className={fieldClass}
               value={values.weight}
               onChange={(e) => handleChange("weight", e.target.value)}
+            />
+             <input
+              type="number"
+              placeholder="Height (cm)"
+              className={fieldClass}
+              value={values.height}
+              onChange={(e) => handleChange("height", e.target.value)}
             />
 
 
@@ -740,12 +741,12 @@ export default function ShipmentBookingForm({
             />
 
 
-            <input
+           <input
               type="number"
-              placeholder="Height (cm)"
+              placeholder="No of Bags"
               className={fieldClass}
-              value={values.height}
-              onChange={(e) => handleChange("height", e.target.value)}
+              value={values.bags}
+              onChange={(e) => handleChange("bags", e.target.value)}
             />
 
 
@@ -753,7 +754,7 @@ export default function ShipmentBookingForm({
               className={fieldClass}
               onChange={(e) => handleChange("bagSize", e.target.value)}
             >
-              <option value="">Bag Size</option>
+              <option value="">Select Bag size</option>
               <option>Small</option>
               <option>Medium</option>
               <option>Large</option>
@@ -763,9 +764,9 @@ export default function ShipmentBookingForm({
               className={fieldClass}
               onChange={(e) => handleChange("luggageType", e.target.value)}
             >
+              <option value="Duffel">Trolley</option>
               <option value="Suitcase">Suitcase</option>
               <option value="Backpack">Backpack</option>
-              <option value="Duffel">Duffel</option>
               <option value="Box">Box</option>
             </select>
 

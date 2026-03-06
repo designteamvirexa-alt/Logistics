@@ -49,7 +49,7 @@ function RateCalculator({  pickupFromUrl,
 
             {/* CTA */}
             <Link
-              href="/contact-us"
+              href="#calculator"
               className="btn-primary hover:scale-105 transition-all"
             >
               Calculate Your Cost

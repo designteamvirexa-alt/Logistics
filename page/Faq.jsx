@@ -173,7 +173,7 @@ const faqData = {
     },
     {
       q: "How do I contact customer support?",
-      a: "Call or WhatsApp +91 987-879-8298, email info@frisbi.in, or use the contact form on our website. Support is available 9 AM to 9 PM, 7 days a week.",
+      a: "Call or WhatsApp +91 7418152531, email info@frisbi.in, or use the contact form on our website. Support is available 9 AM to 9 PM, 7 days a week.",
     },
     {
       q: "Do I get a dedicated contact person?",

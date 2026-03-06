@@ -53,7 +53,7 @@ function Corporate() {
               <motion.p
                 {...fadeUp}
                 transition={{ delay: 0.3 }}
-                className="text-black max-w-xl mb-4"
+                className="text-black max-w-xl mb-7"
               >
                 Ideal for corporate travel managers, event planners, tour operators, and pilgrimage organizers managing large groups across locations.
 
@@ -62,9 +62,9 @@ function Corporate() {
               
 
               <motion.div {...fadeUp} transition={{ delay: 0.5 }}>
-                <button className="btn-primary hover:scale-105 transition-all">
+                <a href="/rate-calculator" className="btn-primary hover:scale-105 transition-all pt-5">
                   Get a Custom Corporate Quote
-                </button>
+                </a>
               </motion.div>
             </div>
 

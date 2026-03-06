@@ -119,7 +119,7 @@ function Home() {
                   href="/about"
                   className="btn-primary transition-transform hover:scale-105"
                 >
-                  Get in touch
+                  Know More
                 </Link>
               </div>
             </div>
@@ -166,7 +166,7 @@ function Home() {
       </section>
       <MarqueeLogos />
 
-      <section className="w-full px-4 py-12   md:py-20 md:pt-0 ">
+      <section className="w-full px-4 py-12   md:py-20 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
           {/* Background Image */}
           <Image

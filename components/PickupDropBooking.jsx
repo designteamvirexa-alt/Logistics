@@ -169,8 +169,7 @@ const useCurrentLocation = (type) => {
           onClick={handleBookNow}
           className="w-full btn-primary"
         >
-          Book Now
-        </button>
+ Calculate       </button>
       </div>
 
       {/* ================= MOBILE FULL SCREEN POPUP ================= */}

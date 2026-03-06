@@ -118,15 +118,15 @@ export default function ShipmentCalculator({
 
   /* ---------------- UI ---------------- */
   return (
-    <div className="w-full flex justify-center px-4 py-10 bg-[#f6f7fb]">
+    <div id="" className="w-full flex justify-center px-4 py-10 bg-[#f6f7fb]">
       <div className="w-full max-w-3xl bg-white rounded-3xl p-8 shadow-lg">
 
-        <h2 className="text-center text-2xl font-bold mb-6">
-          🚚 Shipment Cost Calculator
-        </h2>
+        <h3 className="text-center text-2xl font-bold mb-6">
+          Shipment Cost Calculator
+        </h3>
 
         {/* ================= FROM ================= */}
-        <h3 className="font-semibold mb-3">Pickup Details (From)</h3>
+        <h4 className="font-semibold mb-5">Pickup Details (From)</h4>
         <div className="grid md:grid-cols-2 gap-4 mb-6">
           <FloatingInput
             label="Pickup Name"
@@ -173,7 +173,7 @@ export default function ShipmentCalculator({
         </div>
 
         {/* ================= TO ================= */}
-        <h3 className="font-semibold mb-3">Delivery Details (To)</h3>
+        <h4 className="font-semibold mb-5">Delivery Details (To)</h4>
         <div className="grid md:grid-cols-2 gap-4 mb-6">
           <FloatingInput
             label="Customer Name"
@@ -220,7 +220,7 @@ export default function ShipmentCalculator({
         </div>
 
         {/* ================= PACKAGE ================= */}
-        <h3 className="font-semibold mb-3">Package Details</h3>
+        <h4 className="font-semibold mb-5">Package Details</h4>
 
         {/* Weight + Dimensions */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
@@ -237,7 +237,7 @@ export default function ShipmentCalculator({
             onChange={(e) => setBags(e.target.value)}
             className="w-full rounded-xl px-4 py-3 border bg-[#f7f8fa]"
           >
-            <option value="">Select No of Bags</option>
+            {/* <option value="">Select No of Bags</option> */}
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -248,7 +248,7 @@ export default function ShipmentCalculator({
             onChange={(e) => setService(e.target.value)}
             className="w-full rounded-xl px-4 py-3 border bg-[#f7f8fa]"
           >
-            <option value="">Select the Service</option>
+            {/* <option value="">Select the Service</option> */}
             <option value="Express">Express</option>
             <option value="Standard">Standard</option>
             <option value="Premium">Premium</option>
@@ -266,7 +266,7 @@ export default function ShipmentCalculator({
 {total !== null && (
   <div className="bg-[#E7ECFF] rounded-3xl p-6 mt-6 space-y-5">
 
-    <h3 className="text-lg font-semibold">📦 Shipment Summary</h3>
+    <h4 className="text-lg font-semibold">Shipment Summary</h4>
 
     {/* ================= FROM ================= */}
     <div className="bg-white rounded-xl p-4 shadow-sm">

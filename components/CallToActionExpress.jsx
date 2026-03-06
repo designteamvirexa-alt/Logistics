@@ -40,13 +40,13 @@ export default function CallToAction() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="btn-white hover:scale-105 transition-all">
+            <a href="/rate-calculator" className="btn-white hover:scale-105 transition-all">
               Book  Now
-            </button>
+            </a>
 
-            <button className="btn-white-outline hover:scale-105 transition-all">
+            <a href="/contact-us" className="btn-white-outline hover:scale-105 transition-all">
               Contact Support
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

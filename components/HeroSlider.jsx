@@ -99,10 +99,10 @@ export default function HeroSlider() {
               {slides[index].desc}
             </p>
             <Link
-              href="#"
+              href="/rate-calculator"
               className="inline-block btn-primary hover:scale-105 transition"
             >
-              Book Shipment
+              Get  Quote
             </Link>
           </motion.div>
         </div>

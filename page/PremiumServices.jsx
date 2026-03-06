@@ -154,10 +154,10 @@ export default function PremiumServices() {
                 </Link>
 
                 <Link
-                  href="#pricing"
+                  href="/rate-calculator"
                   className="btn-primary-outline hover:scale-105 transition-all"
                 >
-                  View Pricing
+                  Rate Calculator
                 </Link>
               </motion.div>
             </div>

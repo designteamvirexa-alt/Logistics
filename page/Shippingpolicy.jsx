@@ -384,7 +384,7 @@ function Shippingpolicy() {
             </li>
            <li className="text-second">
               Contact Us:{" "}
-              <span className="font-bold text-black"> +91 885-065-2531</span>
+              <span className="font-bold text-black"> +91 7418152531</span>
             </li>
             <li className="text-second">
               Website:{" "}
