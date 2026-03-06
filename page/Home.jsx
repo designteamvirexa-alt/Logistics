@@ -164,7 +164,7 @@ function Home() {
       <section className=" bg-[#F1F2F6] mx-auto overflow-x-hidden ">
         <ContactSection />
       </section>
-      <MarqueeLogos />
+     
 
       <section className="w-full px-4 py-12   md:py-20 ">
         <div className="relative container mx-auto rounded-3xl overflow-hidden">
@@ -208,6 +208,8 @@ function Home() {
           </motion.div>
         </div>
       </section>
+
+       <MarqueeLogos />
     </div>
   );
 }
