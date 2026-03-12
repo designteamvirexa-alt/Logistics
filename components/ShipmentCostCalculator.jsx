@@ -237,7 +237,7 @@ export default function ShipmentCalculator({
             onChange={(e) => setBags(e.target.value)}
             className="w-full rounded-xl px-4 py-3 border bg-[#f7f8fa]"
           >
-            {/* <option value="">Select No of Bags</option> */}
+            <option value="">Select No of Bags</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -248,7 +248,7 @@ export default function ShipmentCalculator({
             onChange={(e) => setService(e.target.value)}
             className="w-full rounded-xl px-4 py-3 border bg-[#f7f8fa]"
           >
-            {/* <option value="">Select the Service</option> */}
+            <option value="">Select the Service</option>
             <option value="Express">Express</option>
             <option value="Standard">Standard</option>
             <option value="Premium">Premium</option>
